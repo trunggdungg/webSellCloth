@@ -53,46 +53,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JUnit.WebShopMenswearApplicationTests.saveCategories.executor": "Run",
-    "JUnit.WebShopMenswearApplicationTests.saveColors.executor": "Run",
-    "JUnit.WebShopMenswearApplicationTests.saveImagesProduct.executor": "Run",
-    "JUnit.WebShopMenswearApplicationTests.saveProducts.executor": "Run",
-    "JUnit.WebShopMenswearApplicationTests.saveSizes.executor": "Run",
-    "JUnit.WebShopMenswearApplicationTests.saveSubCategories.executor": "Run",
-    "Notification.DisplayName-DoNotAsk-Lombok plugin": "Lombok integration problem",
-    "Notification.DoNotAsk-Lombok plugin": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.WebShopMenswearApplication.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "G:/DA_CNPM/WebShopMenswear",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "spring.configuration.checksum": "667eded1e4c7edad57570423454b52ab",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JUnit.WebShopMenswearApplicationTests.saveCategories.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WebShopMenswearApplicationTests.saveColors.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WebShopMenswearApplicationTests.saveImagesProduct.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WebShopMenswearApplicationTests.saveProducts.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WebShopMenswearApplicationTests.saveSizes.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WebShopMenswearApplicationTests.saveSubCategories.executor&quot;: &quot;Run&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-Lombok plugin&quot;: &quot;Lombok integration problem&quot;,
+    &quot;Notification.DoNotAsk-Lombok plugin&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.WebShopMenswearApplication.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;G:/DA_CNPM/WebShopMenswear&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;667eded1e4c7edad57570423454b52ab&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\HOCTAP\Github\Java25-SpringBoot\SpringBoot\DoAnCuoiKhoa\WebShopMenswear\src\main\resources\static\web-assets" />
@@ -102,7 +102,7 @@
       <recent name="D:\HOCTAP\Github\Java25-SpringBoot\SpringBoot\DoAnCuoiKhoa\WebShopMenswear\src\main\resources\static\web-assets\" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.WebShopMenswearApplicationTests.saveOrders">
+  <component name="RunManager" selected="Spring Boot.WebShopMenswearApplication">
     <configuration name="WebShopMenswearApplicationTests.saveAddresses" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WebShopMenswear" />
       <extension name="coverage">
@@ -179,6 +179,17 @@
       <option name="MAIN_CLASS_NAME" value="com.example.webshopmenswear.WebShopMenswearApplicationTests" />
       <option name="METHOD_NAME" value="saveWards" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
