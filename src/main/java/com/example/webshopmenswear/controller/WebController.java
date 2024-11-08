@@ -45,6 +45,12 @@ public class WebController {
         return "/web/product";
     }
 
+    @GetMapping("/post")
+    public String post() {
+
+        return "/web/post";
+    }
+
     @GetMapping("/blog")
     public String BlogPage() {
         return "/web/blog";
@@ -69,5 +75,5 @@ public class WebController {
     public String AccountPage() {
         return "/web/account";
     }
-    
+
 }

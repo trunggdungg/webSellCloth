@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE)
 @ToString
 @Builder
-
 @Entity
 @Table(name = "categories")
 
