@@ -28,12 +28,12 @@ public class Address {
     LocalDateTime createdAt;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    User user;
-
-    @ManyToOne
     @JoinColumn(name = "ward_id")
     Ward ward;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    User user;
 
     @ManyToOne
     @JoinColumn(name = "district_id")
@@ -43,6 +43,5 @@ public class Address {
     @JoinColumn(name = "province_id")
     Province province;
 
-    Boolean isDefault;
 
 }

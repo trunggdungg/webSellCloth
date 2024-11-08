@@ -27,9 +27,6 @@ public class Feedback {
     @JoinColumn(name = "user_id")
     User user;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    Product product;
 
     @ManyToOne
     @JoinColumn(name = "order_id")

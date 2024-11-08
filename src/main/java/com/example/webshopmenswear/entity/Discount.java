@@ -31,13 +31,13 @@ public class Discount {
     LocalDateTime startDate;
     LocalDateTime endDate;
 
-    String type;
+    Double discountPercent;
 
     @ManyToMany
     @JoinTable(
-            name = "product_discount",
-            joinColumns = @JoinColumn(name = "discount_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id")
+        name = "product_discount",
+        joinColumns = @JoinColumn(name = "discount_id"),
+        inverseJoinColumns = @JoinColumn(name = "product_id")
     )
     List<Product> products;
 }

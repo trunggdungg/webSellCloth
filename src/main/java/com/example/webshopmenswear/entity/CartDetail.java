@@ -29,5 +29,7 @@ public class CartDetail {
     @JoinColumn(name = "product_id")
     Product product;
 
+    Double price;
+
     Integer quantity;
 }

@@ -27,31 +27,9 @@ public class Order {
     @JoinColumn(name = "user_id")
     User user;
 
-    @Column(nullable = false)
-    String receiverName;
-
-    @Column(nullable = false)
-    String phoneNumber;
-
-    String email;
-
-    String addressReceiver;
-
     @ManyToOne
     @JoinColumn(name = "address_id")
     Address addressUser;
-
-    @ManyToOne
-    @JoinColumn(name = "ward_id")
-    Ward ward;
-
-    @ManyToOne
-    @JoinColumn(name = "district_id")
-    District district;
-
-    @ManyToOne
-    @JoinColumn(name = "province_id")
-    Province province;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)

@@ -31,8 +31,5 @@ public class Category {
     LocalDateTime createdAt;
 
     LocalDateTime updatedAt;
-
-    @ManyToOne
-    @JoinColumn(name = "parent_id")
-    Category parent;
+    
 }

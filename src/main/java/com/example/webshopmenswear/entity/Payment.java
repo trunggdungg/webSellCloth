@@ -33,6 +33,9 @@ public class Payment {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     PaymentStatus paymentStatus;
-
+    String deliveryStatus;
     LocalDateTime paymentDate;
+
+    LocalDateTime createdAt;
+    LocalDateTime updatedAt;
 }

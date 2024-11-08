@@ -1,7 +1,7 @@
 package com.example.webshopmenswear.service;
 
 import com.example.webshopmenswear.entity.Product;
-import com.example.webshopmenswear.repository.IProductRepository;
+import com.example.webshopmenswear.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ProductService {
-    private final IProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     public List<Product> loadMoreProducts(Integer offset, Integer limit) {
         return productRepository.findAll(PageRequest.of(offset, limit)).getContent();

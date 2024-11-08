@@ -25,11 +25,7 @@ public class OrderDetail {
     Order order;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
-    Product product;
-
-    @ManyToOne
-    @JoinColumn(name = "variant_id")
+    @JoinColumn(name = "product_variant_id")
     ProductVariant variant;
 
     Integer quantity;
