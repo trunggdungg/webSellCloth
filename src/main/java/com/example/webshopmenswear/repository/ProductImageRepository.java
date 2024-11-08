@@ -11,5 +11,5 @@ public interface ProductImageRepository extends JpaRepository<ProductImage, Inte
 
     boolean existsByProductAndIsPrimary(Product product, boolean isPrimary);
 
-    List<ProductImage> findByProduct(Product product);
+
 }
