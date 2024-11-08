@@ -4,54 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="up">
+    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="up date db, repository">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/CartDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/CartDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Category.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Discount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Feedback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Feedback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/OrderDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ICategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/CategoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/IColorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ColorRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/IProductImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ProductImageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/IProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ISizeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/SizeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/ProductVariant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/ProductVariant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/model/Enum/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/model/Enum/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ProductVariantRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ProductVariantRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/webshopmenswear/WebShopMenswearApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/webshopmenswear/WebShopMenswearApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Address$AddressBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Address$AddressBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Address.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Address.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/CartDetail$CartDetailBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/CartDetail$CartDetailBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/CartDetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/CartDetail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Category$CategoryBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Category$CategoryBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Category.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Discount$DiscountBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Discount$DiscountBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Discount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Discount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Feedback$FeedbackBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Feedback$FeedbackBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Feedback.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Feedback.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Order$OrderBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Order$OrderBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/OrderDetail$OrderDetailBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/OrderDetail$OrderDetailBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/OrderDetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/OrderDetail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Payment$PaymentBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Payment$PaymentBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Payment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Payment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/User$UserBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/User$UserBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ICategoryRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/IColorRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/IProductImageRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/IProductRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ISizeRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductImageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductImageService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Product$ProductBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Product$ProductBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/ProductVariant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/ProductVariant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/model/Enum/UserRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/model/Enum/UserRole.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductVariantRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductVariantRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/webshopmenswear/WebShopMenswearApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/webshopmenswear/WebShopMenswearApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -149,8 +116,8 @@
       <recent name="D:\HOCTAP\Github\Java25-SpringBoot\SpringBoot\DoAnCuoiKhoa\WebShopMenswear\src\main\resources\static\web-assets\" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.WebShopMenswearApplicationTests.saveProductVariants">
-    <configuration name="WebShopMenswearApplicationTests.saveColors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.WebShopMenswearApplicationTests.saveOrders">
+    <configuration name="WebShopMenswearApplicationTests.saveAddresses" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WebShopMenswear" />
       <extension name="coverage">
         <pattern>
@@ -160,13 +127,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.webshopmenswear" />
       <option name="MAIN_CLASS_NAME" value="com.example.webshopmenswear.WebShopMenswearApplicationTests" />
-      <option name="METHOD_NAME" value="saveColors" />
+      <option name="METHOD_NAME" value="saveAddresses" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebShopMenswearApplicationTests.saveImagesProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WebShopMenswearApplicationTests.saveDistricts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WebShopMenswear" />
       <extension name="coverage">
         <pattern>
@@ -176,13 +143,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.webshopmenswear" />
       <option name="MAIN_CLASS_NAME" value="com.example.webshopmenswear.WebShopMenswearApplicationTests" />
-      <option name="METHOD_NAME" value="saveImagesProduct" />
+      <option name="METHOD_NAME" value="saveDistricts" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebShopMenswearApplicationTests.saveProductVariants" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WebShopMenswearApplicationTests.saveOrders" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WebShopMenswear" />
       <extension name="coverage">
         <pattern>
@@ -192,13 +159,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.webshopmenswear" />
       <option name="MAIN_CLASS_NAME" value="com.example.webshopmenswear.WebShopMenswearApplicationTests" />
-      <option name="METHOD_NAME" value="saveProductVariants" />
+      <option name="METHOD_NAME" value="saveOrders" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebShopMenswearApplicationTests.saveProducts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WebShopMenswearApplicationTests.saveUsers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WebShopMenswear" />
       <extension name="coverage">
         <pattern>
@@ -208,13 +175,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.webshopmenswear" />
       <option name="MAIN_CLASS_NAME" value="com.example.webshopmenswear.WebShopMenswearApplicationTests" />
-      <option name="METHOD_NAME" value="saveProducts" />
+      <option name="METHOD_NAME" value="saveUsers" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebShopMenswearApplicationTests.saveSizes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WebShopMenswearApplicationTests.saveWards" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WebShopMenswear" />
       <extension name="coverage">
         <pattern>
@@ -224,7 +191,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.webshopmenswear" />
       <option name="MAIN_CLASS_NAME" value="com.example.webshopmenswear.WebShopMenswearApplicationTests" />
-      <option name="METHOD_NAME" value="saveSizes" />
+      <option name="METHOD_NAME" value="saveWards" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -239,11 +206,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveProductVariants" />
-        <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveImagesProduct" />
-        <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveProducts" />
-        <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveSizes" />
-        <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveColors" />
+        <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveOrders" />
+        <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveAddresses" />
+        <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveUsers" />
+        <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveWards" />
+        <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveDistricts" />
       </list>
     </recent_temporary>
   </component>
@@ -281,7 +248,7 @@
       <workItem from="1731056579388" duration="222000" />
       <workItem from="1731056854706" duration="291000" />
       <workItem from="1731057203028" duration="125000" />
-      <workItem from="1731057492001" duration="13561000" />
+      <workItem from="1731057492001" duration="20338000" />
     </task>
     <task id="LOCAL-00001" summary="up">
       <option name="closed" value="true" />
@@ -291,7 +258,23 @@
       <option name="project" value="LOCAL" />
       <updated>1731058033524</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="up date db, repository">
+      <option name="closed" value="true" />
+      <created>1731081781644</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1731081781644</updated>
+    </task>
+    <task id="LOCAL-00003" summary="up date db, repository">
+      <option name="closed" value="true" />
+      <created>1731081810661</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731081810661</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,6 +285,7 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="up" />
-    <option name="LAST_COMMIT_MESSAGE" value="up" />
+    <MESSAGE value="up date db, repository" />
+    <option name="LAST_COMMIT_MESSAGE" value="up date db, repository" />
   </component>
 </project>

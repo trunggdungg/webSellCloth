@@ -5,7 +5,6 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,11 +32,5 @@ public class Discount {
 
     Double discountPercent;
 
-    @ManyToMany
-    @JoinTable(
-        name = "product_discount",
-        joinColumns = @JoinColumn(name = "discount_id"),
-        inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
-    List<Product> products;
+
 }

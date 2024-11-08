@@ -25,11 +25,11 @@ public class ProductVariant {
     Product product;
 
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "color_id")
     Color color;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "size_id")
     Size size;
 

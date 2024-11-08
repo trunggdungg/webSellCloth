@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -41,6 +42,15 @@ public class Product {
     LocalDateTime createdAt;
 
     LocalDateTime updatedAt;
+
+    @ManyToMany
+    @JoinTable(
+        name = "product_discount",
+        joinColumns = @JoinColumn(name = "product_id"),
+        inverseJoinColumns = @JoinColumn(name = "discount_id")
+    )
+    List<Discount> discounts;
+
 }
 
 
