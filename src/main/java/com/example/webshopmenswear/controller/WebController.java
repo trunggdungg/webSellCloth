@@ -1,9 +1,11 @@
 package com.example.webshopmenswear.controller;
 
+import com.example.webshopmenswear.entity.Color;
 import com.example.webshopmenswear.entity.Product;
 import com.example.webshopmenswear.entity.ProductImage;
 import com.example.webshopmenswear.service.ProductImageService;
 import com.example.webshopmenswear.service.ProductService;
+import com.example.webshopmenswear.service.ProductVariantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -21,7 +24,7 @@ import java.util.Map;
 public class WebController {
     private final ProductService productService;
     private final ProductImageService productImageService;
-
+    private final ProductVariantService productVariantService;
 
     @GetMapping("/shop")
     public String ProductsPage(@RequestParam(required = false, defaultValue = "1") int page,
@@ -66,7 +69,11 @@ public class WebController {
     @GetMapping("/product/{id}/{slug}")
     public String ProductDetail(@PathVariable Integer id, @PathVariable String slug, Model model) {
         Product product = productService.getProductDetail(id, slug);
+
+        List<Color> colors = productVariantService.getProductColors(id);
+
         model.addAttribute("productsDetail", product);
+        model.addAttribute("colors", colors);
         return "/web/product";
     }
 
