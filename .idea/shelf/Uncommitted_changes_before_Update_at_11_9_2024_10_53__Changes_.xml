@@ -1,0 +1,9 @@
+<changelist name="Uncommitted_changes_before_Update_at_11_9_2024_10_53_[Changes]" date="1731124461761" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_2024_10_53_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 11/9/2024 10:53 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/webshopmenswear/repository/ProductImageRepository.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/webshopmenswear/repository/ProductImageRepository.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_2024_10_53_[Changes]/ProductImageRepository.class" />
+  </binary>
+</changelist>
