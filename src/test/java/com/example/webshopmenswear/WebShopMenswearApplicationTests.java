@@ -4,6 +4,7 @@ import com.example.webshopmenswear.entity.*;
 import com.example.webshopmenswear.model.Enum.OrderStatus;
 import com.example.webshopmenswear.model.Enum.UserRole;
 import com.example.webshopmenswear.repository.*;
+import com.example.webshopmenswear.service.ProductService;
 import com.github.javafaker.Faker;
 import com.github.slugify.Slugify;
 import org.junit.jupiter.api.Test;
@@ -74,6 +75,19 @@ class WebShopMenswearApplicationTests {
     @Autowired
     private PaymentRepository paymentRepository;
 
+    @Autowired
+    private ProductService productService;
+
+    @Test
+    void productprice() {
+
+    }
+
+    @Test
+    void getImageByProductId() {
+        List<ProductImage> productImages = imageRepository.findAllByProduct_Id(1);
+        System.out.println(productImages);
+    }
 
     @Test
     void findTop10() {
@@ -172,29 +186,29 @@ class WebShopMenswearApplicationTests {
 
     }
 
-    @Test
-    void saveImagesProduct() {
-        Slugify slugify = Slugify.builder().build();
-        List<Product> products = productRepository.findAll();
-        for (Product product : products) {
-            List<ProductImage> existingImages = imageRepository.findByProduct(product);
-
-            // Nếu sản phẩm có ít hơn 3 ảnh, thêm vào đủ 3 ảnh
-            if (existingImages.size() < 3) {
-                for (int i = 0; i < 3 - existingImages.size(); i++) {
-                    ProductImage image = ProductImage.builder()
-                            .product(product)
-                            .imageUrl("https://placehold.co/600x400?text=" + product.getName().substring(0, 1).toUpperCase())
-                            .altText(slugify.slugify(product.getName()) + "-" + (i + existingImages.size() + 1))
-                            .isPrimary(existingImages.isEmpty() && i == 0) // Đặt ảnh đầu tiên là ảnh chính nếu chưa có ảnh chính
-                            .imageOrder(i + 1 + existingImages.size())
-                            .build();
-
-                    imageRepository.save(image);
-                }
-            }
-        }
-    }
+//    @Test
+//    void saveImagesProduct() {
+//        Slugify slugify = Slugify.builder().build();
+//        List<Product> products = productRepository.findAll();
+//        for (Product product : products) {
+//            List<ProductImage> existingImages = imageRepository.findByProduct(product);
+//
+//            // Nếu sản phẩm có ít hơn 3 ảnh, thêm vào đủ 3 ảnh
+//            if (existingImages.size() < 3) {
+//                for (int i = 0; i < 3 - existingImages.size(); i++) {
+//                    ProductImage image = ProductImage.builder()
+//                            .product(product)
+//                            .imageUrl("https://placehold.co/600x400?text=" + product.getName().substring(0, 1).toUpperCase())
+//                            .altText(slugify.slugify(product.getName()) + "-" + (i + existingImages.size() + 1))
+//                            .isPrimary(existingImages.isEmpty() && i == 0) // Đặt ảnh đầu tiên là ảnh chính nếu chưa có ảnh chính
+//                            .imageOrder(i + 1 + existingImages.size())
+//                            .build();
+//
+//                    imageRepository.save(image);
+//                }
+//            }
+//        }
+//    }
 
 
     @Test

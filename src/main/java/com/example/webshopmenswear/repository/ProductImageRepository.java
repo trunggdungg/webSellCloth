@@ -24,4 +24,6 @@ public interface ProductImageRepository extends JpaRepository<ProductImage, Inte
     List<ProductImage> findTop2ByProductIdOrderByImageOrder(Integer productId);
 
     List<ProductImage> findByProduct(Product product);
+
+    List<ProductImage> findAllByProduct_Id(Integer id);
 }

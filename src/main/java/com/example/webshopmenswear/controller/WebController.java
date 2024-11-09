@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -66,7 +67,11 @@ public class WebController {
     @GetMapping("/product/{id}/{slug}")
     public String ProductDetail(@PathVariable Integer id, @PathVariable String slug, Model model) {
         Product product = productService.getProductDetail(id, slug);
+        List<ProductImage> productImages = productService.getImageByProductId(id);
+        List<Product> get3product = productService.getTop3Product(id, slug);
         model.addAttribute("productsDetail", product);
+        model.addAttribute("productImages", productImages);
+        model.addAttribute("get3product", get3product);
         return "/web/product";
     }
 
