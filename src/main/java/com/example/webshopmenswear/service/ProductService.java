@@ -44,4 +44,8 @@ public class ProductService {
     public ProductImage findFirtProductImage(Integer productId) {
         return productImageRepository.findByProductAndIsPrimary(productRepository.findById(productId).get(), true);
     }
+
+    public Product getProductDetail(Integer id, String slug) {
+        return productRepository.findByIdAndSlugAndStatus(id, slug, true);
+    }
 }

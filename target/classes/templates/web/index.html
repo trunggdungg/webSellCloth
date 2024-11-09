@@ -36,7 +36,7 @@
                 <!-- Navigation -->
                 <ul class="header__nav">
                     <li>
-                        <a href="/" class="nav__item">Home</a>
+                        <a href="/" class="nav__item nav__item--current">Home</a>
 
                     </li>
                     <li>
@@ -44,7 +44,7 @@
 
                     </li>
                     <li>
-                        <a href="/product" class="nav__item nav__item--current">Product</a>
+                        <a href="/product" class="nav__item ">Product</a>
                     </li>
                 </ul>
                 <!-- End navigation -->
@@ -1095,8 +1095,7 @@
                                 <img
                                         alt="Image"
                                         data-sizes="auto"
-                                        data-srcset="assets/products/1/6a.jpg 400w,
-                            assets/products/1/6a.jpg 800w"
+
                                         th:src="${firstImage.imageUrl}"
 
                                         class="lazyload lazy-effect"

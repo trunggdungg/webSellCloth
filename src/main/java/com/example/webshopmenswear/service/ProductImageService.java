@@ -29,4 +29,6 @@ public class ProductImageService {
     public List<ProductImage> findTop2ImagesByProductId(Integer productId) {
         return productImageRepository.findTop2ByProductIdOrderByImageOrder(productId);
     }
+
+
 }

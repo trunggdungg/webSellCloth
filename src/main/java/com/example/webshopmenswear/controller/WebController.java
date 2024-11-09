@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
@@ -60,6 +61,13 @@ public class WebController {
         model.addAttribute("productFirstImageMap", productFirstImageMap);
 
         return "/web/index";
+    }
+
+    @GetMapping("/product/{id}/{slug}")
+    public String ProductDetail(@PathVariable Integer id, @PathVariable String slug, Model model) {
+        Product product = productService.getProductDetail(id, slug);
+        model.addAttribute("ProductsDetail", product);
+        return "/web/product";
     }
 
     @GetMapping("/product")

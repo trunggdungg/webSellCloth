@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <!-- Mirrored from martfury.pl/utero/html/v1/product.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Oct 2024 06:58:16 GMT -->
 <head>
@@ -599,7 +599,7 @@
                     <div class="product__mobile-share"><a href="#"><i class="lnil lnil-share"></i></a></div>
                     <!-- End mobile share -->
                     <!-- Product title -->
-                    <h1 class="product__title">Zipped cardigan cotton</h1>
+                    <h1 class="product__title" th:text="${ProductsDetail.name}">Zipped cardigan cotton</h1>
                     <!-- End product title -->
                     <!-- Product price -->
                     <div class="product__price">

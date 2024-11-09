@@ -13,6 +13,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     Page<Product> findTop10ByStatusOrderByCreatedAtDesc(Boolean status, Pageable pageable);
 
+    Product findByIdAndSlugAndStatus(Integer id, String slug, boolean b);
+
     // List<Product> findTop10ByStatusOrderByCreatedAtDesc(Boolean status);
 
 }
