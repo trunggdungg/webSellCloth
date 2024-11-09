@@ -54,28 +54,11 @@ public class ProductService {
         return productImageRepository.findAllByProduct_Id(id);
     }
 
-    //    public Page<Product> findAllProduct(Pageable pageable) {
-//        // Giả sử bạn đã có một sản phẩm gốc mà bạn muốn so sánh (ví dụ, sản phẩm có id = 1)
-//        Product baseProduct = productRepository.findById(1).orElseThrow(() -> new RuntimeException("Product not found"));
-//
-//        // Giả sử bạn muốn tìm những sản phẩm có giá gần với sản phẩm gốc (±10%)
-//        double minPrice = baseProduct.getPrice() * 0.5; // 90% của giá gốc
-//        double maxPrice = baseProduct.getPrice() * 1.5; // 110% của giá gốc
-//        // Lấy tất cả sản phẩm từ repository
-//        List<Product> allProducts = productRepository.findAll();
-//
-//        // Sử dụng Stream để lọc sản phẩm có giá trong khoảng gần với giá của sản phẩm gốc
-//        List<Product> filteredProducts = allProducts.stream()
-//                .filter(product -> product.getPrice() >= minPrice && product.getPrice() <= maxPrice)
-//                .collect(Collectors.toList());
-//        pageable = PageRequest.of(0, 10); // Trang đầu tiên, 10 sản phẩm mỗi trang
-//        return new PageImpl<>(filteredProducts, pageable, filteredProducts.size());
-//    }
     public List<Product> getTop3Product(Integer productId, String slug) {
         Product selectproduct = productRepository.findById(productId).orElseThrow(() -> new EntityNotFoundException("Khong thay"));
         Double targetprice = selectproduct.getPrice();
-        Pageable pageable = PageRequest.of(0, 3);
-        return productRepository.findTop3ByClosestPrice(targetprice, productId, pageable);
+        Pageable pageable = PageRequest.of(0, 4);
+        return productRepository.findTop4ByClosestPrice(targetprice, productId, pageable);
 
     }
 

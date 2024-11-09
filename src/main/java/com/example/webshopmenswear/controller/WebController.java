@@ -69,10 +69,22 @@ public class WebController {
     @GetMapping("/product/{id}/{slug}")
     public String ProductDetail(@PathVariable Integer id, @PathVariable String slug, Model model) {
         Product product = productService.getProductDetail(id, slug);
+        List<ProductImage> productImages = productService.getImageByProductId(id);
+        List<Product> get3product = productService.getTop3Product(id, slug);
+
+        // Lấy ảnh cho 3 sản phẩm tương tự
+        Map<Integer, List<ProductImage>> similarProductImages = new HashMap<>();
+        for (Product similarProduct : get3product) {
+            List<ProductImage> images = productService.getImageByProductId(similarProduct.getId());
+            similarProductImages.put(similarProduct.getId(), images);
+        }
 
         List<Color> colors = productVariantService.getProductColors(id);
 
         model.addAttribute("productsDetail", product);
+        model.addAttribute("productImages", productImages);
+        model.addAttribute("get3product", get3product);
+        model.addAttribute("similarProductImages", similarProductImages);
         model.addAttribute("colors", colors);
         return "/web/product";
     }
@@ -96,6 +108,11 @@ public class WebController {
     @GetMapping("/cart")
     public String CartPage() {
         return "/web/cart";
+    }
+
+    @GetMapping("/about")
+    public String AboutPage() {
+        return "/web/about";
     }
 
     @GetMapping("/checkout")

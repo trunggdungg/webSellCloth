@@ -1170,14 +1170,62 @@
                                         alt="Image"
                                         data-sizes="auto"
                                         data-srcset="/assets/products/1/2_1-a.jpg 400w,
-                    /assets/products/1/2_1-a.jpg 800w"
+                            /assets/products/1/2_1-a.jpg 800w"
                                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                         class="lazyload lazy-effect"/>
                                 <img
                                         alt="Image"
                                         data-sizes="auto"
                                         data-srcset="/assets/products/1/2_1-b.jpg 400w,
-                    /assets/products/1/2_1-b.jpg 800w"
+                            /assets/products/1/2_1-b.jpg 800w"
+                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                        class="lazyload lazy-effect hover"/>
+                            </a>
+                        </div>
+                        <!-- End image -->
+                        <!-- Title -->
+                        <div class="product-grid-item__title"><a href="product.html">Zipped cotton cardigan</a></div>
+                        <!-- End title -->
+                        <!-- Price -->
+                        <div class="product-grid-item__price">
+                            <span class="price-new">$49.5</span>
+                            <span class="price-old">$68.5</span>
+                        </div>
+                        <!-- End price -->
+                        <!-- Tag -->
+                        <div class="product-grid-item__content-tag">2 colours</div>
+                        <!-- End tag -->
+                        <!-- Action -->
+                        <div class="product-grid-item__action d-flex">
+                            <!-- Button -->
+                            <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
+                            <!-- End button -->
+                        </div>
+                        <!-- End action -->
+                    </div>
+
+                    <div class="product-grid-item">
+                        <!-- Tag -->
+                        <div class="product-grid-item__tag">10% off</div>
+                        <!-- End tag -->
+                        <!-- Wishlist -->
+                        <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
+                        <!-- End wishlist -->
+                        <!-- Image -->
+                        <div class="product-grid-item__image">
+                            <a th:href="product.html">
+                                <img
+                                        alt="Image"
+                                        data-sizes="auto"
+                                        data-srcset="/assets/products/1/2_1-a.jpg 400w,
+                            /assets/products/1/2_1-a.jpg 800w"
+                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                        class="lazyload lazy-effect"/>
+                                <img
+                                        alt="Image"
+                                        data-sizes="auto"
+                                        data-srcset="/assets/products/1/2_1-b.jpg 400w,
+                            /assets/products/1/2_1-b.jpg 800w"
                                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                         class="lazyload lazy-effect hover"/>
                             </a>
@@ -1322,48 +1370,43 @@
                 <!-- Carousel -->
                 <div class="home-products__carousel js-home-products-5-carousel">
                     <!-- Vòng lặp cho sản phẩm -->
-                    <div th:each="productSimilar, iterStat : ${get3product}">
-                        <!-- Lấy hình ảnh của sản phẩm bằng chỉ số -->
+                    <div th:each="productSimilar : ${get3product}">
                         <div class="product-grid-item">
                             <!-- Tag -->
                             <div class="product-grid-item__tag product-grid-item__tag--sold-out">Sold out</div>
-                            <!-- End tag -->
+
                             <!-- Wishlist -->
                             <div class="product-grid-item__wishlist">
                                 <a href="#"><i class="lnil lnil-heart"></i></a>
                             </div>
-                            <!-- End wishlist -->
+
                             <!-- Image -->
                             <div class="product-grid-item__image">
                                 <a th:href="|/product/${productSimilar.id}/${productSimilar.slug}|">
                                     <img
                                             alt="Image"
                                             data-sizes="auto"
-                                            th:src="${productImages[iterStat.index].imageUrl}"
+                                            th:src="${similarProductImages.get(productSimilar.id).size() > 0 ? similarProductImages.get(productSimilar.id).get(0).imageUrl : ''}"
                                             class="lazyload lazy-effect"/>
                                 </a>
                             </div>
-                            <!-- End image -->
+
                             <!-- Title -->
                             <div class="product-grid-item__title">
                                 <a th:href="|/product/${productSimilar.id}/${productSimilar.slug}|"
-                                   th:text="${productSimilar.name}">Hand
-                                    cleaner gel pure
-                                    bergamot</a>
+                                   th:text="${productSimilar.name}">Hand cleaner gel pure bergamot</a>
                             </div>
-                            <!-- End title -->
+
                             <!-- Price -->
                             <div class="product-grid-item__price" th:text="${productSimilar.price}">
                                 $32.5
                             </div>
-                            <!-- End price -->
+
                             <!-- Action -->
                             <div class="product-grid-item__action d-flex">
                                 <!-- Button -->
                                 <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
-                                <!-- End button -->
                             </div>
-                            <!-- End action -->
                         </div>
                     </div>
                 </div>

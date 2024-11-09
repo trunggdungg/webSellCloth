@@ -22,5 +22,5 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     // List<Product> findTop10ByStatusOrderByCreatedAtDesc(Boolean status);
     // Phương thức tìm sản phẩm có giá trong khoảng
     @Query("SELECT p FROM Product p WHERE p.id <> :productId ORDER BY ABS(p.price - :targetPrice) ASC")
-    List<Product> findTop3ByClosestPrice(@Param("targetPrice") Double targetPrice, @Param("productId") Integer productId, Pageable pageable);
+    List<Product> findTop4ByClosestPrice(@Param("targetPrice") Double targetPrice, @Param("productId") Integer productId, Pageable pageable);
 }
