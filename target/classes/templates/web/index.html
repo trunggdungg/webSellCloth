@@ -1577,12 +1577,12 @@
 
             <!-- End search form -->
             <!-- Search results -->
-            <div class="search-popups__results">
+            <div class="search-popups__results ">
                 <!-- Results heading -->
                 <h6 class="search-popup__results-heading">Search results</h6>
                 <!-- End results heading -->
                 <!-- Results -->
-                <div class="search-popups__results-products d-flex">
+                <div id="productList" class="search-popups__results-products d-flex product-grid">
                     <!-- Product -->
                     <div class="product-grid-item">
                         <!-- Tag -->
@@ -1913,26 +1913,32 @@
     </div>
     <!-- End search popup -->
 </div>
-<script>
+<script th:inline="javascript">
+    /* Giả sử sản phẩm đầu tiên có hình ảnh được truyền từ backend vào */
+    const productFirstImageMap = [[${productFirstImageMap}]]; // Map chứa thông tin ảnh đầu tiên của mỗi sản phẩm
+
+    // Hàm xử lý tìm kiếm khi người dùng nhấn enter hoặc submit form
     function searchProduct(event) {
-        event.preventDefault(); // Ngăn chặn form reload trang
+        event.preventDefault(); // Ngăn form tự động reload trang
 
         // Lấy giá trị tìm kiếm từ input
         const name = document.getElementById("searchInput").value.trim();
 
         if (name) {
-            // Gọi API tìm kiếm sản phẩm
-            fetch(`/api/products/search-product/name/${name}`)
+            // Gọi API tìm kiếm sản phẩm với tên người dùng nhập
+            fetch(`/search-product/name/${name}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error("Network response was not ok");
                     }
-                    return response.json();
+                    return response.json(); // Chuyển đổi dữ liệu trả về thành JSON
                 })
                 .then(data => {
-                    // Xử lý dữ liệu tìm kiếm nhận được
+                    // Dữ liệu trả về là một Page<Product>
                     console.log("Kết quả tìm kiếm:", data);
-                    // Cập nhật DOM để hiển thị kết quả (nếu cần)
+
+                    // Hiển thị các sản phẩm tìm thấy
+                    displayProducts(data.content); // Gọi hàm hiển thị sản phẩm
                 })
                 .catch(error => {
                     console.error("Lỗi khi lấy kết quả tìm kiếm:", error);
@@ -1942,7 +1948,67 @@
         }
     }
 
+    function displayProducts(products) {
+        const productList = document.getElementById("productList");
+        productList.innerHTML = ""; // Xóa danh sách cũ
+
+        products.forEach(product => {
+            // Lấy ảnh đầu tiên từ productFirstImageMap
+            const firstImage = productFirstImageMap[product.id];
+
+            const productItem = document.createElement("div");
+            productItem.classList.add("product-grid-item");
+            productItem.innerHTML = `
+                <!-- Tag -->
+                <div class="product-grid-item__tag product-grid-item__tag--sold-out">
+                    Sold out
+                </div>
+                <!-- End tag -->
+                <!-- Wishlist -->
+                <div class="product-grid-item__wishlist">
+                    <a href="#"><i class="lnil lnil-heart"></i></a>
+                </div>
+                <!-- End wishlist -->
+                <!-- Image -->
+                <div class="product-grid-item__image">
+                    <a href="/product/${product.id}/${product.slug}">
+                        <img
+                            alt="Image"
+                            data-sizes="auto"
+                            src="${firstImage.imageUrl}"
+                            class="lazyload lazy-effect"
+                        />
+                    </a>
+                    <!-- Action -->
+                    <div class="product-grid-item__action d-flex">
+                        <!-- Button -->
+                        <div class="product-grid-item__button">
+                            <a href="#">Add to cart</a>
+                        </div>
+                        <!-- End button -->
+                        <!-- Button -->
+                        <div class="product-grid-item__button">
+                            <a href="#">Quick shop</a>
+                        </div>
+                        <!-- End button -->
+                    </div>
+                    <!-- End action -->
+                </div>
+                <!-- End image -->
+                <!-- Title -->
+                <div class="product-grid-item__title">
+                    <a href="/product/${product.id}/${product.slug}">${product.name}</a>
+                </div>
+                <!-- End title -->
+                <!-- Price -->
+                <div class="product-grid-item__price">$${product.price}</div>
+                <!-- End price -->
+            `;
+            productList.appendChild(productItem);
+        });
+    }
 </script>
+
 </body>
 
 </html>
