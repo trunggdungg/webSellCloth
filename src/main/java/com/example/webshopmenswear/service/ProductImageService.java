@@ -15,4 +15,18 @@ public class ProductImageService {
     public List<ProductImage> getListImagesProduct(Integer id) {
         return productImageRepository.findByProductId(id);
     }
+
+    public ProductImage findFirstByProductId(Integer productId) {
+        // Ưu tiên lấy ảnh primary trước
+        ProductImage primaryImage = productImageRepository.findFirstByProductIdAndIsPrimaryTrue(productId);
+        if (primaryImage != null) {
+            return primaryImage;
+        }
+        // Nếu không có ảnh primary thì lấy ảnh đầu tiên theo thứ tự
+        return productImageRepository.findFirstByProductIdOrderByImageOrder(productId);
+    }
+
+    public List<ProductImage> findTop2ImagesByProductId(Integer productId) {
+        return productImageRepository.findTop2ByProductIdOrderByImageOrder(productId);
+    }
 }

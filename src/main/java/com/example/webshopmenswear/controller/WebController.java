@@ -1,6 +1,7 @@
 package com.example.webshopmenswear.controller;
 
 import com.example.webshopmenswear.entity.Product;
+import com.example.webshopmenswear.entity.ProductImage;
 import com.example.webshopmenswear.service.ProductImageService;
 import com.example.webshopmenswear.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -35,7 +39,26 @@ public class WebController {
     }
 
     @GetMapping("/")
-    public String HomePage() {
+    public String HomePage(@RequestParam(required = false, defaultValue = "1") int page,
+                           @RequestParam(required = false, defaultValue = "10") int pageSize,
+                           Model model) {
+        Page<Product> products = productService.findTop10ByStatusOrderByCreatedAtDesc(true, page, pageSize);
+        // Lấy danh sách ảnh cho từng sản phẩm
+        //  Lưu ảnh đầu tiên của mỗi sản phẩm
+        Map<Integer, ProductImage> productFirstImageMap = new HashMap<>();
+
+        // Lấy ảnh đầu tiên của mỗi sản phẩm
+        for (Product product : products.getContent()) {
+            ProductImage firstImage = productImageService.findFirstByProductId(product.getId());
+            if (firstImage != null) {
+                productFirstImageMap.put(product.getId(), firstImage);
+            }
+        }
+
+        model.addAttribute("productsPage", products);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("productFirstImageMap", productFirstImageMap);
+
         return "/web/index";
     }
 
@@ -69,5 +92,5 @@ public class WebController {
     public String AccountPage() {
         return "/web/account";
     }
-    
+
 }

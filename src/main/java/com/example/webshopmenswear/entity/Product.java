@@ -43,7 +43,7 @@ public class Product {
 
     LocalDateTime updatedAt;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "product_discount",
         joinColumns = @JoinColumn(name = "product_id"),
