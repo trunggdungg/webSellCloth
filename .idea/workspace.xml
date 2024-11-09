@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="Up_ProductDetail">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_2024_10_53__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_2024_10_53__Changes_.xml" afterDir="false" />
+    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="Up_similar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/WebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/WebController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ProductImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ProductImageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/webshopmenswear/WebShopMenswearApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/webshopmenswear/WebShopMenswearApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/WebController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/WebController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductImageRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductImageRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/webshopmenswear/WebShopMenswearApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/webshopmenswear/WebShopMenswearApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +243,7 @@
       <workItem from="1731057492001" duration="21017000" />
       <workItem from="1731126326541" duration="322000" />
       <workItem from="1731126666012" duration="276000" />
-      <workItem from="1731126956271" duration="13326000" />
+      <workItem from="1731126956271" duration="13858000" />
     </task>
     <task id="LOCAL-00001" summary="up">
       <option name="closed" value="true" />
@@ -280,7 +277,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731088580624</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Up_similar">
+      <option name="closed" value="true" />
+      <created>1731141825532</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1731141825533</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,6 +298,7 @@
     <MESSAGE value="up" />
     <MESSAGE value="up date db, repository" />
     <MESSAGE value="up date db" />
-    <option name="LAST_COMMIT_MESSAGE" value="up date db" />
+    <MESSAGE value="Up_similar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Up_similar" />
   </component>
 </project>
