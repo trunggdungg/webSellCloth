@@ -1564,15 +1564,17 @@
             </ul>
             <!-- End search categories -->
             <!-- Search form -->
-            <form class="search-popup__form">
+            <form class="search-popup__form" onsubmit="searchProduct(event)">
                 <!-- Search input -->
                 <input
+                        id="searchInput"
                         type="text"
                         class="search-popup__input"
                         placeholder="Search here..."
                 />
                 <!-- End search input -->
             </form>
+
             <!-- End search form -->
             <!-- Search results -->
             <div class="search-popups__results">
@@ -1911,5 +1913,36 @@
     </div>
     <!-- End search popup -->
 </div>
+<script>
+    function searchProduct(event) {
+        event.preventDefault(); // Ngăn chặn form reload trang
+
+        // Lấy giá trị tìm kiếm từ input
+        const name = document.getElementById("searchInput").value.trim();
+
+        if (name) {
+            // Gọi API tìm kiếm sản phẩm
+            fetch(`/api/products/search-product/name/${name}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Xử lý dữ liệu tìm kiếm nhận được
+                    console.log("Kết quả tìm kiếm:", data);
+                    // Cập nhật DOM để hiển thị kết quả (nếu cần)
+                })
+                .catch(error => {
+                    console.error("Lỗi khi lấy kết quả tìm kiếm:", error);
+                });
+        } else {
+            console.log("Vui lòng nhập tên sản phẩm để tìm kiếm.");
+        }
+    }
+
+</script>
 </body>
+
 </html>

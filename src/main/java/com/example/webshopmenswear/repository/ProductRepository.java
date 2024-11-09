@@ -13,6 +13,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     Page<Product> findByStatus(Boolean status, Pageable pageable);
 
+    //Search
     Page<Product> findByNameContainingAndStatus(String name, Boolean status, Pageable pageable);
 
     Page<Product> findTop10ByStatusOrderByCreatedAtDesc(Boolean status, Pageable pageable);
@@ -23,4 +24,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     // Phương thức tìm sản phẩm có giá trong khoảng
     @Query("SELECT p FROM Product p WHERE p.id <> :productId ORDER BY ABS(p.price - :targetPrice) ASC")
     List<Product> findTop4ByClosestPrice(@Param("targetPrice") Double targetPrice, @Param("productId") Integer productId, Pageable pageable);
+
+
 }

@@ -15,4 +15,8 @@ public class ProductVariantService {
     public List<Color> getProductColors(Integer productId) {
         return productVariantRepository.findDistinctColorsByProductId(productId);
     }
+
+    public List<Color> getSize(Integer productId) {
+        return productVariantRepository.findDistinctColorsByProductId(productId);
+    }
 }

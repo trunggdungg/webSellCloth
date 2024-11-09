@@ -15,4 +15,7 @@ public interface ProductVariantRepository extends JpaRepository<ProductVariant, 
 
     @Query("SELECT DISTINCT pv.color FROM ProductVariant pv WHERE pv.product.id = :productId")
     List<Color> findDistinctColorsByProductId(Integer productId);
+
+    @Query("SELECT DISTINCT pv.size FROM ProductVariant pv WHERE pv.product.id = :productId")
+    List<Color> findsize(Integer productId);
 }

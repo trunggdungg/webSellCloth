@@ -125,4 +125,13 @@ public class WebController {
         return "/web/account";
     }
 
+    //@RequestParam được dùng để lấy giá trị từ query string trong URL.
+//    @GetMapping("/search-product/name/{name}")
+//    public String listProductByName(@PathVariable String name, Model model) {
+//        Page<Product> productSearch = productService.findByNameContainingAndStatus(name, true, 1, 10);
+//        model.addAttribute("productSearch", productSearch);
+//        System.out.println("hahaaaaaaaaaaaaaaaaaaaaaaa" + productSearch.getContent());
+//        return "/web/index";
+//    }
+
 }
