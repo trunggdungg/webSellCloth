@@ -44,7 +44,7 @@
 
                     </li>
                     <li>
-                        <a href="/product-detail" class="nav__item ">Product</a>
+                        <a href="/product" class="nav__item ">Product</a>
                     </li>
                 </ul>
                 <!-- End navigation -->
@@ -1091,7 +1091,7 @@
                         <!-- Image -->
                         <div class="product-grid-item__image"
                              th:with="firstImage=${productFirstImageMap.get(product.id)}">
-                            <a th:href="|/product-detail/${product.id}/${product.slug}|">
+                            <a href="product.html">
                                 <img
                                         alt="Image"
                                         data-sizes="auto"

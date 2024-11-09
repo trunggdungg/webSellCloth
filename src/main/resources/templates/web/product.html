@@ -505,12 +505,18 @@
                             <!-- End title -->
                             <!-- Available colors -->
                             <ul class="product__available-colors">
-                                <li><a href="#" class="open-tooltip"><span class="custom-tooltip">Grey</span>
-                                    <p class="product-grid-item__color active" style="background: #484540;"><span
-                                            style="border-color: #999"></span></p></a></li>
-                                <li><a href="#" class="open-tooltip"><span class="custom-tooltip">Black</span>
-                                    <p class="product-grid-item__color" style="background: #191516;"><span
-                                            style="border-color: #999"></span></p></a></li>
+                                <li th:each="color : ${colors}">
+                                    <a href="#" class="open-tooltip"
+                                       th:data-color-id="${color.id}"
+                                       onclick="selectColor(this)">
+                                        <span class="custom-tooltip" th:text="${color.nameColor}">Color name</span>
+                                        <p class="product-grid-item__color"
+                                           th:style="'background: ' + ${color.nameColor} + ';'"
+                                           th:classappend="${colorStat.first ? 'active' : ''}">
+                                            <span style="border-color: #999"></span>
+                                        </p>
+                                    </a>
+                                </li>
                             </ul>
                             <!-- End available colors -->
                         </div>
@@ -2195,6 +2201,21 @@
     <!-- End search popup -->
 </div>
 </body>
+<script th:inline="javascript">
+    let variants = /*[[${variants}]]*/ [];
+    let selectedColorId = null;
+    let selectedSizeId = null;
 
+    function selectColor(element) {
+        // Remove active class from all colors
+        document.querySelectorAll('.product-grid-item__color').forEach(el => {
+            el.classList.remove('active');
+        });
+        // Add active class to selected color
+        element.querySelector('.product-grid-item__color').classList.add('active');
+        selectedColorId = element.dataset.colorId;
+        updateStock();
+    }
+</script>
 <!-- Mirrored from martfury.pl/utero/html/v1/product.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Oct 2024 06:58:22 GMT -->
 </html>

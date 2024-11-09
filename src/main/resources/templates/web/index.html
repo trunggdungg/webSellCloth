@@ -1127,7 +1127,8 @@
                         <!-- End image -->
                         <!-- Title -->
                         <div class="product-grid-item__title">
-                            <a href="product.html" th:text="${product.name}">Basic T-shitt with slogan</a>
+                            <a th:href="|/product/${product.id}/${product.slug}|" th:text="${product.name}">Basic
+                                T-shitt with slogan</a>
                         </div>
                         <!-- End title -->
                         <!-- Price -->
