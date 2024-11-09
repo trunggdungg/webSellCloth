@@ -1604,7 +1604,7 @@
                                         alt="Image"
                                         data-sizes="auto"
                                         data-srcset="assets/products/1/6a.jpg 400w,
-                    assets/products/1/6a.jpg 800w"
+                        assets/products/1/6a.jpg 800w"
                                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                         class="lazyload lazy-effect"
                                 />
@@ -1612,7 +1612,7 @@
                                         alt="Image"
                                         data-sizes="auto"
                                         data-srcset="assets/products/1/6b.jpg 400w,
-                    assets/products/1/6b.jpg 800w"
+                        assets/products/1/6b.jpg 800w"
                                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                         class="lazyload lazy-effect hover"
                                 />
@@ -1915,7 +1915,8 @@
 </div>
 <script th:inline="javascript">
     /* Giả sử sản phẩm đầu tiên có hình ảnh được truyền từ backend vào */
-    const productFirstImageMap = [[${productFirstImageMap}]]; // Map chứa thông tin ảnh đầu tiên của mỗi sản phẩm
+    let productImagesMap = [[${productImagesMap }]]; // Map chứa thông tin ảnh đầu tiên của mỗi sản phẩm
+    console.log("productImagesMap:", productImagesMap);
 
     // Hàm xử lý tìm kiếm khi người dùng nhấn enter hoặc submit form
     function searchProduct(event) {
@@ -1936,7 +1937,6 @@
                 .then(data => {
                     // Dữ liệu trả về là một Page<Product>
                     console.log("Kết quả tìm kiếm:", data);
-
                     // Hiển thị các sản phẩm tìm thấy
                     displayProducts(data.content); // Gọi hàm hiển thị sản phẩm
                 })
@@ -1954,7 +1954,7 @@
 
         products.forEach(product => {
             // Lấy ảnh đầu tiên từ productFirstImageMap
-            const firstImage = productFirstImageMap[product.id];
+            const firstImage = productImagesMap[product.id];
 
             const productItem = document.createElement("div");
             productItem.classList.add("product-grid-item");

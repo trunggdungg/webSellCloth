@@ -47,9 +47,12 @@ public class WebController {
                            @RequestParam(required = false, defaultValue = "10") int pageSize,
                            Model model) {
         Page<Product> products = productService.findTop10ByStatusOrderByCreatedAtDesc(true, page, pageSize);
+        List<Product> productsList = productService.findAllByStatusOrderByCreatedAtDesc(true);
         // Lấy danh sách ảnh cho từng sản phẩm
         //  Lưu ảnh đầu tiên của mỗi sản phẩm
         Map<Integer, ProductImage> productFirstImageMap = new HashMap<>();
+        //luu tat ca anh
+        Map<Integer, List<ProductImage>> productImagesMap = new HashMap<>();
 
         // Lấy ảnh đầu tiên của mỗi sản phẩm
         for (Product product : products.getContent()) {
@@ -59,9 +62,18 @@ public class WebController {
             }
         }
 
+        // Lấy tất cả ảnh của từng sản phẩm
+        for (Product product : productsList) {
+            List<ProductImage> images = productImageService.findByProductId(product.getId());
+            if (images != null) {
+                productImagesMap.put(product.getId(), images);
+            }
+        }
+
         model.addAttribute("productsPage", products);
         model.addAttribute("currentPage", page);
         model.addAttribute("productFirstImageMap", productFirstImageMap);
+        model.addAttribute("productImagesMap", productImagesMap);
 
         return "/web/index";
     }

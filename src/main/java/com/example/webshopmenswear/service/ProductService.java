@@ -27,6 +27,7 @@ public class ProductService {
         return productRepository.findAll(PageRequest.of(offset, limit)).getContent();
     }
 
+
     public Page<Product> getProductsByStatus(Boolean status, int page, int pageSize) {
         Pageable pageable = PageRequest.of(page - 1, pageSize, Sort.by("UpdatedAt").descending());
         return productRepository.findByStatus(status, pageable);
@@ -63,4 +64,7 @@ public class ProductService {
     }
 
 
+    public List<Product> findAllByStatusOrderByCreatedAtDesc(boolean b) {
+        return productRepository.findAll(Sort.by("CreatedAt").descending());
+    }
 }
