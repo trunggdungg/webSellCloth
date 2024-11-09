@@ -2244,21 +2244,8 @@
     <!-- End search popup -->
 </div>
 </body>
+<script th:src="@{/assets/js/product.js}"></script>
 <script th:inline="javascript">
-    let variants = /*[[${variants}]]*/ [];
-    let selectedColorId = null;
-    let selectedSizeId = null;
-
-    function selectColor(element) {
-        // Remove active class from all colors
-        document.querySelectorAll('.product-grid-item__color').forEach(el => {
-            el.classList.remove('active');
-        });
-        // Add active class to selected color
-        element.querySelector('.product-grid-item__color').classList.add('active');
-        selectedColorId = element.dataset.colorId;
-        updateStock();
-    }
 </script>
 <!-- Mirrored from martfury.pl/utero/html/v1/product.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Oct 2024 06:58:22 GMT -->
 </html>
