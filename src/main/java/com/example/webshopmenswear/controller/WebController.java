@@ -66,7 +66,7 @@ public class WebController {
     @GetMapping("/product/{id}/{slug}")
     public String ProductDetail(@PathVariable Integer id, @PathVariable String slug, Model model) {
         Product product = productService.getProductDetail(id, slug);
-        model.addAttribute("ProductsDetail", product);
+        model.addAttribute("productsDetail", product);
         return "/web/product";
     }
 

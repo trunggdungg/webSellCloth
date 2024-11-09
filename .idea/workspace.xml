@@ -4,20 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="up date db">
+    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="up html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/WebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/WebController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/webshopmenswear/WebShopMenswearApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/webshopmenswear/WebShopMenswearApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/WebController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/WebController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductImageRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductImageRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/webshopmenswear/WebShopMenswearApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/webshopmenswear/WebShopMenswearApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/shop.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +109,22 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.WebShopMenswearApplication">
+    <configuration name="WebShopMenswearApplicationTests.findTop10" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WebShopMenswear" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.webshopmenswear.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.webshopmenswear" />
+      <option name="MAIN_CLASS_NAME" value="com.example.webshopmenswear.WebShopMenswearApplicationTests" />
+      <option name="METHOD_NAME" value="findTop10" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="WebShopMenswearApplicationTests.saveAddresses" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WebShopMenswear" />
       <extension name="coverage">
@@ -126,22 +136,6 @@
       <option name="PACKAGE_NAME" value="com.example.webshopmenswear" />
       <option name="MAIN_CLASS_NAME" value="com.example.webshopmenswear.WebShopMenswearApplicationTests" />
       <option name="METHOD_NAME" value="saveAddresses" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WebShopMenswearApplicationTests.saveDistricts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="WebShopMenswear" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.webshopmenswear.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.webshopmenswear" />
-      <option name="MAIN_CLASS_NAME" value="com.example.webshopmenswear.WebShopMenswearApplicationTests" />
-      <option name="METHOD_NAME" value="saveDistricts" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -195,6 +189,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="WebShopMenswearApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="WebShopMenswear" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.webshopmenswear.WebShopMenswearApplication" />
@@ -204,11 +209,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.WebShopMenswearApplicationTests.findTop10" />
         <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveOrders" />
         <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveAddresses" />
         <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveUsers" />
         <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveWards" />
-        <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveDistricts" />
       </list>
     </recent_temporary>
   </component>
@@ -247,6 +252,11 @@
       <workItem from="1731056854706" duration="291000" />
       <workItem from="1731057203028" duration="125000" />
       <workItem from="1731057492001" duration="21017000" />
+      <workItem from="1731089769804" duration="983000" />
+      <workItem from="1731111607224" duration="3984000" />
+      <workItem from="1731115809869" duration="151000" />
+      <workItem from="1731115994000" duration="2510000" />
+      <workItem from="1731119356067" duration="5470000" />
     </task>
     <task id="LOCAL-00001" summary="up">
       <option name="closed" value="true" />
@@ -280,7 +290,47 @@
       <option name="project" value="LOCAL" />
       <updated>1731088580624</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="up date db">
+      <option name="closed" value="true" />
+      <created>1731089862000</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1731089862000</updated>
+    </task>
+    <task id="LOCAL-00006" summary="up controller">
+      <option name="closed" value="true" />
+      <created>1731118341813</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1731118341813</updated>
+    </task>
+    <task id="LOCAL-00007" summary="up controller">
+      <option name="closed" value="true" />
+      <created>1731118393036</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1731118393036</updated>
+    </task>
+    <task id="LOCAL-00008" summary="up controller">
+      <option name="closed" value="true" />
+      <created>1731118431132</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1731118431132</updated>
+    </task>
+    <task id="LOCAL-00009" summary="up html">
+      <option name="closed" value="true" />
+      <created>1731122995655</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1731122995655</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,6 +343,8 @@
     <MESSAGE value="up" />
     <MESSAGE value="up date db, repository" />
     <MESSAGE value="up date db" />
-    <option name="LAST_COMMIT_MESSAGE" value="up date db" />
+    <MESSAGE value="up controller" />
+    <MESSAGE value="up html" />
+    <option name="LAST_COMMIT_MESSAGE" value="up html" />
   </component>
 </project>

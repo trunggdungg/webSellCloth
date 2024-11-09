@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <!-- Mirrored from martfury.pl/utero/html/v1/product.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Oct 2024 06:58:16 GMT -->
 <head>
@@ -35,28 +35,26 @@
                 <!-- Navigation -->
                 <ul class="header__nav">
                     <li>
-                        <a href="index.html" class="nav__item">Home</a>
+                        <a href="/" class="nav__item">Home</a>
 
                     </li>
                     <li>
-                        <a href="shop.html" class="nav__item">Shop</a>
+                        <a href="/shop" class="nav__item">Shop</a>
 
                     </li>
                     <li>
-                        <a href="product.html" class="nav__item nav__item--current">Product</a>
+                        <a href="/product" class="nav__item nav__item--current">Product</a>
                     </li>
-                    <li>
-                        <a href="blog.html" class="nav__item">Blog</a>
-                    </li>
+
 
                 </ul>
                 <!-- End navigation -->
                 <!-- Header right -->
                 <ul class="header__right">
                     <li><a href="#" class="js-open-popup-search"><i class="lnil lnil-search-alt"></i></a></li>
-                    <li><a href="account.html"><i class="lnil lnil-user"></i></a></li>
+                    <li><a href="/account"><i class="lnil lnil-user"></i></a></li>
                     <li class="header__cart">
-                        <a href="cart.html"><i class="lnil lnil-cart"></i><span>2</span>
+                        <a href="/cart"><i class="lnil lnil-cart"></i><span>2</span>
                             <p class="header-cart__price">$225.00</p></a>
                         <!-- Header cart -->
                         <div class="header-cart">
@@ -601,7 +599,7 @@
                     <div class="product__mobile-share"><a href="#"><i class="lnil lnil-share"></i></a></div>
                     <!-- End mobile share -->
                     <!-- Product title -->
-                    <h1 class="product__title">Zipped cardigan cotton</h1>
+                    <h1 class="product__title" th:text="${ProductsDetail.name}">Zipped cardigan cotton</h1>
                     <!-- End product title -->
                     <!-- Product price -->
                     <div class="product__price">
