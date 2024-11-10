@@ -67,4 +67,8 @@ public class ProductService {
     public List<Product> findAllByStatusOrderByCreatedAtDesc(boolean b) {
         return productRepository.findAll(Sort.by("CreatedAt").descending());
     }
+
+    public List<Product> findTop4ByCategoryAndStatus(Integer categoryId, Integer productId) {
+        return productRepository.findTop4ByCategoryAndStatus(categoryId, productId);
+    }
 }

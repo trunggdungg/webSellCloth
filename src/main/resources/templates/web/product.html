@@ -1101,39 +1101,31 @@
                 <!-- Carousel -->
                 <div class="home-products__carousel js-home-products-5-carousel">
                     <!-- Product -->
-                    <div class="product-grid-item">
+                    <div class="product-grid-item" th:each="Category :${productCategory}">
                         <!-- Tag -->
                         <div class="product-grid-item__tag">10% off</div>
                         <!-- End tag -->
                         <!-- Wishlist -->
                         <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
                         <!-- End wishlist -->
-                        <!-- Image -->
                         <div class="product-grid-item__image">
-                            <a th:href="product.html">
+                            <a th:href="@{/product/{id}/{slug}(id=${Category.id}, slug=${Category.slug})}">
                                 <img
                                         alt="Image"
                                         data-sizes="auto"
-                                        data-srcset="/assets/products/1/2_1-a.jpg 400w,
-                            /assets/products/1/2_1-a.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                        th:src="${productImagesMapOutFit[Category.id].get(0).imageUrl}"
                                         class="lazyload lazy-effect"/>
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/2_1-b.jpg 400w,
-                            /assets/products/1/2_1-b.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect hover"/>
                             </a>
                         </div>
                         <!-- End image -->
                         <!-- Title -->
-                        <div class="product-grid-item__title"><a href="product.html">Zipped cotton cardigan</a></div>
+                        <div class="product-grid-item__title" th:text="${Category.name}"><a href="product.html">Zipped
+                            cotton
+                            cardigan</a></div>
                         <!-- End title -->
                         <!-- Price -->
                         <div class="product-grid-item__price">
-                            <span class="price-new">$49.5</span>
+                            <span class="price-new" th:text="${Category.price}">$49.5</span>
                             <span class="price-old">$68.5</span>
                         </div>
                         <!-- End price -->
@@ -1148,149 +1140,8 @@
                         </div>
                         <!-- End action -->
                     </div>
+                    <!-- End product -->
 
-                    <div class="product-grid-item">
-                        <!-- Tag -->
-                        <div class="product-grid-item__tag">10% off</div>
-                        <!-- End tag -->
-                        <!-- Wishlist -->
-                        <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
-                        <!-- End wishlist -->
-                        <!-- Image -->
-                        <div class="product-grid-item__image">
-                            <a th:href="product.html">
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/2_1-a.jpg 400w,
-                            /assets/products/1/2_1-a.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect"/>
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/2_1-b.jpg 400w,
-                            /assets/products/1/2_1-b.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect hover"/>
-                            </a>
-                        </div>
-                        <!-- End image -->
-                        <!-- Title -->
-                        <div class="product-grid-item__title"><a href="product.html">Zipped cotton cardigan</a></div>
-                        <!-- End title -->
-                        <!-- Price -->
-                        <div class="product-grid-item__price">
-                            <span class="price-new">$49.5</span>
-                            <span class="price-old">$68.5</span>
-                        </div>
-                        <!-- End price -->
-                        <!-- Tag -->
-                        <div class="product-grid-item__content-tag">2 colours</div>
-                        <!-- End tag -->
-                        <!-- Action -->
-                        <div class="product-grid-item__action d-flex">
-                            <!-- Button -->
-                            <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
-                            <!-- End button -->
-                        </div>
-                        <!-- End action -->
-                    </div>
-                    <!-- End product -->
-                    <!-- Product -->
-                    <div class="product-grid-item">
-                        <!-- Tag -->
-                        <div class="product-grid-item__tag product-grid-item__tag--sold-out">Sold out</div>
-                        <!-- End tag -->
-                        <!-- Wishlist -->
-                        <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
-                        <!-- End wishlist -->
-                        <!-- Image -->
-                        <div class="product-grid-item__image">
-                            <a href="product.html">
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="assets/products/1/6a.jpg 400w,
-                    /assets/products/1/6a.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect"/>
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="assets/products/1/6b.jpg 400w,
-                   /assets/products/1/6b.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect hover"/>
-                            </a>
-                            <!-- Action -->
-                            <div class="product-grid-item__action d-flex">
-                                <!-- Button -->
-                                <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
-                                <!-- End button -->
-                                <!-- Button -->
-                                <div class="product-grid-item__button"><a href="#">Quick shop</a></div>
-                                <!-- End button -->
-                            </div>
-                            <!-- End action -->
-                        </div>
-                        <!-- End image -->
-                        <!-- Title -->
-                        <div class="product-grid-item__title"><a href="product.html">Basic T-shitt with slogan</a></div>
-                        <!-- End title -->
-                        <!-- Price -->
-                        <div class="product-grid-item__price">
-                            $32.5
-                        </div>
-                        <!-- End price -->
-                    </div>
-                    <!-- End product -->
-                    <!-- Product -->
-                    <div class="product-grid-item">
-                        <!-- Wishlist -->
-                        <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
-                        <!-- End wishlist -->
-                        <!-- Image -->
-                        <div class="product-grid-item__image">
-                            <a href="product.html">
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/7a.jpg 400w,
-                    /assets/products/1/7a.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect"/>
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/7b.jpg 400w,
-                    /assets/products/1/7b.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect hover"/>
-                            </a>
-                            <!-- Action -->
-                            <div class="product-grid-item__action d-flex">
-                                <!-- Button -->
-                                <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
-                                <!-- End button -->
-                                <!-- Button -->
-                                <div class="product-grid-item__button"><a href="#">Quick shop</a></div>
-                                <!-- End button -->
-                            </div>
-                            <!-- End action -->
-                        </div>
-                        <!-- End image -->
-                        <!-- Title -->
-                        <div class="product-grid-item__title"><a href="product.html">Grey nubuck leather high-top deck
-                            shoes</a></div>
-                        <!-- End title -->
-                        <!-- Price -->
-                        <div class="product-grid-item__price">
-                            $79.9 - $459.5
-                        </div>
-                        <!-- End price -->
-                    </div>
-                    <!-- End product -->
                 </div>
                 <!-- End carousel -->
             </div>
@@ -2192,18 +2043,10 @@
 <script th:src="@{/assets/js/product.js}"></script>
 <script th:inline="javascript">
     let variants = [];
-    console.log([[${variants}]]);
-    [[${variants}]].forEach(variant => {
-        variants.push({
-            id: variant.id,
-            color: variant.color,
-            size: variant.size,
-            price: variant.price,
-            quantity: variant.quantity
-        });
-    });
-    let selectedColorId = null;
-    let selectedSizeId = null;
+
+    let productImagesMap = [[${productImagesMapOutFit}]];
+    console.log("productImagesMap:", productImagesMap);
+
 </script>
 <!-- Mirrored from martfury.pl/utero/html/v1/product.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Oct 2024 06:58:22 GMT -->
 </html>

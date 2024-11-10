@@ -27,4 +27,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     List<Product> findTop4ByClosestPrice(@Param("targetPrice") Double targetPrice, @Param("productId") Integer productId, Pageable pageable);
 
 
+    @Query("SELECT p FROM Product p WHERE p.category.id = :categoryId AND p.id <> :productId AND p.status = true ORDER BY p.createdAt DESC")
+    List<Product> findTop4ByCategoryAndStatus(@Param("categoryId") Integer categoryId, @Param("productId") Integer productId);
 }

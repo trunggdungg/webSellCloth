@@ -92,21 +92,39 @@ public class WebController {
         Product product = productService.getProductDetail(id, slug);
         List<ProductImage> productImages = productService.getImageByProductId(id);
         List<Product> get3product = productService.getTop3Product(id, slug);
-
+        List<Product> productsListImg = productService.findAllByStatusOrderByCreatedAtDesc(true);
         // Lấy ảnh cho 3 sản phẩm tương tự
         Map<Integer, List<ProductImage>> similarProductImages = new HashMap<>();
+
+        //luu tat ca anh
+        Map<Integer, List<ProductImage>> productImagesMapOutFit = new HashMap<>();
+
         for (Product similarProduct : get3product) {
             List<ProductImage> images = productService.getImageByProductId(similarProduct.getId());
             similarProductImages.put(similarProduct.getId(), images);
         }
 
+
+        // Lấy tất cả ảnh của từng sản phẩm
+        for (Product products : productsListImg) {
+            List<ProductImage> images = productImageService.findByProductId(products.getId());
+            if (images != null) {
+                productImagesMapOutFit.put(products.getId(), images);
+            }
+        }
+        //
+        List<Product> productCategory = productService.findTop4ByCategoryAndStatus(product.getCategory().getId(), id);
+
         List<Color> colors = productVariantService.getProductColors(id);
         List<Size> sizes = productVariantService.getProductSizes(id);
         List<ProductVariant> variants = productVariantService.getProductVariants(id);
+
         model.addAttribute("productsDetail", product);
         model.addAttribute("productImages", productImages);
         model.addAttribute("get3product", get3product);
         model.addAttribute("similarProductImages", similarProductImages);
+        model.addAttribute("productImagesMapOutFit", productImagesMapOutFit);
+        model.addAttribute("productCategory", productCategory);
         model.addAttribute("colors", colors);
         model.addAttribute("sizes", sizes);
         model.addAttribute("variants", variants);
