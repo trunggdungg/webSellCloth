@@ -477,9 +477,7 @@
                                        onclick="selectSize(this)">
                                     </a>
                                     <!-- Stock display -->
-                                    <span class="stock-info"
-                                          th:text="'SL: ' + ${#lists.size(variantsBySize[size.id])}"></span>
-
+                                    <!--                                    <span class="stock-info" th:text="'SL: ' + ${variants}"></span>-->
                                 </li>
                             </ul>
                             <!-- End available sizes -->
@@ -498,7 +496,7 @@
                                     <a href="#" onclick="decreaseQuantity()"><i class="lnil lnil-minus"></i></a>
                                 </div>
                                 <input type="text" value="1" class="product-quantity__input js-quantity-field"
-                                       id="quantity" th:data-max-stock="${variantsBySize.size()}">
+                                       id="quantity" th:data-max-stock="${variants[0].stock}">
                                 <div class="product-quantity__plus js-quantity-up">
                                     <a href="#" onclick="increaseQuantity()"><i class="lnil lnil-plus"></i></a>
                                 </div>

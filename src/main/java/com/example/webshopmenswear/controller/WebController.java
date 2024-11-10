@@ -35,6 +35,17 @@ public class WebController {
         } else {
             products = productService.getProductsByStatus(true, page, pageSize);
         }
+
+        Map<Integer, ProductImage> productFirstImageMap = new HashMap<>();
+
+        // Lấy ảnh đầu tiên của mỗi sản phẩm
+        for (Product product : products.getContent()) {
+            ProductImage firstImage = productImageService.findFirstByProductId(product.getId());
+            if (firstImage != null) {
+                productFirstImageMap.put(product.getId(), firstImage);
+            }
+        }
+        model.addAttribute("productFirstImageMap", productFirstImageMap);
         model.addAttribute("products", products);
         model.addAttribute("currentPage", page);
         return "/web/shop";

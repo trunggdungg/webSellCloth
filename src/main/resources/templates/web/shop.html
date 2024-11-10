@@ -708,21 +708,17 @@
                         <!-- End wishlist -->
                         <!-- Image -->
                         <div class="product-grid-item__image">
-                            <a href="product.html">
+                            <a th:href="@{/product/{id}/{slug}(id=${product.id}, slug=${product.slug})}">
                                 <img
                                         alt="Image"
                                         data-sizes="auto"
-                                        data-srcset="assets/products/1/2_1-a.jpg 400w,
-                     assets/products/1/2_1-a.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                        th:src="${productFirstImageMap[product.id] != null ? productFirstImageMap[product.id].imageUrl : '/images/default-image.jpg'}"
                                         class="lazyload lazy-effect"
                                 />
                                 <img
                                         alt="Image"
                                         data-sizes="auto"
-                                        data-srcset="assets/products/1/2_1-b.jpg 400w,
-                     assets/products/1/2_1-b.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                        th:src="${productFirstImageMap[product.id] != null ? productFirstImageMap[product.id].imageUrl : '/images/default-image.jpg'}"
                                         class="lazyload lazy-effect hover"
                                 />
                             </a>
@@ -744,7 +740,8 @@
                         <!-- End image -->
                         <!-- Title -->
                         <div class="product-grid-item__title">
-                            <a href="product.html" th:text="${product.name}">Zipped cotton cardigan</a>
+                            <a th:href="@{/product/{id}/{slug}(id=${product.id}, slug=${product.slug})}"
+                               th:text="${product.name}">Zipped cotton cardigan</a>
                         </div>
                         <!-- End title -->
                         <!-- Price -->

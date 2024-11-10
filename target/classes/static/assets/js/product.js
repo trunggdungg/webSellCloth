@@ -28,7 +28,7 @@ function updateStock() {
         );
 
         const quantityInput = document.getElementById('quantity');
-        if (variant) {
+        if (variant && variant.stock !== undefined) {
             quantityInput.dataset.maxStock = variant.stock;
             if (variant.stock === 0) {
                 // Disable quantity input if out of stock
@@ -38,9 +38,15 @@ function updateStock() {
                 quantityInput.disabled = false;
                 quantityInput.value = Math.min(quantityInput.value, variant.stock);
             }
+        } else {
+            // Handle the case where variant or stock is undefined
+            console.error('Variant or stock is not defined');
+            quantityInput.disabled = true;
+            quantityInput.value = 0;
         }
     }
 }
+
 
 function increaseQuantity() {
     const input = document.getElementById('quantity');
