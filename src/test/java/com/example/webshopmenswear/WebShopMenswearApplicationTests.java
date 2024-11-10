@@ -75,6 +75,12 @@ class WebShopMenswearApplicationTests {
     private PaymentRepository paymentRepository;
 
 
+//    @Test
+//    void loadSize() {
+//        List<Size> sizes = productVariantRepository.findSizesByProductIdOrderByIdAsc(1, 2, 3, 4, 5, 6);
+//        System.out.println(sizes);
+//    }
+
     @Test
     void loadColor() {
         List<Color> colors = colorRepository.findAll();

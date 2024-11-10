@@ -1,8 +1,6 @@
 package com.example.webshopmenswear.controller;
 
-import com.example.webshopmenswear.entity.Color;
-import com.example.webshopmenswear.entity.Product;
-import com.example.webshopmenswear.entity.ProductImage;
+import com.example.webshopmenswear.entity.*;
 import com.example.webshopmenswear.service.ProductImageService;
 import com.example.webshopmenswear.service.ProductService;
 import com.example.webshopmenswear.service.ProductVariantService;
@@ -92,12 +90,16 @@ public class WebController {
         }
 
         List<Color> colors = productVariantService.getProductColors(id);
-
+        List<Size> sizes = productVariantService.getProductSizes(id);
+        List<ProductVariant> variants = productVariantService.getProductVariants(id);
         model.addAttribute("productsDetail", product);
         model.addAttribute("productImages", productImages);
         model.addAttribute("get3product", get3product);
         model.addAttribute("similarProductImages", similarProductImages);
         model.addAttribute("colors", colors);
+        model.addAttribute("sizes", sizes);
+        model.addAttribute("variants", variants);
+
         return "/web/product";
     }
 
@@ -137,13 +139,5 @@ public class WebController {
         return "/web/account";
     }
 
-    //@RequestParam được dùng để lấy giá trị từ query string trong URL.
-//    @GetMapping("/search-product/name/{name}")
-//    public String listProductByName(@PathVariable String name, Model model) {
-//        Page<Product> productSearch = productService.findByNameContainingAndStatus(name, true, 1, 10);
-//        model.addAttribute("productSearch", productSearch);
-//        System.out.println("hahaaaaaaaaaaaaaaaaaaaaaaa" + productSearch.getContent());
-//        return "/web/index";
-//    }
 
 }
