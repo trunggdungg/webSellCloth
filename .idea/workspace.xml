@@ -4,28 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="oke">
+    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="update log">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/WebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/WebController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/CartDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/CartDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/OrderDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/shop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/webshopmenswear/WebShopMenswearApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/webshopmenswear/WebShopMenswearApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/WebController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/WebController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/shop.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,11 +17,11 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Kotlin Class" />
         <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -266,7 +246,7 @@
       <workItem from="1731213347441" duration="40784000" />
       <workItem from="1731260592546" duration="30000" />
       <workItem from="1731291222266" duration="731000" />
-      <workItem from="1731308802583" duration="6382000" />
+      <workItem from="1731308802583" duration="7433000" />
     </task>
     <task id="LOCAL-00001" summary="up">
       <option name="closed" value="true" />
@@ -388,7 +368,31 @@
       <option name="project" value="LOCAL" />
       <updated>1731233205744</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="update log">
+      <option name="closed" value="true" />
+      <created>1731315939758</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1731315939758</updated>
+    </task>
+    <task id="LOCAL-00017" summary="update log">
+      <option name="closed" value="true" />
+      <created>1731315982611</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1731315982611</updated>
+    </task>
+    <task id="LOCAL-00018" summary="update log">
+      <option name="closed" value="true" />
+      <created>1731316003932</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1731316003932</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -417,6 +421,7 @@
     <MESSAGE value="up html" />
     <MESSAGE value="up size,clo" />
     <MESSAGE value="oke" />
-    <option name="LAST_COMMIT_MESSAGE" value="oke" />
+    <MESSAGE value="update log" />
+    <option name="LAST_COMMIT_MESSAGE" value="update log" />
   </component>
 </project>

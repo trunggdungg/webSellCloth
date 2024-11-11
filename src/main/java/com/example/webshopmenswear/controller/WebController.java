@@ -1,10 +1,7 @@
 package com.example.webshopmenswear.controller;
 
 import com.example.webshopmenswear.entity.*;
-import com.example.webshopmenswear.service.AuthService;
-import com.example.webshopmenswear.service.ProductImageService;
-import com.example.webshopmenswear.service.ProductService;
-import com.example.webshopmenswear.service.ProductVariantService;
+import com.example.webshopmenswear.service.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -25,7 +22,9 @@ public class WebController {
     private final ProductService productService;
     private final ProductImageService productImageService;
     private final ProductVariantService productVariantService;
-    private final AuthService authService;
+    private final ColorService colorService;
+    private final SizeService sizeService;
+    private final CategoryService categoryService;
 
     @GetMapping("/shop")
     public String ProductsPage(@RequestParam(required = false, defaultValue = "1") int page,
@@ -48,9 +47,17 @@ public class WebController {
                 productFirstImageMap.put(product.getId(), firstImage);
             }
         }
+
+        List<Color> colors = colorService.getAllColors();
+        List<Size> sizes = sizeService.getAllSize();
+        List<Category> categories = categoryService.getAllCategory();
+
         model.addAttribute("productFirstImageMap", productFirstImageMap);
         model.addAttribute("products", products);
         model.addAttribute("currentPage", page);
+        model.addAttribute("colors", colors);
+        model.addAttribute("sizes", sizes);
+        model.addAttribute("categories", categories);
         return "/web/shop";
     }
 
