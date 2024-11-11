@@ -121,36 +121,40 @@
                                     </p>
                                 </li>
                                 <!-- Item -->
-                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
-                                    <!-- Item image -->
-                                    <p class="cart-item__image">
-                                        <a href="product.html">
-                                            <img
-                                                    alt="Image"
-                                                    data-sizes="auto"
-                                                    data-srcset="assets/products/1/10a.jpg 400w,
-                                        assets/products/1/10a.jpg 800w"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    class="lazyload lazy-effect"
-                                            />
-                                        </a>
-                                    </p>
-                                    <!-- End item image -->
-                                    <!-- Item details -->
-                                    <p class="cart-item__details">
-                                        <a href="product.html" class="cart-item__title"
-                                        >Slim fit modal cotton shirt</a
-                                        >
-                                        <span class="cart-item__variant">Grey, M</span>
-                                        <span class="cart-ietm__price">2 <i>x</i> $113.99</span>
-                                    </p>
-                                    <!-- End item details -->
-                                    <!-- Item delete -->
-                                    <p class="cart-item__delete">
-                                        <a href="#"><i class="lnil lnil-close"></i></a>
-                                    </p>
-                                    <!-- Item delete -->
-                                </li>
+                                <ul class="cart-container ">
+                                    <!-- Danh sách sản phẩm trong giỏ hàng sẽ được thêm vào đây bằng JavaScript -->
+                                </ul>
+
+                                <!--                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">-->
+                                <!--                                    &lt;!&ndash; Item image &ndash;&gt;-->
+                                <!--                                    <p class="cart-item__image">-->
+                                <!--                                        <a href="product.html">-->
+                                <!--                                            <img-->
+                                <!--                                                    alt="Image"-->
+                                <!--                                                    data-sizes="auto"-->
+                                <!--                                                    data-srcset="assets/products/1/10a.jpg 400w,-->
+                                <!--                                        assets/products/1/10a.jpg 800w"-->
+                                <!--                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
+                                <!--                                                    class="lazyload lazy-effect"-->
+                                <!--                                            />-->
+                                <!--                                        </a>-->
+                                <!--                                    </p>-->
+                                <!--                                    &lt;!&ndash; End item image &ndash;&gt;-->
+                                <!--                                    &lt;!&ndash; Item details &ndash;&gt;-->
+                                <!--                                    <p class="cart-item__details">-->
+                                <!--                                        <a href="product.html" class="cart-item__title"-->
+                                <!--                                        >Slim fit modal cotton shirt</a-->
+                                <!--                                        >-->
+                                <!--                                        <span class="cart-item__variant">Grey, M</span>-->
+                                <!--                                        <span class="cart-ietm__price">2 <i>x</i> $113.99</span>-->
+                                <!--                                    </p>-->
+                                <!--                                    &lt;!&ndash; End item details &ndash;&gt;-->
+                                <!--                                    &lt;!&ndash; Item delete &ndash;&gt;-->
+                                <!--                                    <p class="cart-item__delete">-->
+                                <!--                                        <a href="#"><i class="lnil lnil-close"></i></a>-->
+                                <!--                                    </p>-->
+                                <!--                                    &lt;!&ndash; Item delete &ndash;&gt;-->
+                                <!--                                </li>-->
 
                             </ul>
                             <!-- End cart items -->
@@ -160,7 +164,7 @@
                                 <div class="subtotal__title">Subtotal</div>
                                 <!-- End title -->
                                 <!-- Value -->
-                                <div class="subtotal__value">$272.47</div>
+                                <div class="subtotal__value" id="totalPrice">$272.47</div>
                                 <!-- End value -->
                             </div>
                             <!-- End subtotal -->
@@ -1677,6 +1681,72 @@
             toastr.error("Đăng xuất thất bại");
         })
     }
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Gọi API để lấy dữ liệu giỏ hàng
+        fetch("/api/cart/items")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("User not logged in or unable to fetch cart items.");
+                }
+                return response.json();
+            })
+            .then(cartItems => {
+                // Hàm để render giỏ hàng ra giao diện
+                renderCartItems(cartItems);
+                // Hàm để tính toán tổng giỏ hàng
+                calculateSubtotal(cartItems);
+                console.log("Cart items:", cartItems);
+            })
+            .catch(error => {
+                console.error("Error fetching cart items:", error);
+            });
+    });
+
+    function renderCartItems(cartItems) {
+        const cartContainer = document.querySelector(".cart-container");
+
+        cartItems.forEach(item => {
+
+            const cartItemHTML = `
+                <li class="cart-item d-flex">
+                    <p class="cart-item__image">
+                        <a href="product.html">
+                            <img
+                                alt="Image"
+                                src="${item.productVariant.product.imageUrlPrimary}"
+                                class="lazyload lazy-effect"
+                            />
+                        </a>
+                    </p>
+                    <p class="cart-item__details">
+                        <a href="product.html" class="cart-item__title">${item.productVariant.product.name}</a>
+                        <span class="cart-item__variant">${item.productVariant.color.nameColor}, ${item.productVariant.size.sizeName}</span>
+                        <span class="cart-item__price">${item.quantity} <i>x</i> $${item.productVariant.product.price}</span>
+                    </p>
+                    <p class="cart-item__delete">
+                        <a href="#"><i class="lnil lnil-close"></i></a>
+                    </p>
+                </li>
+            `;
+            // Thêm phần tử mới vào container
+            cartContainer.innerHTML += cartItemHTML;
+        });
+    }
+
+    // Hàm tính toán tổng giỏ hàng (subtotal)
+    function calculateSubtotal(cartItems) {
+        let totalPriceSub = 0; // Khởi tạo tổng giá trị của giỏ hàng
+
+        cartItems.forEach(item => {
+            totalPriceSub += item.productVariant.product.price * item.quantity; // Cộng dồn giá trị của từng sản phẩm
+        });
+        // Hiển thị tổng giỏ hàng với 2 chữ số thập phân
+        const subtotalTitleEl = document.getElementById("totalPrice");
+        subtotalTitleEl.innerHTML = `$${totalPriceSub.toFixed(2)}`; // Đảm bảo hiển thị với 2 chữ số thập phân
+    }
+
 </script>
 
 </body>

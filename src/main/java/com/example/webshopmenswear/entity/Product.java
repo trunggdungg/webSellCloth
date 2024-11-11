@@ -29,6 +29,7 @@ public class Product {
     @Column(nullable = false)
     String name;
 
+
     @Column(nullable = false)
     String slug;
 
@@ -36,7 +37,7 @@ public class Product {
 
     @Column(nullable = false)
     Double price;
-
+    String imageUrlPrimary;
     Boolean status;
 
     LocalDateTime createdAt;
