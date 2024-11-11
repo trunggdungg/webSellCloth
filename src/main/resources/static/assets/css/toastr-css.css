@@ -1,0 +1,37 @@
+/* Thành công */
+.toast-success {
+    background-color: #4CAF50 !important;
+    color: white !important;
+}
+
+/* Lỗi */
+.toast-error {
+    background-color: #F44336 !important;
+    color: white !important;
+}
+
+/* Cảnh báo */
+.toast-warning {
+    background-color: #FF9800 !important;
+    color: white !important;
+}
+
+/* Thông tin */
+.toast-info {
+    background-color: #2196F3 !important;
+    color: white !important;
+}
+
+#productList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.user-menu .cart-item__title {
+    font-size: 22px;
+}
+
+/* Thêm hiệu ứng hover cho phần tử này */
+.user-menu:hover {
+    background-color: #e0e0e0;
+}
