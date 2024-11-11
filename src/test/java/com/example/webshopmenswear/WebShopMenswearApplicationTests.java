@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -74,12 +75,23 @@ class WebShopMenswearApplicationTests {
     @Autowired
     private PaymentRepository paymentRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
+    @Test
+    void enode_password() {
+        List<User> users = userRepository.findAll();
+        for (User user : users) {
+            user.setPassword(passwordEncoder.encode("123"));
+            userRepository.save(user);
+        }
+    }
 //    @Test
 //    void loadSize() {
 //        List<Size> sizes = productVariantRepository.findSizesByProductIdOrderByIdAsc(1, 2, 3, 4, 5, 6);
 //        System.out.println(sizes);
 //    }
+
 
     @Test
     void loadColor() {
@@ -92,6 +104,47 @@ class WebShopMenswearApplicationTests {
         Page<Product> products = productRepository.findTop10ByStatusOrderByCreatedAtDesc(true, PageRequest.of(0, 10));
         System.out.println(products.getContent());
     }
+
+    @Test
+    void saveCart() {
+        // Giả lập người dùng từ database (hoặc tạo mới nếu cần)
+        User user = userRepository.findById(1).orElseThrow(() -> new RuntimeException("User not found"));
+
+        // Tạo Cart giả lập
+        Cart cart = Cart.builder()
+            .user(user)
+            .createdAt(LocalDateTime.now())
+            .updatedAt(LocalDateTime.now())
+            .build();
+
+        // Lưu Cart vào database
+        cartRepository.save(cart);
+        System.out.println("Cart saved: " + cart);
+    }
+
+    @Test
+    void saveCartDetail() {
+        // Giả lập cart từ database
+        Cart cart = cartRepository.findById(1).orElseThrow(() -> new RuntimeException("Cart not found"));
+        Faker faker = new Faker();
+
+        // Giả lập productVariant từ database (hoặc tạo mới nếu cần)
+        ProductVariant productVariant = productVariantRepository.findById(1)
+            .orElseThrow(() -> new RuntimeException("ProductVariant not found"));
+
+        // Tạo CartDetail giả lập
+        CartDetail cartDetail = CartDetail.builder()
+            .cart(cart)
+            .productVariant(productVariant)
+            .price(faker.number().randomDouble(2, 12000, 51000))  // Giá từ 10 đến 500
+            .quantity(faker.number().numberBetween(1, 5))     // Số lượng từ 1 đến 5
+            .build();
+
+        // Lưu CartDetail vào database
+        cartDetailRepository.save(cartDetail);
+        System.out.println("CartDetail saved: " + cartDetail);
+    }
+
 
     @Test
     void saveCategories() {
@@ -178,6 +231,8 @@ class WebShopMenswearApplicationTests {
                 .category(categories.get(rd.nextInt(categories.size())))
                 .status(true)
                 .discounts(randDiscounts)
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
                 .build();
             productRepository.save(product);
         }
@@ -350,6 +405,7 @@ class WebShopMenswearApplicationTests {
                 .orderStatus(orderStatus) // Gán trạng thái cho đơn hàng
                 .totalPrice(0.0) // Khởi tạo giá trị đơn hàng
                 .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
                 .build();
 
             orderRepository.save(order);

@@ -5,18 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Utero - default home</title>
+
+    <!--toastr js-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+          integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
     <link href="/assets/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="/assets/theme7b30.css" rel="stylesheet" type="text/css"/>
     <!-- For Js Library -->
     <script src="/assets/vendor7b30.js"></script>
     <script src="/assets/theme7b30.js"></script>
-
-    <style>
-        #productList {
-            display: flex;
-            flex-wrap: wrap;
-        }
-    </style>
+    <link rel="stylesheet" th:href="@{/assets/css/toastr-css.css}">
 </head>
 <body class="home">
 <div id="main">
@@ -62,20 +62,66 @@
                         ><i class="lnil lnil-search-alt"></i
                         ></a>
                     </li>
-                    <li>
-                        <a href="/account"><i class="lnil lnil-user"></i></a>
-                    </li>
-                    <li class="header__cart">
-                        <a href="cart.html"
-                        ><i class="lnil lnil-cart"></i><span>2</span>
-                            <p class="header-cart__price">$225.00</p></a
-                        >
+
+                    <li class="header__cart user-menu">
+                        <a href="#"><i class="lnil lnil-user"></i></a>
                         <!-- Header cart -->
                         <div class="header-cart">
                             <!-- Cart items -->
                             <ul class="header-cart__items">
-                                <!-- Item -->
+                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER == null}">
+                                    <p class="cart-item__details">
+                                        <a href="/account" class="cart-item__title">Đăng nhập</a>
+                                    </p>
+                                </li>
+                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
+                                    <p class="cart-item__details">
+                                        <a href="/profile" class="cart-item__title">Thông tin cá nhân</a>
+                                    </p>
+                                </li>
+                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
+                                    <p class="cart-item__details">
+                                        <a onclick="logout()" style="cursor: pointer" class="cart-item__title">Đăng
+                                            xuất</a>
+                                    </p>
+                                </li>
+                            </ul>
+                            <!-- Subtotal -->
+                            <div class="header-cart__subtotal d-flex" th:if="${session.CURRENT_USER != null}">
+                                <div class="subtotal__title">Xin chào</div>
+                                <div class="subtotal__value" th:text="${session.CURRENT_USER.fullName}">Trung Dũng</div>
+                            </div>
+
+                            <ul class="header-cart__items mt-2"
+                                th:if="${session.CURRENT_USER != null && session.CURRENT_USER.userRole.toString() == 'ADMIN'}">
                                 <li class="cart-item d-flex">
+                                    <p class="cart-item__details">
+                                        <a href="product.html" class="cart-item__title">Quản lý</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+                    <li class="header__cart">
+                        <a href="/cart"
+                        ><i class="lnil lnil-cart"></i><span>2</span>
+                            <p class="header-cart__price" th:if="${session.CURRENT_USER != null}">$225.00</p></a
+                        >
+                        <!-- Header cart -->
+                        <div class="header-cart">
+
+                            <!-- Cart items -->
+                            <ul class="header-cart__items">
+                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER == null}">
+                                    <p class="cart-item__details">
+                                        <span class="cart-item__title"
+                                              style="font-size: 20px; pointer-events: none;cursor: default;">Giỏ hàng trống!</span>
+                                    </p>
+                                </li>
+                                <!-- Item -->
+                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
                                     <!-- Item image -->
                                     <p class="cart-item__image">
                                         <a href="product.html">
@@ -83,7 +129,7 @@
                                                     alt="Image"
                                                     data-sizes="auto"
                                                     data-srcset="assets/products/1/10a.jpg 400w,
-                                    assets/products/1/10a.jpg 800w"
+                                        assets/products/1/10a.jpg 800w"
                                                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                                     class="lazyload lazy-effect"
                                             />
@@ -105,74 +151,11 @@
                                     </p>
                                     <!-- Item delete -->
                                 </li>
-                                <!-- End item -->
-                                <!-- Item -->
-                                <li class="cart-item d-flex">
-                                    <!-- Item image -->
-                                    <p class="cart-item__image">
-                                        <a href="product.html">
-                                            <img
-                                                    alt="Image"
-                                                    data-sizes="auto"
-                                                    data-srcset="assets/products/1/11a.jpg 400w,
-                          assets/products/1/11a.jpg 800w"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    class="lazyload lazy-effect"
-                                            />
-                                        </a>
-                                    </p>
-                                    <!-- End item image -->
-                                    <!-- Item details -->
-                                    <p class="cart-item__details">
-                                        <a href="product.html" class="cart-item__title"
-                                        >Suede sport shoes</a
-                                        >
-                                        <span class="cart-item__variant">Bold Brown, 40</span>
-                                        <span class="cart-ietm__price">1 <i>x</i> $45.5</span>
-                                    </p>
-                                    <!-- End item details -->
-                                    <!-- Item delete -->
-                                    <p class="cart-item__delete">
-                                        <a href="#"><i class="lnil lnil-close"></i></a>
-                                    </p>
-                                    <!-- Item delete -->
-                                </li>
-                                <!-- End item -->
-                                <!-- Item -->
-                                <li class="cart-item d-flex">
-                                    <!-- Item image -->
-                                    <p class="cart-item__image">
-                                        <a href="product.html">
-                                            <img
-                                                    alt="Image"
-                                                    data-sizes="auto"
-                                                    data-srcset="assets/products/1/12a.jpg 400w,
-                          assets/products/1/12a.jpg 800w"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    class="lazyload lazy-effect"
-                                            />
-                                        </a>
-                                    </p>
-                                    <!-- End item image -->
-                                    <!-- Item details -->
-                                    <p class="cart-item__details">
-                                        <a href="product.html" class="cart-item__title"
-                                        >Pebbled crossbody belt bag</a
-                                        >
-                                        <span class="cart-ietm__price">1 <i>x</i> $129.99</span>
-                                    </p>
-                                    <!-- End item details -->
-                                    <!-- Item delete -->
-                                    <p class="cart-item__delete">
-                                        <a href="#"><i class="lnil lnil-close"></i></a>
-                                    </p>
-                                    <!-- Item delete -->
-                                </li>
-                                <!-- End item -->
+
                             </ul>
                             <!-- End cart items -->
                             <!-- Subtotal -->
-                            <div class="header-cart__subtotal d-flex">
+                            <div class="header-cart__subtotal d-flex" th:if="${session.CURRENT_USER != null}">
                                 <!-- Title -->
                                 <div class="subtotal__title">Subtotal</div>
                                 <!-- End title -->
@@ -182,7 +165,7 @@
                             </div>
                             <!-- End subtotal -->
                             <!-- Header cart action -->
-                            <div class="header-cart__action">
+                            <div class="header-cart__action" th:if="${session.CURRENT_USER != null}">
                                 <a
                                         href="checkout.html"
                                         class="header-cart__button header-cart__button--checkout"
@@ -1664,99 +1647,35 @@
     </div>
     <!-- End search popup -->
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script th:src="@{/assets/js/main.js}"></script>
+<script th:src="@{/assets/js/search-product.js}"></script>
+
 <script th:inline="javascript">
-    /* Giả sử sản phẩm đầu tiên có hình ảnh được truyền từ backend vào */
-    let productImagesMap = [[${productImagesMap }]]; // Map chứa thông tin ảnh đầu tiên của mỗi sản phẩm
+    let productImagesMap = [[${productImagesMap}]];
     console.log("productImagesMap:", productImagesMap);
 
-    // Hàm xử lý tìm kiếm khi người dùng nhấn enter hoặc submit form
-    function searchProduct(event) {
-        event.preventDefault(); // Ngăn form tự động reload trang
-
-        // Lấy giá trị tìm kiếm từ input
-        const name = document.getElementById("searchInput").value.trim();
-
-        if (name) {
-            // Gọi API tìm kiếm sản phẩm với tên người dùng nhập
-            fetch(`/search-product/name/${name}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                    }
-                    return response.json(); // Chuyển đổi dữ liệu trả về thành JSON
-                })
-                .then(data => {
-                    // Dữ liệu trả về là một Page<Product>
-                    console.log("Kết quả tìm kiếm:", data);
-                    // Hiển thị các sản phẩm tìm thấy
-                    displayProducts(data.content); // Gọi hàm hiển thị sản phẩm
-                })
-                .catch(error => {
-                    console.error("Lỗi khi lấy kết quả tìm kiếm:", error);
-                });
-        } else {
-            console.log("Vui lòng nhập tên sản phẩm để tìm kiếm.");
-        }
-    }
-
-    function displayProducts(products) {
-        const productList = document.getElementById("productList");
-        productList.innerHTML = ""; // Xóa danh sách cũ
-
-        products.forEach(product => {
-            // Lấy ảnh đầu tiên từ productFirstImageMap
-            const firstImage = productImagesMap[product.id].find(image => image.isPrimary);
-            console.log("image of product", firstImage);
-            const productItem = document.createElement("div");
-            productItem.classList.add("product-grid-item");
-            productItem.innerHTML = `
-                <!-- Tag -->
-                <div class="product-grid-item__tag product-grid-item__tag--sold-out">
-                    Sold out
-                </div>
-                <!-- End tag -->
-                <!-- Wishlist -->
-                <div class="product-grid-item__wishlist">
-                    <a href="#"><i class="lnil lnil-heart"></i></a>
-                </div>
-                <!-- End wishlist -->
-                <!-- Image -->
-                <div class="product-grid-item__image">
-                    <a href="/product/${product.id}/${product.slug}">
-                        <img
-                            alt="Image"
-                            data-sizes="auto"
-                            src="${firstImage.imageUrl}"
-                            class="lazyload lazy-effect"
-                        />
-                    </a>
-                    <!-- Action -->
-                    <div class="product-grid-item__action d-flex">
-                        <!-- Button -->
-                        <div class="product-grid-item__button">
-                            <a href="#">Add to cart</a>
-                        </div>
-                        <!-- End button -->
-                        <!-- Button -->
-                        <div class="product-grid-item__button">
-                            <a href="#">Quick shop</a>
-                        </div>
-                        <!-- End button -->
-                    </div>
-                    <!-- End action -->
-                </div>
-                <!-- End image -->
-                <!-- Title -->
-                <div class="product-grid-item__title">
-                    <a href="/product/${product.id}/${product.slug}">${product.name}</a>
-                </div>
-                <!-- End title -->
-                <!-- Price -->
-                <div class="product-grid-item__price">$${product.price}</div>
-                <!-- End price -->
-            `;
-            productList.appendChild(productItem);
-        });
+    window.logout = () => {
+        axios.post('/api/auth/logout').then(res => {
+            if (res.status === 200) {
+                toastr.success("Đăng xuất thành công");
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 1500)
+            }
+        }).catch(err => {
+            console.log(err);
+            toastr.error("Đăng xuất thất bại");
+        })
     }
 </script>
 

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.time.LocalDateTime;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -31,4 +33,7 @@ public class OrderDetail {
     Integer quantity;
 
     Double price;
+
+    LocalDateTime createdAt;
+    LocalDateTime updatedAt;
 }

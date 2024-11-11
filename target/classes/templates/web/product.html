@@ -7,12 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Utero - shop</title>
+
+    <!--toastr js-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+          integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
     <link href="/assets/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="/assets/theme7b30.css?v=4" rel="stylesheet" type="text/css"/>
     <!-- For Js Library -->
     <script src="/assets/vendor7b30.js?v=4"></script>
     <script src="/assets/theme7b30.js?v=4"></script>
 
+    <link rel="stylesheet" th:href="@{/assets/css/toastr-css.css}">
     <style>
         .product__available-size li {
             position: relative;
@@ -77,11 +84,58 @@
                 <!-- End navigation -->
                 <!-- Header right -->
                 <ul class="header__right">
-                    <li><a href="#" class="js-open-popup-search"><i class="lnil lnil-search-alt"></i></a></li>
-                    <li><a href="/account"><i class="lnil lnil-user"></i></a></li>
+                    <li>
+                        <a href="#" class="js-open-popup-search"
+                        ><i class="lnil lnil-search-alt"></i
+                        ></a>
+                    </li>
+
+                    <li class="header__cart user-menu">
+                        <a href="#"><i class="lnil lnil-user"></i></a>
+                        <!-- Header cart -->
+                        <div class="header-cart">
+                            <!-- Cart items -->
+                            <ul class="header-cart__items">
+                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER == null}">
+                                    <p class="cart-item__details">
+                                        <a href="/account" class="cart-item__title">Đăng nhập</a>
+                                    </p>
+                                </li>
+                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
+                                    <p class="cart-item__details">
+                                        <a href="/profile" class="cart-item__title">Thông tin cá nhân</a>
+                                    </p>
+                                </li>
+                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}" onclick="logout()">
+                                    <p class="cart-item__details">
+                                        <a style="cursor: pointer" class="cart-item__title">Đăng
+                                            xuất</a>
+                                    </p>
+                                </li>
+                            </ul>
+                            <!-- Subtotal -->
+                            <div class="header-cart__subtotal d-flex" th:if="${session.CURRENT_USER != null}">
+                                <div class="subtotal__title">Xin chào</div>
+                                <div class="subtotal__value" th:text="${session.CURRENT_USER.fullName}">Trung Dũng</div>
+                            </div>
+
+                            <ul class="header-cart__items mt-2"
+                                th:if="${session.CURRENT_USER != null && session.CURRENT_USER.userRole.toString() == 'ADMIN'}">
+                                <li class="cart-item d-flex">
+                                    <p class="cart-item__details">
+                                        <a href="product.html" class="cart-item__title">Quản lý</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+
                     <li class="header__cart">
-                        <a href="/cart"><i class="lnil lnil-cart"></i><span>2</span>
-                            <p class="header-cart__price">$225.00</p></a>
+                        <a href="cart.html"
+                        ><i class="lnil lnil-cart"></i><span>2</span>
+                            <p class="header-cart__price">$225.00</p></a
+                        >
                         <!-- Header cart -->
                         <div class="header-cart">
                             <!-- Cart items -->
@@ -95,15 +149,18 @@
                                                     alt="Image"
                                                     data-sizes="auto"
                                                     data-srcset="/assets/products/1/10a.jpg 400w,
-                          /assets/products/1/10a.jpg 800w"
+                                    /assets/products/1/10a.jpg 800w"
                                                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    class="lazyload lazy-effect"/>
+                                                    class="lazyload lazy-effect"
+                                            />
                                         </a>
                                     </p>
                                     <!-- End item image -->
                                     <!-- Item details -->
                                     <p class="cart-item__details">
-                                        <a href="product.html" class="cart-item__title">Slim fit modal cotton shirt</a>
+                                        <a href="product.html" class="cart-item__title"
+                                        >Slim fit modal cotton shirt</a
+                                        >
                                         <span class="cart-item__variant">Grey, M</span>
                                         <span class="cart-ietm__price">2 <i>x</i> $113.99</span>
                                     </p>
@@ -126,13 +183,16 @@
                                                     data-srcset="/assets/products/1/11a.jpg 400w,
                           /assets/products/1/11a.jpg 800w"
                                                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    class="lazyload lazy-effect"/>
+                                                    class="lazyload lazy-effect"
+                                            />
                                         </a>
                                     </p>
                                     <!-- End item image -->
                                     <!-- Item details -->
                                     <p class="cart-item__details">
-                                        <a href="product.html" class="cart-item__title">Suede sport shoes</a>
+                                        <a href="product.html" class="cart-item__title"
+                                        >Suede sport shoes</a
+                                        >
                                         <span class="cart-item__variant">Bold Brown, 40</span>
                                         <span class="cart-ietm__price">1 <i>x</i> $45.5</span>
                                     </p>
@@ -155,13 +215,16 @@
                                                     data-srcset="/assets/products/1/12a.jpg 400w,
                           /assets/products/1/12a.jpg 800w"
                                                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    class="lazyload lazy-effect"/>
+                                                    class="lazyload lazy-effect"
+                                            />
                                         </a>
                                     </p>
                                     <!-- End item image -->
                                     <!-- Item details -->
                                     <p class="cart-item__details">
-                                        <a href="product.html" class="cart-item__title">Pebbled crossbody belt bag</a>
+                                        <a href="product.html" class="cart-item__title"
+                                        >Pebbled crossbody belt bag</a
+                                        >
                                         <span class="cart-ietm__price">1 <i>x</i> $129.99</span>
                                     </p>
                                     <!-- End item details -->
@@ -186,15 +249,23 @@
                             <!-- End subtotal -->
                             <!-- Header cart action -->
                             <div class="header-cart__action">
-                                <a href="checkout.html" class="header-cart__button header-cart__button--checkout">Checkout</a>
-                                <a href="cart.html" class="header-cart__button">View cart</a>
+                                <a
+                                        href="checkout.html"
+                                        class="header-cart__button header-cart__button--checkout"
+                                >Checkout</a
+                                >
+                                <a href="cart.html" class="header-cart__button"
+                                >View cart</a
+                                >
                             </div>
                             <!-- End Header cart action -->
                         </div>
                         <!-- End header cart -->
                     </li>
                     <li class="header__canvas-menu">
-                        <a href="#" class="js-open-sidebar-contact"><i class="lnil lnil-menu"></i></a>
+                        <a href="#" class="js-open-sidebar-contact"
+                        ><i class="lnil lnil-menu"></i
+                        ></a>
                     </li>
                 </ul>
                 <!-- End header right -->
@@ -1113,7 +1184,7 @@
                                 <img
                                         alt="Image"
                                         data-sizes="auto"
-                                        th:src="${productImagesMapOutFit.get(Category.id).size() > 0 ? productImagesMapOutFit.get(Category.id).get(0).imageUrl : ''}"
+                                        th:src="${productImagesMapOutFit[Category.id].get(0).imageUrl}"
                                         class="lazyload lazy-effect"/>
                             </a>
                         </div>
@@ -1742,9 +1813,9 @@
             </ul>
             <!-- End search categories -->
             <!-- Search form -->
-            <form class="search-popup__form">
+            <form class="search-popup__form" onsubmit="searchProduct(event)">
                 <!-- Search input -->
-                <input type="text" class="search-popup__input" placeholder="Search here..."/>
+                <input type="text" id="searchInput" class="search-popup__input" placeholder="Search here..."/>
                 <!-- End search input -->
             </form>
             <!-- End search form -->
@@ -1754,7 +1825,7 @@
                 <h6 class="search-popup__results-heading">Search results</h6>
                 <!-- End results heading -->
                 <!-- Results -->
-                <div class="search-popups__results-products d-flex">
+                <div id="productList" class="search-popups__results-products d-flex">
                     <!-- Product -->
                     <div class="product-grid-item">
                         <!-- Tag -->
@@ -2040,13 +2111,43 @@
     <!-- End search popup -->
 </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script th:src="@{/assets/js/main.js}"></script>
 <script th:src="@{/assets/js/product.js}"></script>
+<script th:src="@{/assets/js/search-product.js}"></script>
 <script th:inline="javascript">
     let variants = [];
 
     let productImagesMap = [[${productImagesMapOutFit}]];
     console.log("productImagesMap:", productImagesMap);
 
+</script>
+
+<script>
+    //Dang xuat
+    window.logout = () => {
+        axios.post('/api/auth/logout').then(res => {
+            if (res.status === 200) {
+                toastr.success("Đăng xuất thành công");
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 1500)
+            }
+        }).catch(err => {
+            console.log(err);
+            toastr.error("Đăng xuất thất bại");
+        })
+    }
 </script>
 <!-- Mirrored from martfury.pl/utero/html/v1/product.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Oct 2024 06:58:22 GMT -->
 </html>

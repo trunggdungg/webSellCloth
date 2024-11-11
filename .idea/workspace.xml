@@ -4,14 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="up size,clo">
+    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="oke">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/WebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/WebController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/CartDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/CartDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/OrderDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/webshopmenswear/WebShopMenswearApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/webshopmenswear/WebShopMenswearApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/WebController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/WebController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/web/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/shop.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,10 +36,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="JavaScript File" />
         <option value="Interface" />
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="Kotlin Class" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -59,57 +75,58 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveCategories.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveColors.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveImagesProduct.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveProducts.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveSizes.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveSubCategories.executor&quot;: &quot;Run&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-Lombok plugin&quot;: &quot;Lombok integration problem&quot;,
-    &quot;Notification.DoNotAsk-Lombok plugin&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.WebShopMenswearApplication.executor&quot;: &quot;Run&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;G:/DA_CNPM/WebShopMenswear&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;667eded1e4c7edad57570423454b52ab&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.WebShopMenswearApplicationTests.saveCategories.executor": "Run",
+    "JUnit.WebShopMenswearApplicationTests.saveColors.executor": "Run",
+    "JUnit.WebShopMenswearApplicationTests.saveImagesProduct.executor": "Run",
+    "JUnit.WebShopMenswearApplicationTests.saveProducts.executor": "Run",
+    "JUnit.WebShopMenswearApplicationTests.saveSizes.executor": "Run",
+    "JUnit.WebShopMenswearApplicationTests.saveSubCategories.executor": "Run",
+    "Notification.DisplayName-DoNotAsk-Lombok plugin": "Lombok integration problem",
+    "Notification.DoNotAsk-Lombok plugin": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.WebShopMenswearApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "G:/DA_CNPM/WebShopMenswear",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "spring.configuration.checksum": "667eded1e4c7edad57570423454b52ab",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\DA_CNPM\src\main\resources\templates\" />
+      <recent name="G:\DA_CNPM\src\main\resources\static\" />
+      <recent name="G:\DA_CNPM\src\main\resources\static" />
       <recent name="D:\HOCTAP\Github\Java25-SpringBoot\SpringBoot\DoAnCuoiKhoa\WebShopMenswear\src\main\resources\static\web-assets" />
       <recent name="D:\HOCTAP\Github\Java25-SpringBoot\SpringBoot\DoAnCuoiKhoa\WebShopMenswear\src\main\resources\static\web-assets\css" />
-      <recent name="D:\HOCTAP\Github\Java25-SpringBoot\SpringBoot\DoAnCuoiKhoa\WebShopMenswear\src\main\resources\static\web-assets\js" />
-      <recent name="D:\HOCTAP\Github\Java25-SpringBoot\SpringBoot\DoAnCuoiKhoa\WebShopMenswear\src\main\resources\static\user-assets\" />
-      <recent name="D:\HOCTAP\Github\Java25-SpringBoot\SpringBoot\DoAnCuoiKhoa\WebShopMenswear\src\main\resources\static\web-assets\" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.WebShopMenswearApplication">
-    <configuration name="WebShopMenswearApplicationTests.getImageByProductId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WebShopMenswearApplicationTests.enode_password" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WebShopMenswear" />
       <extension name="coverage">
         <pattern>
@@ -119,13 +136,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.webshopmenswear" />
       <option name="MAIN_CLASS_NAME" value="com.example.webshopmenswear.WebShopMenswearApplicationTests" />
-      <option name="METHOD_NAME" value="getImageByProductId" />
+      <option name="METHOD_NAME" value="enode_password" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebShopMenswearApplicationTests.getProductPrice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WebShopMenswearApplicationTests.saveAddresses" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WebShopMenswear" />
       <extension name="coverage">
         <pattern>
@@ -135,13 +152,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.webshopmenswear" />
       <option name="MAIN_CLASS_NAME" value="com.example.webshopmenswear.WebShopMenswearApplicationTests" />
-      <option name="METHOD_NAME" value="getProductPrice" />
+      <option name="METHOD_NAME" value="saveAddresses" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebShopMenswearApplicationTests.loadSize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WebShopMenswearApplicationTests.saveCart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WebShopMenswear" />
       <extension name="coverage">
         <pattern>
@@ -151,13 +168,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.webshopmenswear" />
       <option name="MAIN_CLASS_NAME" value="com.example.webshopmenswear.WebShopMenswearApplicationTests" />
-      <option name="METHOD_NAME" value="loadSize" />
+      <option name="METHOD_NAME" value="saveCart" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebShopMenswearApplicationTests.productprice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WebShopMenswearApplicationTests.saveCartDetail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WebShopMenswear" />
       <extension name="coverage">
         <pattern>
@@ -167,7 +184,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.webshopmenswear" />
       <option name="MAIN_CLASS_NAME" value="com.example.webshopmenswear.WebShopMenswearApplicationTests" />
-      <option name="METHOD_NAME" value="productprice" />
+      <option name="METHOD_NAME" value="saveCartDetail" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -198,11 +215,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.WebShopMenswearApplicationTests.loadSize" />
-        <item itemvalue="JUnit.WebShopMenswearApplicationTests.productprice" />
-        <item itemvalue="JUnit.WebShopMenswearApplicationTests.getProductPrice" />
-        <item itemvalue="JUnit.WebShopMenswearApplicationTests.getImageByProductId" />
+        <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveCartDetail" />
+        <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveCart" />
+        <item itemvalue="JUnit.WebShopMenswearApplicationTests.enode_password" />
         <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveOrders" />
+        <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveAddresses" />
       </list>
     </recent_temporary>
   </component>
@@ -246,7 +263,10 @@
       <workItem from="1731126956271" duration="13858000" />
       <workItem from="1731166344520" duration="353000" />
       <workItem from="1731213226440" duration="79000" />
-      <workItem from="1731213347441" duration="19481000" />
+      <workItem from="1731213347441" duration="40784000" />
+      <workItem from="1731260592546" duration="30000" />
+      <workItem from="1731291222266" duration="731000" />
+      <workItem from="1731308802583" duration="6382000" />
     </task>
     <task id="LOCAL-00001" summary="up">
       <option name="closed" value="true" />
@@ -360,7 +380,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731229273823</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="oke">
+      <option name="closed" value="true" />
+      <created>1731233205743</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1731233205744</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -388,6 +416,7 @@
     <MESSAGE value="Search_product" />
     <MESSAGE value="up html" />
     <MESSAGE value="up size,clo" />
-    <option name="LAST_COMMIT_MESSAGE" value="up size,clo" />
+    <MESSAGE value="oke" />
+    <option name="LAST_COMMIT_MESSAGE" value="oke" />
   </component>
 </project>

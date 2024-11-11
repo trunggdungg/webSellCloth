@@ -38,6 +38,7 @@ public class Order {
     Double totalPrice;
 
     LocalDateTime createdAt;
+    LocalDateTime updatedAt;
 
 
 }

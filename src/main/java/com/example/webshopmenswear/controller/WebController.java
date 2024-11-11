@@ -1,9 +1,11 @@
 package com.example.webshopmenswear.controller;
 
 import com.example.webshopmenswear.entity.*;
+import com.example.webshopmenswear.service.AuthService;
 import com.example.webshopmenswear.service.ProductImageService;
 import com.example.webshopmenswear.service.ProductService;
 import com.example.webshopmenswear.service.ProductVariantService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,7 @@ public class WebController {
     private final ProductService productService;
     private final ProductImageService productImageService;
     private final ProductVariantService productVariantService;
+    private final AuthService authService;
 
     @GetMapping("/shop")
     public String ProductsPage(@RequestParam(required = false, defaultValue = "1") int page,
@@ -132,6 +135,17 @@ public class WebController {
         return "/web/product";
     }
 
+
+    @GetMapping("/account")
+    public String LoginPage(HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("CURRENT_USER");
+        if (user != null) {
+            return "redirect:/";
+        }
+        return "/web/account";
+    }
+
+
     @GetMapping("/product")
     public String ProductDetail() {
 
@@ -163,9 +177,10 @@ public class WebController {
         return "/web/checkout";
     }
 
-    @GetMapping("/account")
-    public String AccountPage() {
-        return "/web/account";
+
+    @GetMapping("/404")
+    public String Page404() {
+        return "/web/404";
     }
 
 

@@ -27,4 +27,5 @@ public class Cart {
     User user;
 
     LocalDateTime createdAt;
+    LocalDateTime updatedAt;
 }

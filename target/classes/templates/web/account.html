@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <!-- Mirrored from martfury.pl/utero/html/v1/account.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Oct 2024 06:58:55 GMT -->
 <head>
@@ -7,11 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Utero - account</title>
+    <!--toastr js-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+          integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
     <link href="assets/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="assets/theme7b30.css?v=4" rel="stylesheet" type="text/css"/>
     <!-- For Js Library -->
     <script src="assets/vendor7b30.js?v=4"></script>
     <script src="assets/theme7b30.js?v=4"></script>
+    <link rel="stylesheet" th:href="@{/assets/css/toastr-css.css}">
+
 </head>
 <body class="home inner-page about-page">
 <div id="main">
@@ -50,123 +57,43 @@
                 <!-- Header right -->
                 <ul class="header__right">
                     <li><a href="#" class="js-open-popup-search"><i class="lnil lnil-search-alt"></i></a></li>
-                    <li><a href="/account"><i class="lnil lnil-user"></i></a></li>
-                    <li class="header__cart">
-                        <a href="/cart"><i class="lnil lnil-cart"></i><span>2</span>
-                            <p class="header-cart__price">$225.00</p></a>
+                    <li class="header__cart user-menu">
+                        <a href="#"><i class="lnil lnil-user"></i></a>
                         <!-- Header cart -->
                         <div class="header-cart">
                             <!-- Cart items -->
                             <ul class="header-cart__items">
-                                <!-- Item -->
-                                <li class="cart-item d-flex">
-                                    <!-- Item image -->
-                                    <p class="cart-item__image">
-                                        <a href="product.html">
-                                            <img
-                                                    alt="Image"
-                                                    data-sizes="auto"
-                                                    data-srcset="assets/products/1/10a.jpg 400w,
-                          assets/products/1/10a.jpg 800w"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    class="lazyload lazy-effect"/>
-                                        </a>
-                                    </p>
-                                    <!-- End item image -->
-                                    <!-- Item details -->
+                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER == null}">
                                     <p class="cart-item__details">
-                                        <a href="product.html" class="cart-item__title">Slim fit modal cotton shirt</a>
-                                        <span class="cart-item__variant">Grey, M</span>
-                                        <span class="cart-ietm__price">2 <i>x</i> $113.99</span>
+                                        <a href="/account" class="cart-item__title">Đăng nhập</a>
                                     </p>
-                                    <!-- End item details -->
-                                    <!-- Item delete -->
-                                    <p class="cart-item__delete">
-                                        <a href="#"><i class="lnil lnil-close"></i></a>
-                                    </p>
-                                    <!-- Item delete -->
                                 </li>
-                                <!-- End item -->
-                                <!-- Item -->
-                                <li class="cart-item d-flex">
-                                    <!-- Item image -->
-                                    <p class="cart-item__image">
-                                        <a href="product.html">
-                                            <img
-                                                    alt="Image"
-                                                    data-sizes="auto"
-                                                    data-srcset="assets/products/1/11a.jpg 400w,
-                          assets/products/1/11a.jpg 800w"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    class="lazyload lazy-effect"/>
-                                        </a>
-                                    </p>
-                                    <!-- End item image -->
-                                    <!-- Item details -->
+                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
                                     <p class="cart-item__details">
-                                        <a href="product.html" class="cart-item__title">Suede sport shoes</a>
-                                        <span class="cart-item__variant">Bold Brown, 40</span>
-                                        <span class="cart-ietm__price">1 <i>x</i> $45.5</span>
+                                        <a href="/profile" class="cart-item__title">Thông tin cá nhân</a>
                                     </p>
-                                    <!-- End item details -->
-                                    <!-- Item delete -->
-                                    <p class="cart-item__delete">
-                                        <a href="#"><i class="lnil lnil-close"></i></a>
-                                    </p>
-                                    <!-- Item delete -->
                                 </li>
-                                <!-- End item -->
-                                <!-- Item -->
-                                <li class="cart-item d-flex">
-                                    <!-- Item image -->
-                                    <p class="cart-item__image">
-                                        <a href="product.html">
-                                            <img
-                                                    alt="Image"
-                                                    data-sizes="auto"
-                                                    data-srcset="assets/products/1/12a.jpg 400w,
-                          assets/products/1/12a.jpg 800w"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    class="lazyload lazy-effect"/>
-                                        </a>
-                                    </p>
-                                    <!-- End item image -->
-                                    <!-- Item details -->
+                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
                                     <p class="cart-item__details">
-                                        <a href="product.html" class="cart-item__title">Pebbled crossbody belt bag</a>
-                                        <span class="cart-ietm__price">1 <i>x</i> $129.99</span>
+                                        <span style="cursor: pointer" onclick="logout()" class="cart-item__title">Đăng xuất</span>
                                     </p>
-                                    <!-- End item details -->
-                                    <!-- Item delete -->
-                                    <p class="cart-item__delete">
-                                        <a href="#"><i class="lnil lnil-close"></i></a>
-                                    </p>
-                                    <!-- Item delete -->
                                 </li>
-                                <!-- End item -->
                             </ul>
-                            <!-- End cart items -->
                             <!-- Subtotal -->
-                            <div class="header-cart__subtotal d-flex">
-                                <!-- Title -->
-                                <div class="subtotal__title">Subtotal</div>
-                                <!-- End title -->
-                                <!-- Value -->
-                                <div class="subtotal__value">$272.47</div>
-                                <!-- End value -->
+                            <div class="header-cart__subtotal d-flex" th:if="${session.CURRENT_USER != null}">
+                                <div class="subtotal__title">Xin chào</div>
+                                <div class="subtotal__value" th:text="${session.CURRENT_USER.fullName}">Trung Dũng</div>
                             </div>
-                            <!-- End subtotal -->
-                            <!-- Header cart action -->
-                            <div class="header-cart__action">
-                                <a href="checkout.html" class="header-cart__button header-cart__button--checkout">Checkout</a>
-                                <a href="cart.html" class="header-cart__button">View cart</a>
-                            </div>
-                            <!-- End Header cart action -->
+
+                            <ul class="header-cart__items mt-2"
+                                th:if="${session.CURRENT_USER != null && session.CURRENT_USER.userRole.toString() == 'ADMIN'}">
+                                <li class="cart-item d-flex">
+                                    <p class="cart-item__details">
+                                        <a href="product.html" class="cart-item__title">Quản lý</a>
+                                    </p>
+                                </li>
+                            </ul>
                         </div>
-                        <!-- End header cart -->
-                    </li>
-                    <li class="header__canvas-menu">
-                        <a href="#" class="js-open-sidebar-contact"><i class="lnil lnil-menu"></i></a>
                     </li>
                 </ul>
                 <!-- End header right -->
@@ -442,17 +369,19 @@
                             <p class="login__description">Sign in to your account below:</p>
                             <!-- End login description -->
                             <!-- Form -->
-                            <form>
+                            <form id="loginForm">
                                 <!-- Form group -->
                                 <div class="form-group required">
                                     <input type="email" required="required" name="customer[email]"
-                                           placeholder="Email address" class="form-group__input">
+                                           placeholder="Email address" class="form-group__input" id="email"
+                                           style="font-size: 20px">
                                 </div>
                                 <!-- End form group -->
                                 <!-- Form group -->
                                 <div class="form-group required">
                                     <input type="password" required="required" name="customer[password]"
-                                           placeholder="Password" class="form-group__input">
+                                           placeholder="Password" class="form-group__input" id="password"
+                                           style="font-size: 20px">
                                 </div>
                                 <!-- End form group -->
                                 <!-- Forgot password -->
@@ -460,7 +389,8 @@
                                     password?</a></div>
                                 <!-- End forgot password -->
                                 <!-- Action -->
-                                <div class="login__action"><input class="second-button" type="submit" value="Sign in">
+                                <div class="login__action"><input class="second-button" type="submit" value="Sign in"
+                                                                  id="btn-login">
                                 </div>
                                 <!-- End action -->
                             </form>
@@ -515,7 +445,7 @@
                                         <!-- Form group -->
                                         <div class="form-group">
                                             <input type="text" name="customer[first_name]" placeholder="First name"
-                                                   class="form-group__input">
+                                                   class="form-group__input" style="font-size: 20px">
                                         </div>
                                         <!-- End form group -->
                                     </div>
@@ -523,7 +453,7 @@
                                         <!-- Form group -->
                                         <div class="form-group">
                                             <input type="text" name="customer[last_name]" placeholder="Last name"
-                                                   class="form-group__input">
+                                                   class="form-group__input" style="font-size: 20px">
                                         </div>
                                         <!-- End form group -->
                                     </div>
@@ -532,13 +462,14 @@
                                 <!-- Form group -->
                                 <div class="form-group required">
                                     <input type="email" required="required" name="customer[email]"
-                                           placeholder="Email address" class="form-group__input">
+                                           placeholder="Email address" class="form-group__input"
+                                           style="font-size: 20px">
                                 </div>
                                 <!-- End form group -->
                                 <!-- Form group -->
                                 <div class="form-group required">
                                     <input type="password" required="required" name="customer[password]"
-                                           placeholder="Password" class="form-group__input">
+                                           placeholder="Password" class="form-group__input" style="font-size: 20px">
                                 </div>
                                 <!-- End form group -->
                                 <!-- Action -->
@@ -997,6 +928,20 @@
     </div>
     <!-- End search popup -->
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script th:src="@{/assets/js/main.js}"></script>
+<script th:src="@{/assets/js/auth-js.js}"></script>
+
+
 </body>
 
 <!-- Mirrored from martfury.pl/utero/html/v1/account.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Oct 2024 06:58:55 GMT -->
