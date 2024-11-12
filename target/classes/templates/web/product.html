@@ -132,123 +132,71 @@
 
 
                     <li class="header__cart">
-                        <a href="cart.html"
-                        ><i class="lnil lnil-cart"></i><span>2</span>
-                            <p class="header-cart__price">$225.00</p></a
+                        <a href="/cart"
+                        ><i class="lnil lnil-cart"></i><span>0</span>
+                            <p class="header-cart__price" th:if="${session.CURRENT_USER != null}">$225.00</p></a
                         >
                         <!-- Header cart -->
                         <div class="header-cart">
+
                             <!-- Cart items -->
                             <ul class="header-cart__items">
-                                <!-- Item -->
-                                <li class="cart-item d-flex">
-                                    <!-- Item image -->
-                                    <p class="cart-item__image">
-                                        <a href="product.html">
-                                            <img
-                                                    alt="Image"
-                                                    data-sizes="auto"
-                                                    data-srcset="/assets/products/1/10a.jpg 400w,
-                                    /assets/products/1/10a.jpg 800w"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    class="lazyload lazy-effect"
-                                            />
-                                        </a>
-                                    </p>
-                                    <!-- End item image -->
-                                    <!-- Item details -->
+                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER == null}">
                                     <p class="cart-item__details">
-                                        <a href="product.html" class="cart-item__title"
-                                        >Slim fit modal cotton shirt</a
-                                        >
-                                        <span class="cart-item__variant">Grey, M</span>
-                                        <span class="cart-ietm__price">2 <i>x</i> $113.99</span>
+                                        <span class="cart-item__title"
+                                              style="font-size: 20px; pointer-events: none;cursor: default;">Giỏ hàng trống!</span>
                                     </p>
-                                    <!-- End item details -->
-                                    <!-- Item delete -->
-                                    <p class="cart-item__delete">
-                                        <a href="#"><i class="lnil lnil-close"></i></a>
-                                    </p>
-                                    <!-- Item delete -->
                                 </li>
-                                <!-- End item -->
                                 <!-- Item -->
-                                <li class="cart-item d-flex">
-                                    <!-- Item image -->
-                                    <p class="cart-item__image">
-                                        <a href="product.html">
-                                            <img
-                                                    alt="Image"
-                                                    data-sizes="auto"
-                                                    data-srcset="/assets/products/1/11a.jpg 400w,
-                          /assets/products/1/11a.jpg 800w"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    class="lazyload lazy-effect"
-                                            />
-                                        </a>
-                                    </p>
-                                    <!-- End item image -->
-                                    <!-- Item details -->
-                                    <p class="cart-item__details">
-                                        <a href="product.html" class="cart-item__title"
-                                        >Suede sport shoes</a
-                                        >
-                                        <span class="cart-item__variant">Bold Brown, 40</span>
-                                        <span class="cart-ietm__price">1 <i>x</i> $45.5</span>
-                                    </p>
-                                    <!-- End item details -->
-                                    <!-- Item delete -->
-                                    <p class="cart-item__delete">
-                                        <a href="#"><i class="lnil lnil-close"></i></a>
-                                    </p>
-                                    <!-- Item delete -->
-                                </li>
-                                <!-- End item -->
-                                <!-- Item -->
-                                <li class="cart-item d-flex">
-                                    <!-- Item image -->
-                                    <p class="cart-item__image">
-                                        <a href="product.html">
-                                            <img
-                                                    alt="Image"
-                                                    data-sizes="auto"
-                                                    data-srcset="/assets/products/1/12a.jpg 400w,
-                          /assets/products/1/12a.jpg 800w"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    class="lazyload lazy-effect"
-                                            />
-                                        </a>
-                                    </p>
-                                    <!-- End item image -->
-                                    <!-- Item details -->
-                                    <p class="cart-item__details">
-                                        <a href="product.html" class="cart-item__title"
-                                        >Pebbled crossbody belt bag</a
-                                        >
-                                        <span class="cart-ietm__price">1 <i>x</i> $129.99</span>
-                                    </p>
-                                    <!-- End item details -->
-                                    <!-- Item delete -->
-                                    <p class="cart-item__delete">
-                                        <a href="#"><i class="lnil lnil-close"></i></a>
-                                    </p>
-                                    <!-- Item delete -->
-                                </li>
-                                <!-- End item -->
+                                <ul class="cart-container ">
+                                    <!-- Danh sách sản phẩm trong giỏ hàng sẽ được thêm vào đây bằng JavaScript -->
+                                </ul>
+
+                                <!--                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">-->
+                                <!--                                    &lt;!&ndash; Item image &ndash;&gt;-->
+                                <!--                                    <p class="cart-item__image">-->
+                                <!--                                        <a href="product.html">-->
+                                <!--                                            <img-->
+                                <!--                                                    alt="Image"-->
+                                <!--                                                    data-sizes="auto"-->
+                                <!--                                                    data-srcset="assets/products/1/10a.jpg 400w,-->
+                                <!--                                        assets/products/1/10a.jpg 800w"-->
+                                <!--                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
+                                <!--                                                    class="lazyload lazy-effect"-->
+                                <!--                                            />-->
+                                <!--                                        </a>-->
+                                <!--                                    </p>-->
+                                <!--                                    &lt;!&ndash; End item image &ndash;&gt;-->
+                                <!--                                    &lt;!&ndash; Item details &ndash;&gt;-->
+                                <!--                                    <p class="cart-item__details">-->
+                                <!--                                        <a href="product.html" class="cart-item__title"-->
+                                <!--                                        >Slim fit modal cotton shirt</a-->
+                                <!--                                        >-->
+                                <!--                                        <span class="cart-item__variant">Grey, M</span>-->
+                                <!--                                        <span class="cart-ietm__price">2 <i>x</i> $113.99</span>-->
+                                <!--                                    </p>-->
+                                <!--                                    &lt;!&ndash; End item details &ndash;&gt;-->
+                                <!--                                    &lt;!&ndash; Item delete &ndash;&gt;-->
+                                <!--                                    <p class="cart-item__delete">-->
+                                <!--                                        <a href="#"><i class="lnil lnil-close"></i></a>-->
+                                <!--                                    </p>-->
+                                <!--                                    &lt;!&ndash; Item delete &ndash;&gt;-->
+                                <!--                                </li>-->
+
                             </ul>
                             <!-- End cart items -->
                             <!-- Subtotal -->
-                            <div class="header-cart__subtotal d-flex">
+                            <div class="header-cart__subtotal d-flex" th:if="${session.CURRENT_USER != null}">
                                 <!-- Title -->
                                 <div class="subtotal__title">Subtotal</div>
                                 <!-- End title -->
                                 <!-- Value -->
-                                <div class="subtotal__value">$272.47</div>
+                                <div class="subtotal__value" id="totalPrice">$272.47</div>
                                 <!-- End value -->
                             </div>
                             <!-- End subtotal -->
                             <!-- Header cart action -->
-                            <div class="header-cart__action">
+                            <div class="header-cart__action" th:if="${session.CURRENT_USER != null}">
                                 <a
                                         href="checkout.html"
                                         class="header-cart__button header-cart__button--checkout"
@@ -545,6 +493,7 @@
                                     <a href="#"
                                        th:text="${size.sizeName}"
                                        th:data-size-id="${size.id}"
+                                       th:classappend="${sizeStat.first ? 'active' : ''}"
                                        onclick="selectSize(this)">
                                     </a>
                                     <!-- Stock display -->
@@ -563,12 +512,12 @@
                         <div class="product__option d-flex align-items-center">
                             <div class="product__option-title">Qty</div>
                             <div class="product__quantity">
-                                <div class="product-quantity__minus js-quantity-down">
+                                <div class="product-quantity__minus js-quantity-dow">
                                     <a href="#" onclick="decreaseQuantity()"><i class="lnil lnil-minus"></i></a>
                                 </div>
                                 <input type="text" value="1" class="product-quantity__input js-quantity-field"
                                        id="quantity" th:data-max-stock="${variants[0].stock}">
-                                <div class="product-quantity__plus js-quantity-up">
+                                <div class="product-quantity__plus js-quantity-u">
                                     <a href="#" onclick="increaseQuantity()"><i class="lnil lnil-plus"></i></a>
                                 </div>
                             </div>
@@ -582,7 +531,7 @@
                         <div class="product__buttons d-flex">
                             <!-- Add to cart -->
                             <div class="product__button">
-                                <a href="#" class="button">Add to cart</a>
+                                <a href="#" class="button" id="addToCart">Add to cart</a>
                             </div>
                             <!-- End add to cart -->
                             <!-- Add to cart -->
@@ -2126,7 +2075,8 @@
 <script th:src="@{/assets/js/product.js}"></script>
 <script th:src="@{/assets/js/search-product.js}"></script>
 <script th:inline="javascript">
-    let variants = [];
+    let variants = [[${variants}]];
+    console.log("variants:", variants);
 
     let productImagesMap = [[${productImagesMapOutFit}]];
     console.log("productImagesMap:", productImagesMap);
@@ -2148,6 +2098,46 @@
             toastr.error("Đăng xuất thất bại");
         })
     }
+</script>
+
+<script th:inline="javascript">
+    let productPrice = [[${productsDetail.price}]];
+    console.log("productPrice:", productPrice);
+
+    document.getElementById('addToCart').addEventListener('click', function (event) {
+        event.preventDefault();
+
+        // Get the selected variant ID
+        const variantId = variants[0].id; // Replace with the actual logic to get the selected variant ID
+
+        // Get the quantity from the input field
+        const quantity = parseInt(document.getElementById('quantity').value);
+
+        // Calculate the price based on the quantity
+        const price = quantity * productPrice;
+
+        // Create the request payload
+        const cartDetailRequest = {
+            productId: variantId,
+            quantity: quantity,
+            price: price
+        };
+
+        // Send the POST request to the addToCart API
+        axios.post('/api/cart/addCart', cartDetailRequest)
+            .then(response => {
+                if (response.status === 201) {
+                    toastr.success("Product added to cart successfully");
+                }
+            })
+            .catch(error => {
+                if (error.response && error.response.status === 401) {
+                    toastr.error("User is not authenticated");
+                } else {
+                    toastr.error("Failed to add product to cart");
+                }
+            });
+    });
 </script>
 <!-- Mirrored from martfury.pl/utero/html/v1/product.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Oct 2024 06:58:22 GMT -->
 </html>

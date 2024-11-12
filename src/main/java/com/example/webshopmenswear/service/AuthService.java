@@ -32,4 +32,13 @@ public class AuthService {
     public void logout() {
         httpSession.removeAttribute("CURRENT_USER");
     }
+
+    public User getCurrentUser() {
+        User user = (User) httpSession.getAttribute("CURRENT_USER");
+        if (user == null) {
+            throw new RuntimeException("User is not logged in");
+        }
+        return user;
+    }
+
 }

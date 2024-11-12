@@ -1,3 +1,7 @@
+let selectedColorId = null;
+let selectedSizeId = null;
+
+
 function selectColor(element) {
     // Remove active class from all colors
     document.querySelectorAll('.product-grid-item__color').forEach(el => {
@@ -6,6 +10,7 @@ function selectColor(element) {
     // Add active class to selected color
     element.querySelector('.product-grid-item__color').classList.add('active');
     selectedColorId = element.dataset.colorId;
+    console.log("selectedColorId", selectedColorId);
     updateStock();
 }
 
@@ -17,6 +22,7 @@ function selectSize(element) {
     // Add active class to selected size
     element.classList.add('active');
     selectedSizeId = element.dataset.sizeId;
+    console.log("selectedSizeId", selectedSizeId);
     updateStock();
 }
 
@@ -64,3 +70,5 @@ function decreaseQuantity() {
         input.value = currentValue - 1;
     }
 }
+
+

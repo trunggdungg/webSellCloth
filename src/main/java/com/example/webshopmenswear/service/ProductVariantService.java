@@ -38,4 +38,7 @@ public class ProductVariantService {
         return productVariantRepository.findByProductIdAndColorIdAndSizeId(productId, colorId, sizeId);
     }
 
+    public ProductVariant getProductVariantById(Integer productId) {
+        return productVariantRepository.findById(productId).orElse(null);
+    }
 }
