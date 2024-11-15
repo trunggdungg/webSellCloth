@@ -75,9 +75,9 @@
                         <a href="/shop" class="nav__item">Shop</a>
 
                     </li>
-                    <li>
-                        <a href="/product" class="nav__item nav__item--current">Product</a>
-                    </li>
+                    <!--                    <li>-->
+                    <!--                        <a href="/product" class="nav__item nav__item&#45;&#45;current">Product</a>-->
+                    <!--                    </li>-->
 
 
                 </ul>
@@ -2127,17 +2127,83 @@
         axios.post('/api/cart/addCart', cartDetailRequest)
             .then(response => {
                 if (response.status === 201) {
-                    toastr.success("Product added to cart successfully");
+                    toastr.success("Thêm giỏ hàng thành công");
                 }
             })
             .catch(error => {
                 if (error.response && error.response.status === 401) {
-                    toastr.error("User is not authenticated");
+                    toastr.error("Hãy đăng nhập để thêm vào giỏ hàng");
                 } else {
-                    toastr.error("Failed to add product to cart");
+                    toastr.error("Thêm vào giỏ hàng thất bại");
                 }
             });
     });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Gọi API để lấy dữ liệu giỏ hàng
+        fetch("/api/cart/items")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("User not logged in or unable to fetch cart items.");
+                }
+                return response.json();
+            })
+            .then(cartItems => {
+                // Hàm để render giỏ hàng ra giao diện
+                renderCartItems(cartItems);
+                // Hàm để tính toán tổng giỏ hàng
+                calculateSubtotal(cartItems);
+                console.log("Cart items:", cartItems);
+            })
+            .catch(error => {
+                console.error("Error fetching cart items:", error);
+            });
+    });
+
+    function renderCartItems(cartItems) {
+        const cartContainer = document.querySelector(".cart-container");
+
+        cartItems.forEach(item => {
+
+            const cartItemHTML = `
+                <li class="cart-item d-flex">
+                    <p class="cart-item__image">
+                        <a href="product.html">
+                            <img
+                                alt="Image"
+                                src="${item.productVariant.product.imageUrlPrimary}"
+                                class="lazyload lazy-effect"
+                            />
+                        </a>
+                    </p>
+                    <p class="cart-item__details">
+                        <a href="product.html" class="cart-item__title">${item.productVariant.product.name}</a>
+                        <span class="cart-item__variant">${item.productVariant.color.nameColor}, ${item.productVariant.size.sizeName}</span>
+                        <span class="cart-item__price">${item.quantity} <i>x</i> $${item.productVariant.product.price}</span>
+                    </p>
+                    <p class="cart-item__delete">
+                        <a href="#"><i class="lnil lnil-close"></i></a>
+                    </p>
+                </li>
+            `;
+            // Thêm phần tử mới vào container
+            cartContainer.innerHTML += cartItemHTML;
+        });
+    }
+
+    // Hàm tính toán tổng giỏ hàng (subtotal)
+    function calculateSubtotal(cartItems) {
+        let totalPriceSub = 0; // Khởi tạo tổng giá trị của giỏ hàng
+
+        cartItems.forEach(item => {
+            totalPriceSub += item.productVariant.product.price * item.quantity; // Cộng dồn giá trị của từng sản phẩm
+        });
+        // Hiển thị tổng giỏ hàng với 2 chữ số thập phân
+        const subtotalTitleEl = document.getElementById("totalPrice");
+        subtotalTitleEl.innerHTML = `$${totalPriceSub.toFixed(2)}`; // Đảm bảo hiển thị với 2 chữ số thập phân
+    }
+
 </script>
 <!-- Mirrored from martfury.pl/utero/html/v1/product.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Oct 2024 06:58:22 GMT -->
 </html>

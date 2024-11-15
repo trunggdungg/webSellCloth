@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="add to cart">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/rest/ProductApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/rest/ProductApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +22,9 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="Kotlin Class" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
@@ -77,7 +81,7 @@
     "com.codeium.enabled": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "G:/DA_CNPM/WebShopMenswear",
+    "last_opened_file_path": "G:/DA_CNPM/src/main/resources/static/admin-assets/plugins",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -97,12 +101,16 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\DA_CNPM\src\main\resources\static\admin-assets\plugins" />
+      <recent name="G:\DA_CNPM\src\main\resources\templates\admin\product" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\DA_CNPM\src\main\resources\templates\admin" />
       <recent name="G:\DA_CNPM\src\main\resources\templates\" />
       <recent name="G:\DA_CNPM\src\main\resources\static\" />
       <recent name="G:\DA_CNPM\src\main\resources\static" />
       <recent name="D:\HOCTAP\Github\Java25-SpringBoot\SpringBoot\DoAnCuoiKhoa\WebShopMenswear\src\main\resources\static\web-assets" />
-      <recent name="D:\HOCTAP\Github\Java25-SpringBoot\SpringBoot\DoAnCuoiKhoa\WebShopMenswear\src\main\resources\static\web-assets\css" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.WebShopMenswearApplication">
@@ -248,6 +256,8 @@
       <workItem from="1731291222266" duration="731000" />
       <workItem from="1731308802583" duration="28604000" />
       <workItem from="1731370151531" duration="3415000" />
+      <workItem from="1731594005687" duration="206000" />
+      <workItem from="1731663345184" duration="21675000" />
     </task>
     <task id="LOCAL-00001" summary="up">
       <option name="closed" value="true" />
@@ -457,7 +467,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731374061714</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="add to cart">
+      <option name="closed" value="true" />
+      <created>1731594051584</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1731594051584</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

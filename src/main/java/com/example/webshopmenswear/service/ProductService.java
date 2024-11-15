@@ -1,9 +1,12 @@
 package com.example.webshopmenswear.service;
 
+import com.example.webshopmenswear.entity.Category;
 import com.example.webshopmenswear.entity.Product;
 import com.example.webshopmenswear.entity.ProductImage;
+import com.example.webshopmenswear.model.request.UpSertProductRequest;
 import com.example.webshopmenswear.repository.ProductImageRepository;
 import com.example.webshopmenswear.repository.ProductRepository;
+import com.github.slugify.Slugify;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +16,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
+    private final CategoryService categoryService;
 
     @Autowired
     private ProductImageRepository productImageRepository;
@@ -70,5 +75,33 @@ public class ProductService {
 
     public List<Product> findTop4ByCategoryAndStatus(Integer categoryId, Integer productId) {
         return productRepository.findTop4ByCategoryAndStatus(categoryId, productId);
+    }
+
+
+    //product admin
+    public List<Product> getAllProduct() {
+        return productRepository.findAll(Sort.by("CreatedAt").descending());
+    }
+
+    public Product getProductById(Integer id) {
+        return productRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Không tìm thấy sản phẩm"));
+    }
+
+    public Product upSertProduct(Integer id, UpSertProductRequest request) {
+        Product product = productRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Không tìm thấy sản phẩm"));
+        System.out.println("product: " + product);
+        Category category = categoryService.findById(request.getCategoryId());
+
+        Slugify slg = Slugify.builder().build();
+        product.setName(request.getName());
+        product.setPrice(request.getPrice());
+        product.setDiscount(request.getDiscount());
+        product.setDescription(request.getDescription());
+        product.setSlug(slg.slugify(request.getName()));
+        product.setStatus(request.getStatus());
+        product.setCategory(category);
+        product.setUpdatedAt(LocalDateTime.now());
+
+        return productRepository.save(product);
     }
 }
