@@ -1071,11 +1071,11 @@
                     <!-- Product -->
                     <div class="product-grid-item" th:each="product : ${productsPage.getContent()}">
                         <!-- Tag -->
-                        <div
-                                class="product-grid-item__tag product-grid-item__tag--sold-out"
-                        >
-                            Sold out
-                        </div>
+                        <!--                        <div-->
+                        <!--                                class="product-grid-item__tag product-grid-item__tag&#45;&#45;sold-out"-->
+                        <!--                        >-->
+                        <!--                            Sold out-->
+                        <!--                        </div>-->
                         <!-- End tag -->
                         <!-- Wishlist -->
                         <div class="product-grid-item__wishlist">
@@ -1085,6 +1085,9 @@
                         <!-- Image -->
                         <div class="product-grid-item__image"
                              th:with="firstImage=${productFirstImageMap.get(product.id)}">
+                            <div class="product-grid-item__tag" th:if="${product.discount != null}"
+                                 th:text="${product.discount+'% off'}">10% off
+                            </div>
                             <a th:href="|/product/${product.id}/${product.slug}|">
                                 <img
                                         alt="Image"
@@ -1094,14 +1097,6 @@
 
                                         class="lazyload lazy-effect"
                                 />
-                                <!--                                <img-->
-                                <!--                                        alt="Image"-->
-                                <!--                                        data-sizes="auto"-->
-                                <!--                                        data-srcset="assets/products/1/6b.jpg 400w,-->
-                                <!--                            assets/products/1/6b.jpg 800w"-->
-                                <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-                                <!--                                        class="lazyload lazy-effect hover"-->
-                                <!--                                />-->
                             </a>
                             <!-- Action -->
                             <div class="product-grid-item__action d-flex">
@@ -1129,70 +1124,6 @@
                         <div class="product-grid-item__price" th:text="${product.price} + ' VNĐ'">$32.5</div>
                         <!-- End price -->
                     </div>
-                    <!-- End product -->
-
-
-                    <!-- Product -->
-                    <!--                    <div class="product-grid-item">-->
-                    <!--                        &lt;!&ndash; Tag &ndash;&gt;-->
-                    <!--                        <div class="product-grid-item__tag">10% off</div>-->
-                    <!--                        &lt;!&ndash; End tag &ndash;&gt;-->
-                    <!--                        &lt;!&ndash; Wishlist &ndash;&gt;-->
-                    <!--                        <div class="product-grid-item__wishlist">-->
-                    <!--                            <a href="#"><i class="lnil lnil-heart"></i></a>-->
-                    <!--                        </div>-->
-                    <!--                        &lt;!&ndash; End wishlist &ndash;&gt;-->
-                    <!--                        &lt;!&ndash; Image &ndash;&gt;-->
-                    <!--                        <div class="product-grid-item__image">-->
-                    <!--                            <a href="product.html">-->
-                    <!--                                <img-->
-                    <!--                                        alt="Image"-->
-                    <!--                                        data-sizes="auto"-->
-                    <!--                                        data-srcset="assets/products/1/2_1-a.jpg 400w,-->
-                    <!--                            assets/products/1/2_1-a.jpg 800w"-->
-                    <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-                    <!--                                        class="lazyload lazy-effect"-->
-                    <!--                                />-->
-                    <!--                                <img-->
-                    <!--                                        alt="Image"-->
-                    <!--                                        data-sizes="auto"-->
-                    <!--                                        data-srcset="assets/products/1/2_1-b.jpg 400w,-->
-                    <!--                            assets/products/1/2_1-b.jpg 800w"-->
-                    <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-                    <!--                                        class="lazyload lazy-effect hover"-->
-                    <!--                                />-->
-                    <!--                            </a>-->
-                    <!--                            &lt;!&ndash; Action &ndash;&gt;-->
-                    <!--                            <div class="product-grid-item__action d-flex">-->
-                    <!--                                &lt;!&ndash; Button &ndash;&gt;-->
-                    <!--                                <div class="product-grid-item__button">-->
-                    <!--                                    <a href="#">Add to cart</a>-->
-                    <!--                                </div>-->
-                    <!--                                &lt;!&ndash; End button &ndash;&gt;-->
-                    <!--                                &lt;!&ndash; Button &ndash;&gt;-->
-                    <!--                                <div class="product-grid-item__button">-->
-                    <!--                                    <a href="#">Quick shop</a>-->
-                    <!--                                </div>-->
-                    <!--                                &lt;!&ndash; End button &ndash;&gt;-->
-                    <!--                            </div>-->
-                    <!--                            &lt;!&ndash; End action &ndash;&gt;-->
-                    <!--                        </div>-->
-                    <!--                        &lt;!&ndash; End image &ndash;&gt;-->
-                    <!--                        &lt;!&ndash; Title &ndash;&gt;-->
-                    <!--                        <div class="product-grid-item__title">-->
-                    <!--                            <a href="product.html">Zipped cotton cardigan</a>-->
-                    <!--                        </div>-->
-                    <!--                        &lt;!&ndash; End title &ndash;&gt;-->
-                    <!--                        &lt;!&ndash; Price &ndash;&gt;-->
-                    <!--                        <div class="product-grid-item__price">-->
-                    <!--                            <span class="price-new">$49.5</span>-->
-                    <!--                            <span class="price-old">$68.5</span>-->
-                    <!--                        </div>-->
-                    <!--                        &lt;!&ndash; End price &ndash;&gt;-->
-                    <!--                        &lt;!&ndash; Tag &ndash;&gt;-->
-                    <!--                        <div class="product-grid-item__content-tag">2 colours</div>-->
-                    <!--                        &lt;!&ndash; End tag &ndash;&gt;-->
-                    <!--                    </div>-->
                     <!-- End product -->
 
 

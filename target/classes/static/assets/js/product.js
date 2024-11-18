@@ -1,6 +1,6 @@
 let selectedColorId = null;
 let selectedSizeId = null;
-
+let selectedVariantId = null;
 
 function selectColor(element) {
     // Remove active class from all colors
@@ -12,6 +12,7 @@ function selectColor(element) {
     selectedColorId = element.dataset.colorId;
     console.log("selectedColorId", selectedColorId);
     updateStock();
+    updateSelectedVariant();
 }
 
 function selectSize(element) {
@@ -24,6 +25,25 @@ function selectSize(element) {
     selectedSizeId = element.dataset.sizeId;
     console.log("selectedSizeId", selectedSizeId);
     updateStock();
+    updateSelectedVariant();
+}
+
+
+function updateSelectedVariant() {
+    if (selectedColorId && selectedSizeId) {
+        const variant = variants.find(v =>
+            v.color.id == selectedColorId &&
+            v.size.id == selectedSizeId
+        );
+
+        if (variant) {
+            selectedVariantId = variant.id;
+            console.log("Selected variant:", selectedVariantId);
+        } else {
+            selectedVariantId = null;
+            console.error('No variant found for selected color and size');
+        }
+    }
 }
 
 function updateStock() {
