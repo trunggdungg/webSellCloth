@@ -320,7 +320,7 @@
                 }
             } catch (error) {
                 console.log(error);
-                toastr.error('Có lỗi xảy ra');
+                toastr.error('Cập nhật thất bại');
             }
         });
 
@@ -329,7 +329,6 @@
         inputPoster.addEventListener('change', async function () {
             const file = inputPoster.files[0];
             const thumbnailEl = document.getElementById('thumbnail');
-
 
             if (file) {
                 const reader = new FileReader();
@@ -353,16 +352,22 @@
                 const file = inputPosterEl.files[0];
                 const formData = new FormData();
                 formData.append('file', file);
-                console.log(file);
 
-                const res = await axios.post('/api/admin/${product.id}/images', formData);
-                console.log(res);
+                // Show toastr notification for uploading
+                toastr.info('Đang tải ảnh lên...');
 
+                const res = await axios.post(`/api/admin/products/${product.id}/images`, formData);
+
+                // Update toastr notification on success
+                toastr.clear();
+                toastr.success('Upload ảnh thành công');
                 posterEl.src = res.data.url;
-                alert('Upload ảnh thành công');
             } catch (error) {
                 console.log(error);
+                toastr.clear();
+                toastr.error('Upload ảnh thất bại');
             }
+        
         });
     </script>
 </th:block>

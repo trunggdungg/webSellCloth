@@ -4,20 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="update add to cart, sign up">
+    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="upload img,cap nhat product">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/model/request/UpSertProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/model/request/UpSertProductRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/rest/admin/ProductApiAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/rest/admin/ProductApiAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/product/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/product/create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/product/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/product/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/model/request/UpSertProductRequest$UpSertProductRequestBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/model/request/UpSertProductRequest$UpSertProductRequestBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/model/request/UpSertProductRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/model/request/UpSertProductRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/rest/admin/ProductApiAdmin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/rest/admin/ProductApiAdmin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/product/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/product/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/shop.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/product/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/product/detail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -270,7 +261,7 @@
       <workItem from="1731663345184" duration="22267000" />
       <workItem from="1731716409439" duration="1624000" />
       <workItem from="1731718066077" duration="5893000" />
-      <workItem from="1731914451866" duration="12143000" />
+      <workItem from="1731914451866" duration="13067000" />
     </task>
     <task id="LOCAL-00001" summary="up">
       <option name="closed" value="true" />
@@ -512,7 +503,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731920247982</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="upload img,cap nhat product">
+      <option name="closed" value="true" />
+      <created>1731928231555</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1731928231556</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -547,6 +546,7 @@
     <MESSAGE value="add to cart" />
     <MESSAGE value="upsert product" />
     <MESSAGE value="update add to cart, sign up" />
-    <option name="LAST_COMMIT_MESSAGE" value="update add to cart, sign up" />
+    <MESSAGE value="upload img,cap nhat product" />
+    <option name="LAST_COMMIT_MESSAGE" value="upload img,cap nhat product" />
   </component>
 </project>
