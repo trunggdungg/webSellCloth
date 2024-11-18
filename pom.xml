@@ -68,6 +68,15 @@
             <artifactId>slugify</artifactId>
             <version>3.0.7</version>
         </dependency>
+
+        <!--        cloud-->
+        <!-- https://mvnrepository.com/artifact/com.cloudinary/cloudinary-http44 -->
+        <dependency>
+            <groupId>com.cloudinary</groupId>
+            <artifactId>cloudinary-http44</artifactId>
+            <version>1.39.0</version>
+        </dependency>
+
         <!--ma hoa-->
         <dependency>
             <groupId>org.springframework.security</groupId>

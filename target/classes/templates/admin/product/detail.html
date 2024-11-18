@@ -103,6 +103,12 @@
                                                        th:value="${product.price}"/>
                                             </div>
 
+                                            <div class="form-group">
+                                                <label>Material</label>
+                                                <input id="material" class="form-control" rows="3" name="material"
+                                                       th:value="${product.material}"
+                                                />
+                                            </div>
 
                                         </div>
 
@@ -215,9 +221,13 @@
                     required: true
                 },
                 discount: {
+                    number: true
+                },
+                material: {
                     required: true
                 },
                 price: {
+                    number: true,
                     required: true
                 },
                 status: {
@@ -236,12 +246,15 @@
                 description: {
                     required: 'Mô tả không được để trống'
                 },
-
+                material: {
+                    required: 'Vật liệu không được để trống'
+                },
                 price: {
+                    number: 'Giá phải là số',
                     required: 'Giá không được để trống'
                 },
                 discount: {
-                    required: 'Giảm giá không được để trống'
+                    number: 'Giảm giá phải là số'
                 },
                 status: {
                     required: 'Trạng thái không được để trống'
@@ -273,6 +286,7 @@
         const description = document.getElementById('description');
         // const slug = document.getElementById('slug');
         const price = document.getElementById('price');
+        const material = document.getElementById('material');
         const status = document.getElementById('status');
         const discount = document.getElementById('discount');
         const category = $("#category");
@@ -287,6 +301,7 @@
                 name: title.value,
                 description: description.value,
                 price: Number(price.value),
+                material: material.value,
                 status: status.value === 'true',
                 discount: Number(discount.value),
                 categoryId: Number(category.val())
@@ -299,7 +314,7 @@
             // console.log(request);
             //gọi api cập nhat product
             try {
-                const response = await axios.post(`/api/admin/products`, request);
+                const response = await axios.put(`/api/admin/products/${product.id}`, request);
                 if (response.status === 200) {
                     toastr.success('Cập nhật thành công');
                 }
@@ -309,7 +324,46 @@
             }
         });
 
+        //xu ly chon hinh anh
+        const inputPoster = document.getElementById('input-poster');
+        inputPoster.addEventListener('change', async function () {
+            const file = inputPoster.files[0];
+            const thumbnailEl = document.getElementById('thumbnail');
 
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    console.log("File loaded");
+                    thumbnailEl.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            } else {
+                thumbnailEl.src = '/path/to/default-image.jpg';
+            }
+
+        });
+
+        //upload hinh anh
+        const inputPosterEl = document.getElementById('input-poster');
+        const posterEl = document.getElementById('thumbnail');
+
+        inputPosterEl.addEventListener('change', async function () {
+            try {
+                const file = inputPosterEl.files[0];
+                const formData = new FormData();
+                formData.append('file', file);
+                console.log(file);
+
+                const res = await axios.post('/api/admin/${product.id}/images', formData);
+                console.log(res);
+
+                posterEl.src = res.data.url;
+                alert('Upload ảnh thành công');
+            } catch (error) {
+                console.log(error);
+            }
+        });
     </script>
 </th:block>
 

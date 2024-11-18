@@ -13,6 +13,7 @@ public class UpSertProductRequest {
     String name;
     String description;
     Double price;
+    String material;
     Integer categoryId;
     Boolean status;
     Integer discount;

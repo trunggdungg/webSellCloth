@@ -9,24 +9,25 @@ import com.example.webshopmenswear.repository.ProductRepository;
 import com.github.slugify.Slugify;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
     private final CategoryService categoryService;
+    private final ProductImageRepository productImageRepository;
+    private final CloudinaryService cloudinaryService;
 
-    @Autowired
-    private ProductImageRepository productImageRepository;
 
     public List<Product> loadMoreProducts(Integer offset, Integer limit) {
         return productRepository.findAll(PageRequest.of(offset, limit)).getContent();
@@ -96,6 +97,8 @@ public class ProductService {
         product.setName(request.getName());
         product.setPrice(request.getPrice());
         product.setDiscount(request.getDiscount());
+        product.setMaterial(request.getMaterial());
+        product.setSlug(slg.slugify(request.getName()));
         product.setDescription(request.getDescription());
         product.setStatus(request.getStatus());
         product.setCategory(category);
@@ -111,6 +114,7 @@ public class ProductService {
         Product product = Product.builder()
             .name(request.getName())
             .price(request.getPrice())
+            .material(request.getMaterial())
             .discount(request.getDiscount())
             .description(request.getDescription())
             .slug(slg.slugify(request.getName()))
@@ -120,5 +124,19 @@ public class ProductService {
             .updatedAt(LocalDateTime.now())
             .build();
         return productRepository.save(product);
+    }
+
+    public String uploadImage(Integer id, MultipartFile file) {
+        Product product = productRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Không tìm thấy sản phẩm"));
+        try {
+            Map map = cloudinaryService.uploadFile(file, "productImg");
+            System.out.println(map);
+            String path = map.get("url").toString();
+            product.setImageUrlPrimary(path);
+            productRepository.save(product);
+            return path;
+        } catch (Exception e) {
+            throw new RuntimeException("Lỗi upload ảnh");
+        }
     }
 }

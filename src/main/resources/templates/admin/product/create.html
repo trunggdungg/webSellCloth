@@ -98,7 +98,11 @@
                                                 <input id="price" class="form-control" rows="3" name="price"
                                                 />
                                             </div>
-
+                                            <div class="form-group">
+                                                <label>Material</label>
+                                                <input id="material" class="form-control" rows="3" name="material"
+                                                />
+                                            </div>
 
                                         </div>
 
@@ -141,16 +145,16 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="thumbnail-preview-container mb-3">
-                                                    <img src="" alt="" id="thumbnail"
-                                                         style="max-width: 200px; max-height: 200px"/>
-                                                </div>
-                                                <label for="input-poster" class="btn btn-primary">
-                                                    Chọn hình ảnh
-                                                </label>
-                                                <input type="file" id="input-poster" class="d-none">
-                                            </div>
+                                            <!--                                            <div class="form-group">-->
+                                            <!--                                                <div class="thumbnail-preview-container mb-3">-->
+                                            <!--                                                    <img src="" alt="" id="thumbnail"-->
+                                            <!--                                                         style="max-width: 200px; max-height: 200px"/>-->
+                                            <!--                                                </div>-->
+                                            <!--                                                <label for="input-poster" class="btn btn-primary">-->
+                                            <!--                                                    Chọn hình ảnh-->
+                                            <!--                                                </label>-->
+                                            <!--                                                <input type="file" id="input-poster" class="d-none">-->
+                                            <!--                                            </div>-->
                                         </div>
                                     </div>
                                 </form>
@@ -210,9 +214,13 @@
                     required: true
                 },
                 discount: {
+                    number: true
+                },
+                material: {
                     required: true
                 },
                 price: {
+                    number: true,
                     required: true
                 },
                 status: {
@@ -232,9 +240,13 @@
                     required: 'Mô tả không được để trống'
                 },
                 discount: {
-                    required: 'Discount không được để trống'
+                    number: 'Discount phải là số'
+                },
+                material: {
+                    required: 'Material không được để trống'
                 },
                 price: {
+                    number: 'Giá phải là số',
                     required: 'Giá không được để trống'
                 },
 
@@ -268,6 +280,7 @@
         const description = document.getElementById('description');
         // const slug = document.getElementById('slug');
         const price = document.getElementById('price');
+        const material = document.getElementById('material');
         const status = document.getElementById('status');
         const discount = document.getElementById('discount');
         const category = $("#category");
@@ -282,6 +295,7 @@
                 name: title.value,
                 description: description.value,
                 price: Number(price.value),
+                material: material.value,
                 status: status.value === 'true',
                 discount: Number(discount.value),
                 categoryId: Number(category.val())
@@ -293,15 +307,15 @@
             }
             console.log(request);
             //gọi api cập nhat product
-            // try {
-            //     const response = await axios.put(`/api/admin/products/${product.id}`, request);
-            //     if (response.status === 200) {
-            //         toastr.success('Cập nhật thành công');
-            //     }
-            // } catch (error) {
-            //     console.log(error);
-            //     toastr.error('Có lỗi xảy ra');
-            // }
+            try {
+                const response = await axios.post(`/api/admin/products`, request);
+                if (response.status === 200) {
+                    toastr.success('Tạo mới thành công');
+                }
+            } catch (error) {
+                console.log(error);
+                toastr.error('Có lỗi xảy ra');
+            }
         });
 
 

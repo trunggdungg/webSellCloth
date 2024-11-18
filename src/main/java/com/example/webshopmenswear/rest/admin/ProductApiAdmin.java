@@ -3,11 +3,13 @@ package com.example.webshopmenswear.rest.admin;
 import com.example.webshopmenswear.entity.Product;
 import com.example.webshopmenswear.model.request.UpSertProductRequest;
 import com.example.webshopmenswear.model.response.ErrorResponse;
+import com.example.webshopmenswear.model.response.FileResponse;
 import com.example.webshopmenswear.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
@@ -35,6 +37,15 @@ public class ProductApiAdmin {
                 .build();
             return ResponseEntity.badRequest().body(errorResponse);
         }
+    }
+
+    @PostMapping("/{id}/images")
+    public ResponseEntity<?> uploadImage(@PathVariable Integer id, @RequestParam MultipartFile file) {
+        String path = productService.uploadImage(id, file);
+        FileResponse fileResponse = FileResponse.builder()
+            .url(path)
+            .build();
+        return ResponseEntity.ok(fileResponse);
     }
 
 
