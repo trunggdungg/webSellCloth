@@ -91,11 +91,11 @@
                                                           th:text="${product.description}"></textarea>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label>Slug</label>
-                                                <input id="slug" class="form-control" rows="3" name="slug"
-                                                       th:value="${product.slug}"/>
-                                            </div>
+                                            <!--                                            <div class="form-group">-->
+                                            <!--                                                <label>Slug</label>-->
+                                            <!--                                                <input id="slug" class="form-control" rows="3" name="slug"-->
+                                            <!--                                                       th:value="${product.slug}"/>-->
+                                            <!--                                            </div>-->
 
                                             <div class="form-group">
                                                 <label>Price</label>
@@ -214,8 +214,7 @@
                 description: {
                     required: true
                 },
-
-                slug: {
+                discount: {
                     required: true
                 },
                 price: {
@@ -237,13 +236,13 @@
                 description: {
                     required: 'Mô tả không được để trống'
                 },
-                slug: {
-                    required: 'slug không được để trống'
-                },
+
                 price: {
                     required: 'Giá không được để trống'
                 },
-
+                discount: {
+                    required: 'Giảm giá không được để trống'
+                },
                 status: {
                     required: 'Trạng thái không được để trống'
                 },
@@ -272,7 +271,7 @@
         //truy cap phan tu
         const title = document.getElementById('title');
         const description = document.getElementById('description');
-        const slug = document.getElementById('slug');
+        // const slug = document.getElementById('slug');
         const price = document.getElementById('price');
         const status = document.getElementById('status');
         const discount = document.getElementById('discount');
@@ -287,7 +286,6 @@
             const request = {
                 name: title.value,
                 description: description.value,
-                slug: slug.value,
                 price: Number(price.value),
                 status: status.value === 'true',
                 discount: Number(discount.value),
@@ -301,7 +299,7 @@
             // console.log(request);
             //gọi api cập nhat product
             try {
-                const response = await axios.put(`/api/admin/products/${product.id}`, request);
+                const response = await axios.post(`/api/admin/products`, request);
                 if (response.status === 200) {
                     toastr.success('Cập nhật thành công');
                 }

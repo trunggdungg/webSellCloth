@@ -1,6 +1,7 @@
 package com.example.webshopmenswear.rest;
 
 import com.example.webshopmenswear.model.request.LoginRequest;
+import com.example.webshopmenswear.model.request.SignUpRequest;
 import com.example.webshopmenswear.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,12 @@ public class AuthApi {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         authService.login(loginRequest);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/sign-up")
+    public ResponseEntity<?> signUp(@RequestBody SignUpRequest signUpRequest) {
+        authService.signUp(signUpRequest);
         return ResponseEntity.ok().build();
     }
 

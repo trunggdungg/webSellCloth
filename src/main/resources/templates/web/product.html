@@ -466,7 +466,7 @@
                                         <span class="custom-tooltip" th:text="${color.nameColor}">Color name</span>
                                         <p class="product-grid-item__color"
                                            th:style="'background: ' + ${color.nameColor} + ';'"
-                                           th:classappend="${colorStat.first ? 'active' : ''}">
+                                        >
                                             <span style="border-color: #999"></span>
                                         </p>
                                     </a>
@@ -493,7 +493,7 @@
                                     <a href="#"
                                        th:text="${size.sizeName}"
                                        th:data-size-id="${size.id}"
-                                       th:classappend="${sizeStat.first ? 'active' : ''}"
+
                                        onclick="selectSize(this)">
                                     </a>
                                     <!-- Stock display -->
@@ -1789,14 +1789,14 @@
                                 <img
                                         alt="Image"
                                         data-sizes="auto"
-                                        data-srcset="assets/products/1/6a.jpg 400w,
+                                        data-srcset="/assets/products/1/6a.jpg 400w,
                     /assets/products/1/6a.jpg 800w"
                                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                         class="lazyload lazy-effect"/>
                                 <img
                                         alt="Image"
                                         data-sizes="auto"
-                                        data-srcset="assets/products/1/6b.jpg 400w,
+                                        data-srcset="/assets/products/1/6b.jpg 400w,
                     /assets/products/1/6b.jpg 800w"
                                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                         class="lazyload lazy-effect hover"/>
@@ -2107,18 +2107,25 @@
     document.getElementById('addToCart').addEventListener('click', function (event) {
         event.preventDefault();
 
-        // Get the selected variant ID
-        const variantId = variants[0].id; // Replace with the actual logic to get the selected variant ID
+        if (!selectedVariantId) {
+            toastr.error("Vui lòng chọn size và màu sắc");
+            return;
+        }
 
         // Get the quantity from the input field
         const quantity = parseInt(document.getElementById('quantity').value);
+
+        if (quantity <= 0) {
+            toastr.error("Vui lòng chọn số lượng");
+            return;
+        }
 
         // Calculate the price based on the quantity
         const price = quantity * productPrice;
 
         // Create the request payload
         const cartDetailRequest = {
-            productId: variantId,
+            productId: selectedVariantId, // Use the selected variant ID
             quantity: quantity,
             price: price
         };

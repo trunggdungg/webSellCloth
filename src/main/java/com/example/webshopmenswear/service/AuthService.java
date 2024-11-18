@@ -1,12 +1,16 @@
 package com.example.webshopmenswear.service;
 
 import com.example.webshopmenswear.entity.User;
+import com.example.webshopmenswear.model.Enum.UserRole;
 import com.example.webshopmenswear.model.request.LoginRequest;
+import com.example.webshopmenswear.model.request.SignUpRequest;
 import com.example.webshopmenswear.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -25,8 +29,11 @@ public class AuthService {
             throw new RuntimeException("Invalid password");
         }
 
-        httpSession.setAttribute("CURRENT_USER", user);
+        if (!user.getIsActive()) {
+            throw new RuntimeException("User is not active");
+        }
 
+        httpSession.setAttribute("CURRENT_USER", user);
     }
 
     public void logout() {
@@ -41,4 +48,28 @@ public class AuthService {
         return user;
     }
 
+    public void signUp(SignUpRequest signUpRequest) {
+        if (!signUpRequest.getPassword().equals(signUpRequest.getConfirmPassword())) {
+            throw new RuntimeException("Password and confirm password do not match");
+        }
+
+        if (userRepository.findByEmail(signUpRequest.getEmail()).isPresent()) {
+            throw new RuntimeException("Email already exists");
+        }
+
+        User user = User.builder()
+            .email(signUpRequest.getEmail())
+            .password(bCryptPasswordEncoder.encode(signUpRequest.getPassword()))
+            .fullName(signUpRequest.getFullName())
+            .username(signUpRequest.getUsername())
+            .phoneNumber(signUpRequest.getPhone())
+            .avatar("static/assets/images/avata_img.jpg")
+            .userRole(UserRole.USER)
+            .isActive(true)
+            .createdAt(LocalDateTime.now())
+            .updatedAt(LocalDateTime.now())
+            .build();
+
+        userRepository.save(user);
+    }
 }

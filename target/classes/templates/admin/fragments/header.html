@@ -111,5 +111,16 @@
         </nav>
     </div>
 </aside>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll('.nav-treeview a');
+        links.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.stopPropagation(); // Ngăn việc đóng menu
+            });
+        });
+    });
+</script>
+
 </body>
 </html>

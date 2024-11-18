@@ -97,11 +97,28 @@ public class ProductService {
         product.setPrice(request.getPrice());
         product.setDiscount(request.getDiscount());
         product.setDescription(request.getDescription());
-        product.setSlug(slg.slugify(request.getName()));
         product.setStatus(request.getStatus());
         product.setCategory(category);
         product.setUpdatedAt(LocalDateTime.now());
 
+        return productRepository.save(product);
+    }
+
+    public Product createProduct(UpSertProductRequest request) {
+        Category category = categoryService.findById(request.getCategoryId());
+        Slugify slg = Slugify.builder().build();
+
+        Product product = Product.builder()
+            .name(request.getName())
+            .price(request.getPrice())
+            .discount(request.getDiscount())
+            .description(request.getDescription())
+            .slug(slg.slugify(request.getName()))
+            .status(request.getStatus())
+            .category(category)
+            .createdAt(LocalDateTime.now())
+            .updatedAt(LocalDateTime.now())
+            .build();
         return productRepository.save(product);
     }
 }

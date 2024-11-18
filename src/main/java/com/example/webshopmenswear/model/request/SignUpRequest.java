@@ -9,11 +9,11 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UpSertProductRequest {
-    String name;
-    String description;
-    Double price;
-    Integer categoryId;
-    Boolean status;
-    Integer discount;
+public class SignUpRequest {
+    String email;
+    String password;
+    String confirmPassword;
+    String fullName;
+    String username;
+    String phone;
 }

@@ -25,7 +25,8 @@ public class ProductController {
     }
 
     @GetMapping("/create")
-    public String createProductPage() {
+    public String createProductPage(Model model) {
+        model.addAttribute("categories", categoryService.getAllCategory());
         return "/admin/product/create";
     }
 

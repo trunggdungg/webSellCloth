@@ -32,6 +32,7 @@ public class Product {
 
     @Column(nullable = false)
     String slug;
+    String material;
     Integer discount;
     String description;
 

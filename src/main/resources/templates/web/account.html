@@ -438,38 +438,53 @@
                             <p class="login__description">Create an account below:</p>
                             <!-- End login description -->
                             <!-- Form -->
-                            <form>
+                            <form id="formSignUp">
                                 <!-- Form groups -->
                                 <div class="row form-groups">
+
                                     <div class="col-6">
                                         <!-- Form group -->
                                         <div class="form-group">
-                                            <input type="text" name="customer[first_name]" placeholder="First name"
-                                                   class="form-group__input" style="font-size: 20px">
+                                            <input type="text" name="customer[user_name]" placeholder="User name"
+                                                   class="form-group__input" style="font-size: 20px" id="usernameSu">
                                         </div>
                                         <!-- End form group -->
                                     </div>
                                     <div class="col-6">
                                         <!-- Form group -->
                                         <div class="form-group">
-                                            <input type="text" name="customer[last_name]" placeholder="Last name"
-                                                   class="form-group__input" style="font-size: 20px">
+                                            <input type="text" name="customer[phone]" placeholder="Phone "
+                                                   class="form-group__input" style="font-size: 20px" id="phoneSu">
                                         </div>
                                         <!-- End form group -->
                                     </div>
+
                                 </div>
                                 <!-- End form groups -->
+
+                                <!-- End form group -->
+                                <div class="form-group required">
+                                    <input type="text" required="required" name="customer[fullName]"
+                                           placeholder="Full name" class="form-group__input"
+                                           style="font-size: 20px" id="fullnameSu">
+                                </div>
                                 <!-- Form group -->
                                 <div class="form-group required">
                                     <input type="email" required="required" name="customer[email]"
                                            placeholder="Email address" class="form-group__input"
-                                           style="font-size: 20px">
+                                           style="font-size: 20px" id="emailSu">
                                 </div>
-                                <!-- End form group -->
                                 <!-- Form group -->
                                 <div class="form-group required">
                                     <input type="password" required="required" name="customer[password]"
-                                           placeholder="Password" class="form-group__input" style="font-size: 20px">
+                                           placeholder="Password" class="form-group__input" style="font-size: 20px"
+                                           id="passwordSu">
+                                </div>
+                                <div class="form-group required">
+                                    <input type="password" required="required" name="customer[password-confirm]"
+                                           placeholder="Confirm Password" class="form-group__input"
+                                           style="font-size: 20px"
+                                           id="passwordConfirmSu">
                                 </div>
                                 <!-- End form group -->
                                 <!-- Action -->
