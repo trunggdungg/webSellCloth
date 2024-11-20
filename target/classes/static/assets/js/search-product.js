@@ -34,8 +34,8 @@ function displayProducts(products) {
 
     products.forEach(product => {
         // Lấy ảnh đầu tiên từ productFirstImageMap
-        const firstImage = productImagesMap[product.id].find(image => image.isPrimary);
-        console.log("image of product", firstImage);
+        // const firstImage = productImagesMap[product.id].find(image => image.isPrimary);
+        // console.log("image of product", firstImage);
         const productItem = document.createElement("div");
         productItem.classList.add("product-grid-item");
         productItem.innerHTML = `
@@ -55,7 +55,7 @@ function displayProducts(products) {
                         <img
                             alt="Image"
                             data-sizes="auto"
-                            src="${firstImage.imageUrl}"
+                            src="${product.imageUrlPrimary}"
                             class="lazyload lazy-effect"
                         />
                     </a>

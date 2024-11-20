@@ -72,4 +72,8 @@ public class AuthService {
 
         userRepository.save(user);
     }
+
+    public Object getAllUsers() {
+        return userRepository.findAll();
+    }
 }

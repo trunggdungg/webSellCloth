@@ -392,6 +392,16 @@
                 <div class="product__thumbnails">
                     <!-- Carousel -->
                     <div class="js-product-thumbnails-carousel">
+
+                        <div class="product-thumbnail">
+                            <a href="#" class="active">
+                                <img
+                                        alt="Product Image"
+                                        data-sizes="auto"
+                                        th:src="${productsDetail.imageUrlPrimary}"
+                                        class="lazyload lazy-effect"/>
+                            </a>
+                        </div>
                         <!-- Image -->
                         <div class="product-thumbnail" th:each="productImage : ${productImages}">
                             <a href="#" class="active">
@@ -409,6 +419,16 @@
                 <div class="product__images js-popup-gallery">
                     <!-- Carousel -->
                     <div class="js-product-images-carousel">
+                        <!-- Nếu là ảnh chính -->
+                        <div class="product-image" th:if="${productsDetail.imageUrlPrimary != null}">
+                            <a th:href="${productsDetail.imageUrlPrimary}">
+                                <img
+                                        alt="Main Product Image"
+                                        data-sizes="auto"
+                                        th:src="${productsDetail.imageUrlPrimary}"
+                                        class="lazyload lazy-effect"/>
+                            </a>
+                        </div>
                         <!-- Image -->
                         <div class="product-image" th:each="productImage : ${productImages}">
                             <a th:href="${productImage.imageUrl}">
@@ -1065,39 +1085,43 @@
                     <p>
                         <img
                                 alt="Image"
-                                src="/assets/products/1/2_1-a.jpg"/>
+                                th:src="${productsDetail.imageUrlPrimary}"/>
                     </p>
                 </div>
                 <!-- End product image -->
                 <!-- Product name -->
-                <div class="sticky-add-to-cart__product-name">Zipped cardigan cotton</div>
+                <div class="sticky-add-to-cart__product-name" th:text="${productsDetail.name}">Zipped cardigan cotton
+                </div>
                 <!-- End product name -->
                 <!-- Product price -->
-                <div class="sticky-add-to-cart__product-price">$99</div>
+                <div class="sticky-add-to-cart__product-price" th:text="${productsDetail.price}">$99</div>
                 <!-- End product price -->
                 <!-- Product options -->
-                <div class="sticky-add-to-cart__product-options d-flex align-items-center">
-                    <!-- Color -->
-                    <div class="sticky-add-to-cart__color"><p style="background: #484540"></p><span>Grey</span></div>
-                    <!-- End color -->
-                    <!-- Standard option -->
-                    <div class="sticky-add-to-cart__standard-option">Choose your size</div>
-                    <!-- End standard option -->
-                </div>
+                <!--                <div class="sticky-add-to-cart__product-options d-flex align-items-center">-->
+                <!--                    &lt;!&ndash; Color &ndash;&gt;-->
+                <!--                    <div class="sticky-add-to-cart__color"><p style="background: #484540"></p><span>Grey</span></div>-->
+                <!--                    &lt;!&ndash; End color &ndash;&gt;-->
+                <!--                    &lt;!&ndash; Standard option &ndash;&gt;-->
+                <!--                    <div class="sticky-add-to-cart__standard-option">Choose your size</div>-->
+                <!--                    &lt;!&ndash; End standard option &ndash;&gt;-->
+                <!--                </div>-->
                 <!-- End product options -->
                 <!-- Quantity -->
-                <div class="sticky-add-to-cart__quantity">
-                    <div class="sticky-add-to-cart-quantity__minus js-quantity-down"><a href="#"><i
-                            class="lnil lnil-minus"></i></a></div>
-                    <input type="text" value="2" class="sticky-add-to-cart-quantity__input js-quantity-field">
-                    <div class="sticky-add-to-cart-quantity__plus js-quantity-up"><a href="#"><i
-                            class="lnil lnil-plus"></i></a></div>
-                </div>
+                <!--                <div class="sticky-add-to-cart__quantity">-->
+                <!--                    <div class="sticky-add-to-cart-quantity__minus js-quantity-down"><a href="#"><i-->
+                <!--                            class="lnil lnil-minus"></i></a></div>-->
+                <!--                    <input type="text" value="2" class="sticky-add-to-cart-quantity__input js-quantity-field">-->
+                <!--                    <div class="sticky-add-to-cart-quantity__plus js-quantity-up"><a href="#"><i-->
+                <!--                            class="lnil lnil-plus"></i></a></div>-->
+                <!--                </div>-->
                 <!-- End quantity -->
                 <!-- Add to cart -->
                 <div class="sticky-add-to-cart__add-to-cart">
-                    <a href="#" class="second-button">Add to cart</a>
+                    <a href="#"
+                       onclick="scrollToTopAndNavigate(event, `/product/${productsDetail.id}/${productsDetail.slug}`)"
+                       class="second-button">Add to cart</a>
                 </div>
+
                 <!-- End add to cart -->
             </div>
             <!-- End d-flex -->
@@ -1133,7 +1157,7 @@
                                 <img
                                         alt="Image"
                                         data-sizes="auto"
-                                        th:src="${productImagesMapOutFit[Category.id].get(0).imageUrl}"
+                                        th:src="${Category.imageUrlPrimary}"
                                         class="lazyload lazy-effect"/>
                             </a>
                         </div>
@@ -1186,7 +1210,7 @@
                 <!-- Carousel -->
                 <div class="home-products__carousel js-home-products-5-carousel">
                     <!-- Vòng lặp cho sản phẩm -->
-                    <div th:each="productSimilar : ${get3product}">
+                    <div th:each="productSimilar : ${get4product}">
                         <div class="product-grid-item">
                             <!-- Tag -->
                             <div class="product-grid-item__tag product-grid-item__tag--sold-out">Sold out</div>
@@ -1202,7 +1226,7 @@
                                     <img
                                             alt="Image"
                                             data-sizes="auto"
-                                            th:src="${similarProductImages.get(productSimilar.id).size() > 0 ? similarProductImages.get(productSimilar.id).get(0).imageUrl : ''}"
+                                            th:src="${productSimilar.imageUrlPrimary}"
                                             class="lazyload lazy-effect"/>
                                 </a>
                             </div>
@@ -1238,389 +1262,7 @@
     <div class="container">
         <hr style="background: #e3e3e3"/>
     </div>
-    <!-- End line 1px -->
-    <!-- Home products -->
-    <div class="home-products home-products--type-8 home-products--recently-viewed">
-        <!-- Container -->
-        <div class="container">
-            <!-- Products container -->
-            <div class="home-products__container">
-                <!-- Title and action -->
-                <div class="home-products__title-and-action d-flex">
-                    <!-- Title -->
-                    <h4 class="home-products__title">Last Items Viewed</h4>
-                    <!-- End title -->
-                    <!-- Action -->
-                    <div class="home-products__action"><a href="shop.html">View all <i
-                            class="lnil lnil-chevron-right"></i></a></div>
-                    <!-- End action -->
-                </div>
-                <!-- End title and action -->
-                <!-- Carousel -->
-                <div class="home-products__carousel js-home-products-2-carousel">
-                    <!-- Product -->
-                    <div class="product-grid-item">
-                        <!-- Wishlist -->
-                        <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
-                        <!-- End wishlist -->
-                        <!-- Image -->
-                        <div class="product-grid-item__image">
-                            <a href="product.html">
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/1b.jpg 400w,
-                    /assets/products/1/1b.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect"/>
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/1c.jpg 400w,
-                    /assets/products/1/1c.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect hover"/>
-                            </a>
-                        </div>
-                        <!-- End image -->
-                        <!-- Title -->
-                        <div class="product-grid-item__title"><a href="product.html">Crew neck cotton sweatshirt</a>
-                        </div>
-                        <!-- End title -->
-                        <!-- Rating -->
-                        <div class="product-grid-item__rating">
-                            <i class="lnir lnir-star-filled active"></i>
-                            <i class="lnir lnir-star-filled active"></i>
-                            <i class="lnir lnir-star-filled active"></i>
-                            <i class="lnir lnir-star-filled active"></i>
-                            <i class="lnir lnir-star-filled active"></i>
-                            <span>3 reviews</span>
-                        </div>
-                        <!-- End rating -->
-                        <!-- Price -->
-                        <div class="product-grid-item__price">
-                            $79.9
-                        </div>
-                        <!-- End price -->
-                        <!-- Action -->
-                        <div class="product-grid-item__action d-flex">
-                            <!-- Button -->
-                            <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
-                            <!-- End button -->
-                        </div>
-                        <!-- End action -->
-                    </div>
-                    <!-- End product -->
-                    <!-- Product -->
-                    <div class="product-grid-item">
-                        <!-- Wishlist -->
-                        <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
-                        <!-- End wishlist -->
-                        <!-- Image -->
-                        <div class="product-grid-item__image">
-                            <a href="product.html">
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/15a.jpg 400w,
-                    /assets/products/1/15a.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect"/>
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/15b.jpg 400w,
-                    /assets/products/1/15b.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect hover"/>
-                            </a>
-                        </div>
-                        <!-- End image -->
-                        <!-- Title -->
-                        <div class="product-grid-item__title"><a href="product.html">Chonograph Watch with leather
-                            belt</a></div>
-                        <!-- End title -->
-                        <!-- Rating -->
-                        <div class="product-grid-item__rating">
-                            <i class="lnir lnir-star-filled active"></i>
-                            <i class="lnir lnir-star-filled active"></i>
-                            <i class="lnir lnir-star-filled active"></i>
-                            <i class="lnir lnir-star-filled active"></i>
-                            <i class="lnir lnir-star-filled"></i>
-                            <span>1 review</span>
-                        </div>
-                        <!-- End rating -->
-                        <!-- Price -->
-                        <div class="product-grid-item__price">
-                            $149.5
-                        </div>
-                        <!-- End price -->
-                        <!-- Tag -->
-                        <div class="product-grid-item__content-tag">3 colours</div>
-                        <!-- End tag -->
-                        <!-- Action -->
-                        <div class="product-grid-item__action d-flex">
-                            <!-- Button -->
-                            <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
-                            <!-- End button -->
-                        </div>
-                        <!-- End action -->
-                    </div>
-                    <!-- End product -->
-                    <!-- Product -->
-                    <div class="product-grid-item">
-                        <!-- Wishlist -->
-                        <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
-                        <!-- End wishlist -->
-                        <!-- Image -->
-                        <div class="product-grid-item__image">
-                            <a href="product.html">
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/9a.jpg 400w,
-                    /assets/products/1/9a.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect"/>
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/9b.jpg 400w,
-                    /assets/products/1/9b.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect hover"/>
-                            </a>
-                        </div>
-                        <!-- End image -->
-                        <!-- Title -->
-                        <div class="product-grid-item__title"><a href="product.html">100% wool twill scarf</a></div>
-                        <!-- End title -->
-                        <!-- Price -->
-                        <div class="product-grid-item__price">
-                            $79.9 - $459.5
-                        </div>
-                        <!-- End price -->
-                        <!-- Action -->
-                        <div class="product-grid-item__action d-flex">
-                            <!-- Button -->
-                            <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
-                            <!-- End button -->
-                        </div>
-                        <!-- End action -->
-                    </div>
-                    <!-- End product -->
-                    <!-- Product -->
-                    <div class="product-grid-item">
-                        <!-- Wishlist -->
-                        <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
-                        <!-- End wishlist -->
-                        <!-- Image -->
-                        <div class="product-grid-item__image">
-                            <a href="product.html">
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/16a.jpg 400w,
-                    /assets/products/1/16a.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect"/>
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/16b.jpg 400w,
-                    /assets/products/1/16b.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect hover"/>
-                            </a>
-                        </div>
-                        <!-- End image -->
-                        <!-- Title -->
-                        <div class="product-grid-item__title"><a href="product.html">Brown leather wallet in box
-                            style</a></div>
-                        <!-- End title -->
-                        <!-- Rating -->
-                        <div class="product-grid-item__rating">
-                            <i class="lnir lnir-star-filled active"></i>
-                            <i class="lnir lnir-star-filled active"></i>
-                            <i class="lnir lnir-star-filled active"></i>
-                            <i class="lnir lnir-star-filled active"></i>
-                            <i class="lnir lnir-star-filled active"></i>
-                            <span>3 reviews</span>
-                        </div>
-                        <!-- End rating -->
-                        <!-- Price -->
-                        <div class="product-grid-item__price">
-                            <span class="price-new">$69.5</span>
-                            <span class="price-old">$99.5</span>
-                        </div>
-                        <!-- End price -->
-                        <!-- Tag -->
-                        <div class="product-grid-item__content-tag">2 colours</div>
-                        <!-- End tag -->
-                        <!-- Action -->
-                        <div class="product-grid-item__action d-flex">
-                            <!-- Button -->
-                            <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
-                            <!-- End button -->
-                        </div>
-                        <!-- End action -->
-                    </div>
-                    <!-- End product -->
-                    <!-- Product -->
-                    <div class="product-grid-item">
-                        <!-- Tag -->
-                        <div class="product-grid-item__tag product-grid-item__tag--sold-out">Sold out</div>
-                        <!-- End tag -->
-                        <!-- Wishlist -->
-                        <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
-                        <!-- End wishlist -->
-                        <!-- Image -->
-                        <div class="product-grid-item__image">
-                            <a href="product.html">
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/8a.jpg 400w,
-                    /assets/products/1/8a.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect"/>
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/8b.jpg 400w,
-                    /assets/products/1/8b.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect hover"/>
-                            </a>
-                        </div>
-                        <!-- End image -->
-                        <!-- Title -->
-                        <div class="product-grid-item__title"><a href="product.html">Hand cleaner gel pure bergamot</a>
-                        </div>
-                        <!-- End title -->
-                        <!-- Price -->
-                        <div class="product-grid-item__price">
-                            $32.5
-                        </div>
-                        <!-- End price -->
-                        <!-- Action -->
-                        <div class="product-grid-item__action d-flex">
-                            <!-- Button -->
-                            <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
-                            <!-- End button -->
-                        </div>
-                        <!-- End action -->
-                    </div>
-                    <!-- End product -->
-                    <!-- Product -->
-                    <div class="product-grid-item">
-                        <!-- Wishlist -->
-                        <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
-                        <!-- End wishlist -->
-                        <!-- Image -->
-                        <div class="product-grid-item__image">
-                            <a href="product.html">
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/13a.jpg 400w,
-                    /assets/products/1/13a.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect"/>
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/13b.jpg 400w,
-                    /assets/products/1/13b.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect hover"/>
-                            </a>
-                        </div>
-                        <!-- End image -->
-                        <!-- Title -->
-                        <div class="product-grid-item__title"><a href="product.html">Chrome acetate sunglasses</a></div>
-                        <!-- End title -->
-                        <!-- Rating -->
-                        <div class="product-grid-item__rating">
-                            <i class="lnir lnir-star-filled active"></i>
-                            <i class="lnir lnir-star-filled active"></i>
-                            <i class="lnir lnir-star-filled active"></i>
-                            <i class="lnir lnir-star-filled active"></i>
-                            <i class="lnir lnir-star-filled active"></i>
-                            <span>3 reviews</span>
-                        </div>
-                        <!-- End rating -->
-                        <!-- Price -->
-                        <div class="product-grid-item__price">
-                            $72.9
-                        </div>
-                        <!-- End price -->
-                        <!-- Action -->
-                        <div class="product-grid-item__action d-flex">
-                            <!-- Button -->
-                            <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
-                            <!-- End button -->
-                        </div>
-                        <!-- End action -->
-                    </div>
-                    <!-- End product -->
-                    <!-- Product -->
-                    <div class="product-grid-item">
-                        <!-- Tag -->
-                        <div class="product-grid-item__tag">10% off</div>
-                        <!-- End tag -->
-                        <!-- Wishlist -->
-                        <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
-                        <!-- End wishlist -->
-                        <!-- Image -->
-                        <div class="product-grid-item__image">
-                            <a href="product.html">
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/2_1-a.jpg 400w,
-                    /assets/products/1/2_1-a.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect"/>
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="/assets/products/1/2_1-b.jpg 400w,
-                    /assets/products/1/2_1-b.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect hover"/>
-                            </a>
-                        </div>
-                        <!-- End image -->
-                        <!-- Title -->
-                        <div class="product-grid-item__title"><a href="product.html">Zipped cotton cardigan</a></div>
-                        <!-- End title -->
-                        <!-- Price -->
-                        <div class="product-grid-item__price">
-                            <span class="price-new">$49.5</span>
-                            <span class="price-old">$68.5</span>
-                        </div>
-                        <!-- End price -->
-                        <!-- Tag -->
-                        <div class="product-grid-item__content-tag">2 colours</div>
-                        <!-- End tag -->
-                        <!-- Action -->
-                        <div class="product-grid-item__action d-flex">
-                            <!-- Button -->
-                            <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
-                            <!-- End button -->
-                        </div>
-                        <!-- End action -->
-                    </div>
-                    <!-- End product -->
-                </div>
-                <!-- End carousel -->
-            </div>
-            <!-- End products container -->
-        </div>
-        <!-- End container -->
-    </div>
-    <!-- End home products -->
+
     <!-- Footer -->
     <footer class="footer">
         <!-- Container -->
@@ -2078,8 +1720,8 @@
     let variants = [[${variants}]];
     console.log("variants:", variants);
 
-    let productImagesMap = [[${productImagesMapOutFit}]];
-    console.log("productImagesMap:", productImagesMap);
+    const productsDetail = [[${productsDetail}]];
+
 
 </script>
 
@@ -2211,6 +1853,14 @@
         subtotalTitleEl.innerHTML = `$${totalPriceSub.toFixed(2)}`; // Đảm bảo hiển thị với 2 chữ số thập phân
     }
 
+    function scrollToTopAndNavigate(event, url) {
+        event.preventDefault(); // Ngăn hành vi mặc định
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Cuộn mượt mà
+        });
+    }
+
 </script>
-<!-- Mirrored from martfury.pl/utero/html/v1/product.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Oct 2024 06:58:22 GMT -->
+
 </html>

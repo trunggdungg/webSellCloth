@@ -7,64 +7,31 @@
 <body>
 
 <!-- Header -->
-<header class="header header--type-8 js-header">
+<header class="header js-header">
     <!-- Container -->
-    <div class="container container--type-5">
+    <div class="container container--type-2">
         <!-- Header container -->
         <div class="header__container d-flex align-items-center">
             <!-- Logo -->
             <h1 class="header__logo">
-                <a href="index.html">
-                    UTERO
-                </a>
+                <a href="/"> UTERO </a>
             </h1>
             <!-- End logo -->
-
             <!-- Navigation -->
             <ul class="header__nav">
                 <li>
-                    <a href="/" class="nav__item">Home</a>
+                    <a href="/" class="nav__item nav__item--current">Home</a>
+
                 </li>
                 <li>
-                    <a href="/shop" class="nav__item nav__item--current">Shop</a>
-                    <!-- MegaMenu -->
-                    <div class="nav__mega-menu">
-                        <!-- Column -->
-                        <div class="mega-menu__standard-column">
-                            <!-- Column nav -->
-                            <ul class="standard-column__nav">
-                                <li><a href="#">Clothings</a></li>
-                                <li><a href="#">Shoes</a></li>
-                                <li><a href="#">Bags</a></li>
-                                <li><a href="#">Accessories</a></li>
-                            </ul>
-                            <!-- End column nav -->
-                        </div>
-                        <!-- End column -->
-                    </div>
-                    <!-- End MegaMenu -->
+                    <a href="/shop" class="nav__item">Shop</a>
+
                 </li>
-                <li>
-                    <a href="#" class="nav__item">Pages</a>
-                    <!-- MegaMenu -->
-                    <div class="nav__mega-menu">
-                        <!-- Column -->
-                        <div class="mega-menu__standard-column">
-                            <!-- Column nav -->
-                            <ul class="standard-column__nav">
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a href="faq.html">Faq</a></li>
-                            </ul>
-                            <!-- End column nav -->
-                        </div>
-                        <!-- End column -->
-                    </div>
-                    <!-- End MegaMenu -->
-                </li>
+                <!--                    <li>-->
+                <!--                        <a href="/product" class="nav__item ">Product</a>-->
+                <!--                    </li>-->
             </ul>
             <!-- End navigation -->
-
             <!-- Header right -->
             <ul class="header__right">
                 <li>
@@ -72,131 +39,83 @@
                     ><i class="lnil lnil-search-alt"></i
                     ></a>
                 </li>
-                <li>
-                    <a href="/account"><i class="lnil lnil-user"></i></a>
-                </li>
-                <li class="header__cart">
-                    <a href="/cart"
-                    ><i class="lnil lnil-cart"></i><span>2</span>
-                        <p class="header-cart__price">$225.00</p></a
-                    >
+
+                <li class="header__cart user-menu">
+                    <a href="#"><i class="lnil lnil-user"></i></a>
                     <!-- Header cart -->
                     <div class="header-cart">
                         <!-- Cart items -->
                         <ul class="header-cart__items">
-                            <!-- Item -->
-                            <li class="cart-item d-flex">
-                                <!-- Item image -->
-                                <p class="cart-item__image">
-                                    <a href="product.html">
-                                        <img
-                                                alt="Image"
-                                                data-sizes="auto"
-                                                data-srcset="/web-assets/products/1/10a.jpg 400w,
-                        /web-assets/products/1/10a.jpg 800w"
-                                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                class="lazyload lazy-effect"
-                                        />
-                                    </a>
-                                </p>
-                                <!-- End item image -->
-                                <!-- Item details -->
+                            <li class="cart-item d-flex" th:if="${session.CURRENT_USER == null}">
                                 <p class="cart-item__details">
-                                    <a href="product.html" class="cart-item__title"
-                                    >Slim fit modal cotton shirt</a
-                                    >
-                                    <span class="cart-item__variant">Grey, M</span>
-                                    <span class="cart-ietm__price">2 <i>x</i> $113.99</span>
+                                    <a href="/account" class="cart-item__title">Đăng nhập</a>
                                 </p>
-                                <!-- End item details -->
-                                <!-- Item delete -->
-                                <p class="cart-item__delete">
-                                    <a href="#"><i class="lnil lnil-close"></i></a>
-                                </p>
-                                <!-- Item delete -->
                             </li>
-                            <!-- End item -->
+                            <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
+                                <p class="cart-item__details">
+                                    <a href="/profile" class="cart-item__title">Thông tin cá nhân</a>
+                                </p>
+                            </li>
+                            <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
+                                <p class="cart-item__details">
+                                    <a onclick="logout()" style="cursor: pointer" class="cart-item__title">Đăng
+                                        xuất</a>
+                                </p>
+                            </li>
+                        </ul>
+                        <!-- Subtotal -->
+                        <div class="header-cart__subtotal d-flex" th:if="${session.CURRENT_USER != null}">
+                            <div class="subtotal__title">Xin chào</div>
+                            <div class="subtotal__value" th:text="${session.CURRENT_USER.fullName}">Trung Dũng</div>
+                        </div>
 
-                            <!-- Item -->
+                        <ul class="header-cart__items mt-2"
+                            th:if="${session.CURRENT_USER != null && session.CURRENT_USER.userRole.toString() == 'ADMIN'}">
                             <li class="cart-item d-flex">
-                                <!-- Item image -->
-                                <p class="cart-item__image">
-                                    <a href="product.html">
-                                        <img
-                                                alt="Image"
-                                                data-sizes="auto"
-                                                data-srcset="/web-assets/products/1/11a.jpg 400w,
-                        /web-assets/products/1/11a.jpg 800w"
-                                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                class="lazyload lazy-effect"
-                                        />
-                                    </a>
-                                </p>
-                                <!-- End item image -->
-                                <!-- Item details -->
                                 <p class="cart-item__details">
-                                    <a href="product.html" class="cart-item__title"
-                                    >Suede sport shoes</a
-                                    >
-                                    <span class="cart-item__variant">Bold Brown, 40</span>
-                                    <span class="cart-ietm__price">1 <i>x</i> $45.5</span>
+                                    <a href="/admin/product" class="cart-item__title">Quản lý</a>
                                 </p>
-                                <!-- End item details -->
-                                <!-- Item delete -->
-                                <p class="cart-item__delete">
-                                    <a href="#"><i class="lnil lnil-close"></i></a>
-                                </p>
-                                <!-- Item delete -->
                             </li>
-                            <!-- End item -->
+                        </ul>
+                    </div>
+                </li>
 
-                            <!-- Item -->
-                            <li class="cart-item d-flex">
-                                <!-- Item image -->
-                                <p class="cart-item__image">
-                                    <a href="product.html">
-                                        <img
-                                                alt="Image"
-                                                data-sizes="auto"
-                                                data-srcset="/web-assets/products/1/12a.jpg 400w,
-                        /web-assets/products/1/12a.jpg 800w"
-                                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                class="lazyload lazy-effect"
-                                        />
-                                    </a>
-                                </p>
-                                <!-- End item image -->
-                                <!-- Item details -->
+
+                <li class="header__cart">
+                    <a href="/cart"
+                    ><i class="lnil lnil-cart"></i><span th:if="${session.CURRENT_USER != null}"
+                                                         id="cart-count">0</span>
+                        <p class="header-cart__price totalPrice" th:if="${session.CURRENT_USER != null}">$00</p>
+                    </a
+                    >
+                    <!-- Header cart -->
+                    <div class="header-cart">
+
+                        <!-- Cart items -->
+                        <ul class="header-cart__items">
+                            <li class="cart-item d-flex" th:if="${session.CURRENT_USER == null}">
                                 <p class="cart-item__details">
-                                    <a href="product.html" class="cart-item__title"
-                                    >Pebbled crossbody belt bag</a
-                                    >
-                                    <span class="cart-ietm__price">1 <i>x</i> $129.99</span>
+                                        <span class="cart-item__title"
+                                              style="font-size: 20px; pointer-events: none;cursor: default;">Giỏ hàng trống!</span>
                                 </p>
-                                <!-- End item details -->
-                                <!-- Item delete -->
-                                <p class="cart-item__delete">
-                                    <a href="#"><i class="lnil lnil-close"></i></a>
-                                </p>
-                                <!-- Item delete -->
                             </li>
-                            <!-- End item -->
+                            <!-- Item -->
+                            <ul class="cart-container ">
+                                <!-- Danh sách sản phẩm trong giỏ hàng sẽ được thêm vào đây bằng JavaScript -->
+                            </ul>
+
                         </ul>
                         <!-- End cart items -->
-
                         <!-- Subtotal -->
-                        <div class="header-cart__subtotal d-flex">
-                            <!-- Title -->
-                            <div class="subtotal__title">Subtotal</div>
-                            <!-- End title -->
-                            <!-- Value -->
-                            <div class="subtotal__value">$272.47</div>
-                            <!-- End value -->
-                        </div>
-                        <!-- End subtotal -->
+                        <div class="header-cart__subtotal d-flex" th:if="${session.CURRENT_USER != null}">
 
-                        <!-- Header cart action -->
-                        <div class="header-cart__action">
+                            <div class="subtotal__title">Subtotal</div>
+
+                            <div class="subtotal__value totalPrice">$272.47</div>
+
+                        </div>
+
+                        <div class="header-cart__action" th:if="${session.CURRENT_USER != null}">
                             <a
                                     href="checkout.html"
                                     class="header-cart__button header-cart__button--checkout"
@@ -298,6 +217,121 @@
     <!-- End content -->
 </div>
 <!-- End sidebar contact -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+<script th:src="@{/assets/js/main.js}"></script>
+<script th:src="@{/assets/js/search-product.js}"></script>
+
+<script th:inline="javascript">
+
+
+    window.logout = () => {
+        axios.post('/api/auth/logout').then(res => {
+            if (res.status === 200) {
+                toastr.success("Đăng xuất thành công");
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 1500)
+            }
+        }).catch(err => {
+            console.log(err);
+            toastr.error("Đăng xuất thất bại");
+        })
+    }
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Gọi API để lấy dữ liệu giỏ hàng
+        fetch("/api/cart/items")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("User not logged in or unable to fetch cart items.");
+                }
+                return response.json();
+            })
+            .then(cartItems => {
+                // Hàm để render giỏ hàng ra giao diện
+                renderCartItems(cartItems);
+
+                // Hàm để tính toán tổng giỏ hàng
+                calculateSubtotal(cartItems);
+
+                // Đếm số lượng loại sản phẩm
+                const itemCount = cartItems.length;
+                console.log("Number of unique products in cart:", itemCount);
+
+                // Đếm tổng số lượng sản phẩm
+                const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+                console.log("Total quantity of all items in cart:", totalQuantity);
+
+                // Hiển thị số lượng trong giao diện
+                const cartCountEl = document.getElementById("cart-count");
+                if (cartCountEl) {
+                    cartCountEl.innerText = itemCount; // Hiển thị tổng số lượng sản phẩm
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching cart items:", error);
+            });
+    });
+
+
+    function renderCartItems(cartItems) {
+        const cartContainer = document.querySelector(".cart-container");
+
+        cartItems.forEach(item => {
+
+            const cartItemHTML = `
+                <li class="cart-item d-flex">
+                    <p class="cart-item__image">
+                        <a href="product.html">
+                            <img
+                                alt="Image"
+                                src="${item.productVariant.product.imageUrlPrimary}"
+                                class="lazyload lazy-effect"
+                            />
+                        </a>
+                    </p>
+                    <p class="cart-item__details">
+                        <a href="product.html" class="cart-item__title">${item.productVariant.product.name}</a>
+                        <span class="cart-item__variant">${item.productVariant.color.nameColor}, ${item.productVariant.size.sizeName}</span>
+                        <span class="cart-item__price">${item.quantity} <i>x</i> $${item.productVariant.product.price}</span>
+                    </p>
+                    <p class="cart-item__delete">
+                        <a href="#"><i class="lnil lnil-close"></i></a>
+                    </p>
+                </li>
+            `;
+            // Thêm phần tử mới vào container
+            cartContainer.innerHTML += cartItemHTML;
+        });
+    }
+
+    // Hàm tính toán tổng giỏ hàng (subtotal)
+    function calculateSubtotal(cartItems) {
+        let totalPriceSub = 0; // Khởi tạo tổng giá trị của giỏ hàng
+
+        cartItems.forEach(item => {
+            totalPriceSub += item.productVariant.product.price * item.quantity; // Cộng dồn giá trị của từng sản phẩm
+        });
+        // Hiển thị tổng giỏ hàng với 2 chữ số thập phân
+        // Cập nhật nội dung của từng phần tử
+        // Lấy tất cả các phần tử có lớp "totalPrice"
+        const totalPriceElements = document.querySelectorAll(".totalPrice");
+        totalPriceElements.forEach(el => {
+            el.innerHTML = `$${totalPriceSub.toFixed(2)}`; // Định dạng giá trị với 2 chữ số thập phân
+        });
+    }
+
+</script>
 </body>
 </html>

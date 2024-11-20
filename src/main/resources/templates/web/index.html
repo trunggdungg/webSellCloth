@@ -20,181 +20,8 @@
 </head>
 <body class="home">
 <div id="main">
-    <!-- Promo bar -->
-    <!--    <div class="promo-bar">-->
-    <!--        &lt;!&ndash; Container &ndash;&gt;-->
-    <!--        <div class="container container&#45;&#45;type-2">-->
-    <!--            Free shipping on all orders - no code necessary-->
-    <!--        </div>-->
-    <!--        &lt;!&ndash; End container &ndash;&gt;-->
-    <!--    </div>-->
-    <!-- End promo bar -->
-    <!-- Header -->
-    <header class="header js-header">
-        <!-- Container -->
-        <div class="container container--type-2">
-            <!-- Header container -->
-            <div class="header__container d-flex align-items-center">
-                <!-- Logo -->
-                <h1 class="header__logo">
-                    <a href="/"> UTERO </a>
-                </h1>
-                <!-- End logo -->
-                <!-- Navigation -->
-                <ul class="header__nav">
-                    <li>
-                        <a href="/" class="nav__item nav__item--current">Home</a>
 
-                    </li>
-                    <li>
-                        <a href="/shop" class="nav__item">Shop</a>
-
-                    </li>
-                    <!--                    <li>-->
-                    <!--                        <a href="/product" class="nav__item ">Product</a>-->
-                    <!--                    </li>-->
-                </ul>
-                <!-- End navigation -->
-                <!-- Header right -->
-                <ul class="header__right">
-                    <li>
-                        <a href="#" class="js-open-popup-search"
-                        ><i class="lnil lnil-search-alt"></i
-                        ></a>
-                    </li>
-
-                    <li class="header__cart user-menu">
-                        <a href="#"><i class="lnil lnil-user"></i></a>
-                        <!-- Header cart -->
-                        <div class="header-cart">
-                            <!-- Cart items -->
-                            <ul class="header-cart__items">
-                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER == null}">
-                                    <p class="cart-item__details">
-                                        <a href="/account" class="cart-item__title">Đăng nhập</a>
-                                    </p>
-                                </li>
-                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
-                                    <p class="cart-item__details">
-                                        <a href="/profile" class="cart-item__title">Thông tin cá nhân</a>
-                                    </p>
-                                </li>
-                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
-                                    <p class="cart-item__details">
-                                        <a onclick="logout()" style="cursor: pointer" class="cart-item__title">Đăng
-                                            xuất</a>
-                                    </p>
-                                </li>
-                            </ul>
-                            <!-- Subtotal -->
-                            <div class="header-cart__subtotal d-flex" th:if="${session.CURRENT_USER != null}">
-                                <div class="subtotal__title">Xin chào</div>
-                                <div class="subtotal__value" th:text="${session.CURRENT_USER.fullName}">Trung Dũng</div>
-                            </div>
-
-                            <ul class="header-cart__items mt-2"
-                                th:if="${session.CURRENT_USER != null && session.CURRENT_USER.userRole.toString() == 'ADMIN'}">
-                                <li class="cart-item d-flex">
-                                    <p class="cart-item__details">
-                                        <a href="/admin/product" class="cart-item__title">Quản lý</a>
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
-
-                    <li class="header__cart">
-                        <a href="/cart"
-                        ><i class="lnil lnil-cart"></i><span>0</span>
-                            <p class="header-cart__price" th:if="${session.CURRENT_USER != null}">$225.00</p></a
-                        >
-                        <!-- Header cart -->
-                        <div class="header-cart">
-
-                            <!-- Cart items -->
-                            <ul class="header-cart__items">
-                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER == null}">
-                                    <p class="cart-item__details">
-                                        <span class="cart-item__title"
-                                              style="font-size: 20px; pointer-events: none;cursor: default;">Giỏ hàng trống!</span>
-                                    </p>
-                                </li>
-                                <!-- Item -->
-                                <ul class="cart-container ">
-                                    <!-- Danh sách sản phẩm trong giỏ hàng sẽ được thêm vào đây bằng JavaScript -->
-                                </ul>
-
-                                <!--                                <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">-->
-                                <!--                                    &lt;!&ndash; Item image &ndash;&gt;-->
-                                <!--                                    <p class="cart-item__image">-->
-                                <!--                                        <a href="product.html">-->
-                                <!--                                            <img-->
-                                <!--                                                    alt="Image"-->
-                                <!--                                                    data-sizes="auto"-->
-                                <!--                                                    data-srcset="assets/products/1/10a.jpg 400w,-->
-                                <!--                                        assets/products/1/10a.jpg 800w"-->
-                                <!--                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-                                <!--                                                    class="lazyload lazy-effect"-->
-                                <!--                                            />-->
-                                <!--                                        </a>-->
-                                <!--                                    </p>-->
-                                <!--                                    &lt;!&ndash; End item image &ndash;&gt;-->
-                                <!--                                    &lt;!&ndash; Item details &ndash;&gt;-->
-                                <!--                                    <p class="cart-item__details">-->
-                                <!--                                        <a href="product.html" class="cart-item__title"-->
-                                <!--                                        >Slim fit modal cotton shirt</a-->
-                                <!--                                        >-->
-                                <!--                                        <span class="cart-item__variant">Grey, M</span>-->
-                                <!--                                        <span class="cart-ietm__price">2 <i>x</i> $113.99</span>-->
-                                <!--                                    </p>-->
-                                <!--                                    &lt;!&ndash; End item details &ndash;&gt;-->
-                                <!--                                    &lt;!&ndash; Item delete &ndash;&gt;-->
-                                <!--                                    <p class="cart-item__delete">-->
-                                <!--                                        <a href="#"><i class="lnil lnil-close"></i></a>-->
-                                <!--                                    </p>-->
-                                <!--                                    &lt;!&ndash; Item delete &ndash;&gt;-->
-                                <!--                                </li>-->
-
-                            </ul>
-                            <!-- End cart items -->
-                            <!-- Subtotal -->
-                            <div class="header-cart__subtotal d-flex" th:if="${session.CURRENT_USER != null}">
-                                <!-- Title -->
-                                <div class="subtotal__title">Subtotal</div>
-                                <!-- End title -->
-                                <!-- Value -->
-                                <div class="subtotal__value" id="totalPrice">$272.47</div>
-                                <!-- End value -->
-                            </div>
-                            <!-- End subtotal -->
-                            <!-- Header cart action -->
-                            <div class="header-cart__action" th:if="${session.CURRENT_USER != null}">
-                                <a
-                                        href="checkout.html"
-                                        class="header-cart__button header-cart__button--checkout"
-                                >Checkout</a
-                                >
-                                <a href="cart.html" class="header-cart__button"
-                                >View cart</a
-                                >
-                            </div>
-                            <!-- End Header cart action -->
-                        </div>
-                        <!-- End header cart -->
-                    </li>
-                    <li class="header__canvas-menu">
-                        <a href="#" class="js-open-sidebar-contact"
-                        ><i class="lnil lnil-menu"></i
-                        ></a>
-                    </li>
-                </ul>
-                <!-- End header right -->
-            </div>
-            <!-- End header container -->
-        </div>
-        <!-- End container -->
-    </header>
+    <div th:insert="~{/web/fragments/header}"></div>
     <!-- End header -->
 
     <!-- Sidebar contact -->
@@ -540,485 +367,101 @@
     </div>
     <!-- End home about -->
 
-    <!-- Home products -->
-    <!--    <div class="home-products">-->
-    <!--        &lt;!&ndash; Container &ndash;&gt;-->
-    <!--        <div class="container">-->
-    <!--            &lt;!&ndash; Line 1 px &ndash;&gt;-->
-    <!--            <hr/>-->
-    <!--            &lt;!&ndash; End line 1 px &ndash;&gt;-->
+    <!-- Home products  best seller-->
+    <div class="home-products">
+        <!-- Container -->
+        <div class="container">
+            <!-- Line 1 px -->
+            <hr/>
+            <!-- End line 1 px -->
 
-    <!--            &lt;!&ndash; Products container &ndash;&gt;-->
-    <!--            <div class="home-products__container">-->
-    <!--                &lt;!&ndash; Title and action &ndash;&gt;-->
-    <!--                <div class="home-products__title-and-action d-flex">-->
-    <!--                    &lt;!&ndash; Title &ndash;&gt;-->
-    <!--                    <h3 class="home-products__title">Best Seller</h3>-->
-    <!--                    &lt;!&ndash; End title &ndash;&gt;-->
-    <!--                    &lt;!&ndash; Action &ndash;&gt;-->
-    <!--                    <div class="home-products__action">-->
-    <!--                        <a href="shop.html"-->
-    <!--                        >View all <i class="lnil lnil-chevron-right"></i-->
-    <!--                        ></a>-->
-    <!--                    </div>-->
-    <!--                    &lt;!&ndash; End action &ndash;&gt;-->
-    <!--                </div>-->
-    <!--                &lt;!&ndash; End title and action &ndash;&gt;-->
-    <!--                &lt;!&ndash; Carousel &ndash;&gt;-->
-    <!--                <div class="home-products__carousel js-home-products-carousel">-->
-    <!--                    &lt;!&ndash; Product &ndash;&gt;-->
-    <!--                    <div class="product-grid-item">-->
-    <!--                        &lt;!&ndash; Tag &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__tag">10% off</div>-->
-    <!--                        &lt;!&ndash; End tag &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Wishlist &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__wishlist">-->
-    <!--                            <a href="#"><i class="lnil lnil-heart"></i></a>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End wishlist &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Image &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__image">-->
-    <!--                            <a href="product.html">-->
-    <!--                                <img-->
-    <!--                                        alt="Image"-->
-    <!--                                        data-sizes="auto"-->
-    <!--                                        data-srcset="assets/products/1/2_1-a.jpg 400w,-->
-    <!--                        assets/products/1/2_1-a.jpg 800w"-->
-    <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-    <!--                                        class="lazyload lazy-effect"-->
-    <!--                                />-->
-    <!--                                <img-->
-    <!--                                        alt="Image"-->
-    <!--                                        data-sizes="auto"-->
-    <!--                                        data-srcset="assets/products/1/2_1-b.jpg 400w,-->
-    <!--                        assets/products/1/2_1-b.jpg 800w"-->
-    <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-    <!--                                        class="lazyload lazy-effect hover"-->
-    <!--                                />-->
-    <!--                            </a>-->
-    <!--                            &lt;!&ndash; Action &ndash;&gt;-->
-    <!--                            <div class="product-grid-item__action d-flex">-->
-    <!--                                &lt;!&ndash; Button &ndash;&gt;-->
-    <!--                                <div class="product-grid-item__button">-->
-    <!--                                    <a href="#">Add to cart</a>-->
-    <!--                                </div>-->
-    <!--                                &lt;!&ndash; End button &ndash;&gt;-->
-    <!--                                &lt;!&ndash; Button &ndash;&gt;-->
-    <!--                                <div class="product-grid-item__button">-->
-    <!--                                    <a href="#">Quick shop</a>-->
-    <!--                                </div>-->
-    <!--                                &lt;!&ndash; End button &ndash;&gt;-->
-    <!--                            </div>-->
-    <!--                            &lt;!&ndash; End action &ndash;&gt;-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End image &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Title &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__title">-->
-    <!--                            <a href="product.html">Zipped cotton cardigan</a>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End title &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Price &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__price">-->
-    <!--                            <span class="price-new">$49.5</span>-->
-    <!--                            <span class="price-old">$68.5</span>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End price &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Tag &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__content-tag">2 colours</div>-->
-    <!--                        &lt;!&ndash; End tag &ndash;&gt;-->
-    <!--                    </div>-->
-    <!--                    &lt;!&ndash; End product &ndash;&gt;-->
-
-    <!--                    &lt;!&ndash; Product &ndash;&gt;-->
-    <!--                    <div class="product-grid-item">-->
-    <!--                        &lt;!&ndash; Wishlist &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__wishlist">-->
-    <!--                            <a href="#"><i class="lnil lnil-heart"></i></a>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End wishlist &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Image &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__image">-->
-    <!--                            <a href="product.html">-->
-    <!--                                <img-->
-    <!--                                        alt="Image"-->
-    <!--                                        data-sizes="auto"-->
-    <!--                                        data-srcset="assets/products/1/1b.jpg 400w,-->
-    <!--                    assets/products/1/1b.jpg 800w"-->
-    <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-    <!--                                        class="lazyload lazy-effect"-->
-    <!--                                />-->
-    <!--                                <img-->
-    <!--                                        alt="Image"-->
-    <!--                                        data-sizes="auto"-->
-    <!--                                        data-srcset="assets/products/1/1c.jpg 400w,-->
-    <!--                    assets/products/1/1c.jpg 800w"-->
-    <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-    <!--                                        class="lazyload lazy-effect hover"-->
-    <!--                                />-->
-    <!--                            </a>-->
-    <!--                            &lt;!&ndash; Action &ndash;&gt;-->
-    <!--                            <div class="product-grid-item__action d-flex">-->
-    <!--                                &lt;!&ndash; Button &ndash;&gt;-->
-    <!--                                <div class="product-grid-item__button">-->
-    <!--                                    <a href="#">Add to cart</a>-->
-    <!--                                </div>-->
-    <!--                                &lt;!&ndash; End button &ndash;&gt;-->
-    <!--                                &lt;!&ndash; Button &ndash;&gt;-->
-    <!--                                <div class="product-grid-item__button">-->
-    <!--                                    <a href="#">Quick shop</a>-->
-    <!--                                </div>-->
-    <!--                                &lt;!&ndash; End button &ndash;&gt;-->
-    <!--                            </div>-->
-    <!--                            &lt;!&ndash; End action &ndash;&gt;-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End image &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Title &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__title">-->
-    <!--                            <a href="product.html">Crew neck cotton sweatshirt</a>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End title &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Rating &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__rating">-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <span>3 reviews</span>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End rating &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Price &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__price">$79.9</div>-->
-    <!--                        &lt;!&ndash; End price &ndash;&gt;-->
-    <!--                    </div>-->
-    <!--                    &lt;!&ndash; End product &ndash;&gt;-->
-
-    <!--                    &lt;!&ndash; Product &ndash;&gt;-->
-    <!--                    <div class="product-grid-item">-->
-    <!--                        &lt;!&ndash; Wishlist &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__wishlist">-->
-    <!--                            <a href="#"><i class="lnil lnil-heart"></i></a>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End wishlist &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Image &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__image">-->
-    <!--                            <a href="product.html">-->
-    <!--                                <img-->
-    <!--                                        alt="Image"-->
-    <!--                                        data-sizes="auto"-->
-    <!--                                        data-srcset="assets/products/1/3a.jpg 400w,-->
-    <!--                    assets/products/1/3a.jpg 800w"-->
-    <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-    <!--                                        class="lazyload lazy-effect"-->
-    <!--                                />-->
-    <!--                                <img-->
-    <!--                                        alt="Image"-->
-    <!--                                        data-sizes="auto"-->
-    <!--                                        data-srcset="assets/products/1/3b.jpg 400w,-->
-    <!--                    assets/products/1/3b.jpg 800w"-->
-    <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-    <!--                                        class="lazyload lazy-effect hover"-->
-    <!--                                />-->
-    <!--                            </a>-->
-    <!--                            &lt;!&ndash; Action &ndash;&gt;-->
-    <!--                            <div class="product-grid-item__action d-flex">-->
-    <!--                                &lt;!&ndash; Button &ndash;&gt;-->
-    <!--                                <div class="product-grid-item__button">-->
-    <!--                                    <a href="#">Add to cart</a>-->
-    <!--                                </div>-->
-    <!--                                &lt;!&ndash; End button &ndash;&gt;-->
-    <!--                                &lt;!&ndash; Button &ndash;&gt;-->
-    <!--                                <div class="product-grid-item__button">-->
-    <!--                                    <a href="#">Quick shop</a>-->
-    <!--                                </div>-->
-    <!--                                &lt;!&ndash; End button &ndash;&gt;-->
-    <!--                            </div>-->
-    <!--                            &lt;!&ndash; End action &ndash;&gt;-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End image &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Title &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__title">-->
-    <!--                            <a href="product.html"-->
-    <!--                            >Brown nubuck leather high-top deck shoes</a-->
-    <!--                            >-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End title &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Rating &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__rating">-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <i class="lnir lnir-star-filled"></i>-->
-    <!--                            <span>1 review</span>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End rating &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Price &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__price">$149.5</div>-->
-    <!--                        &lt;!&ndash; End price &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Tag &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__content-tag">3 colours</div>-->
-    <!--                        &lt;!&ndash; End tag &ndash;&gt;-->
-    <!--                    </div>-->
-    <!--                    &lt;!&ndash; End product &ndash;&gt;-->
-
-    <!--                    &lt;!&ndash; Product &ndash;&gt;-->
-    <!--                    <div class="product-grid-item">-->
-    <!--                        &lt;!&ndash; Wishlist &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__wishlist">-->
-    <!--                            <a href="#"><i class="lnil lnil-heart"></i></a>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End wishlist &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Image &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__image">-->
-    <!--                            <a href="product.html">-->
-    <!--                                <img-->
-    <!--                                        alt="Image"-->
-    <!--                                        data-sizes="auto"-->
-    <!--                                        data-srcset="assets/products/1/18a.jpg 400w,-->
-    <!--                    assets/products/1/18a.jpg 800w"-->
-    <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-    <!--                                        class="lazyload lazy-effect"-->
-    <!--                                />-->
-    <!--                                <img-->
-    <!--                                        alt="Image"-->
-    <!--                                        data-sizes="auto"-->
-    <!--                                        data-srcset="assets/products/1/18b.jpg 400w,-->
-    <!--                    assets/products/1/18b.jpg 800w"-->
-    <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-    <!--                                        class="lazyload lazy-effect hover"-->
-    <!--                                />-->
-    <!--                            </a>-->
-    <!--                            &lt;!&ndash; Action &ndash;&gt;-->
-    <!--                            <div class="product-grid-item__action d-flex">-->
-    <!--                                &lt;!&ndash; Button &ndash;&gt;-->
-    <!--                                <div class="product-grid-item__button">-->
-    <!--                                    <a href="#">Add to cart</a>-->
-    <!--                                </div>-->
-    <!--                                &lt;!&ndash; End button &ndash;&gt;-->
-    <!--                                &lt;!&ndash; Button &ndash;&gt;-->
-    <!--                                <div class="product-grid-item__button">-->
-    <!--                                    <a href="#">Quick shop</a>-->
-    <!--                                </div>-->
-    <!--                                &lt;!&ndash; End button &ndash;&gt;-->
-    <!--                            </div>-->
-    <!--                            &lt;!&ndash; End action &ndash;&gt;-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End image &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Title &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__title">-->
-    <!--                            <a href="product.html"-->
-    <!--                            >Suede jacket with contrast knit detail</a-->
-    <!--                            >-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End title &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Price &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__price">$79.9 - $459.5</div>-->
-    <!--                        &lt;!&ndash; End price &ndash;&gt;-->
-    <!--                    </div>-->
-    <!--                    &lt;!&ndash; End product &ndash;&gt;-->
-
-    <!--                    &lt;!&ndash; Product &ndash;&gt;-->
-    <!--                    <div class="product-grid-item">-->
-    <!--                        &lt;!&ndash; Wishlist &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__wishlist">-->
-    <!--                            <a href="#"><i class="lnil lnil-heart"></i></a>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End wishlist &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Image &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__image">-->
-    <!--                            <a href="product.html">-->
-    <!--                                <img-->
-    <!--                                        alt="Image"-->
-    <!--                                        data-sizes="auto"-->
-    <!--                                        data-srcset="assets/products/1/4_1-a.jpg 400w,-->
-    <!--                    assets/products/1/4_1-a.jpg 800w"-->
-    <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-    <!--                                        class="lazyload lazy-effect"-->
-    <!--                                />-->
-    <!--                                <img-->
-    <!--                                        alt="Image"-->
-    <!--                                        data-sizes="auto"-->
-    <!--                                        data-srcset="assets/products/1/4_1-b.jpg 400w,-->
-    <!--                    assets/products/1/4_1-b.jpg 800w"-->
-    <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-    <!--                                        class="lazyload lazy-effect hover"-->
-    <!--                                />-->
-    <!--                            </a>-->
-    <!--                            &lt;!&ndash; Action &ndash;&gt;-->
-    <!--                            <div class="product-grid-item__action d-flex">-->
-    <!--                                &lt;!&ndash; Button &ndash;&gt;-->
-    <!--                                <div class="product-grid-item__button">-->
-    <!--                                    <a href="#">Add to cart</a>-->
-    <!--                                </div>-->
-    <!--                                &lt;!&ndash; End button &ndash;&gt;-->
-    <!--                                &lt;!&ndash; Button &ndash;&gt;-->
-    <!--                                <div class="product-grid-item__button">-->
-    <!--                                    <a href="#">Quick shop</a>-->
-    <!--                                </div>-->
-    <!--                                &lt;!&ndash; End button &ndash;&gt;-->
-    <!--                            </div>-->
-    <!--                            &lt;!&ndash; End action &ndash;&gt;-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End image &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Title &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__title">-->
-    <!--                            <a href="product.html">Leather, wool and cashmere gloves</a>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End title &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Rating &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__rating">-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <span>3 reviews</span>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End rating &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Price &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__price">-->
-    <!--                            <span class="price-new">$69.5</span>-->
-    <!--                            <span class="price-old">$99.5</span>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End price &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Tag &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__content-tag">2 colours</div>-->
-    <!--                        &lt;!&ndash; End tag &ndash;&gt;-->
-    <!--                    </div>-->
-    <!--                    &lt;!&ndash; End product &ndash;&gt;-->
-
-    <!--                    &lt;!&ndash; Product &ndash;&gt;-->
-    <!--                    <div class="product-grid-item">-->
-    <!--                        &lt;!&ndash; Tag &ndash;&gt;-->
-    <!--                        <div-->
-    <!--                                class="product-grid-item__tag product-grid-item__tag&#45;&#45;sold-out"-->
-    <!--                        >-->
-    <!--                            Sold out-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End tag &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Wishlist &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__wishlist">-->
-    <!--                            <a href="#"><i class="lnil lnil-heart"></i></a>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End wishlist &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Image &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__image">-->
-    <!--                            <a href="product.html">-->
-    <!--                                <img-->
-    <!--                                        alt="Image"-->
-    <!--                                        data-sizes="auto"-->
-    <!--                                        data-srcset="assets/products/1/6a.jpg 400w,-->
-    <!--                        assets/products/1/6a.jpg 800w"-->
-    <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-    <!--                                        class="lazyload lazy-effect"-->
-    <!--                                />-->
-    <!--                                <img-->
-    <!--                                        alt="Image"-->
-    <!--                                        data-sizes="auto"-->
-    <!--                                        data-srcset="assets/products/1/6b.jpg 400w,-->
-    <!--                        assets/products/1/6b.jpg 800w"-->
-    <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-    <!--                                        class="lazyload lazy-effect hover"-->
-    <!--                                />-->
-    <!--                            </a>-->
-    <!--                            &lt;!&ndash; Action &ndash;&gt;-->
-    <!--                            <div class="product-grid-item__action d-flex">-->
-    <!--                                &lt;!&ndash; Button &ndash;&gt;-->
-    <!--                                <div class="product-grid-item__button">-->
-    <!--                                    <a href="#">Add to cart</a>-->
-    <!--                                </div>-->
-    <!--                                &lt;!&ndash; End button &ndash;&gt;-->
-    <!--                                &lt;!&ndash; Button &ndash;&gt;-->
-    <!--                                <div class="product-grid-item__button">-->
-    <!--                                    <a href="#">Quick shop</a>-->
-    <!--                                </div>-->
-    <!--                                &lt;!&ndash; End button &ndash;&gt;-->
-    <!--                            </div>-->
-    <!--                            &lt;!&ndash; End action &ndash;&gt;-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End image &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Title &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__title">-->
-    <!--                            <a href="product.html">Basic T-shitt with slogan</a>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End title &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Price &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__price">$32.5</div>-->
-    <!--                        &lt;!&ndash; End price &ndash;&gt;-->
-    <!--                    </div>-->
-    <!--                    &lt;!&ndash; End product &ndash;&gt;-->
-
-    <!--                    &lt;!&ndash; Product &ndash;&gt;-->
-    <!--                    <div class="product-grid-item">-->
-    <!--                        &lt;!&ndash; Wishlist &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__wishlist">-->
-    <!--                            <a href="#"><i class="lnil lnil-heart"></i></a>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End wishlist &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Image &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__image">-->
-    <!--                            <a href="product.html">-->
-    <!--                                <img-->
-    <!--                                        alt="Image"-->
-    <!--                                        data-sizes="auto"-->
-    <!--                                        data-srcset="assets/products/1/13a.jpg 400w,-->
-    <!--                    assets/products/1/13a.jpg 800w"-->
-    <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-    <!--                                        class="lazyload lazy-effect"-->
-    <!--                                />-->
-    <!--                                <img-->
-    <!--                                        alt="Image"-->
-    <!--                                        data-sizes="auto"-->
-    <!--                                        data-srcset="assets/products/1/13b.jpg 400w,-->
-    <!--                    assets/products/1/13b.jpg 800w"-->
-    <!--                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="-->
-    <!--                                        class="lazyload lazy-effect hover"-->
-    <!--                                />-->
-    <!--                            </a>-->
-    <!--                            &lt;!&ndash; Action &ndash;&gt;-->
-    <!--                            <div class="product-grid-item__action d-flex">-->
-    <!--                                &lt;!&ndash; Button &ndash;&gt;-->
-    <!--                                <div class="product-grid-item__button">-->
-    <!--                                    <a href="#">Add to cart</a>-->
-    <!--                                </div>-->
-    <!--                                &lt;!&ndash; End button &ndash;&gt;-->
-    <!--                                &lt;!&ndash; Button &ndash;&gt;-->
-    <!--                                <div class="product-grid-item__button">-->
-    <!--                                    <a href="#">Quick shop</a>-->
-    <!--                                </div>-->
-    <!--                                &lt;!&ndash; End button &ndash;&gt;-->
-    <!--                            </div>-->
-    <!--                            &lt;!&ndash; End action &ndash;&gt;-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End image &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Title &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__title">-->
-    <!--                            <a href="product.html">Chrome acetate sunglasses</a>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End title &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Rating &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__rating">-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <i class="lnir lnir-star-filled active"></i>-->
-    <!--                            <span>3 reviews</span>-->
-    <!--                        </div>-->
-    <!--                        &lt;!&ndash; End rating &ndash;&gt;-->
-    <!--                        &lt;!&ndash; Price &ndash;&gt;-->
-    <!--                        <div class="product-grid-item__price">$72.9</div>-->
-    <!--                        &lt;!&ndash; End price &ndash;&gt;-->
-    <!--                    </div>-->
-    <!--                    &lt;!&ndash; End product &ndash;&gt;-->
-    <!--                </div>-->
-    <!--                &lt;!&ndash; End carousel &ndash;&gt;-->
-    <!--            </div>-->
-    <!--            &lt;!&ndash; End products container &ndash;&gt;-->
-    <!--        </div>-->
-    <!--        &lt;!&ndash; End container &ndash;&gt;-->
-    <!--    </div>-->
+            <!-- Products container -->
+            <div class="home-products__container">
+                <!-- Title and action -->
+                <div class="home-products__title-and-action d-flex">
+                    <!-- Title -->
+                    <h3 class="home-products__title">Best Seller</h3>
+                    <!-- End title -->
+                    <!-- Action -->
+                    <div class="home-products__action">
+                        <a href="shop.html"
+                        >View all <i class="lnil lnil-chevron-right"></i
+                        ></a>
+                    </div>
+                    <!-- End action -->
+                </div>
+                <!-- End title and action -->
+                <!-- Carousel -->
+                <div class="home-products__carousel js-home-products-carousel">
+                    <!-- Product -->
+                    <div class="product-grid-item">
+                        <!-- Tag -->
+                        <div class="product-grid-item__tag">10% off</div>
+                        <!-- End tag -->
+                        <!-- Wishlist -->
+                        <div class="product-grid-item__wishlist">
+                            <a href="#"><i class="lnil lnil-heart"></i></a>
+                        </div>
+                        <!-- End wishlist -->
+                        <!-- Image -->
+                        <div class="product-grid-item__image">
+                            <a href="product.html">
+                                <img
+                                        alt="Image"
+                                        data-sizes="auto"
+                                        data-srcset="assets/products/1/2_1-a.jpg 400w,
+                            assets/products/1/2_1-a.jpg 800w"
+                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                        class="lazyload lazy-effect"
+                                />
+                                <img
+                                        alt="Image"
+                                        data-sizes="auto"
+                                        data-srcset="assets/products/1/2_1-b.jpg 400w,
+                            assets/products/1/2_1-b.jpg 800w"
+                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                        class="lazyload lazy-effect hover"
+                                />
+                            </a>
+                            <!-- Action -->
+                            <div class="product-grid-item__action d-flex">
+                                <!-- Button -->
+                                <div class="product-grid-item__button">
+                                    <a href="#">Add to cart</a>
+                                </div>
+                                <!-- End button -->
+                                <!-- Button -->
+                                <div class="product-grid-item__button">
+                                    <a href="#">Quick shop</a>
+                                </div>
+                                <!-- End button -->
+                            </div>
+                            <!-- End action -->
+                        </div>
+                        <!-- End image -->
+                        <!-- Title -->
+                        <div class="product-grid-item__title">
+                            <a href="product.html">Zipped cotton cardigan</a>
+                        </div>
+                        <!-- End title -->
+                        <!-- Price -->
+                        <div class="product-grid-item__price">
+                            <span class="price-new">$49.5</span>
+                            <span class="price-old">$68.5</span>
+                        </div>
+                        <!-- End price -->
+                        <!-- Tag -->
+                        <div class="product-grid-item__content-tag">2 colours</div>
+                        <!-- End tag -->
+                    </div>
+                    <!-- End product -->
+                </div>
+                <!-- End carousel -->
+            </div>
+            <!-- End products container -->
+        </div>
+        <!-- End container -->
+    </div>
     <!-- End home products -->
 
     <!-- Home parallax -->
@@ -1045,7 +488,7 @@
     </div>
     <!-- End home parallax -->
 
-    <!-- Home products -->
+    <!-- Home products new in -->
     <div class="home-products home-products--type-2">
         <!-- Container -->
         <div class="container">
@@ -1083,8 +526,7 @@
                         </div>
                         <!-- End wishlist -->
                         <!-- Image -->
-                        <div class="product-grid-item__image"
-                             th:with="firstImage=${productFirstImageMap.get(product.id)}">
+                        <div class="product-grid-item__image">
                             <div class="product-grid-item__tag" th:if="${product.discount != null}"
                                  th:text="${product.discount+'% off'}">10% off
                             </div>
@@ -1093,7 +535,7 @@
                                         alt="Image"
                                         data-sizes="auto"
 
-                                        th:src="${firstImage.imageUrl}"
+                                        th:src="${product.imageUrlPrimary}"
 
                                         class="lazyload lazy-effect"
                                 />
@@ -1582,103 +1024,7 @@
     </div>
     <!-- End search popup -->
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
-        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script th:src="@{/assets/js/main.js}"></script>
-<script th:src="@{/assets/js/search-product.js}"></script>
 
-<script th:inline="javascript">
-    let productImagesMap = [[${productImagesMap}]];
-    console.log("productImagesMap:", productImagesMap);
-
-    window.logout = () => {
-        axios.post('/api/auth/logout').then(res => {
-            if (res.status === 200) {
-                toastr.success("Đăng xuất thành công");
-                setTimeout(() => {
-                    window.location.href = '/';
-                }, 1500)
-            }
-        }).catch(err => {
-            console.log(err);
-            toastr.error("Đăng xuất thất bại");
-        })
-    }
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        // Gọi API để lấy dữ liệu giỏ hàng
-        fetch("/api/cart/items")
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("User not logged in or unable to fetch cart items.");
-                }
-                return response.json();
-            })
-            .then(cartItems => {
-                // Hàm để render giỏ hàng ra giao diện
-                renderCartItems(cartItems);
-                // Hàm để tính toán tổng giỏ hàng
-                calculateSubtotal(cartItems);
-                console.log("Cart items:", cartItems);
-            })
-            .catch(error => {
-                console.error("Error fetching cart items:", error);
-            });
-    });
-
-    function renderCartItems(cartItems) {
-        const cartContainer = document.querySelector(".cart-container");
-
-        cartItems.forEach(item => {
-
-            const cartItemHTML = `
-                <li class="cart-item d-flex">
-                    <p class="cart-item__image">
-                        <a href="product.html">
-                            <img
-                                alt="Image"
-                                src="${item.productVariant.product.imageUrlPrimary}"
-                                class="lazyload lazy-effect"
-                            />
-                        </a>
-                    </p>
-                    <p class="cart-item__details">
-                        <a href="product.html" class="cart-item__title">${item.productVariant.product.name}</a>
-                        <span class="cart-item__variant">${item.productVariant.color.nameColor}, ${item.productVariant.size.sizeName}</span>
-                        <span class="cart-item__price">${item.quantity} <i>x</i> $${item.productVariant.product.price}</span>
-                    </p>
-                    <p class="cart-item__delete">
-                        <a href="#"><i class="lnil lnil-close"></i></a>
-                    </p>
-                </li>
-            `;
-            // Thêm phần tử mới vào container
-            cartContainer.innerHTML += cartItemHTML;
-        });
-    }
-
-    // Hàm tính toán tổng giỏ hàng (subtotal)
-    function calculateSubtotal(cartItems) {
-        let totalPriceSub = 0; // Khởi tạo tổng giá trị của giỏ hàng
-
-        cartItems.forEach(item => {
-            totalPriceSub += item.productVariant.product.price * item.quantity; // Cộng dồn giá trị của từng sản phẩm
-        });
-        // Hiển thị tổng giỏ hàng với 2 chữ số thập phân
-        const subtotalTitleEl = document.getElementById("totalPrice");
-        subtotalTitleEl.innerHTML = `$${totalPriceSub.toFixed(2)}`; // Đảm bảo hiển thị với 2 chữ số thập phân
-    }
-
-</script>
 
 </body>
 

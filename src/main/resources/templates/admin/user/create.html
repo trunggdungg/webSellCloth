@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{admin/layout/layout :: main-layout(~{:: title},~{},~{:: .content-wrapper},~{})}">
+      th:replace="~{admin/layout/layout :: main-layout(~{:: title},~{:: #css},~{:: .content-wrapper},~{:: #js})}">
 
 <head>
     <meta charset="utf-8"/>
@@ -30,11 +30,9 @@
                             <li class="breadcrumb-item">
                                 <a href="#">Dashboard</a>
                             </li>
-                            <li class="breadcrumb-item">
-                                <a href="#">Blog</a>
-                            </li>
+
                             <li class="breadcrumb-item active">
-                                Tạo bài viết
+                                Thêm User
                             </li>
                         </ol>
                     </div>
@@ -50,12 +48,12 @@
                         <button type="button" class="btn btn-default">
                             <i class="fas fa-chevron-left"></i> Quay lại
                         </button>
-                        <button type="button" class="btn btn-info px-4">
-                            Lưu
+                        <button type="button" class="btn btn-info px-4" id="btn-add-user">
+                            Thêm
                         </button>
-                        <button type="button" class="btn btn-primary px-4">
-                            Preview
-                        </button>
+                        <!--                        <button type="button" class="btn btn-primary px-4">-->
+                        <!--                            Preview-->
+                        <!--                        </button>-->
                     </div>
 
                     <div class="col-6 d-flex justify-content-end">
@@ -72,70 +70,71 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
-                                            <label>Tiêu đề</label>
-                                            <input type="text" class="form-control" id="title"/>
+                                            <label>Email</label>
+                                            <input type="text" class="form-control" id="email" name="email"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>User Name</label>
+                                            <input type="text" class="form-control" id="userName" name="userName"/>
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Nội dung</label>
-                                            <textarea id="content"></textarea>
+                                            <label>Full Name</label>
+                                            <input type="text" class="form-control" id="fullName" name="fullName"/>
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Mô tả ngắn</label>
-                                            <textarea id="description" class="form-control" rows="3"></textarea>
+                                            <label>PassWord</label>
+                                            <input type="password" class="form-control" id="passWord" name="passWord"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Confirm PassWord</label>
+                                            <input type="password" class="form-control" id="conFirmPassWord"
+                                                   name="conFirmPassWord"/>
                                         </div>
                                     </div>
 
                                     <div class="col-md-4">
                                         <div class="form-group">
+                                            <label>Phone</label>
+                                            <input type="text" class="form-control" id="phone"
+                                                   name="phone"/>
+                                        </div>
+                                        <div class="form-group">
                                             <label>Trạng thái</label>
                                             <select id="status" class="form-control">
                                                 <option value="0">
-                                                    Nháp
+                                                    Khóa
                                                 </option>
                                                 <option value="1">
-                                                    Công khai
+                                                    Kích hoạt
                                                 </option>
                                             </select>
                                         </div>
+
                                         <div class="form-group">
-                                            <label>Danh mục</label>
+                                            <label>Role</label>
                                             <div class="select2-purple">
-                                                <select class="select2 form-control" multiple="multiple" id="category">
-                                                    <option>
-                                                        Java
+                                                <select class="select2 form-control" multiple="multiple"
+                                                        name="role"
+                                                        id="role">
+                                                    <option th:each="role : ${roles}"
+                                                            th:value="${role}"
+                                                            th:text="${role}">
                                                     </option>
-                                                    <option>
-                                                        Golang
-                                                    </option>
-                                                    <option>
-                                                        React
-                                                    </option>
-                                                    <option>
-                                                        Lập trình web
-                                                    </option>
-                                                    <option>
-                                                        Database
-                                                    </option>
-                                                    <option>
-                                                        Tips Trick
-                                                    </option>
-                                                    <option>
-                                                        Devops
-                                                    </option>
+
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="thumbnail-preview-container mb-3">
-                                                <img src="" alt="" id="thumbnail"/>
-                                            </div>
-                                            <button type="button" class="btn btn-info btn-flat" data-toggle="modal"
-                                                    data-target="#modal-xl">
-                                                Chọn hình ảnh
-                                            </button>
-                                        </div>
+                                        <!--                                        <div class="form-group">-->
+                                        <!--                                            <div class="thumbnail-preview-container mb-3">-->
+                                        <!--                                                <img src="" alt="" id="thumbnail"/>-->
+                                        <!--                                            </div>-->
+                                        <!--                                            <button type="button" class="btn btn-info btn-flat" data-toggle="modal"-->
+                                        <!--                                                    data-target="#modal-xl">-->
+                                        <!--                                                Chọn hình ảnh-->
+                                        <!--                                            </button>-->
+                                        <!--                                        </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -191,6 +190,83 @@
                 codeSyntaxHighlighting: true,
             },
         });
+
+        // Validate form
+        $('#form-update-product').validate({
+            rules: {
+                email: {
+                    required: true
+                },
+                userName: {
+                    required: true
+                },
+                fullName: {
+                    number: true
+                },
+                passWord: {
+                    required: true
+                },
+                conFirmPassWord: {
+                    number: true,
+                    required: true
+                },
+                phone: {
+                    required: true
+                },
+
+                role: {
+                    required: true
+                }
+            },
+            messages: {
+                email: {
+                    required: 'Vui lòng nhập email'
+                },
+                userName: {
+                    required: 'Vui lòng nhập user name'
+                },
+                fullName: {
+                    required: 'Vui lòng nhập full name'
+                },
+                passWord: {
+                    required: 'Vui lòng nhập pass word'
+                },
+                conFirmPassWord: {
+                    required: 'Vui lòng nhập confirm pass word'
+                },
+                phone: {
+                    required: 'Vui lòng nhập phone'
+                },
+                role: {
+                    required: 'Vui lòng chọn role'
+                }
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+            }
+        });
+    </script>
+
+    <script>
+        const btnAddUser = document.getElementById('btn-add-user');
+        const emailEl = document.getElementById('email');
+        const userNameEl = document.getElementById('userName');
+        const fullNameEl = document.getElementById('fullName');
+        const passWordEl = document.getElementById('passWord');
+        const conFirmPassWordEl = document.getElementById('conFirmPassWord');
+        const phoneEl = document.getElementById('phone');
+        const statusEl = document.getElementById('status');
+        const roleEl = document.getElementById('role');
+
+        
     </script>
 </th:block>
 </body>

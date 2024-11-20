@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -38,21 +36,10 @@ public class WebController {
             products = productService.getProductsByStatus(true, page, pageSize);
         }
 
-        Map<Integer, ProductImage> productFirstImageMap = new HashMap<>();
-
-        // Lấy ảnh đầu tiên của mỗi sản phẩm
-        for (Product product : products.getContent()) {
-            ProductImage firstImage = productImageService.findFirstByProductId(product.getId());
-            if (firstImage != null) {
-                productFirstImageMap.put(product.getId(), firstImage);
-            }
-        }
-
         List<Color> colors = colorService.getAllColors();
         List<Size> sizes = sizeService.getAllSize();
         List<Category> categories = categoryService.getAllCategory();
 
-        model.addAttribute("productFirstImageMap", productFirstImageMap);
         model.addAttribute("products", products);
         model.addAttribute("currentPage", page);
         model.addAttribute("colors", colors);
@@ -66,33 +53,10 @@ public class WebController {
                            @RequestParam(required = false, defaultValue = "10") int pageSize,
                            Model model) {
         Page<Product> products = productService.findTop10ByStatusOrderByCreatedAtDesc(true, page, pageSize);
-        List<Product> productsList = productService.findAllByStatusOrderByCreatedAtDesc(true);
-        // Lấy danh sách ảnh cho từng sản phẩm
-        //  Lưu ảnh đầu tiên của mỗi sản phẩm
-        Map<Integer, ProductImage> productFirstImageMap = new HashMap<>();
-        //luu tat ca anh
-        Map<Integer, List<ProductImage>> productImagesMap = new HashMap<>();
-
-        // Lấy ảnh đầu tiên của mỗi sản phẩm
-        for (Product product : products.getContent()) {
-            ProductImage firstImage = productImageService.findFirstByProductId(product.getId());
-            if (firstImage != null) {
-                productFirstImageMap.put(product.getId(), firstImage);
-            }
-        }
-
-        // Lấy tất cả ảnh của từng sản phẩm
-        for (Product product : productsList) {
-            List<ProductImage> images = productImageService.findByProductId(product.getId());
-            if (images != null) {
-                productImagesMap.put(product.getId(), images);
-            }
-        }
 
         model.addAttribute("productsPage", products);
         model.addAttribute("currentPage", page);
-        model.addAttribute("productFirstImageMap", productFirstImageMap);
-        model.addAttribute("productImagesMap", productImagesMap);
+
 
         return "/web/index";
     }
@@ -101,28 +65,8 @@ public class WebController {
     public String ProductDetail(@PathVariable Integer id, @PathVariable String slug, Model model) {
         Product product = productService.getProductDetail(id, slug);
         List<ProductImage> productImages = productService.getImageByProductId(id);
-        List<Product> get3product = productService.getTop3Product(id, slug);
-        List<Product> productsListImg = productService.findAllByStatusOrderByCreatedAtDesc(true);
-        // Lấy ảnh cho 3 sản phẩm tương tự
-        Map<Integer, List<ProductImage>> similarProductImages = new HashMap<>();
+        List<Product> get4product = productService.getTop4Product(id, slug);
 
-        //luu tat ca anh
-        Map<Integer, List<ProductImage>> productImagesMapOutFit = new HashMap<>();
-
-        for (Product similarProduct : get3product) {
-            List<ProductImage> images = productService.getImageByProductId(similarProduct.getId());
-            similarProductImages.put(similarProduct.getId(), images);
-        }
-
-
-        // Lấy tất cả ảnh của từng sản phẩm
-        for (Product products : productsListImg) {
-            List<ProductImage> images = productImageService.findByProductId(products.getId());
-            if (images != null) {
-                productImagesMapOutFit.put(products.getId(), images);
-            }
-        }
-        //
         List<Product> productCategory = productService.findTop4ByCategoryAndStatus(product.getCategory().getId(), id);
 
         List<Color> colors = productVariantService.getProductColors(id);
@@ -131,9 +75,7 @@ public class WebController {
 
         model.addAttribute("productsDetail", product);
         model.addAttribute("productImages", productImages);
-        model.addAttribute("get3product", get3product);
-        model.addAttribute("similarProductImages", similarProductImages);
-        model.addAttribute("productImagesMapOutFit", productImagesMapOutFit);
+        model.addAttribute("get4product", get4product);
         model.addAttribute("productCategory", productCategory);
         model.addAttribute("colors", colors);
         model.addAttribute("sizes", sizes);
@@ -190,5 +132,8 @@ public class WebController {
         return "/web/404";
     }
 
-
+    @GetMapping("/contact")
+    public String ContactPage() {
+        return "/web/contact";
+    }
 }

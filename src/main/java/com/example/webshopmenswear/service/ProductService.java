@@ -61,7 +61,7 @@ public class ProductService {
         return productImageRepository.findAllByProduct_Id(id);
     }
 
-    public List<Product> getTop3Product(Integer productId, String slug) {
+    public List<Product> getTop4Product(Integer productId, String slug) {
         Product selectproduct = productRepository.findById(productId).orElseThrow(() -> new EntityNotFoundException("Khong thay"));
         Double targetprice = selectproduct.getPrice();
         Pageable pageable = PageRequest.of(0, 4);

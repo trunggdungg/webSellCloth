@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{admin/layout/layout :: main-layout(~{:: title},~{},~{:: .content-wrapper},~{})}">
+      th:replace="~{admin/layout/layout :: main-layout(~{:: title},~{:: #css},~{:: .content-wrapper},~{:: #js})}">
 
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>User List</title>
 
+    <th:block id="css">
+        <link rel="stylesheet" href="/admin-assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="/admin-assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    </th:block>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -25,7 +29,7 @@
                                 <a href="#">Dashboard</a>
                             </li>
                             <li class="breadcrumb-item active">
-                                Danh sách bài viết
+                                Danh sách user
                             </li>
                         </ol>
                     </div>
@@ -39,7 +43,7 @@
                 <div class="row py-2">
                     <div class="col-12">
                         <button type="button" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Viết bài
+                            <i class="fas fa-plus"></i> Thêm user
                         </button>
                         <button type="button" class="btn btn-info">
                             <i class="fas fa-redo"></i> Refresh
@@ -50,75 +54,38 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <table class="table table-bordered table-hover">
+                                <table class="table table-bordered table-hover" id="table-user">
                                     <thead>
                                     <tr>
-                                        <th>Tiêu đề</th>
-                                        <th>Tác giả</th>
-                                        <th>Danh mục</th>
-                                        <th>Trạng thái</th>
-                                        <th>Ngày tạo</th>
+                                        <th>Email</th>
+                                        <th>Full Name</th>
+                                        <th>User Name</th>
+                                        <th>PassWord</th>
+                                        <th>Phone</th>
+                                        <th>Role</th>
+                                        <th>Is Active</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+                                    <tr th:each="user : ${users}">
                                         <td>
-                                            <a href="./blog-detail.html">Khai giảng khóa
-                                                Java Spring Boot 12A
-                                                - song song 2 hình
-                                                thức offline /
-                                                online đáp ứng nhu
-                                                cầu đào tạo từ xa</a>
+                                            <a href="#" th:text="${user.email}">Khai giảng khóa
+                                            </a>
                                         </td>
                                         <td>
-                                            <a href="#">John Doe</a>
+                                            <a href="#" th:text="${user.fullName}">John Doe</a>
                                         </td>
-                                        <td>
+                                        <td th:text="${user.username}">
                                             Java, Golang, Springboot
                                         </td>
-                                        <td>Công khai</td>
-                                        <td>06-07-2022</td>
+                                        <td th:text="${user.password}">Công khai</td>
+                                        <td th:text="${user.phoneNumber}">Công khai</td>
+                                        <td th:text="${user.userRole}">Công khai</td>
+
+                                        <td th:text="${user.isActive}">06-07-2022</td>
                                     </tr>
                                     </tbody>
                                 </table>
-
-                                <div class="d-flex justify-content-center mt-3" id="pagination">
-                                    <ul class="pagination mb-0">
-                                        <li class="paginate_button page-item previous disabled"
-                                            id="example2_previous">
-                                            <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0"
-                                               class="page-link">Previous</a>
-                                        </li>
-                                        <li class="paginate_button page-item active">
-                                            <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0"
-                                               class="page-link">1</a>
-                                        </li>
-                                        <li class="paginate_button page-item">
-                                            <a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0"
-                                               class="page-link">2</a>
-                                        </li>
-                                        <li class="paginate_button page-item">
-                                            <a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0"
-                                               class="page-link">3</a>
-                                        </li>
-                                        <li class="paginate_button page-item">
-                                            <a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0"
-                                               class="page-link">4</a>
-                                        </li>
-                                        <li class="paginate_button page-item">
-                                            <a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0"
-                                               class="page-link">5</a>
-                                        </li>
-                                        <li class="paginate_button page-item">
-                                            <a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0"
-                                               class="page-link">6</a>
-                                        </li>
-                                        <li class="paginate_button page-item next" id="example2_next">
-                                            <a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0"
-                                               class="page-link">Next</a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -127,7 +94,29 @@
         </section>
     </div>
 </div>
+<th:block id="js">
+    <script src="/admin-assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/admin-assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/admin-assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/admin-assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
+    <script th:inline="javascript">
+        // const products = [[${products}]];
+        // console.log("products", products);
+
+
+        $('#table-user').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    </script>
+
+</th:block>
 </body>
 
 </html>
