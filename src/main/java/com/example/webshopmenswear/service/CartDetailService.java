@@ -23,7 +23,6 @@ public class CartDetailService {
         if (userCart == null) {
             return List.of(); // Trả về danh sách rỗng nếu user chưa có cart
         }
-
         // Lấy tất cả cartDetail theo cart_id
         return cartDetailRepository.findByCartId(userCart.getId());
     }
@@ -35,11 +34,11 @@ public class CartDetailService {
 
         // Tạo CartDetail mới
         CartDetail newCartDetail = CartDetail.builder()
-            .cart(cart)
-            .productVariant(productVariant)
-            .price(request.getPrice())
-            .quantity(request.getQuantity())
-            .build();
+                .cart(cart)
+                .productVariant(productVariant)
+                .price(request.getPrice())
+                .quantity(request.getQuantity())
+                .build();
 
         // Lưu CartDetail vào database
         return cartDetailRepository.save(newCartDetail);
@@ -52,4 +51,23 @@ public class CartDetailService {
     public CartDetail findByCartAndProduct(Cart userCart, Integer productId) {
         return cartDetailRepository.findByCartAndProductVariantId(userCart, productId);
     }
+
+    public void deleteCartDetailById(Integer cartDetailId) {
+        if (cartDetailRepository.existsById(cartDetailId)) {
+            cartDetailRepository.deleteById(cartDetailId);
+        } else {
+            throw new RuntimeException("CartDetail not found with id: " + cartDetailId);
+        }
+    }
+
+    // Cập nhật số lượng sản phẩm trong giỏ hàng
+    public CartDetail updateCartItemQuantity(Integer cartDetailId, Integer quantity) {
+        CartDetail cartDetail = cartDetailRepository.findById(cartDetailId)
+                .orElseThrow(() -> new RuntimeException("CartDetail not found with id: " + cartDetailId));
+
+        cartDetail.setQuantity(quantity);
+        cartDetail.setPrice(cartDetail.getProductVariant().getProduct().getPrice() * quantity); // Cập nhật giá
+        return cartDetailRepository.save(cartDetail);
+    }
+
 }

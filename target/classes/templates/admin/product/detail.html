@@ -293,9 +293,13 @@
                 discount: Number(discount.value),
                 categoryId: Number(category.val())
             }
-
-            console.log(request);
-            //gọi api
+            const selectedCategories = $("#category").val(); // Lấy các danh mục đã chọn
+            if (selectedCategories.length > 1) {
+                toastr.error('Bạn chỉ có thể chọn tối đa 1 danh mục');
+                return; // Dừng lại, không gửi request
+            }
+            // console.log(request);
+            //gọi api cập nhat product
             try {
                 const response = await axios.put(`/api/admin/products/${product.id}`, request);
                 if (response.status === 200) {
@@ -306,6 +310,8 @@
                 toastr.error('Có lỗi xảy ra');
             }
         });
+
+
     </script>
 </th:block>
 

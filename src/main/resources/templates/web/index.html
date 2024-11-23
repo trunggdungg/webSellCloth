@@ -171,11 +171,11 @@
                             <!-- Header cart action -->
                             <div class="header-cart__action" th:if="${session.CURRENT_USER != null}">
                                 <a
-                                        href="checkout.html"
+                                        href="/checkout"
                                         class="header-cart__button header-cart__button--checkout"
                                 >Checkout</a
                                 >
-                                <a href="cart.html" class="header-cart__button"
+                                <a href="/cart" class="header-cart__button"
                                 >View cart</a
                                 >
                             </div>
@@ -344,7 +344,7 @@
                             <!-- End slider description -->
                             <!-- Button -->
                             <div class="default-slider-item__button">
-                                <a href="shop.html" class="button">Shop now</a>
+                                <a href="/shop" class="button">Shop now</a>
                             </div>
                             <!-- End button -->
                         </div>
@@ -528,7 +528,7 @@
                     <!-- End description -->
                     <!-- Action -->
                     <div class="home-about__action">
-                        <a href="about.html" class="button">About utero</a>
+                        <a href="/about" class="button">About utero</a>
                     </div>
                     <!-- End action -->
                 </div>
@@ -1708,28 +1708,30 @@
         const cartContainer = document.querySelector(".cart-container");
 
         cartItems.forEach(item => {
+            const productId = item.productVariant.product.id;
+            const productSlug = item.productVariant.product.slug;
 
             const cartItemHTML = `
-                <li class="cart-item d-flex">
-                    <p class="cart-item__image">
-                        <a href="product.html">
-                            <img
-                                alt="Image"
-                                src="${item.productVariant.product.imageUrlPrimary}"
-                                class="lazyload lazy-effect"
-                            />
-                        </a>
-                    </p>
-                    <p class="cart-item__details">
-                        <a href="product.html" class="cart-item__title">${item.productVariant.product.name}</a>
-                        <span class="cart-item__variant">${item.productVariant.color.nameColor}, ${item.productVariant.size.sizeName}</span>
-                        <span class="cart-item__price">${item.quantity} <i>x</i> $${item.productVariant.product.price}</span>
-                    </p>
-                    <p class="cart-item__delete">
-                        <a href="#"><i class="lnil lnil-close"></i></a>
-                    </p>
-                </li>
-            `;
+            <li class="cart-item d-flex">
+                <p class="cart-item__image">
+                    <a href="/product/${productId}/${productSlug}">
+                        <img
+                            alt="Image"
+                            src="${item.productVariant.product.imageUrlPrimary}"
+                            class="lazyload lazy-effect"
+                        />
+                    </a>
+                </p>
+                <p class="cart-item__details">
+                    <a href="/product/${productId}/${productSlug}" class="cart-item__title">${item.productVariant.product.name}</a>
+                    <span class="cart-item__variant">${item.productVariant.color.nameColor}, ${item.productVariant.size.sizeName}</span>
+                    <span class="cart-item__price">${item.quantity} <i>x</i> $${item.productVariant.product.price}</span>
+                </p>
+                <p class="cart-item__delete">
+                    <a href="#"><i class="lnil lnil-close"></i></a>
+                </p>
+            </li>
+        `;
             // Thêm phần tử mới vào container
             cartContainer.innerHTML += cartItemHTML;
         });
@@ -1738,7 +1740,6 @@
     // Hàm tính toán tổng giỏ hàng (subtotal)
     function calculateSubtotal(cartItems) {
         let totalPriceSub = 0; // Khởi tạo tổng giá trị của giỏ hàng
-
         cartItems.forEach(item => {
             totalPriceSub += item.productVariant.product.price * item.quantity; // Cộng dồn giá trị của từng sản phẩm
         });
