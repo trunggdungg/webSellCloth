@@ -4,34 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="update addInterceptors">
+    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/WebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/WebController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/search-product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assets/js/search-product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/product/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/product/create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/user/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/user/create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/user/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/shop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/config/WebConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/config/WebConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/WebController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/WebController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/AuthService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/assets/js/search-product.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/assets/js/search-product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/product/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/product/create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/user/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/user/create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/user/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/fragments/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/web/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/web/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/shop.html" afterDir="false" />
@@ -106,7 +81,7 @@
     &quot;com.codeium.enabled&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;G:/DA_CNPM/src/main/resources/static/assets/images&quot;,
+    &quot;last_opened_file_path&quot;: &quot;G:/DA_CNPM/src/main/resources/static/admin-assets/plugins&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -127,7 +102,6 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\DA_CNPM\src\main\resources\static\assets\images" />
       <recent name="G:\DA_CNPM\src\main\resources\static\admin-assets\plugins" />
       <recent name="G:\DA_CNPM\src\main\resources\templates\admin\product" />
     </key>
@@ -288,7 +262,11 @@
       <workItem from="1731718066077" duration="5893000" />
       <workItem from="1731914451866" duration="14240000" />
       <workItem from="1732012314388" duration="17824000" />
-      <workItem from="1732118771072" duration="2966000" />
+      <workItem from="1732118771072" duration="4181000" />
+      <workItem from="1732365236528" duration="743000" />
+      <workItem from="1731663345184" duration="21675000" />
+      <workItem from="1731947688108" duration="83000" />
+      <workItem from="1732017477776" duration="14434000" />
     </task>
     <task id="LOCAL-00001" summary="up">
       <option name="closed" value="true" />
@@ -546,7 +524,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731929408565</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="layout header.html">
+      <option name="closed" value="true" />
+      <created>1732121900592</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1732121900592</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -583,7 +569,8 @@
     <MESSAGE value="update add to cart, sign up" />
     <MESSAGE value="upload img,cap nhat product" />
     <MESSAGE value="update addInterceptors" />
-    <option name="LAST_COMMIT_MESSAGE" value="update addInterceptors" />
+    <MESSAGE value="layout header.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
