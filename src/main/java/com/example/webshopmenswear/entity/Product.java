@@ -47,9 +47,9 @@ public class Product {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-        name = "product_discount",
-        joinColumns = @JoinColumn(name = "product_id"),
-        inverseJoinColumns = @JoinColumn(name = "discount_id")
+            name = "product_discount",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "discount_id")
     )
     List<Discount> discounts;
 

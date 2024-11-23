@@ -455,102 +455,7 @@
                                         <th></th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <!-- Cart product item -->
-                                    <tr>
-                                        <td>
-                                            <div class="shopping-cart__product">
-                                                <div class="cart-product__image">
-                                                    <a href="product.html">
-                                                        <img
-                                                                alt="Image"
-                                                                data-sizes="auto"
-                                                                data-srcset="assets/products/1/6a.jpg 400w,
-                                  assets/products/1/6a.jpg 800w"
-                                                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                                class="lazyload lazy-effect"/>
-                                                    </a>
-                                                </div>
-                                                <div class="cart-product__title-and-variant">
-                                                    <h3 class="cart-product__title"><a href="product.html">Slim fit
-                                                        modal cotton shirt</a></h3>
-                                                    <div class="cart-product__variant">Grey, M</div>
-                                                    <div class="cart-product__action"><a href="#">Edit</a></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="cart-product__price">
-                                                $56.99
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="cart-product__quantity-field">
-                                                <div class="quantity-field__minus"><a href="#">-</a></div>
-                                                <input type="text" value="2" class="quantity-field__input"/>
-                                                <div class="quantity-field__plus"><a href="#">+</a></div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="cart-product__price">
-                                                $113.98
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="cart-product__delete">
-                                                <a href="#"><i class="lnil lnil-close"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <!-- End cart product item -->
-                                    <!-- Cart product item -->
-                                    <tr>
-                                        <td>
-                                            <div class="shopping-cart__product">
-                                                <div class="cart-product__image">
-                                                    <a href="product.html">
-                                                        <img
-                                                                alt="Image"
-                                                                data-sizes="auto"
-                                                                data-srcset="assets/products/1/7a.jpg 400w,
-                                  assets/products/1/7a.jpg 800w"
-                                                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                                class="lazyload lazy-effect"/>
-                                                    </a>
-                                                </div>
-                                                <div class="cart-product__title-and-variant">
-                                                    <h3 class="cart-product__title"><a href="product.html">Suede sport
-                                                        shoes</a></h3>
-                                                    <div class="cart-product__variant">Bold Brown, 40</div>
-                                                    <div class="cart-product__action"><a href="#">Edit</a></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="cart-product__price">
-                                                $45.5
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="cart-product__quantity-field">
-                                                <div class="quantity-field__minus"><a href="#">-</a></div>
-                                                <input type="text" value="1" class="quantity-field__input"/>
-                                                <div class="quantity-field__plus"><a href="#">+</a></div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="cart-product__price">
-                                                $45.5
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="cart-product__delete">
-                                                <a href="#"><i class="lnil lnil-close"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <!-- End cart product item -->
-                                    <!-- Cart product item -->
+                                    <tbody id="cartTableBody">
                                     <tr>
                                         <td>
                                             <div class="shopping-cart__product">
@@ -628,51 +533,31 @@
                     <!-- Right -->
                     <div class="col-lg-5 col-xl-4">
                         <!-- Order summary -->
-                        <div class="shopping-cart__order-summary">
-                            <!-- Background -->
-                            <div class="order-summary__background">
-                                <!-- Title -->
-                                <h3 class="order-summary__title">Order Summary</h3>
-                                <!-- End title -->
-                                <!-- Subtotal -->
-                                <div class="order-summary__subtotal">
-                                    <div class="summary-subtotal__title">Subtotal</div>
-                                    <div class="summary-subtotal__price">$252.47</div>
-                                </div>
-                                <!-- End subtotal -->
-                                <!-- Delivery method -->
-                                <div class="order-summary__delivery-method">
-                                    <select>
-                                        <option>Standard Shipping ($20)</option>
-                                        <option>Fast Shipping ($40)</option>
-                                    </select>
-                                </div>
-                                <!-- End delivery method -->
-                                <!-- Total -->
-                                <div class="order-summary__total">
-                                    <div class="summary-total__title">Total</div>
-                                    <div class="summary-total__price">$272.47</div>
-                                </div>
-                                <!-- End total -->
-                                <!-- Proceed to checkout -->
-                                <div class="order-summary__proceed-to-checkout">
-                                    <a href="checkout.html" class="second-button">Proceed to checkout</a>
-                                </div>
-                                <!-- End proceed to checkout -->
-                                <!-- Accept payment methods -->
-                                <div class="order-summary__accept-payment-methods">
-                                    <h4 class="accept-payment-methods__title">Accept Payment Methods</h4>
-                                    <img src="assets/images/default/payment.png" alt="Payment"/>
-                                </div>
-                                <!-- Accept payment methods -->
+                        <div class="order-summary__background">
+                            <h3 class="order-summary__title">Order Summary</h3>
+                            <div class="order-summary__subtotal">
+                                <div class="summary-subtotal__title">Subtotal</div>
+                                <div class="summary-subtotal__price" id="subtotalPrice">$252.47</div>
                             </div>
-                            <!-- End background -->
-                            <!-- Action -->
-                            <div class="order-summary__action">
-                                <a href="shop.html">Continue shopping</a>
+                            <div class="order-summary__delivery-method">
+                                <select>
+                                    <option>Standard Shipping ($20)</option>
+                                    <option>Fast Shipping ($40)</option>
+                                </select>
                             </div>
-                            <!-- End action -->
+                            <div class="order-summary__total">
+                                <div class="summary-total__title">Total</div>
+                                <div class="summary-total__price" id="totalPrice">$272.47</div>
+                            </div>
+                            <div class="order-summary__proceed-to-checkout">
+                                <a href="/checkout" class="second-button">Proceed to checkout</a>
+                            </div>
+                            <div class="order-summary__accept-payment-methods">
+                                <h4 class="accept-payment-methods__title">Accept Payment Methods</h4>
+                                <img src="assets/images/default/payment.png" alt="Payment"/>
+                            </div>
                         </div>
+
                         <!-- End order summary -->
                     </div>
                     <!-- End right -->
@@ -1122,6 +1007,212 @@
     </div>
     <!-- End search popup -->
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Gọi API để lấy dữ liệu giỏ hàng
+        fetch("/api/cart/items")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("User not logged in or unable to fetch cart items.");
+                }
+                return response.json();
+            })
+            .then(cartItems => {
+                if (cartItems.length === 0) {
+                    const cartTableBody = document.getElementById("cartTableBody");
+                    const totalPriceEl = document.getElementById("totalPrice");
+                    cartTableBody.innerHTML = "<tr><td colspan='5'>Your cart is empty.</td></tr>";
+                    totalPriceEl.innerHTML = "$0.00"; // Giỏ hàng trống, tổng giá là 0
+                } else {
+                    renderCartItems(cartItems);
+                    updateSubtotal(cartItems);
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching cart items:", error);
+            });
+    });
+
+    // Hàm render giỏ hàng
+    function renderCartItems(cartItems) {
+        const cartTableBody = document.getElementById("cartTableBody");
+        cartTableBody.innerHTML = ""; // Xóa nội dung cũ
+
+        cartItems.forEach(item => {
+            const productId = item.productVariant.product.id;
+            const productSlug = item.productVariant.product.slug;
+            const rowHTML = `
+        <tr id="cart-item-${item.id}">
+            <td>
+                <div class="shopping-cart__product">
+                    <div class="cart-product__image">
+                        <a href="/product/${productId}/${productSlug}">
+                            <img alt="Image" src="${item.productVariant.product.imageUrlPrimary}" class="lazyload lazy-effect" />
+                        </a>
+                    </div>
+                    <div class="cart-product__title-and-variant">
+                        <h3 class="cart-product__title"><a href="/product/${productId}/${productSlug}">${item.productVariant.product.name}</a></h3>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="cart-product__price">
+                    $${item.productVariant.product.price}
+                </div>
+            </td>
+            <td>
+                <div class="cart-product__quantity-field">
+                    <div class="quantity-field__minus" data-id="${item.id}"><a href="#">-</a></div>
+                    <input type="text" value="${item.quantity}" class="quantity-field__input" data-id="${item.id}" />
+                    <div class="quantity-field__plus" data-id="${item.id}"><a href="#">+</a></div>
+                </div>
+            </td>
+            <td>
+                <div class="cart-product__price" id="item-price-${item.id}">
+                    $${(item.productVariant.product.price * item.quantity).toFixed(2)}
+                </div>
+            </td>
+            <td>
+                <div class="cart-product__delete">
+                    <a href="#" class="delete-item" data-cart-detail-id="${item.id}"><i class="lnil lnil-close"></i></a>
+                </div>
+            </td>
+        </tr>
+    `;
+            cartTableBody.innerHTML += rowHTML;
+        });
+
+        // Lắng nghe sự kiện tăng/giảm số lượng
+        cartItems.forEach(item => {
+            const minusButton = document.querySelector(`.quantity-field__minus[data-id="${item.id}"]`);
+            const plusButton = document.querySelector(`.quantity-field__plus[data-id="${item.id}"]`);
+            const quantityInput = document.querySelector(`.quantity-field__input[data-id="${item.id}"]`);
+            const deleteButton = document.querySelector(`.delete-item[data-cart-detail-id="${item.id}"]`);
+
+            // Giảm số lượng
+            minusButton.addEventListener("click", (event) => {
+                event.preventDefault();
+                let quantity = parseInt(quantityInput.value) - 1;
+                if (quantity < 1) {
+                    quantity = 1;
+                }
+                updateCartItemQuantity(item.id, quantity, quantityInput);
+            });
+
+            // Tăng số lượng
+            plusButton.addEventListener("click", (event) => {
+                event.preventDefault();
+                let quantity = parseInt(quantityInput.value) + 1;
+                updateCartItemQuantity(item.id, quantity, quantityInput);
+            });
+
+            // Xóa sản phẩm
+            deleteButton.addEventListener("click", (event) => {
+                event.preventDefault();
+                deleteCartItem(item.id);
+            });
+        });
+    }
+
+    // Cập nhật số lượng sản phẩm trong giỏ hàng
+    function updateCartItemQuantity(cartDetailId, newQuantity, quantityInput) {
+        fetch(`/api/cart/update/${cartDetailId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({quantity: newQuantity}),
+        })
+            .then(response => response.json())
+            .then(data => {
+                quantityInput.value = newQuantity;
+                const price = parseFloat(data.productVariant.product.price);
+                const itemPriceEl = document.getElementById(`item-price-${cartDetailId}`);
+                itemPriceEl.textContent = `$${(price * newQuantity).toFixed(2)}`;
+
+                // Sau khi cập nhật số lượng, tính lại tổng giỏ hàng
+                updateSubtotal();
+            })
+            .catch(error => {
+                console.error("Error updating cart item quantity:", error);
+            });
+    }
+
+    // Xóa sản phẩm khỏi giỏ hàng
+    function deleteCartItem(cartDetailId) {
+        fetch(`/api/cart/items/${cartDetailId}`, {
+            method: "DELETE",
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Error deleting item from cart");
+                }
+                // Xóa sản phẩm khỏi giao diện
+                const cartRow = document.getElementById(`cart-item-${cartDetailId}`);
+                if (cartRow) {
+                    cartRow.remove();
+                }
+                // Cập nhật lại tổng giá
+                updateSubtotal();
+            })
+            .catch(error => {
+                console.error("Error deleting cart item:", error);
+            });
+    }
+
+    // Tính toán tổng giá trị giỏ hàng
+    function updateSubtotal(cartItems = null) {
+        let totalPriceSub = 0;
+
+        if (!cartItems) {
+            const cartTableBody = document.getElementById("cartTableBody");
+            const cartRows = cartTableBody.querySelectorAll("tr");
+            cartRows.forEach(row => {
+                const priceCell = row.querySelector("td:nth-child(4)");
+                if (priceCell) {
+                    totalPriceSub += parseFloat(priceCell.textContent.replace("$", ""));
+                }
+            });
+        } else {
+            cartItems.forEach(item => {
+                const itemPrice = parseFloat(item.productVariant.product.price);
+                const itemQuantity = item.quantity;
+                totalPriceSub += itemPrice * itemQuantity;
+            });
+        }
+
+        const subtotalPriceEl = document.getElementById("subtotalPrice");
+        if (subtotalPriceEl) {
+            subtotalPriceEl.textContent = `$${totalPriceSub.toFixed(2)}`;
+        }
+
+        // Cập nhật tổng giá trị cuối cùng (cộng thêm phí vận chuyển)
+        updateTotalPrice(totalPriceSub);
+    }
+
+    // Cập nhật tổng giá trị cuối cùng
+    function updateTotalPrice(subtotal) {
+        const totalPriceEl = document.getElementById("totalPrice");
+        const shippingSelect = document.querySelector(".order-summary__delivery-method select");
+
+        let shippingCost = 0;
+
+        if (shippingSelect) {
+            const selectedOption = shippingSelect.options[shippingSelect.selectedIndex].text;
+            if (selectedOption.includes("Standard Shipping")) {
+                shippingCost = 20; // Phí vận chuyển tiêu chuẩn
+            } else if (selectedOption.includes("Fast Shipping")) {
+                shippingCost = 40; // Phí vận chuyển nhanh
+            }
+        }
+
+        const totalPrice = subtotal + shippingCost;
+        if (totalPriceEl) {
+            totalPriceEl.textContent = `$${totalPrice.toFixed(2)}`;
+        }
+    }
+
+</script>
 </body>
 
 <!-- Mirrored from martfury.pl/utero/html/v1/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Oct 2024 06:58:54 GMT -->

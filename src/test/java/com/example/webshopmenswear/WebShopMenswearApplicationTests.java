@@ -79,6 +79,12 @@ class WebShopMenswearApplicationTests {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Test
+    void tesyyy() {
+        List<District> districts = districtRepository.findByProvinceId(1);
+        System.out.println(districts);
+    }
+
+    @Test
     void enode_password() {
         List<User> users = userRepository.findAll();
         for (User user : users) {
@@ -112,10 +118,10 @@ class WebShopMenswearApplicationTests {
 
         // Tạo Cart giả lập
         Cart cart = Cart.builder()
-            .user(user)
-            .createdAt(LocalDateTime.now())
-            .updatedAt(LocalDateTime.now())
-            .build();
+                .user(user)
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
+                .build();
 
         // Lưu Cart vào database
         cartRepository.save(cart);
@@ -130,15 +136,15 @@ class WebShopMenswearApplicationTests {
 
         // Giả lập productVariant từ database (hoặc tạo mới nếu cần)
         ProductVariant productVariant = productVariantRepository.findById(1)
-            .orElseThrow(() -> new RuntimeException("ProductVariant not found"));
+                .orElseThrow(() -> new RuntimeException("ProductVariant not found"));
 
         // Tạo CartDetail giả lập
         CartDetail cartDetail = CartDetail.builder()
-            .cart(cart)
-            .productVariant(productVariant)
-            .price(faker.number().randomDouble(2, 12000, 51000))  // Giá từ 10 đến 500
-            .quantity(faker.number().numberBetween(1, 5))     // Số lượng từ 1 đến 5
-            .build();
+                .cart(cart)
+                .productVariant(productVariant)
+                .price(faker.number().randomDouble(2, 12000, 51000))  // Giá từ 10 đến 500
+                .quantity(faker.number().numberBetween(1, 5))     // Số lượng từ 1 đến 5
+                .build();
 
         // Lưu CartDetail vào database
         cartDetailRepository.save(cartDetail);
@@ -155,11 +161,11 @@ class WebShopMenswearApplicationTests {
             String name = faker.leagueOfLegends().champion();
             String slug = slugify.slugify(name);
             Category category = Category.builder()
-                .name(name)
-                .slug(slug)
-                .createdAt(LocalDateTime.now())
-                .updatedAt(LocalDateTime.now())
-                .build();
+                    .name(name)
+                    .slug(slug)
+                    .createdAt(LocalDateTime.now())
+                    .updatedAt(LocalDateTime.now())
+                    .build();
             categoryRepository.save(category);
         }
     }
@@ -169,8 +175,8 @@ class WebShopMenswearApplicationTests {
         Faker faker = new Faker();
         for (int i = 0; i < 5; i++) {
             Color color = Color.builder()
-                .nameColor(faker.color().name())
-                .build();
+                    .nameColor(faker.color().name())
+                    .build();
             colorRepository.save(color);
         }
     }
@@ -180,8 +186,8 @@ class WebShopMenswearApplicationTests {
         List<String> sizes = List.of("S", "M", "L", "XL", "XXL");
         for (String sizeName : sizes) {
             Size size = Size.builder()
-                .sizeName(sizeName)
-                .build();
+                    .sizeName(sizeName)
+                    .build();
             sizeRepository.save(size);
         }
     }
@@ -194,12 +200,12 @@ class WebShopMenswearApplicationTests {
         for (int i = 0; i < 5; i++) {
             double discountPercent = 10 + (20 * random.nextDouble()); // Generate a random value between 10 and 30
             Discount discount = Discount.builder()
-                .name(faker.company().name())
-                .description(faker.lorem().sentence())
-                .discountPercent(discountPercent)
-                .startDate(LocalDateTime.now())
-                .endDate(LocalDateTime.now().plusDays(faker.number().numberBetween(1, 30)))
-                .build();
+                    .name(faker.company().name())
+                    .description(faker.lorem().sentence())
+                    .discountPercent(discountPercent)
+                    .startDate(LocalDateTime.now())
+                    .endDate(LocalDateTime.now().plusDays(faker.number().numberBetween(1, 30)))
+                    .build();
             discountRepository.save(discount);
         }
     }
@@ -224,16 +230,16 @@ class WebShopMenswearApplicationTests {
             }
 
             Product product = Product.builder()
-                .name(faker.food().ingredient())
-                .slug(slugify.slugify(faker.food().ingredient()))
-                .description(faker.lorem().sentence())
-                .price(faker.number().randomDouble(2, 10, 100))
-                .category(categories.get(rd.nextInt(categories.size())))
-                .status(true)
-                .discounts(randDiscounts)
-                .createdAt(LocalDateTime.now())
-                .updatedAt(LocalDateTime.now())
-                .build();
+                    .name(faker.food().ingredient())
+                    .slug(slugify.slugify(faker.food().ingredient()))
+                    .description(faker.lorem().sentence())
+                    .price(faker.number().randomDouble(2, 10, 100))
+                    .category(categories.get(rd.nextInt(categories.size())))
+                    .status(true)
+                    .discounts(randDiscounts)
+                    .createdAt(LocalDateTime.now())
+                    .updatedAt(LocalDateTime.now())
+                    .build();
             productRepository.save(product);
         }
 
@@ -250,12 +256,12 @@ class WebShopMenswearApplicationTests {
             if (existingImages.size() < 3) {
                 for (int i = 0; i < 3 - existingImages.size(); i++) {
                     ProductImage image = ProductImage.builder()
-                        .product(product)
-                        .imageUrl("https://placehold.co/600x400?text=" + product.getName().substring(0, 1).toUpperCase())
-                        .altText(slugify.slugify(product.getName()) + "-" + (i + existingImages.size() + 1))
-                        .isPrimary(existingImages.isEmpty() && i == 0) // Đặt ảnh đầu tiên là ảnh chính nếu chưa có ảnh chính
-                        .imageOrder(i + 1 + existingImages.size())
-                        .build();
+                            .product(product)
+                            .imageUrl("https://placehold.co/600x400?text=" + product.getName().substring(0, 1).toUpperCase())
+                            .altText(slugify.slugify(product.getName()) + "-" + (i + existingImages.size() + 1))
+                            .isPrimary(existingImages.isEmpty() && i == 0) // Đặt ảnh đầu tiên là ảnh chính nếu chưa có ảnh chính
+                            .imageOrder(i + 1 + existingImages.size())
+                            .build();
 
                     imageRepository.save(image);
                 }
@@ -285,11 +291,11 @@ class WebShopMenswearApplicationTests {
                     // Kiểm tra nếu biến thể đã tồn tại
                     if (!productVariantRepository.existsByProductIdAndColorIdAndSizeId(product.getId(), color.getId(), size.getId())) {
                         ProductVariant variant = ProductVariant.builder()
-                            .product(product)
-                            .color(color)
-                            .size(size)
-                            .stock(rd.nextInt(50) + 1) // Số lượng tồn kho ngẫu nhiên từ 1-50
-                            .build();
+                                .product(product)
+                                .color(color)
+                                .size(size)
+                                .stock(rd.nextInt(50) + 1) // Số lượng tồn kho ngẫu nhiên từ 1-50
+                                .build();
                         productVariantRepository.save(variant);
                     }
                 }
@@ -302,8 +308,8 @@ class WebShopMenswearApplicationTests {
         Faker faker = new Faker();
         for (int i = 0; i < 10; i++) {
             Province province = Province.builder()
-                .provinceName(faker.address().state())
-                .build();
+                    .provinceName(faker.address().state())
+                    .build();
             provinceRepository.save(province);
         }
     }
@@ -317,9 +323,9 @@ class WebShopMenswearApplicationTests {
             int numberOfDistricts = random.nextInt(10) + 1;
             for (int i = 0; i < numberOfDistricts; i++) {
                 District district = District.builder()
-                    .districtName(faker.address().city())
-                    .province(province)
-                    .build();
+                        .districtName(faker.address().city())
+                        .province(province)
+                        .build();
                 districtRepository.save(district);
             }
         }
@@ -334,9 +340,9 @@ class WebShopMenswearApplicationTests {
             int numberOfWards = random.nextInt(10) + 1;
             for (int i = 0; i < numberOfWards; i++) {
                 Ward ward = Ward.builder()
-                    .wardName(faker.address().cityName())
-                    .district(district)
-                    .build();
+                        .wardName(faker.address().cityName())
+                        .district(district)
+                        .build();
                 wardRepository.save(ward);
             }
         }
@@ -347,17 +353,17 @@ class WebShopMenswearApplicationTests {
         Faker faker = new Faker();
         for (int i = 0; i < 10; i++) {
             User user = User.builder()
-                .username(faker.name().username())
-                .password(faker.internet().password())
-                .fullName(faker.name().fullName())
-                .email(faker.internet().emailAddress())
-                .phoneNumber(faker.phoneNumber().cellPhone())
-                .userRole(i == 0 || i == 1 ? UserRole.ADMIN : UserRole.USER)
-                .avatar("https://placehold.co/150x150?text=" + faker.name().fullName().substring(0, 1).toUpperCase())
-                .isActive(true)
-                .createdAt(LocalDateTime.now())
-                .updatedAt(LocalDateTime.now())
-                .build();
+                    .username(faker.name().username())
+                    .password(faker.internet().password())
+                    .fullName(faker.name().fullName())
+                    .email(faker.internet().emailAddress())
+                    .phoneNumber(faker.phoneNumber().cellPhone())
+                    .userRole(i == 0 || i == 1 ? UserRole.ADMIN : UserRole.USER)
+                    .avatar("https://placehold.co/150x150?text=" + faker.name().fullName().substring(0, 1).toUpperCase())
+                    .isActive(true)
+                    .createdAt(LocalDateTime.now())
+                    .updatedAt(LocalDateTime.now())
+                    .build();
             userRepository.save(user);
         }
     }
@@ -373,13 +379,13 @@ class WebShopMenswearApplicationTests {
 
         for (User user : users) {
             Address address = Address.builder()
-                .user(user)
-                .street(faker.address().streetAddress())
-                .province(provinces.get(random.nextInt(provinces.size())))
-                .district(districts.get(random.nextInt(districts.size())))
-                .ward(wards.get(random.nextInt(wards.size())))
-                .createdAt(LocalDateTime.now())
-                .build();
+                    .user(user)
+                    .street(faker.address().streetAddress())
+                    .province(provinces.get(random.nextInt(provinces.size())))
+                    .district(districts.get(random.nextInt(districts.size())))
+                    .ward(wards.get(random.nextInt(wards.size())))
+                    .createdAt(LocalDateTime.now())
+                    .build();
             addressRepository.save(address);
         }
     }
@@ -400,13 +406,13 @@ class WebShopMenswearApplicationTests {
 
             // Tạo và lưu đơn hàng
             Order order = Order.builder()
-                .user(user)
-                .addressUser(address) // Thêm địa chỉ vào đơn hàng
-                .orderStatus(orderStatus) // Gán trạng thái cho đơn hàng
-                .totalPrice(0.0) // Khởi tạo giá trị đơn hàng
-                .createdAt(LocalDateTime.now())
-                .updatedAt(LocalDateTime.now())
-                .build();
+                    .user(user)
+                    .addressUser(address) // Thêm địa chỉ vào đơn hàng
+                    .orderStatus(orderStatus) // Gán trạng thái cho đơn hàng
+                    .totalPrice(0.0) // Khởi tạo giá trị đơn hàng
+                    .createdAt(LocalDateTime.now())
+                    .updatedAt(LocalDateTime.now())
+                    .build();
 
             orderRepository.save(order);
         }

@@ -11,5 +11,8 @@ import java.util.List;
 public interface CartDetailRepository extends JpaRepository<CartDetail, Integer> {
     List<CartDetail> findByCartId(Integer id);
 
-    CartDetail findByCartAndProductVariantId(Cart cart, Integer productVariant_id);
+    CartDetail findByCartAndProductVariantId(Cart userCart, Integer productId);
+
+
+    List<CartDetail> findByCart_UserId(Integer id);
 }
