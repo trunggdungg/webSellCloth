@@ -213,9 +213,14 @@
                     <!-- End product title -->
                     <!-- Product price -->
                     <div class="product__price">
-                        <span class="product-price__new" th:text="${productsDetail.price}">$99</span>
-                        <span class="product-price__old">$137</span>
+                        <span class="product-price__new"
+                              th:text="${productsDetail.discount != null ? #numbers.formatDecimal(productsDetail.price - (productsDetail.price * productsDetail.discount/100), 2, 2) : #numbers.formatDecimal(productsDetail.price, 2, 2)}">$99
+                        </span>
+                        <span class="product-price__old" th:if="${productsDetail.discount != null}"
+                              th:text="${#numbers.formatDecimal(productsDetail.price, 2, 2)}"> $137
+                            </span>
                     </div>
+
                     <!-- End product price -->
                     <!-- Options -->
                     <div class="product__options">
@@ -1490,8 +1495,10 @@
 </script>
 
 <script th:inline="javascript">
-    let productPrice = [[${productsDetail.price}]];
-    console.log("productPrice:", productPrice);
+    let productPrice = [[${productsDetail.discount != null ? productsDetail.price - (productsDetail.price * productsDetail.discount / 100) : productsDetail.price}]];
+    let priceAsNumber = parseFloat(productPrice.toFixed(2));
+    console.log("priceAsNumber:", priceAsNumber);
+
 
     document.getElementById('addToCart').addEventListener('click', function (event) {
         event.preventDefault();
@@ -1510,7 +1517,7 @@
         }
 
         // Calculate the price based on the quantity
-        const price = quantity * productPrice;
+        const price = quantity * priceAsNumber;
 
         // Create the request payload
         const cartDetailRequest = {

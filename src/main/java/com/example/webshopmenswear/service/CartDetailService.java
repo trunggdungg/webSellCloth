@@ -34,11 +34,11 @@ public class CartDetailService {
 
         // Tạo CartDetail mới
         CartDetail newCartDetail = CartDetail.builder()
-                .cart(cart)
-                .productVariant(productVariant)
-                .price(request.getPrice())
-                .quantity(request.getQuantity())
-                .build();
+            .cart(cart)
+            .productVariant(productVariant)
+            .price(request.getPrice())
+            .quantity(request.getQuantity())
+            .build();
 
         // Lưu CartDetail vào database
         return cartDetailRepository.save(newCartDetail);
@@ -63,10 +63,21 @@ public class CartDetailService {
     // Cập nhật số lượng sản phẩm trong giỏ hàng
     public CartDetail updateCartItemQuantity(Integer cartDetailId, Integer quantity) {
         CartDetail cartDetail = cartDetailRepository.findById(cartDetailId)
-                .orElseThrow(() -> new RuntimeException("CartDetail not found with id: " + cartDetailId));
+            .orElseThrow(() -> new RuntimeException("CartDetail not found with id: " + cartDetailId));
 
+        // Lấy thông tin sản phẩm và giá gốc
+        ProductVariant productVariant = cartDetail.getProductVariant();
+        double price = productVariant.getProduct().getPrice();
+        Integer discount = productVariant.getProduct().getDiscount();
+
+        // Tính giá đã giảm (nếu có)
+        double finalPrice = discount != null
+            ? price - (price * discount / 100)
+            : price;
+
+        // Cập nhật số lượng và giá trong CartDetail
         cartDetail.setQuantity(quantity);
-        cartDetail.setPrice(cartDetail.getProductVariant().getProduct().getPrice() * quantity); // Cập nhật giá
+        cartDetail.setPrice(finalPrice * quantity); // Lưu giá đã giảm nhân số lượng
         return cartDetailRepository.save(cartDetail);
     }
 

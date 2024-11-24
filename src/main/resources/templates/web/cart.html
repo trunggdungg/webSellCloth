@@ -17,7 +17,7 @@
 <div id="main">
     <!-- Header -->
     <div th:insert="~{/web/fragments/header}"></div>
-    
+
     <!-- End header -->
     <!-- Sidebar contact -->
     <div class="sidebar-contact js-sidebar-contact">
@@ -691,7 +691,7 @@
                     cartTableBody.innerHTML = "<tr><td colspan='5'>Your cart is empty.</td></tr>";
                     totalPriceEl.innerHTML = "$0.00"; // Giỏ hàng trống, tổng giá là 0
                 } else {
-                    renderCartItems(cartItems);
+                    renderCartItemss(cartItems);
                     updateSubtotal(cartItems);
                 }
             })
@@ -701,7 +701,7 @@
     });
 
     // Hàm render giỏ hàng
-    function renderCartItems(cartItems) {
+    function renderCartItemss(cartItems) {
         const cartTableBody = document.getElementById("cartTableBody");
         cartTableBody.innerHTML = ""; // Xóa nội dung cũ
 
@@ -724,7 +724,9 @@
             </td>
             <td>
                 <div class="cart-product__price">
-                    $${item.productVariant.product.price}
+                 $${item.productVariant.product.discount != null
+                ? (item.productVariant.product.price - (item.productVariant.product.price * item.productVariant.product.discount) / 100).toFixed(2)
+                : item.productVariant.product.price.toFixed(2)}
                 </div>
             </td>
             <td>
@@ -735,9 +737,12 @@
                 </div>
             </td>
             <td>
-                <div class="cart-product__price" id="item-price-${item.id}">
-                    $${(item.productVariant.product.price * item.quantity).toFixed(2)}
-                </div>
+               <div class="cart-product__price" id="item-price-${item.id}">
+  $${(item.productVariant.product.discount != null
+                ? ((item.productVariant.product.price - (item.productVariant.product.price * item.productVariant.product.discount) / 100) * item.quantity).toFixed(2)
+                : (item.productVariant.product.price * item.quantity).toFixed(2))}
+</div>
+
             </td>
             <td>
                 <div class="cart-product__delete">
@@ -793,7 +798,10 @@
             .then(response => response.json())
             .then(data => {
                 quantityInput.value = newQuantity;
-                const price = parseFloat(data.productVariant.product.price);
+                const price = data.productVariant.product.discount != null
+                    ? parseFloat(data.productVariant.product.price) - (parseFloat(data.productVariant.product.price) * parseFloat(data.productVariant.product.discount) / 100)
+                    : parseFloat(data.productVariant.product.price);
+
                 const itemPriceEl = document.getElementById(`item-price-${cartDetailId}`);
                 itemPriceEl.textContent = `$${(price * newQuantity).toFixed(2)}`;
 
@@ -842,9 +850,9 @@
             });
         } else {
             cartItems.forEach(item => {
-                const itemPrice = parseFloat(item.productVariant.product.price);
+                const itemPrice = parseFloat(item.price);
                 const itemQuantity = item.quantity;
-                totalPriceSub += itemPrice * itemQuantity;
+                totalPriceSub += itemPrice;
             });
         }
 
@@ -882,5 +890,5 @@
 </script>
 </body>
 
-<!-- Mirrored from martfury.pl/utero/html/v1/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Oct 2024 06:58:54 GMT -->
+
 </html>
