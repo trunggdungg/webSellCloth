@@ -882,13 +882,13 @@
                 const response = await axios.post(`/orders`, orderData);
 
                 if (response.status === 200) {
-                    //chuyen ve trang chu
-                    window.location.href = "/";
                     toastr.success("Order successful!");
+                    setTimeout(() => {
+                        window.location.href = "/";
+                    }, 1500); // Wait for 1 second (1000 milliseconds)
                 }
             } catch (e) {
                 toastr.error("Order failed!");
-
             }
         });
     });

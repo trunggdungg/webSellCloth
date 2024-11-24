@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Product List</title>
+    <title>Order List</title>
 
     <th:block id="css">
         <link rel="stylesheet" href="/admin-assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -29,7 +29,7 @@
                                 <a href="#">Dashboard</a>
                             </li>
                             <li class="breadcrumb-item active">
-                                Danh sách sản phẩm
+                                Order list
                             </li>
                         </ol>
                     </div>
@@ -43,7 +43,7 @@
                 <div class="row py-2">
                     <div class="col-12">
                         <a href="/admin/product/create" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Thêm sản phẩm
+                            <i class="fas fa-plus"></i> Thêm order
                         </a>
                         <a href="/admin/product" class="btn btn-info">
                             <i class="fas fa-redo"></i> Refresh
@@ -57,32 +57,40 @@
                                 <table class="table table-bordered table-hover" id="table-product">
                                     <thead>
                                     <tr>
-                                        <th>Name Product</th>
-                                        <th>Category</th>
-
-                                        <th>Status</th>
+                                        <th>Name User</th>
+                                        <th>Address</th>
+                                        <th>Address Detail</th>
+                                        <th>Total Price</th>
+                                        <th>Order Status</th>
                                         <th>Create At</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="product : ${products}">
+                                    <tr th:each="order : ${orders}">
                                         <td>
-                                            <a th:href="@{/admin/product/detail/{id}(id=${product.id})}"
-                                               th:text="${product.name}">Khai
+                                            <a href="#"
+                                               th:text="${order.user.fullName}">Khai
                                                 giảng
                                                 khóa
-                                                Java Spring Boot 12A
-                                                - song song 2 hình
-                                                thức offline /
-                                                online đáp ứng nhu
-                                                cầu đào tạo từ xa</a>
+                                            </a>
                                         </td>
 
-                                        <td th:text="${product.category.name}">
+                                        <td th:text="${order.addressUser.district.districtName + ', '
+                                        + order.addressUser.province.provinceName + ', '
+                                        +order.addressUser.ward.wardName}">
                                             Java, Golang, Springboot
                                         </td>
-                                        <td th:text="${product.status == true ? 'Công khai' :'Nháp'}">Công khai</td>
-                                        <td th:text="${#temporals.format(product.createdAt, 'dd/MM/yyyy')}">06-07-2022
+                                        <td th:text="${order.addressUser.street}">Công khai</td>
+                                        <td th:text="${order.totalPrice}">Công khai</td>
+                                        <td th:text="${order.orderStatus}">06-07-2022
+                                        </td>
+                                        <td th:text="${#temporals.format(order.createdAt, 'dd/MM/yyyy')}">06-07-2022
+                                        </td>
+
+                                        <td>
+                                            <button type="button" class="btn btn-danger">Cancel</button>
+                                            <button type="button" class="btn btn-primary">OK</button>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -105,8 +113,8 @@
     <script th:inline="javascript">
         // const products = [[${products}]];
         // console.log("products", products);
-
-
+        const orders = [[${orders}]];
+        console.log("orders", orders);
         $('#table-product').DataTable({
             "paging": true,
             "lengthChange": true,

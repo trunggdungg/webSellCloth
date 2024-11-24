@@ -4,6 +4,7 @@ import com.example.webshopmenswear.entity.Order;
 import com.example.webshopmenswear.model.Enum.OrderStatus;
 import com.example.webshopmenswear.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -33,7 +34,7 @@ public class OrderService {  // Sửa tên class từ 'OderService' thành 'Orde
     public Order updateOrderTotalPrice(Integer orderId, Double newTotalPrice) {
         // Tìm đơn hàng theo ID
         Order order = orderRepository.findById(orderId)
-                .orElseThrow(() -> new IllegalArgumentException("Order not found with ID: " + orderId));
+            .orElseThrow(() -> new IllegalArgumentException("Order not found with ID: " + orderId));
 
         // Cập nhật giá trị tổng đơn hàng mới
         order.setTotalPrice(newTotalPrice);
@@ -41,5 +42,9 @@ public class OrderService {  // Sửa tên class từ 'OderService' thành 'Orde
 
         // Lưu đơn hàng đã được cập nhật
         return orderRepository.save(order);
+    }
+
+    public Object getAllOrders() {
+        return orderRepository.findAll(Sort.by(Sort.Direction.DESC, "CreatedAt"));
     }
 }
