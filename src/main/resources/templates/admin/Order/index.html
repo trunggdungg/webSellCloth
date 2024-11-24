@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{admin/layout/layout :: main-layout(~{:: title},~{:: #css},~{:: .content-wrapper},~{:: #js})}">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Product List</title>
+
+    <th:block id="css">
+        <link rel="stylesheet" href="/admin-assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="/admin-assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    </th:block>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="#">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                Danh sách sản phẩm
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row py-2">
+                    <div class="col-12">
+                        <a href="/admin/product/create" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Thêm sản phẩm
+                        </a>
+                        <a href="/admin/product" class="btn btn-info">
+                            <i class="fas fa-redo"></i> Refresh
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table table-bordered table-hover" id="table-product">
+                                    <thead>
+                                    <tr>
+                                        <th>Name Product</th>
+                                        <th>Category</th>
+
+                                        <th>Status</th>
+                                        <th>Create At</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="product : ${products}">
+                                        <td>
+                                            <a th:href="@{/admin/product/detail/{id}(id=${product.id})}"
+                                               th:text="${product.name}">Khai
+                                                giảng
+                                                khóa
+                                                Java Spring Boot 12A
+                                                - song song 2 hình
+                                                thức offline /
+                                                online đáp ứng nhu
+                                                cầu đào tạo từ xa</a>
+                                        </td>
+
+                                        <td th:text="${product.category.name}">
+                                            Java, Golang, Springboot
+                                        </td>
+                                        <td th:text="${product.status == true ? 'Công khai' :'Nháp'}">Công khai</td>
+                                        <td th:text="${#temporals.format(product.createdAt, 'dd/MM/yyyy')}">06-07-2022
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<th:block id="js">
+    <script src="/admin-assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/admin-assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/admin-assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/admin-assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+    <script th:inline="javascript">
+        // const products = [[${products}]];
+        // console.log("products", products);
+
+
+        $('#table-product').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    </script>
+
+</th:block>
+
+</body>
+
+</html>

@@ -205,7 +205,7 @@
                             <!-- Tổng cộng -->
                             <div class="checkout__total">
                                 <div class="checkout-total__title">Total</div>
-                                <div class="checkout-total__price" id="finalTotal">$20.00</div>
+                                <div class="checkout-total__price" id="finalTotal">$21.00</div>
                             </div>
                             <!-- Hành động -->
                             <div class="checkout__action">
@@ -855,19 +855,20 @@
             }
         });
 
-        // Get the total cart value
-        const totalPrice = parseFloat(document.getElementById("finalTotal").textContent.replace('$', '').trim());
-        console.log("Total Price: ", totalPrice);  // Log total cart value
 
         // Get the selected address ID
 
         document.getElementById("place-order-button").addEventListener("click", async function (event) {
             event.preventDefault();  // Prevent default action of the link/button
             const addressId = document.getElementById("addressSelect").value; // Use the correct element ID here
+
+            // Get the total cart value
+            const totalPrice = parseFloat(document.getElementById("finalTotal").textContent.replace('$', '').trim());
+            console.log("Total Price: ", totalPrice);  // Log total cart value
             console.log("Selected Address ID:", addressId);  // Log the selected address ID
             // Check if an address is selected
             if (!addressId) {
-                toastr.success("Please select an address before placing the order.");
+                toastr.error("Please select an address before placing the order.");
                 return;
             }
 
@@ -881,10 +882,12 @@
                 const response = await axios.post(`/orders`, orderData);
 
                 if (response.status === 200) {
-                    toastr.success("Oke");
+                    //chuyen ve trang chu
+                    window.location.href = "/";
+                    toastr.success("Order successful!");
                 }
             } catch (e) {
-                toastr.error("del oke");
+                toastr.error("Order failed!");
 
             }
         });
@@ -948,7 +951,10 @@
                         ${item.productVariant.color.nameColor}, ${item.productVariant.size.sizeName}
                     </span>
                 </div>
-                <div class="checkout-product__price">$${(item.productVariant.product.price * item.quantity).toFixed(2)}</div>
+                <div class="checkout-product__price">$${(item.productVariant.product.discount != null
+                ? ((item.productVariant.product.price - (item.productVariant.product.price * item.productVariant.product.discount) / 100) * item.quantity).toFixed(2)
+                : (item.productVariant.product.price * item.quantity).toFixed(2))}
+                </div>
 
             </div>
         `;
@@ -962,7 +968,11 @@
         let totalPriceSub = 0;
 
         cartItems.forEach(item => {
-            totalPriceSub += item.productVariant.product.price * item.quantity;
+            totalPriceSub += item.productVariant.product.discount != null
+                ? (item.productVariant.product.price - (item.productVariant.product.price * item.productVariant.product.discount / 100)) * item.quantity
+                : item.productVariant.product.price * item.quantity;
+
+            console.log("Total Price Sub: ", totalPriceSub);
         });
 
         // Cập nhật tổng giá trị
@@ -970,7 +980,8 @@
         const finalTotalEl = document.getElementById("finalTotal");
 
         subtotalTitleEl.textContent = `$${totalPriceSub.toFixed(2)}`;
-        finalTotalEl.textContent = `$${(totalPriceSub + 20.0).toFixed(2)}`; // Thêm phí vận chuyển
+        finalTotalEl.textContent = `$${(totalPriceSub + 20.0).toFixed(2)}`// Thêm phí vận chuyển
+
     }
 </script>
 

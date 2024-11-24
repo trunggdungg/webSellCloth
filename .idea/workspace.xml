@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="update cart,checkout">
+    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="update cart,checkout,discount">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/CartDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/CartDetailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/checkout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/checkout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/AddressController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/OrderDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/OrderDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/rest/OrderDetailApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/rest/OrderDetailApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/fragments/header.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,49 +60,50 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveCategories.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveColors.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveImagesProduct.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveProducts.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveSizes.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveSubCategories.executor&quot;: &quot;Run&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-Lombok plugin&quot;: &quot;Lombok integration problem&quot;,
-    &quot;Notification.DoNotAsk-Lombok plugin&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.WebShopMenswearApplication.executor&quot;: &quot;Run&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;G:/DA_CNPM/src/main/resources/static/admin-assets/plugins&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;667eded1e4c7edad57570423454b52ab&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.WebShopMenswearApplicationTests.saveCategories.executor": "Run",
+    "JUnit.WebShopMenswearApplicationTests.saveColors.executor": "Run",
+    "JUnit.WebShopMenswearApplicationTests.saveImagesProduct.executor": "Run",
+    "JUnit.WebShopMenswearApplicationTests.saveProducts.executor": "Run",
+    "JUnit.WebShopMenswearApplicationTests.saveSizes.executor": "Run",
+    "JUnit.WebShopMenswearApplicationTests.saveSubCategories.executor": "Run",
+    "Notification.DisplayName-DoNotAsk-Lombok plugin": "Lombok integration problem",
+    "Notification.DoNotAsk-Lombok plugin": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.WebShopMenswearApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "G:/DA_CNPM/src/main/resources/templates/admin/Order",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "spring.configuration.checksum": "667eded1e4c7edad57570423454b52ab",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\DA_CNPM\src\main\resources\templates\admin\Order" />
       <recent name="G:\DA_CNPM\src\main\resources\static\admin-assets\plugins" />
       <recent name="G:\DA_CNPM\src\main\resources\templates\admin\product" />
     </key>
@@ -274,7 +269,7 @@
       <workItem from="1731663345184" duration="21675000" />
       <workItem from="1731947688108" duration="83000" />
       <workItem from="1732017477776" duration="14434000" />
-      <workItem from="1732457929968" duration="8182000" />
+      <workItem from="1732457929968" duration="10114000" />
     </task>
     <task id="LOCAL-00001" summary="up">
       <option name="closed" value="true" />
@@ -548,7 +543,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732368932546</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="update cart,checkout,discount">
+      <option name="closed" value="true" />
+      <created>1732467125140</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1732467125141</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -587,7 +590,8 @@
     <MESSAGE value="update addInterceptors" />
     <MESSAGE value="layout header.html" />
     <MESSAGE value="update cart,checkout" />
-    <option name="LAST_COMMIT_MESSAGE" value="update cart,checkout" />
+    <MESSAGE value="update cart,checkout,discount" />
+    <option name="LAST_COMMIT_MESSAGE" value="update cart,checkout,discount" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
