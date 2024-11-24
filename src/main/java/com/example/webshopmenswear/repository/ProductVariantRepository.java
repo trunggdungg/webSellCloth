@@ -3,9 +3,12 @@ package com.example.webshopmenswear.repository;
 import com.example.webshopmenswear.entity.Color;
 import com.example.webshopmenswear.entity.ProductVariant;
 import com.example.webshopmenswear.entity.Size;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -27,4 +30,17 @@ public interface ProductVariantRepository extends JpaRepository<ProductVariant, 
         Integer productId, Integer colorId, Integer sizeId);
 
     List<ProductVariant> findByProductId(Integer productId);
+
+    @Query("SELECT pv " +
+        "FROM ProductVariant pv " +
+        "WHERE (:colorId IS NULL OR pv.color.id = :colorId) " +
+        "AND (:sizeId IS NULL OR pv.size.id = :sizeId) " +
+        "AND pv.stock > 0 " +
+        "AND (:categoryId IS NULL OR pv.product.category.id = :categoryId)")
+// Chỉ lấy những sản phẩm còn hàng và theo loại sản phẩm nếu có
+    Page<ProductVariant> findByColorAndSizeAndCategory(
+        @Param("colorId") Integer colorId,
+        @Param("sizeId") Integer sizeId,
+        @Param("categoryId") Integer categoryId,
+        Pageable pageable);
 }

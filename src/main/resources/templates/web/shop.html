@@ -207,7 +207,7 @@
                 <!-- End sort and view -->
                 <!-- Founded products -->
                 <div class="collection__founded-products">
-                    <span>24</span> Products found
+                    <span id="total-products">0</span> Products found
                 </div>
                 <!-- End founded products -->
             </div>
@@ -241,90 +241,20 @@
                                 <h2 class="widget__title">Category</h2>
                                 <!-- End title -->
                                 <!-- Collections -->
-                                <ul class="widget__collections">
-                                    <li><a href="#">Coats</a></li>
-                                    <li><a href="#">Jackets</a></li>
-                                    <li><a href="#">Cardigans & Sweaters</a></li>
-                                    <li><a href="#">Blazers</a></li>
-                                    <li><a href="#">Swearshirts</a></li>
-                                    <li><a href="#">Shirts</a></li>
-                                    <li><a href="#">T-Shirts</a></li>
-                                    <li><a href="#">Polos</a></li>
-                                    <li><a href="#">Jeans</a></li>
-                                    <li><a href="#">Underwear</a></li>
+                                <ul class="widget__checkbox-options">
+                                    <li th:each="category : ${categories}">
+                                        <label>
+                                            <input type="radio" name="categories" th:value="${category.id}"/>
+                                            <span th:text="${category.name}"></span>
+                                        </label>
+                                    </li>
                                 </ul>
                                 <!-- End collections -->
                             </div>
                         </div>
                         <!-- End widget -->
                         <!-- Widget -->
-                        <div class="col-12 col-md-6 col-lg-25">
-                            <div class="top-filter__widget">
-                                <!-- Title -->
-                                <h2 class="widget__title">Materials</h2>
-                                <!-- End title -->
-                                <!-- Options -->
-                                <ul class="widget__checkbox-options">
-                                    <!-- Material option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="materials" checked/>
-                                            <span>Cotton</span>
-                                        </label>
-                                    </li>
-                                    <!-- End material option -->
-                                    <!-- Material option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="materials"/>
-                                            <span>Down</span>
-                                        </label>
-                                    </li>
-                                    <!-- End material option -->
-                                    <!-- Material option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="materials"/>
-                                            <span>Houndstooth</span>
-                                        </label>
-                                    </li>
-                                    <!-- End material option -->
-                                    <!-- Material option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="materials"/>
-                                            <span>Leather</span>
-                                        </label>
-                                    </li>
-                                    <!-- End material option -->
-                                    <!-- Material option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="materials"/>
-                                            <span>Nappa Leather</span>
-                                        </label>
-                                    </li>
-                                    <!-- End material option -->
-                                    <!-- Material option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="materials"/>
-                                            <span>Suede</span>
-                                        </label>
-                                    </li>
-                                    <!-- End material option -->
-                                    <!-- Material option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="materials"/>
-                                            <span>Wool</span>
-                                        </label>
-                                    </li>
-                                    <!-- End material option -->
-                                </ul>
-                                <!-- End options -->
-                            </div>
-                        </div>
+
                         <!-- End Widget -->
                         <!-- Widget -->
                         <div class="col-12 col-md-6 col-lg-25">
@@ -335,82 +265,12 @@
                                 <!-- Options -->
                                 <ul class="widget__checkbox-options">
                                     <!-- Color option -->
-                                    <li>
+                                    <li th:each="color : ${colors}">
                                         <label>
-                                            <input type="checkbox" name="colors" checked/>
-                                            <span><i style="background: #000000"></i>Black</span>
+                                            <input type="radio" name="colors" th:value="${color.id}" checked/>
+                                            <span th:text="${color.nameColor}"><i style="background: #000000"></i>Black</span>
                                         </label>
                                     </li>
-                                    <!-- End color option -->
-                                    <!-- Color option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="colors"/>
-                                            <span
-                                            ><i
-                                                    style="background: #fff; border: 1px solid #000"
-                                            ></i
-                                            >White</span
-                                            >
-                                        </label>
-                                    </li>
-                                    <!-- End color option -->
-                                    <!-- Color option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="colors"/>
-                                            <span><i style="background: #e34737"></i>Red</span>
-                                        </label>
-                                    </li>
-                                    <!-- End color option -->
-                                    <!-- Color option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="colors"/>
-                                            <span><i style="background: #ff7302"></i>Orange</span>
-                                        </label>
-                                    </li>
-                                    <!-- End color option -->
-                                    <!-- Color option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="colors"/>
-                                            <span><i style="background: #6aae47"></i>Green</span>
-                                        </label>
-                                    </li>
-                                    <!-- End color option -->
-                                    <!-- Color option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="colors"/>
-                                            <span><i style="background: #f47fb1"></i>Pink</span>
-                                        </label>
-                                    </li>
-                                    <!-- End color option -->
-                                    <!-- Color option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="colors"/>
-                                            <span><i style="background: #7c5112"></i>Brown</span>
-                                        </label>
-                                    </li>
-                                    <!-- End color option -->
-                                    <!-- Color option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="colors"/>
-                                            <span><i style="background: #c9c9c9"></i>Grey</span>
-                                        </label>
-                                    </li>
-                                    <!-- End color option -->
-                                    <!-- Color option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="colors"/>
-                                            <span><i style="background: #d0c2ad"></i>Beige</span>
-                                        </label>
-                                    </li>
-                                    <!-- End color option -->
                                 </ul>
                                 <!-- End options -->
                             </div>
@@ -425,53 +285,13 @@
                                 <!-- Options -->
                                 <ul class="widget__checkbox-options">
                                     <!-- Size option -->
-                                    <li>
+                                    <li th:each="size : ${sizes}">
                                         <label>
-                                            <input type="checkbox" name="size" checked/>
-                                            <span>XS</span>
+                                            <input type="radio" name="size" th:value="${size.id}"/>
+                                            <span th:text="${size.sizeName}">XS</span>
                                         </label>
                                     </li>
-                                    <!-- End size option -->
-                                    <!-- Size option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="size"/>
-                                            <span>S</span>
-                                        </label>
-                                    </li>
-                                    <!-- End size option -->
-                                    <!-- Size option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="size"/>
-                                            <span>M</span>
-                                        </label>
-                                    </li>
-                                    <!-- End size option -->
-                                    <!-- Size option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="size"/>
-                                            <span>L</span>
-                                        </label>
-                                    </li>
-                                    <!-- End size option -->
-                                    <!-- Size option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="size"/>
-                                            <span>XL</span>
-                                        </label>
-                                    </li>
-                                    <!-- End size option -->
-                                    <!-- Size option -->
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="size"/>
-                                            <span>XXL</span>
-                                        </label>
-                                    </li>
-                                    <!-- End size option -->
+
                                 </ul>
                                 <!-- End options -->
                             </div>
@@ -485,17 +305,10 @@
                                 <h2 class="widget__title">Price</h2>
                                 <!-- End widget title -->
                                 <!-- Price slider -->
-                                <div class="widget__price-slider">
-                                    <div class="js-price-slider"></div>
-                                    <div class="price-slider__value">
-                                        <span>From</span>
-                                        <input type="text" class="js-price-slider-value"/>
-                                    </div>
-                                </div>
                                 <!-- End price slider -->
                                 <!-- Button -->
                                 <div class="widget__view-result">
-                                    <a href="#" class="second-button">View Result (25)</a>
+                                    <button class="second-button" id="viewResultButton">View Result</button>
                                 </div>
                                 <!-- End button -->
                             </div>
@@ -1634,6 +1447,88 @@
             toastr.error("Đăng xuất thất bại");
         })
     }
+</script>
+<script>
+    document.getElementById("viewResultButton").addEventListener("click", function () {
+        // Lấy thông tin filter từ giao diện
+        const selectedCategory = document.querySelector('input[name="categories"]:checked')?.value;
+        console.log(selectedCategory)
+        const selectedColors = document.querySelector('input[name="colors"]:checked')?.value;
+        console.log(selectedColors)
+        const selectedSize = document.querySelector('input[name="size"]:checked')?.value;
+        console.log(selectedSize)
+        // Gửi yêu cầu đến API filter
+        if (selectedCategory === undefined || selectedColors === undefined || selectedSize === undefined) {
+            alert("Vui lòng chọn ít nhất một loại sản phẩm, màu sắc hoặc kích thước.");
+            return;  // Dừng chức năng nếu không có lựa chọn nào
+        }
+        const url = `/filter?colorId=${selectedColors}&sizeId=${selectedSize}&categoryId=${selectedCategory}`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);  // In kết quả JSON ra console
+                const totalProducts = data.totalElements;
+                document.getElementById('total-products').textContent = totalProducts;
+
+                // Kiểm tra nếu content là một mảng
+                if (Array.isArray(data.content)) {
+                    const productsRow = document.querySelector(".products-row");
+                    productsRow.innerHTML = ""; // Xóa sản phẩm cũ
+
+                    // Kiểm tra nếu content rỗng
+                    if (data.content.length === 0) {
+                        productsRow.innerHTML = "<p>No products found.</p>";
+                    } else {
+                        // Duyệt qua các sản phẩm trong content
+                        data.content.forEach(item => {
+                            const product = item.product;  // Lấy thông tin sản phẩm từ item.product
+
+                            // Kiểm tra thông tin sản phẩm
+                            if (product) {
+                                productsRow.innerHTML += `
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="product-grid-item">
+                                <div class="product-grid-item__tag">10% off</div>
+                                <div class="product-grid-item__wishlist">
+                                    <a href="#"><i class="lnil lnil-heart"></i></a>
+                                </div>
+                                <div class="product-grid-item__image">
+                                    <a href="/product/${product.id}/${product.slug}">
+                                        <img
+                                            alt="Image"
+                                            src="${product.imageUrlPrimary}"
+                                            class="lazyload lazy-effect"
+                                        />
+                                    </a>
+                                    <div class="product-grid-item__action d-flex">
+                                        <div class="product-grid-item__button">
+                                            <a href="#">Add to cart</a>
+                                        </div>
+                                        <div class="product-grid-item__button">
+                                            <a href="#">Quick shop</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-grid-item__title">
+                                    <a href="/product/${product.id}/${product.slug}">${product.name}</a>
+                                </div>
+                                <div class="product-grid-item__price">
+                                    <span class="price-new">${product.price}</span>
+                                    <span class="price-old">$68.5</span>
+                                </div>
+                                <div class="product-grid-item__content-tag">2 colours</div>
+                            </div>
+                        </div>`;
+                            }
+                        });
+                    }
+                } else {
+                    console.error('Data.content is not an array', data);
+                }
+            })
+            .catch(error => console.error("Error fetching products:", error));
+    });
+
 </script>
 </body>
 

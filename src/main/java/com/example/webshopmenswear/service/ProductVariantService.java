@@ -5,6 +5,8 @@ import com.example.webshopmenswear.entity.ProductVariant;
 import com.example.webshopmenswear.entity.Size;
 import com.example.webshopmenswear.repository.ProductVariantRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +42,13 @@ public class ProductVariantService {
 
     public ProductVariant getProductVariantById(Integer productId) {
         return productVariantRepository.findById(productId).orElse(null);
+    }
+
+    public Page<ProductVariant> filterProducts(
+        Integer colorId,
+        Integer sizeId,
+        Integer categoryId,
+        Pageable pageable) {
+        return productVariantRepository.findByColorAndSizeAndCategory(colorId, sizeId, categoryId, pageable);
     }
 }
