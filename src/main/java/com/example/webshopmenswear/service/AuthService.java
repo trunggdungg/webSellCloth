@@ -4,6 +4,7 @@ import com.example.webshopmenswear.entity.User;
 import com.example.webshopmenswear.model.Enum.UserRole;
 import com.example.webshopmenswear.model.request.LoginRequest;
 import com.example.webshopmenswear.model.request.SignUpRequest;
+import com.example.webshopmenswear.model.request.UpSertUserRequest;
 import com.example.webshopmenswear.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -75,5 +76,46 @@ public class AuthService {
 
     public Object getAllUsers() {
         return userRepository.findAll();
+    }
+
+    public Object getUserById(Integer id) {
+        return userRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    public User updateUser(Integer id, UpSertUserRequest request) {
+        User user = userRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+
+        user.setEmail(request.getEmail());
+        user.setFullName(request.getFullName());
+        user.setUsername(request.getUsername());
+        user.setPhoneNumber(request.getPhone());
+        user.setUserRole(UserRole.valueOf(request.getRole()));
+        user.setIsActive(request.getIsActive());
+        user.setUpdatedAt(LocalDateTime.now());
+
+        return userRepository.save(user);
+    }
+
+    public User createUser(UpSertUserRequest request) {
+        // Kiểm tra nếu email đã tồn tại
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new IllegalArgumentException("Email đã tồn tại trong hệ thống.");
+        }
+        User user = User.builder()
+            .email(request.getEmail())
+            .password(bCryptPasswordEncoder.encode(request.getPassword()))
+            .fullName(request.getFullName())
+            .username(request.getUsername())
+            .phoneNumber(request.getPhone())
+            .avatar("/assets/images/avata_img.jpg")
+            .userRole(UserRole.valueOf(request.getRole()))
+            .isActive(request.getIsActive())
+            .createdAt(LocalDateTime.now())
+            .updatedAt(LocalDateTime.now())
+            .build();
+
+        return userRepository.save(user);
     }
 }

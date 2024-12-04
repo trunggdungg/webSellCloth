@@ -14,6 +14,18 @@
         <link rel="stylesheet" href="/admin-assets/plugins/select2/css/select2.min.css"/>
         <link rel="stylesheet" href="/admin-assets/dist/css/style.css">
 
+        <style>
+            .img-sub img {
+                max-width: 200px;
+                max-height: 200px;
+                object-fit: cover; /* Đảm bảo tỷ lệ ảnh đúng */
+                border: 1px solid #ddd; /* Thêm viền cho ảnh */
+                border-radius: 5px; /* Bo góc nhẹ */
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+                margin: 5px; /* Khoảng cách xung quanh ảnh */
+            }
+
+        </style>
     </th:block>
 
 
@@ -110,6 +122,24 @@
                                                 />
                                             </div>
 
+                                            <div class="form-group">
+                                                <label for="input-posterSub" class="btn btn-primary">
+                                                    Chọn hình ảnh phụ
+                                                </label>
+                                                <div style="display: flex;flex-wrap: wrap">
+                                                    <input type="file" id="input-posterSub" class="d-none"
+                                                    >
+
+                                                    <div class="thumbnail-preview-container img-sub mb-3"
+                                                         id="thumbnailsContainer"
+                                                         th:each="img : ${images}">
+                                                        <img th:src="${img.imageUrl}" alt="" id="thumbnailSub"
+                                                             style="width: 200px; height: 200px"/>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
                                         </div>
 
                                         <div class="col-md-4">
@@ -157,7 +187,7 @@
                                                          style="max-width: 200px; max-height: 200px"/>
                                                 </div>
                                                 <label for="input-poster" class="btn btn-primary">
-                                                    Chọn hình ảnh
+                                                    Chọn hình ảnh chính
                                                 </label>
                                                 <input type="file" id="input-poster" class="d-none">
                                             </div>
@@ -281,6 +311,8 @@
         const product = [[${product}]];
         console.log(product);
 
+        const images = [[${images}]];
+        console.log(images);
         //truy cap phan tu
         const title = document.getElementById('title');
         const description = document.getElementById('description');
@@ -324,7 +356,7 @@
             }
         });
 
-        //xu ly chon hinh anh
+        //xu ly chon hinh anh chinh
         const inputPoster = document.getElementById('input-poster');
         inputPoster.addEventListener('change', async function () {
             const file = inputPoster.files[0];
@@ -343,7 +375,7 @@
 
         });
 
-        //upload hinh anh
+        //upload hinh anh chinh
         const inputPosterEl = document.getElementById('input-poster');
         const posterEl = document.getElementById('thumbnail');
 
@@ -367,7 +399,84 @@
                 toastr.clear();
                 toastr.error('Upload ảnh thất bại');
             }
-        
+        });
+
+
+        // inputPosterSub.addEventListener('change', function () {
+        //     console.log("Files selected:");
+        //     const files = inputPosterSub.files; // Lấy tất cả các tệp được chọn
+        //
+        //     // Lặp qua từng tệp được chọn và hiển thị chúng
+        //     if (files) {
+        //         Array.from(files).forEach(file => {
+        //             const reader = new FileReader();
+        //             reader.onload = function (e) {
+        //                 console.log("File loaded:", file.name);
+        //
+        //                 // Tạo một thẻ img mới cho mỗi ảnh
+        //                 const imgEl = document.createElement('img');
+        //                 imgEl.src = e.target.result;
+        //                 imgEl.style.maxWidth = '200px';
+        //                 imgEl.style.maxHeight = '200px';
+        //                 imgEl.style.margin = '10px';
+        //
+        //                 // Thêm ảnh vào container
+        //                 thumbnailSub.appendChild(imgEl);
+        //             };
+        //             reader.readAsDataURL(file); // Đọc nội dung tệp
+        //         });
+        //     } else {
+        //         // Nếu không có ảnh nào được chọn, hiển thị ảnh mặc định
+        //         thumbnailSub.src = '/path/to/default-image.jpg';
+        //     }
+        // });
+
+        // Xử lý chọn nhiều hình ảnh
+        const inputPosterSub = document.getElementById('input-posterSub');
+        const thumbnailsContainer = document.getElementById('thumbnailsContainer');
+
+        inputPosterSub.addEventListener('change', async function () {
+            const file = this.files[0];
+
+            if (file) {
+                try {
+                    // Tạo FormData để upload
+                    const formData = new FormData();
+                    formData.append('file', file);
+
+                    // Hiển thị thông báo upload
+                    toastr.info('Đang tải ảnh lên...');
+
+                    // Upload ảnh
+                    const res = await axios.post(`/api/admin/products/${product.id}/imagesProduct`, formData);
+
+                    // Tạo element img mới
+                    const newImgElement = document.createElement('div');
+                    newImgElement.classList.add('thumbnail-preview-container', 'img-sub', 'mb-3');
+
+                    const imgTag = document.createElement('img');
+                    imgTag.src = res.data.url;
+                    imgTag.alt = '';
+                    imgTag.style.width = '200px';
+                    imgTag.style.height = '200px';
+                    imgTag.style.objectFit = 'cover';
+
+                    // Ghép các element
+                    newImgElement.appendChild(imgTag);
+
+                    // Thêm vào cuối container
+                    thumbnailsContainer.parentElement.insertAdjacentElement('beforeend', newImgElement);
+
+                    // Thông báo thành công
+                    toastr.clear();
+                    toastr.success('Upload ảnh thành công');
+
+                } catch (error) {
+                    console.error(error);
+                    toastr.clear();
+                    toastr.error('Upload ảnh thất bại');
+                }
+            }
         });
     </script>
 </th:block>

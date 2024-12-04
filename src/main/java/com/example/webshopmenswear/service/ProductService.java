@@ -139,4 +139,9 @@ public class ProductService {
             throw new RuntimeException("Lỗi upload ảnh");
         }
     }
+
+
+    public Object getAll() {
+        return productRepository.findAll();
+    }
 }

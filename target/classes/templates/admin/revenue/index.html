@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{admin/layout/layout :: main-layout(~{:: title},~{:: #css},~{:: .content-wrapper},~{:: #js})}">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Revenue</title>
+
+    <th:block id="css">
+        <link rel="stylesheet" href="/admin-assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="/admin-assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    </th:block>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="#">Dashboard</a>
+                            </li>
+
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>150</h3>
+
+                                <p>New Orders</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                                <p>Bounce Rate</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-stats-bars"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>44</h3>
+
+                                <p>User Registrations</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>65</h3>
+
+                                <p>Unique Visitors</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-pie-graph"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                </div>
+                <!-- /.row -->
+                <!-- Main row -->
+                <div class="row">
+                    <!-- Left col -->
+                    <section class="col-lg-7 connectedSortable ui-sortable">
+                        <div class="card">
+                            <div class="card-header border-0">
+                                <div class="d-flex justify-content-between">
+                                    <h3 class="card-title">Sales</h3>
+                                    <div>
+                                        <select id="month-select" class="form-control d-inline-block"
+                                                style="width: auto;">
+                                            <!-- Danh sách tháng -->
+                                            <option value="1">January</option>
+                                            <option value="2">February</option>
+                                            <option value="3">March</option>
+                                            <option value="4">April</option>
+                                            <option value="5">May</option>
+                                            <option value="6">June</option>
+                                            <option value="7">July</option>
+                                            <option value="8">August</option>
+                                            <option value="9">September</option>
+                                            <option value="10">October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">December</option>
+                                        </select>
+                                        <select id="year-select" class="form-control d-inline-block"
+                                                style="width: auto;">
+                                            <!-- Danh sách năm -->
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="sales-data">
+                                    <div class="d-flex">
+                                        <p class="d-flex flex-column">
+                                            <span class="text-bold text-lg" th:text="${revenue}">$0.00</span>
+                                            <span>Sales Over Time</span>
+                                        </p>
+                                    </div>
+                                    <div id="sales-chart-container" class="position-relative mb-4">
+                                        <canvas id="sales-chart" height="200" width="559"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- /.Left col -->
+                    <!-- right col (We are only adding the ID to make the widgets sortable)-->
+                    <section class="col-lg-5 connectedSortable ui-sortable">
+
+
+                        <!-- Calendar -->
+                        <div class="card bg-gradient-success">
+                            <div class="card-header border-0 ui-sortable-handle" style="cursor: move;">
+
+                                <h3 class="card-title">
+                                    <i class="far fa-calendar-alt"></i>
+                                    Calendar
+                                </h3>
+                                <!-- tools card -->
+                                <div class="card-tools">
+                                    <!-- button with a dropdown -->
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success btn-sm dropdown-toggle"
+                                                data-toggle="dropdown" data-offset="-52">
+                                            <i class="fas fa-bars"></i>
+                                        </button>
+                                        <div class="dropdown-menu" role="menu">
+                                            <a href="#" class="dropdown-item">Add new event</a>
+                                            <a href="#" class="dropdown-item">Clear events</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a href="#" class="dropdown-item">View calendar</a>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <!-- /. tools -->
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body pt-0">
+                                <!--The calendar -->
+                                <div id="calendar" style="width: 100%">
+                                    <div class="bootstrap-datetimepicker-widget usetwentyfour">
+                                        <ul class="list-unstyled">
+                                            <li class="show">
+                                                <div class="datepicker">
+                                                    <div class="datepicker-days" style="">
+                                                        <table class="table table-sm">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="prev" data-action="previous"><span
+                                                                        class="fa fa-chevron-left"
+                                                                        title="Previous Month"></span></th>
+                                                                <th class="picker-switch" data-action="pickerSwitch"
+                                                                    colspan="5" title="Select Month">December 2024
+                                                                </th>
+                                                                <th class="next" data-action="next"><span
+                                                                        class="fa fa-chevron-right"
+                                                                        title="Next Month"></span></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th class="dow">Su</th>
+                                                                <th class="dow">Mo</th>
+                                                                <th class="dow">Tu</th>
+                                                                <th class="dow">We</th>
+                                                                <th class="dow">Th</th>
+                                                                <th class="dow">Fr</th>
+                                                                <th class="dow">Sa</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td data-action="selectDay" data-day="12/01/2024"
+                                                                    class="day weekend">1
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/02/2024"
+                                                                    class="day">2
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/03/2024"
+                                                                    class="day active today">3
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/04/2024"
+                                                                    class="day">4
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/05/2024"
+                                                                    class="day">5
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/06/2024"
+                                                                    class="day">6
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/07/2024"
+                                                                    class="day weekend">7
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td data-action="selectDay" data-day="12/08/2024"
+                                                                    class="day weekend">8
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/09/2024"
+                                                                    class="day">9
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/10/2024"
+                                                                    class="day">10
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/11/2024"
+                                                                    class="day">11
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/12/2024"
+                                                                    class="day">12
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/13/2024"
+                                                                    class="day">13
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/14/2024"
+                                                                    class="day weekend">14
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td data-action="selectDay" data-day="12/15/2024"
+                                                                    class="day weekend">15
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/16/2024"
+                                                                    class="day">16
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/17/2024"
+                                                                    class="day">17
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/18/2024"
+                                                                    class="day">18
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/19/2024"
+                                                                    class="day">19
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/20/2024"
+                                                                    class="day">20
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/21/2024"
+                                                                    class="day weekend">21
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td data-action="selectDay" data-day="12/22/2024"
+                                                                    class="day weekend">22
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/23/2024"
+                                                                    class="day">23
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/24/2024"
+                                                                    class="day">24
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/25/2024"
+                                                                    class="day">25
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/26/2024"
+                                                                    class="day">26
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/27/2024"
+                                                                    class="day">27
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/28/2024"
+                                                                    class="day weekend">28
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td data-action="selectDay" data-day="12/29/2024"
+                                                                    class="day weekend">29
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/30/2024"
+                                                                    class="day">30
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="12/31/2024"
+                                                                    class="day">31
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="01/01/2025"
+                                                                    class="day new">1
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="01/02/2025"
+                                                                    class="day new">2
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="01/03/2025"
+                                                                    class="day new">3
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="01/04/2025"
+                                                                    class="day new weekend">4
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td data-action="selectDay" data-day="01/05/2025"
+                                                                    class="day new weekend">5
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="01/06/2025"
+                                                                    class="day new">6
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="01/07/2025"
+                                                                    class="day new">7
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="01/08/2025"
+                                                                    class="day new">8
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="01/09/2025"
+                                                                    class="day new">9
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="01/10/2025"
+                                                                    class="day new">10
+                                                                </td>
+                                                                <td data-action="selectDay" data-day="01/11/2025"
+                                                                    class="day new weekend">11
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="datepicker-months" style="display: none;">
+                                                        <table class="table-condensed">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="prev" data-action="previous"><span
+                                                                        class="fa fa-chevron-left"
+                                                                        title="Previous Year"></span></th>
+                                                                <th class="picker-switch" data-action="pickerSwitch"
+                                                                    colspan="5" title="Select Year">2024
+                                                                </th>
+                                                                <th class="next" data-action="next"><span
+                                                                        class="fa fa-chevron-right"
+                                                                        title="Next Year"></span></th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td colspan="7"><span data-action="selectMonth"
+                                                                                      class="month">Jan</span><span
+                                                                        data-action="selectMonth"
+                                                                        class="month">Feb</span><span
+                                                                        data-action="selectMonth"
+                                                                        class="month">Mar</span><span
+                                                                        data-action="selectMonth"
+                                                                        class="month">Apr</span><span
+                                                                        data-action="selectMonth"
+                                                                        class="month">May</span><span
+                                                                        data-action="selectMonth"
+                                                                        class="month">Jun</span><span
+                                                                        data-action="selectMonth"
+                                                                        class="month">Jul</span><span
+                                                                        data-action="selectMonth"
+                                                                        class="month">Aug</span><span
+                                                                        data-action="selectMonth"
+                                                                        class="month">Sep</span><span
+                                                                        data-action="selectMonth"
+                                                                        class="month">Oct</span><span
+                                                                        data-action="selectMonth"
+                                                                        class="month">Nov</span><span
+                                                                        data-action="selectMonth" class="month active">Dec</span>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="datepicker-years" style="display: none;">
+                                                        <table class="table-condensed">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="prev" data-action="previous"><span
+                                                                        class="fa fa-chevron-left"
+                                                                        title="Previous Decade"></span></th>
+                                                                <th class="picker-switch" data-action="pickerSwitch"
+                                                                    colspan="5" title="Select Decade">2020-2029
+                                                                </th>
+                                                                <th class="next" data-action="next"><span
+                                                                        class="fa fa-chevron-right"
+                                                                        title="Next Decade"></span></th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td colspan="7"><span data-action="selectYear"
+                                                                                      class="year old">2019</span><span
+                                                                        data-action="selectYear"
+                                                                        class="year">2020</span><span
+                                                                        data-action="selectYear"
+                                                                        class="year">2021</span><span
+                                                                        data-action="selectYear"
+                                                                        class="year">2022</span><span
+                                                                        data-action="selectYear"
+                                                                        class="year">2023</span><span
+                                                                        data-action="selectYear" class="year active">2024</span><span
+                                                                        data-action="selectYear"
+                                                                        class="year">2025</span><span
+                                                                        data-action="selectYear"
+                                                                        class="year">2026</span><span
+                                                                        data-action="selectYear"
+                                                                        class="year">2027</span><span
+                                                                        data-action="selectYear"
+                                                                        class="year">2028</span><span
+                                                                        data-action="selectYear"
+                                                                        class="year">2029</span><span
+                                                                        data-action="selectYear"
+                                                                        class="year old">2030</span></td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="datepicker-decades" style="display: none;">
+                                                        <table class="table-condensed">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="prev" data-action="previous"><span
+                                                                        class="fa fa-chevron-left"
+                                                                        title="Previous Century"></span></th>
+                                                                <th class="picker-switch" data-action="pickerSwitch"
+                                                                    colspan="5">2000-2090
+                                                                </th>
+                                                                <th class="next" data-action="next"><span
+                                                                        class="fa fa-chevron-right"
+                                                                        title="Next Century"></span></th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td colspan="7"><span data-action="selectDecade"
+                                                                                      class="decade old"
+                                                                                      data-selection="2006">1990</span><span
+                                                                        data-action="selectDecade" class="decade"
+                                                                        data-selection="2006">2000</span><span
+                                                                        data-action="selectDecade" class="decade"
+                                                                        data-selection="2016">2010</span><span
+                                                                        data-action="selectDecade" class="decade active"
+                                                                        data-selection="2026">2020</span><span
+                                                                        data-action="selectDecade" class="decade"
+                                                                        data-selection="2036">2030</span><span
+                                                                        data-action="selectDecade" class="decade"
+                                                                        data-selection="2046">2040</span><span
+                                                                        data-action="selectDecade" class="decade"
+                                                                        data-selection="2056">2050</span><span
+                                                                        data-action="selectDecade" class="decade"
+                                                                        data-selection="2066">2060</span><span
+                                                                        data-action="selectDecade" class="decade"
+                                                                        data-selection="2076">2070</span><span
+                                                                        data-action="selectDecade" class="decade"
+                                                                        data-selection="2086">2080</span><span
+                                                                        data-action="selectDecade" class="decade"
+                                                                        data-selection="2096">2090</span><span
+                                                                        data-action="selectDecade" class="decade old"
+                                                                        data-selection="2106">2100</span></td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="picker-switch accordion-toggle"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </section>
+                    <!-- right col -->
+                </div>
+                <!-- /.row (main row) -->
+            </div><!-- /.container-fluid -->
+        </section>
+    </div>
+</div>
+<th:block id="js">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="/admin-assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/admin-assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/admin-assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/admin-assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+    <script th:inline="javascript">
+        // const products = [[${products}]];
+        // console.log("products", products);
+
+
+        $('#table-product').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const monthSelect = document.getElementById("month-select");
+            const yearSelect = document.getElementById("year-select");
+            const ctx = document.getElementById("sales-chart").getContext("2d");
+
+            let salesChart = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: [], // Ngày trong tháng
+                    datasets: [{
+                        label: "Revenue",
+                        data: [], // Doanh thu từng ngày
+                        backgroundColor: "rgba(75, 192, 192, 0.2)",
+                        borderColor: "rgba(75, 192, 192, 1)",
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: "Days of the Month"
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: "Revenue ($)"
+                            }
+                        }
+                    }
+                }
+            });
+
+            const updateChart = () => {
+                const month = monthSelect.value;
+                const year = yearSelect.value;
+
+                // Gọi API để lấy dữ liệu doanh thu
+                fetch(`/admin/revenue/monthly?month=${month}&year=${year}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Network response was not ok");
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Giả định API trả về {days: [1, 2, ...], revenues: [100, 200, ...]}
+                        salesChart.data.labels = data.days;
+                        salesChart.data.datasets[0].data = data.revenues;
+                        salesChart.update();
+                    })
+                    .catch(error => {
+                        console.error("Error fetching sales data:", error);
+                    });
+            };
+
+            monthSelect.addEventListener("change", updateChart);
+            yearSelect.addEventListener("change", updateChart);
+
+            updateChart(); // Khởi tạo biểu đồ với tháng và năm mặc định
+        });
+
+        // const updateChart = () => {
+        //     const month = monthSelect.value;
+        //     const year = yearSelect.value;
+        //
+        //     // Lấy dữ liệu doanh thu từ server (fake data cho ví dụ)
+        //     const salesData = getSalesData(month, year); // Hàm này giả định bạn sẽ gọi API từ server
+        //
+        //     salesChart.data.labels = salesData.days;
+        //     salesChart.data.datasets[0].data = salesData.revenues;
+        //     salesChart.update();
+        // };
+        //
+        // monthSelect.addEventListener("change", updateChart);
+        // yearSelect.addEventListener("change", updateChart);
+        //
+        // updateChart(); // Khởi tạo biểu đồ với tháng và năm mặc định
+        function getSalesData(month, year) {
+            // Fake dữ liệu, thay bằng API thực tế của bạn
+            const daysInMonth = new Date(year, month, 0).getDate();
+            const days = Array.from({length: daysInMonth}, (_, i) => i + 1);
+            const revenues = days.map(() => Math.floor(Math.random() * 1000)); // Fake doanh thu
+
+            return {days, revenues};
+        }
+
+        //
+        // Calendar Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const calendar = document.getElementById('calendar');
+            const monthDisplay = calendar.querySelector('.picker-switch');
+            const prevMonth = calendar.querySelector('.prev');
+            const nextMonth = calendar.querySelector('.next');
+            const daysBody = calendar.querySelector('tbody');
+
+            let currentDate = new Date();
+
+            function renderCalendar(date) {
+                monthDisplay.textContent = date.toLocaleString('default', {month: 'long', year: 'numeric'});
+                daysBody.innerHTML = '';
+
+                const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+                const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+                let startingDay = firstDayOfMonth.getDay();
+                let dateCounter = 1;
+
+                for (let i = 0; i < 6; i++) {
+                    const currentRow = document.createElement('tr');
+
+                    for (let j = 0; j < 7; j++) {
+                        const cell = document.createElement('td');
+
+                        if (i === 0 && j < startingDay) {
+                            cell.classList.add('day', 'empty');
+                            currentRow.appendChild(cell);
+                            continue;
+                        }
+
+                        if (dateCounter > lastDayOfMonth.getDate()) {
+                            cell.classList.add('day', 'new');
+                            currentRow.appendChild(cell);
+                            continue;
+                        }
+
+                        cell.textContent = dateCounter;
+                        cell.dataset.action = 'selectDay';
+                        cell.dataset.day = `${(date.getMonth() + 1).toString().padStart(2, '0')}/${dateCounter.toString().padStart(2, '0')}/${date.getFullYear()}`;
+                        cell.classList.add('day');
+
+                        if (dateCounter === new Date().getDate() &&
+                            date.getMonth() === new Date().getMonth() &&
+                            date.getFullYear() === new Date().getFullYear()) {
+                            cell.classList.add('today');
+                        }
+
+                        if (j === 0 || j === 6) {
+                            cell.classList.add('weekend');
+                        }
+
+                        cell.addEventListener('click', function () {
+                            // Remove active from all days
+                            daysBody.querySelectorAll('.day').forEach(day => {
+                                day.classList.remove('active');
+                            });
+
+                            // Add active to clicked day
+                            this.classList.add('active');
+
+                            console.log('Selected date:', this.dataset.day);
+                        });
+
+                        currentRow.appendChild(cell);
+                        dateCounter++;
+                    }
+
+                    daysBody.appendChild(currentRow);
+
+                    if (dateCounter > lastDayOfMonth.getDate()) {
+                        break;
+                    }
+                }
+            }
+
+            renderCalendar(currentDate);
+
+            prevMonth.addEventListener('click', function () {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar(currentDate);
+            });
+
+            nextMonth.addEventListener('click', function () {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar(currentDate);
+            });
+        });
+    </script>
+</th:block>
+
+</body>
+
+</html>

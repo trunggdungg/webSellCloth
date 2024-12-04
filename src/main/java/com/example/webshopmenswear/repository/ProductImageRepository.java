@@ -11,6 +11,7 @@ import java.util.List;
 public interface ProductImageRepository extends JpaRepository<ProductImage, Integer> {
     List<ProductImage> findByProductId(Integer id);
 
+
     boolean existsByProductAndIsPrimary(Product product, boolean isPrimary);
 
     ProductImage findByProductAndIsPrimary(Product product, boolean isPrimary);
@@ -26,4 +27,7 @@ public interface ProductImageRepository extends JpaRepository<ProductImage, Inte
     List<ProductImage> findByProduct(Product product);
 
     List<ProductImage> findAllByProduct_Id(Integer id);
+
+
+    int findMaxImageOrderByProduct(Product product);
 }

@@ -27,7 +27,7 @@ public class ProductImage {
     @Column(nullable = false)
     String imageUrl;
 
-    @Column(nullable = false)
+  
     String altText;
 
     Boolean isPrimary;

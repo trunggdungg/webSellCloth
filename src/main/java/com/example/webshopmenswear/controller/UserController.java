@@ -32,7 +32,10 @@ public class UserController {
     }
 
     @GetMapping("/detail/{id}")
-    public String getUserDetailPage(@PathVariable Integer id) {
+    public String getUserDetailPage(@PathVariable Integer id, Model model) {
+        UserRole[] roles = UserRole.values();
+        model.addAttribute("roles", roles);
+        model.addAttribute("user", authService.getUserById(id));
         return "/admin/user/detail";
     }
 }

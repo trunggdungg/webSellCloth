@@ -67,76 +67,79 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="text" class="form-control" id="email" name="email"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>User Name</label>
-                                            <input type="text" class="form-control" id="userName" name="userName"/>
-                                        </div>
+                                <form id="form-update-user">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="text" class="form-control" id="email" name="email"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>User Name</label>
+                                                <input type="text" class="form-control" id="userName" name="userName"/>
+                                            </div>
 
-                                        <div class="form-group">
-                                            <label>Full Name</label>
-                                            <input type="text" class="form-control" id="fullName" name="fullName"/>
-                                        </div>
+                                            <div class="form-group">
+                                                <label>Full Name</label>
+                                                <input type="text" class="form-control" id="fullName" name="fullName"/>
+                                            </div>
 
-                                        <div class="form-group">
-                                            <label>PassWord</label>
-                                            <input type="password" class="form-control" id="passWord" name="passWord"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Confirm PassWord</label>
-                                            <input type="password" class="form-control" id="conFirmPassWord"
-                                                   name="conFirmPassWord"/>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Phone</label>
-                                            <input type="text" class="form-control" id="phone"
-                                                   name="phone"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Trạng thái</label>
-                                            <select id="status" class="form-control">
-                                                <option value="0">
-                                                    Khóa
-                                                </option>
-                                                <option value="1">
-                                                    Kích hoạt
-                                                </option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Role</label>
-                                            <div class="select2-purple">
-                                                <select class="select2 form-control" multiple="multiple"
-                                                        name="role"
-                                                        id="role">
-                                                    <option th:each="role : ${roles}"
-                                                            th:value="${role}"
-                                                            th:text="${role}">
-                                                    </option>
-
-                                                </select>
+                                            <div class="form-group">
+                                                <label>PassWord</label>
+                                                <input type="password" class="form-control" id="passWord"
+                                                       name="passWord"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Confirm PassWord</label>
+                                                <input type="password" class="form-control" id="conFirmPassWord"
+                                                       name="conFirmPassWord"/>
                                             </div>
                                         </div>
-                                        <!--                                        <div class="form-group">-->
-                                        <!--                                            <div class="thumbnail-preview-container mb-3">-->
-                                        <!--                                                <img src="" alt="" id="thumbnail"/>-->
-                                        <!--                                            </div>-->
-                                        <!--                                            <button type="button" class="btn btn-info btn-flat" data-toggle="modal"-->
-                                        <!--                                                    data-target="#modal-xl">-->
-                                        <!--                                                Chọn hình ảnh-->
-                                        <!--                                            </button>-->
-                                        <!--                                        </div>-->
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Phone</label>
+                                                <input type="text" class="form-control" id="phone"
+                                                       name="phone"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Trạng thái</label>
+                                                <select id="status" class="form-control">
+                                                    <option value="fasle">
+                                                        Khóa
+                                                    </option>
+                                                    <option value="true">
+                                                        Kích hoạt
+                                                    </option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Role</label>
+                                                <div class="select2-purple">
+                                                    <select class="select2 form-control" multiple="multiple"
+                                                            name="role"
+                                                            id="role">
+                                                        <option th:each="role : ${roles}"
+                                                                th:value="${role}"
+                                                                th:text="${role}">
+                                                        </option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!--                                        <div class="form-group">-->
+                                            <!--                                            <div class="thumbnail-preview-container mb-3">-->
+                                            <!--                                                <img src="" alt="" id="thumbnail"/>-->
+                                            <!--                                            </div>-->
+                                            <!--                                            <button type="button" class="btn btn-info btn-flat" data-toggle="modal"-->
+                                            <!--                                                    data-target="#modal-xl">-->
+                                            <!--                                                Chọn hình ảnh-->
+                                            <!--                                            </button>-->
+                                            <!--                                        </div>-->
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -172,7 +175,8 @@
 
 <th:block id="js">
     <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
-
+    <script src="/admin-assets/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/admin-assets/plugins/jquery-validation/additional-methods.min.js"></script>
     <script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
 
     <script src="/admin-assets/plugins/select2/js/select2.full.min.js"></script>
@@ -181,27 +185,19 @@
         //Initialize Select2 Elements
         $(".select2").select2();
 
-        // Initialize editor
-        const easyMDE = new EasyMDE({
-            element: document.getElementById("content"),
-            spellChecker: false,
-            maxHeight: "500px",
-            renderingConfig: {
-                codeSyntaxHighlighting: true,
-            },
-        });
 
         // Validate form
-        $('#form-update-product').validate({
+        $('#form-update-user').validate({
             rules: {
                 email: {
+                    email: true,
                     required: true
                 },
                 userName: {
                     required: true
                 },
                 fullName: {
-                    number: true
+                    required: true
                 },
                 passWord: {
                     required: true
@@ -211,6 +207,7 @@
                     required: true
                 },
                 phone: {
+                    number: true,
                     required: true
                 },
 
@@ -220,6 +217,7 @@
             },
             messages: {
                 email: {
+                    email: 'Vui lòng nhập đúng định dạng email',
                     required: 'Vui lòng nhập email'
                 },
                 userName: {
@@ -235,6 +233,7 @@
                     required: 'Vui lòng nhập confirm pass word'
                 },
                 phone: {
+                    number: 'Vui lòng nhập số',
                     required: 'Vui lòng nhập phone'
                 },
                 role: {
@@ -266,7 +265,38 @@
         const statusEl = document.getElementById('status');
         const roleEl = document.getElementById('role');
 
-        
+        btnAddUser.addEventListener('click', async () => {
+            //check password and confirm password
+            if (passWordEl.value !== conFirmPassWordEl.value) {
+                toastr.error('Password and confirm password not match!');
+                return;
+            }
+
+
+            const data = {
+                email: emailEl.value,
+                username: userNameEl.value.replace(/\s+/g, ''),
+                fullName: fullNameEl.value,
+                password: passWordEl.value,
+                phone: phoneEl.value,
+                isActive: statusEl.value === 'true',
+                role: roleEl.value
+            };
+
+            console.log(data);
+
+            try {
+                const res = await axios.post('http://localhost:8083/api/admin/users/create', data);
+                if (res.status === 200) {
+                    toastr.success('Create user success!');
+                }
+            } catch (e) {
+                console.log(e);
+                toastr.error('Create user fail!');
+            }
+
+        });
+
     </script>
 </th:block>
 </body>

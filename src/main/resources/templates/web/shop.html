@@ -327,7 +327,9 @@
                 <div class="col-12 col-md-6 col-lg-4" th:each="product : ${products}">
                     <div class="product-grid-item">
                         <!-- Tag -->
-                        <div class="product-grid-item__tag">10% off</div>
+                        <div class="product-grid-item__tag" th:if="${product.discount != null}"
+                             th:text="${product.discount+'% off'}">10% off
+                        </div>
                         <!-- End tag -->
                         <!-- Wishlist -->
                         <div class="product-grid-item__wishlist">
@@ -352,9 +354,9 @@
                                 </div>
                                 <!-- End button -->
                                 <!-- Button -->
-                                <div class="product-grid-item__button">
-                                    <a href="#">Quick shop</a>
-                                </div>
+                                <!--                                <div class="product-grid-item__button">-->
+                                <!--                                    <a href="#">Quick shop</a>-->
+                                <!--                                </div>-->
                                 <!-- End button -->
                             </div>
                             <!-- End action -->
@@ -368,13 +370,15 @@
                         <!-- End title -->
                         <!-- Price -->
                         <div class="product-grid-item__price">
-                            <span class="price-new" th:text="${product.price}">$49.5</span>
-                            <span class="price-old">$68.5</span>
+                            <span class="price-new"
+                                  th:text="${product.discount != null ? #numbers.formatDecimal(product.price - (product.price * product.discount/100), 2, 2) : #numbers.formatDecimal(product.price, 2, 2)}">$49.5</span>
+                            <span class="price-old" th:if="${product.discount != null}"
+                                  th:text="${#numbers.formatDecimal(product.price, 2, 2)}">$68.5</span>
                         </div>
                         <!-- End price -->
-                        <!-- Tag -->
-                        <div class="product-grid-item__content-tag">2 colours</div>
-                        <!-- End tag -->
+                        <!--                        &lt;!&ndash; Tag &ndash;&gt;-->
+                        <!--                        <div class="product-grid-item__content-tag">2 colours</div>-->
+                        <!--                        &lt;!&ndash; End tag &ndash;&gt;-->
                     </div>
                 </div>
                 <!-- End product -->
@@ -449,9 +453,9 @@
             </div>
             <!-- End products row -->
             <!-- Loading spin -->
-            <div class="loading-spin text-center">
-                <div class="loader"></div>
-            </div>
+            <!--            <div class="loading-spin text-center">-->
+            <!--                <div class="loader"></div>-->
+            <!--            </div>-->
             <!-- End loading spin -->
         </div>
         <!-- End container -->

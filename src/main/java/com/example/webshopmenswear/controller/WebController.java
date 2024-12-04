@@ -112,6 +112,12 @@ public class WebController {
         return "/web/blog";
     }
 
+
+    @GetMapping("/profile")
+    public String ProfilePage() {
+        return "/web/profile";
+    }
+
     @GetMapping("/wishlist")
     public String WishListPage() {
         return "/web/wishlist";

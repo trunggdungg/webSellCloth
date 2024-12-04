@@ -51,4 +51,8 @@ public class ProductVariantService {
         Pageable pageable) {
         return productVariantRepository.findByColorAndSizeAndCategory(colorId, sizeId, categoryId, pageable);
     }
+
+    public List<ProductVariant> getAllProductVariant() {
+        return productVariantRepository.findAll();
+    }
 }

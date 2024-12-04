@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{admin/layout/layout :: main-layout(~{:: title},~{},~{:: .content-wrapper},~{})}">
+      th:replace="~{admin/layout/layout :: main-layout(~{:: title},~{:: #css},~{:: .content-wrapper},~{:: #js})}">
 
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Detail User</title>
+    <title>Create User</title>
+
 
     <th:block id="css">
         <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css"/>
-
         <link rel="stylesheet" href="/admin-assets/plugins/select2/css/select2.min.css"/>
         <link rel="stylesheet" href="/admin-assets/dist/css/style.css">
     </th:block>
-
 
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -33,12 +30,9 @@
                             <li class="breadcrumb-item">
                                 <a href="#">Dashboard</a>
                             </li>
-                            <li class="breadcrumb-item">
-                                <a href="#">Blog</a>
-                            </li>
+
                             <li class="breadcrumb-item active">
-                                Thực hành làm ứng dụng Meal Finder API
-                                với Javascript (Phần 2)
+                                Detail User
                             </li>
                         </ol>
                     </div>
@@ -54,19 +48,19 @@
                         <button type="button" class="btn btn-default">
                             <i class="fas fa-chevron-left"></i> Quay lại
                         </button>
-                        <button type="button" class="btn btn-info px-4">
-                            Lưu
+                        <button type="button" class="btn btn-info px-4" id="btn-add-user">
+                            Update
                         </button>
-                        <button type="button" class="btn btn-primary px-4">
-                            Preview
-                        </button>
+                        <!--                        <button type="button" class="btn btn-primary px-4">-->
+                        <!--                            Preview-->
+                        <!--                        </button>-->
                     </div>
 
-                    <div class="col-6 d-flex justify-content-end">
-                        <button type="button" class="btn btn-danger px-4">
-                            Xóa
-                        </button>
-                    </div>
+                    <!--                    <div class="col-6 d-flex justify-content-end">-->
+                    <!--                        <button type="button" class="btn btn-danger px-4">-->
+                    <!--                            Xóa-->
+                    <!--                        </button>-->
+                    <!--                    </div>-->
                 </div>
 
                 <div class="row">
@@ -76,71 +70,73 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
-                                            <label>Tiêu đề</label>
-                                            <input type="text" class="form-control" id="title"/>
+                                            <label>Email</label>
+                                            <input type="text" class="form-control" id="email" name="email"
+                                                   th:value="${user.email}" readonly/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>User Name</label>
+                                            <input type="text" class="form-control" id="userName" name="userName"
+                                                   th:value="${user.username}" readonly/>
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Nội dung</label>
-                                            <textarea id="content"></textarea>
+                                            <label>Full Name</label>
+                                            <input type="text" class="form-control" id="fullName" name="fullName"
+                                                   th:value="${user.fullName}" readonly/>
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Mô tả ngắn</label>
-                                            <textarea id="description" class="form-control" rows="3"></textarea>
+                                            <label>PassWord</label>
+                                            <input type="password" class="form-control" id="passWord" name="passWord"
+
+                                                   th:value="${user.password}" readonly/>
                                         </div>
+
                                     </div>
 
                                     <div class="col-md-4">
                                         <div class="form-group">
+                                            <label>Phone</label>
+                                            <input type="text" class="form-control" id="phone"
+                                                   name="phone"
+                                                   th:value="${user.phoneNumber}" readonly/>
+                                        </div>
+                                        <div class="form-group">
                                             <label>Trạng thái</label>
                                             <select id="status" class="form-control">
-                                                <option value="0">
-                                                    Nháp
+                                                <option value="false" th:selected="${!user.isActive}">
+                                                    Khóa
                                                 </option>
-                                                <option value="1">
-                                                    Công khai
+                                                <option value="true" th:selected="${user.isActive}">
+                                                    Kích hoạt
                                                 </option>
                                             </select>
                                         </div>
+
                                         <div class="form-group">
-                                            <label>Danh mục</label>
+                                            <label>Role</label>
                                             <div class="select2-purple">
-                                                <select class="select2 form-control" multiple="multiple"
-                                                        id="category">
-                                                    <option>
-                                                        Java
+                                                <select class=" form-control"
+                                                        name="role"
+                                                        id="role">
+                                                    <option th:each="role : ${roles}"
+                                                            th:value="${role}"
+                                                            th:text="${role}">
                                                     </option>
-                                                    <option>
-                                                        Golang
-                                                    </option>
-                                                    <option>
-                                                        React
-                                                    </option>
-                                                    <option>
-                                                        Lập trình web
-                                                    </option>
-                                                    <option>
-                                                        Database
-                                                    </option>
-                                                    <option>
-                                                        Tips Trick
-                                                    </option>
-                                                    <option>
-                                                        Devops
-                                                    </option>
+
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="thumbnail-preview-container mb-3">
-                                                <img src="" alt="" id="thumbnail"/>
-                                            </div>
-                                            <button type="button" class="btn btn-info btn-flat" data-toggle="modal"
-                                                    data-target="#modal-xl">
-                                                Chọn hình ảnh
-                                            </button>
-                                        </div>
+                                        <!--                                        <div class="form-group">-->
+                                        <!--                                            <div class="thumbnail-preview-container mb-3">-->
+                                        <!--                                                <img src="" alt="" id="thumbnail"/>-->
+                                        <!--                                            </div>-->
+                                        <!--                                            <button type="button" class="btn btn-info btn-flat" data-toggle="modal"-->
+                                        <!--                                                    data-target="#modal-xl">-->
+                                        <!--                                                Chọn hình ảnh-->
+                                        <!--                                            </button>-->
+                                        <!--                                        </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -176,17 +172,57 @@
     </div>
 </div>
 
-
 <th:block id="js">
     <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
     <script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
-
+    <script src="/admin-assets/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/admin-assets/plugins/jquery-validation/additional-methods.min.js"></script>
     <script src="/admin-assets/plugins/select2/js/select2.full.min.js"></script>
 
-    <script>
+    <script th:inline="javascript">
+        const user = [[${user}]];
+        console.log("user", user);
         //Initialize Select2 Elements
         $(".select2").select2();
 
+
+    </script>
+
+    <script>
+        const btnAddUser = document.getElementById('btn-add-user');
+        const emailEl = document.getElementById('email');
+        const userNameEl = document.getElementById('userName');
+        const fullNameEl = document.getElementById('fullName');
+        const passWordEl = document.getElementById('passWord');
+        const phoneEl = document.getElementById('phone');
+        const statusEl = document.getElementById('status');
+        const roleEl = document.getElementById('role');
+
+        //gọi api update user
+        btnAddUser.addEventListener('click', async () => {
+
+            const data = {
+                email: emailEl.value,
+                username: userNameEl.value,
+                fullName: fullNameEl.value,
+                password: passWordEl.value,
+                phone: phoneEl.value,
+                isActive: statusEl.value === 'true',
+                role: roleEl.value
+            };
+
+            console.log("data", data);
+            try {
+                const response = await axios.put(`/api/admin/users/${user.id}/update`, data);
+                if (response.status === 200) {
+                    toastr.success("Update user success!");
+                }
+            } catch (e) {
+                console.log("error", e);
+                toastr.error("Update user fail!");
+            }
+
+        });
     </script>
 </th:block>
 </body>

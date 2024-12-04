@@ -1,6 +1,7 @@
 package com.example.webshopmenswear.controller;
 
 import com.example.webshopmenswear.service.CategoryService;
+import com.example.webshopmenswear.service.ProductImageService;
 import com.example.webshopmenswear.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ public class ProductController {
 
     private final ProductService productService;
     private final CategoryService categoryService;
+    private final ProductImageService productImageService;
 
 
     @GetMapping
@@ -34,6 +36,7 @@ public class ProductController {
     public String getProductDetailPage(@PathVariable Integer id, Model model) {
         model.addAttribute("product", productService.getProductById(id));
         model.addAttribute("categories", categoryService.getAllCategory());
+        model.addAttribute("images", productImageService.getListImagesProduct(id));
         return "/admin/product/detail";
     }
 }

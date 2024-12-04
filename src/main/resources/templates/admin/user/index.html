@@ -69,11 +69,13 @@
                                     <tbody>
                                     <tr th:each="user : ${users}">
                                         <td>
-                                            <a href="#" th:text="${user.email}">Khai giảng khóa
+                                            <a th:href="@{/admin/user/detail/{id}(id=${user.id})}"
+                                               th:text="${user.email}">Khai giảng khóa
+
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="#" th:text="${user.fullName}">John Doe</a>
+                                            <a th:text="${user.fullName}">John Doe</a>
                                         </td>
                                         <td th:text="${user.username}">
                                             Java, Golang, Springboot
