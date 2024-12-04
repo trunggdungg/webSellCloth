@@ -27,20 +27,75 @@ public interface ProductVariantRepository extends JpaRepository<ProductVariant, 
 
     // Lấy stock cho một combination cụ thể
     Optional<ProductVariant> findByProductIdAndColorIdAndSizeId(
-        Integer productId, Integer colorId, Integer sizeId);
+            Integer productId, Integer colorId, Integer sizeId);
 
     List<ProductVariant> findByProductId(Integer productId);
 
     @Query("SELECT pv " +
-        "FROM ProductVariant pv " +
-        "WHERE (:colorId IS NULL OR pv.color.id = :colorId) " +
-        "AND (:sizeId IS NULL OR pv.size.id = :sizeId) " +
-        "AND pv.stock > 0 " +
-        "AND (:categoryId IS NULL OR pv.product.category.id = :categoryId)")
+            "FROM ProductVariant pv " +
+            "WHERE (:colorId IS NULL OR pv.color.id = :colorId) " +
+            "AND (:sizeId IS NULL OR pv.size.id = :sizeId) " +
+            "AND pv.stock > 0 " +
+            "AND (:categoryId IS NULL OR pv.product.category.id = :categoryId)")
 // Chỉ lấy những sản phẩm còn hàng và theo loại sản phẩm nếu có
     Page<ProductVariant> findByColorAndSizeAndCategory(
-        @Param("colorId") Integer colorId,
-        @Param("sizeId") Integer sizeId,
-        @Param("categoryId") Integer categoryId,
-        Pageable pageable);
+            @Param("colorId") Integer colorId,
+            @Param("sizeId") Integer sizeId,
+            @Param("categoryId") Integer categoryId,
+            Pageable pageable);
+
+    @Query("SELECT pv " +
+            "FROM ProductVariant pv " +
+            "WHERE (:colorId IS NULL OR pv.color.id = :colorId) " +
+            "AND (:sizeId IS NULL OR pv.size.id = :sizeId) " +
+            "AND pv.stock > 0")
+        // Chỉ lấy những sản phẩm còn hàng
+    Page<ProductVariant> findByColorAndSize(
+            @Param("colorId") Integer colorId,
+            @Param("sizeId") Integer sizeId,
+            Pageable pageable);
+
+    @Query("SELECT pv " +
+            "FROM ProductVariant pv " +
+            "WHERE (:colorId IS NULL OR pv.color.id = :colorId) " +
+            "AND pv.stock > 0")
+    Page<ProductVariant> findByColor(
+            @Param("colorId") Integer colorId,
+            Pageable pageable);
+
+    @Query("SELECT pv " +
+            "FROM ProductVariant pv " +
+            "WHERE (:sizeId IS NULL OR pv.size.id = :sizeId) " +
+            "AND pv.stock > 0")
+    Page<ProductVariant> findBySize(
+            @Param("sizeId") Integer sizeId,
+            Pageable pageable);
+
+    @Query("SELECT pv " +
+            "FROM ProductVariant pv " +
+            "WHERE (:categoryId IS NULL OR pv.product.category.id = :categoryId) " +
+            "AND pv.stock > 0")
+    Page<ProductVariant> findByCategory(
+            @Param("categoryId") Integer categoryId,
+            Pageable pageable);
+
+    @Query("SELECT pv " +
+            "FROM ProductVariant pv " +
+            "WHERE (:colorId IS NULL OR pv.color.id = :colorId) " +
+            "AND (:categoryId IS NULL OR pv.product.category.id = :categoryId) " +
+            "AND pv.stock > 0")
+    Page<ProductVariant> findByColorAndCategory(
+            @Param("colorId") Integer colorId,
+            @Param("categoryId") Integer categoryId,
+            Pageable pageable);
+
+    @Query("SELECT pv " +
+            "FROM ProductVariant pv " +
+            "WHERE (:sizeId IS NULL OR pv.size.id = :sizeId) " +
+            "AND (:categoryId IS NULL OR pv.product.category.id = :categoryId) " +
+            "AND pv.stock > 0")
+    Page<ProductVariant> findBySizeAndCategory(
+            @Param("sizeId") Integer sizeId,
+            @Param("categoryId") Integer categoryId,
+            Pageable pageable);
 }

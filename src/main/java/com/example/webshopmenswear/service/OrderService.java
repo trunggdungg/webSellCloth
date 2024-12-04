@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -34,7 +35,7 @@ public class OrderService {  // Sửa tên class từ 'OderService' thành 'Orde
     public Order updateOrderTotalPrice(Integer orderId, Double newTotalPrice) {
         // Tìm đơn hàng theo ID
         Order order = orderRepository.findById(orderId)
-            .orElseThrow(() -> new IllegalArgumentException("Order not found with ID: " + orderId));
+                .orElseThrow(() -> new IllegalArgumentException("Order not found with ID: " + orderId));
 
         // Cập nhật giá trị tổng đơn hàng mới
         order.setTotalPrice(newTotalPrice);
@@ -46,5 +47,30 @@ public class OrderService {  // Sửa tên class từ 'OderService' thành 'Orde
 
     public Object getAllOrders() {
         return orderRepository.findAll(Sort.by(Sort.Direction.DESC, "CreatedAt"));
+    }
+
+    public Order getOrderById(Integer orderId) {
+        return orderRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Order not found with id: " + orderId));
+    }
+
+    public String updateOrderStatus(Integer orderId, OrderStatus newStatus) {
+        // Lấy đơn hàng theo ID
+        Order order = orderRepository.findById(orderId).orElse(null);
+        if (order == null) {
+            return "Order not found";
+        }
+        // Cập nhật trạng thái đơn hàng
+        order.setOrderStatus(newStatus);
+        order.setUpdatedAt(LocalDateTime.now()); // Cập nhật thời gian thay đổi trạng thái
+        // Lưu lại thay đổi vào cơ sở dữ liệu
+        orderRepository.save(order);
+
+        return "Order status updated successfully";
+    }
+
+
+    public List<Order> getOrdersByUserId(Integer userId) {
+        return orderRepository.findByUserId(userId);
     }
 }

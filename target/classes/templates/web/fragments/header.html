@@ -58,6 +58,11 @@
                             </li>
                             <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
                                 <p class="cart-item__details">
+                                    <a href="/order" class="cart-item__title">Check order</a>
+                                </p>
+                            </li>
+                            <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
+                                <p class="cart-item__details">
                                     <a onclick="logout()" style="cursor: pointer" class="cart-item__title">Đăng
                                         xuất</a>
                                 </p>

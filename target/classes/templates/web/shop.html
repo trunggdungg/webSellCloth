@@ -267,7 +267,7 @@
                                     <!-- Color option -->
                                     <li th:each="color : ${colors}">
                                         <label>
-                                            <input type="radio" name="colors" th:value="${color.id}" checked/>
+                                            <input type="radio" name="colors" th:value="${color.id}"/>
                                             <span th:text="${color.nameColor}"><i style="background: #000000"></i>Black</span>
                                         </label>
                                     </li>
@@ -1451,17 +1451,13 @@
 <script>
     document.getElementById("viewResultButton").addEventListener("click", function () {
         // Lấy thông tin filter từ giao diện
-        const selectedCategory = document.querySelector('input[name="categories"]:checked')?.value;
-        console.log(selectedCategory)
-        const selectedColors = document.querySelector('input[name="colors"]:checked')?.value;
-        console.log(selectedColors)
-        const selectedSize = document.querySelector('input[name="size"]:checked')?.value;
-        console.log(selectedSize)
-        // Gửi yêu cầu đến API filter
-        if (selectedCategory === undefined || selectedColors === undefined || selectedSize === undefined) {
-            alert("Vui lòng chọn ít nhất một loại sản phẩm, màu sắc hoặc kích thước.");
-            return;  // Dừng chức năng nếu không có lựa chọn nào
-        }
+        const selectedCategory = document.querySelector('input[name="categories"]:checked')?.value || '0';
+        console.log(selectedCategory);
+        const selectedColors = document.querySelector('input[name="colors"]:checked')?.value || '0';
+        console.log(selectedColors);
+        const selectedSize = document.querySelector('input[name="size"]:checked')?.value || '0';
+        console.log(selectedSize);
+
         const url = `/filter?colorId=${selectedColors}&sizeId=${selectedSize}&categoryId=${selectedCategory}`;
         fetch(url)
             .then(response => response.json())

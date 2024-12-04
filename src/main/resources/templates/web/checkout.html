@@ -201,12 +201,29 @@
                                     <div class="checkout-shipping__title" id="ship">Standard Shipping</div>
                                     <div class="checkout-shipping__price">$20.0</div>
                                 </div>
+
+                                <div class="checkout__payment-methods">
+                                    <div class="form-group">
+                                        <label>
+                                            <input type="radio" name="paymentMethod" value="cash" id="paymentShip"
+                                                   required>
+                                            Cash on Delivery
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            <input type="radio" name="paymentMethod" value="bank" id="paymentBank">
+                                            Bank Transfer
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                             <!-- Tổng cộng -->
                             <div class="checkout__total">
                                 <div class="checkout-total__title">Total</div>
-                                <div class="checkout-total__price" id="finalTotal">$21.00</div>
+                                <div class="checkout-total__price" id="finalTotal">$20.00</div>
                             </div>
+
                             <!-- Hành động -->
                             <div class="checkout__action">
                                 <a href="#" id="place-order-button" class="second-button">Place order</a>
@@ -860,13 +877,26 @@
 
         document.getElementById("place-order-button").addEventListener("click", async function (event) {
             event.preventDefault();  // Prevent default action of the link/button
-            const addressId = document.getElementById("addressSelect").value; // Use the correct element ID here
-
+            const addressId = parseInt(document.getElementById("addressSelect").value, 10);  // Use the correct element ID here
             // Get the total cart value
             const totalPrice = parseFloat(document.getElementById("finalTotal").textContent.replace('$', '').trim());
             console.log("Total Price: ", totalPrice);  // Log total cart value
             console.log("Selected Address ID:", addressId);  // Log the selected address ID
+
+            console.log("Type of Address ID:", typeof addressId); // Kiểm tra kiểu dữ liệu
             // Check if an address is selected
+
+            const selectedPaymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+            if (!selectedPaymentMethod) {
+                alert("Please select a payment method.");
+                return;
+            }
+            const paymentMethod = selectedPaymentMethod.value;
+            if (paymentMethod === "cash") {
+                console.log("Selected Payment Method: Cash on Delivery");
+            } else if (paymentMethod === "bank") {
+                console.log("Selected Payment Method: Bank Transfer");
+            }
             if (!addressId) {
                 toastr.error("Please select an address before placing the order.");
                 return;
@@ -875,17 +905,20 @@
             // Prepare the order data
             const orderData = {
                 totalPrice: totalPrice,
-                addressUser: {id: addressId}  // Send the address ID
-
+                addressUser: addressId,  // Send the address ID
+                paymentMethod: paymentMethod
             };
             try {
                 const response = await axios.post(`/orders`, orderData);
 
                 if (response.status === 200) {
                     toastr.success("Order successful!");
-                    setTimeout(() => {
+                    if (paymentMethod === "bank") {
+                        // Redirect to the bank payment page
+                    } else {
                         window.location.href = "/";
-                    }, 1500); // Wait for 1 second (1000 milliseconds)
+                    }
+
                 }
             } catch (e) {
                 toastr.error("Order failed!");

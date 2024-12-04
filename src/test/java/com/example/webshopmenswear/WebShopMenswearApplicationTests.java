@@ -80,8 +80,8 @@ class WebShopMenswearApplicationTests {
 
     @Test
     void tesyyy() {
-        List<District> districts = districtRepository.findByProvinceId(1);
-        System.out.println(districts);
+        List<Product> test = orderDetailRepository.findTop4MostSoldProducts(PageRequest.of(0, 10));
+        System.out.println(test);
     }
 
     @Test
