@@ -38,6 +38,7 @@
   - **Spring JPA**: Quản lý dữ liệu.
   - **Lombok**: Giảm thiểu mã lặp trong mô hình dữ liệu.
   - **Thymeleaf**: Template engine để xử lý giao diện.
+  - **Thanh toán VNpay
   - **IntelliJ IDEA**: Môi trường phát triển tích hợp.
 
 ---
