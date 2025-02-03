@@ -1490,14 +1490,14 @@
     window.logout = () => {
         axios.post('/api/auth/logout').then(res => {
             if (res.status === 200) {
-                toastr.success("Đăng xuất thành công");
+                toastr.success("Logout successfully!");
                 setTimeout(() => {
                     window.location.href = '/';
                 }, 1500)
             }
         }).catch(err => {
             console.log(err);
-            toastr.error("Đăng xuất thất bại");
+            toastr.error("Logout failed!");
         })
     }
 </script>
@@ -1513,14 +1513,14 @@
         event.preventDefault();
 
         if (!selectedVariantId) {
-            toastr.error("Vui lòng chọn size và màu sắc");
+            toastr.error("Please select size and color!");
             return;
         }
 
         const quantity = parseInt(document.getElementById('quantity').value);
 
         if (quantity <= 0) {
-            toastr.error("Vui lòng chọn số lượng");
+            toastr.error("Please enter a valid quantity!");
             return;
         }
 
@@ -1535,7 +1535,7 @@
         axios.post('/api/cart/addCart', cartDetailRequest)
             .then(response => {
                 if (response.status === 201) {
-                    toastr.success("Thêm giỏ hàng thành công");
+                    toastr.success("Add to cart successfully!");
 
                     // Gọi lại hàm fetch để cập nhật giỏ hàng
                     fetchCartItems();
@@ -1543,9 +1543,9 @@
             })
             .catch(error => {
                 if (error.response && error.response.status === 401) {
-                    toastr.error("Hãy đăng nhập để thêm vào giỏ hàng");
+                    toastr.error("Please login to add to cart!");
                 } else {
-                    toastr.error("Thêm vào giỏ hàng thất bại");
+                    toastr.error("Add to cart failed!");
                 }
             });
     });

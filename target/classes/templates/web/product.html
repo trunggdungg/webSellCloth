@@ -274,9 +274,9 @@
                             </ul>
                             <!-- End available sizes -->
                             <!-- Size guide -->
-                            <div class="product__size-guide">
-                                <a href="#"><i class="lnil lnil-size"></i> Size Guide</a>
-                            </div>
+                            <!--                            <div class="product__size-guide">-->
+                            <!--                                <a href="#"><i class="lnil lnil-size"></i> Size Guide</a>-->
+                            <!--                            </div>-->
                             <!-- End size guide -->
                         </div>
                         <!-- End product colors -->
@@ -307,9 +307,9 @@
                             </div>
                             <!-- End add to cart -->
                             <!-- Add to cart -->
-                            <div class="product__button">
-                                <a href="#" class="second-button">Buy now</a>
-                            </div>
+                            <!--                            <div class="product__button">-->
+                            <!--                                <a href="#" class="second-button">Buy now</a>-->
+                            <!--                            </div>-->
                             <!-- End add to cart -->
                         </div>
                         <!-- End product quantity and add to cart -->
@@ -345,7 +345,7 @@
                             <!-- Content -->
                             <div class="accordion__content js-accordion-content">
                                 <h3>Introduce</h3>
-                                <p>Tailored line. Wool mix fabric. Long design. Long buttoned sleeve. Lapel with notch.
+                                < >Tailored line. Wool mix fabric. Long design. Long buttoned sleeve. Lapel with notch.
                                     Back slit. Two pockets with flaps on the front. Button up. Inner lining. Inner
                                     pocket. Back length 95.0 cm.</p>
                                 <h3>Material & Washing Instructions</h3>
@@ -564,7 +564,7 @@
                             <!-- Description -->
                             <div class="tab__description">
                                 <h3>Introduce</h3>
-                                <p>Tailored line. Wool mix fabric. Long design. Long buttoned sleeve. Lapel with notch.
+                                <p th:text="${productsDetail.description}">Tailored line. Wool mix fabric. Long design. Long buttoned sleeve. Lapel with notch.
                                     Back slit. Two pockets with flaps on the front. Button up. Inner lining. Inner
                                     pocket. Back length 95.0 cm.</p>
                                 <h3>Material & Washing Instructions</h3>
@@ -899,7 +899,8 @@
                     <!-- Product -->
                     <div class="product-grid-item" th:each="Category :${productCategory}">
                         <!-- Tag -->
-                        <div class="product-grid-item__tag">10% off</div>
+                        <div class="product-grid-item__tag" th:if="${Category.discount != null}"
+                             th:text="${Category.discount+'% off'}">10% off</div>
                         <!-- End tag -->
                         <!-- Wishlist -->
                         <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
@@ -921,12 +922,13 @@
                         <!-- End title -->
                         <!-- Price -->
                         <div class="product-grid-item__price">
-                            <span class="price-new" th:text="${Category.price}">$49.5</span>
-                            <span class="price-old">$68.5</span>
+                            <span class="price-new"  th:text="${Category.discount != null ? #numbers.formatDecimal(Category.price - (Category.price * Category.discount/100), 2, 2) : #numbers.formatDecimal(Category.price, 2, 2)}">$49.5</span>
+                            <span class="price-old" th:if="${Category.discount != null}"
+                                  th:text="${#numbers.formatDecimal(Category.price, 2, 2)}">$68.5</span>
                         </div>
                         <!-- End price -->
                         <!-- Tag -->
-                        <div class="product-grid-item__content-tag">2 colours</div>
+<!--                        <div class="product-grid-item__content-tag">2 colours</div>-->
                         <!-- End tag -->
                         <!-- Action -->
                         <div class="product-grid-item__action d-flex">
@@ -965,8 +967,10 @@
                     <div th:each="productSimilar : ${get4product}">
                         <div class="product-grid-item">
                             <!-- Tag -->
-                            <div class="product-grid-item__tag product-grid-item__tag--sold-out">Sold out</div>
-
+<!--                            <div class="product-grid-item__tag product-grid-item__tag&#45;&#45;sold-out">Sold out</div>-->
+                            <div class="product-grid-item__tag" th:if="${productSimilar.discount != null}"
+                                 th:text="${productSimilar.discount+'% off'}">10% off
+                            </div>
                             <!-- Wishlist -->
                             <div class="product-grid-item__wishlist">
                                 <a href="#"><i class="lnil lnil-heart"></i></a>
@@ -990,8 +994,12 @@
                             </div>
 
                             <!-- Price -->
-                            <div class="product-grid-item__price" th:text="${productSimilar.price}">
-                                $32.5
+
+                            <div class="product-grid-item__price">
+                            <span class="price-new"
+                                  th:text="${productSimilar.discount != null ? #numbers.formatDecimal(productSimilar.price - (productSimilar.price * productSimilar.discount/100), 2, 2) : #numbers.formatDecimal(productSimilar.price, 2, 2)}">$49.5</span>
+                                <span class="price-old" th:if="${productSimilar.discount != null}"
+                                      th:text="${#numbers.formatDecimal(productSimilar.price, 2, 2)}">$68.5</span>
                             </div>
 
                             <!-- Action -->
@@ -1482,18 +1490,19 @@
     window.logout = () => {
         axios.post('/api/auth/logout').then(res => {
             if (res.status === 200) {
-                toastr.success("Đăng xuất thành công");
+                toastr.success("Logout successfully!");
                 setTimeout(() => {
                     window.location.href = '/';
                 }, 1500)
             }
         }).catch(err => {
             console.log(err);
-            toastr.error("Đăng xuất thất bại");
+            toastr.error("Logout failed!");
         })
     }
 </script>
 
+<!--mã bên file product.html-->
 <script th:inline="javascript">
     let productPrice = [[${productsDetail.discount != null ? productsDetail.price - (productsDetail.price * productsDetail.discount / 100) : productsDetail.price}]];
     let priceAsNumber = parseFloat(productPrice.toFixed(2));
@@ -1504,43 +1513,119 @@
         event.preventDefault();
 
         if (!selectedVariantId) {
-            toastr.error("Vui lòng chọn size và màu sắc");
+            toastr.error("Please select size and color!");
             return;
         }
 
-        // Get the quantity from the input field
         const quantity = parseInt(document.getElementById('quantity').value);
 
         if (quantity <= 0) {
-            toastr.error("Vui lòng chọn số lượng");
+            toastr.error("Please enter a valid quantity!");
             return;
         }
 
-        // Calculate the price based on the quantity
         const price = quantity * priceAsNumber;
 
-        // Create the request payload
         const cartDetailRequest = {
-            productId: selectedVariantId, // Use the selected variant ID
+            productId: selectedVariantId,
             quantity: quantity,
             price: price
         };
 
-        // Send the POST request to the addToCart API
         axios.post('/api/cart/addCart', cartDetailRequest)
             .then(response => {
                 if (response.status === 201) {
-                    toastr.success("Thêm giỏ hàng thành công");
+                    toastr.success("Add to cart successfully!");
+
+                    // Gọi lại hàm fetch để cập nhật giỏ hàng
+                    fetchCartItems();
                 }
             })
             .catch(error => {
                 if (error.response && error.response.status === 401) {
-                    toastr.error("Hãy đăng nhập để thêm vào giỏ hàng");
+                    toastr.error("Please login to add to cart!");
                 } else {
-                    toastr.error("Thêm vào giỏ hàng thất bại");
+                    toastr.error("Add to cart failed!");
                 }
             });
     });
+
+    // Hàm để fetch và render cart items
+    function fetchCartItems() {
+        fetch("/api/cart/items")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("User not logged in or unable to fetch cart items.");
+                }
+                return response.json();
+            })
+            .then(cartItems => {
+                // Xóa các item cũ trước khi render
+                const cartContainer = document.querySelector(".cart-container");
+                cartContainer.innerHTML = '';
+
+                // Render lại các cart items
+                renderCartItems(cartItems);
+
+                // Tính toán lại subtotal
+                calculateSubtotal(cartItems);
+
+                // Cập nhật số lượng item trong icon giỏ hàng
+                const cartCountEl = document.getElementById("cart-count");
+                if (cartCountEl) {
+                    cartCountEl.innerText = cartItems.length;
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching cart items:", error);
+            });
+    }
+
+    // Copy hàm renderCartItems và calculateSubtotal từ header.html sang file này
+    function renderCartItems(cartItems) {
+        const cartContainer = document.querySelector(".cart-container");
+        cartItems.forEach(item => {
+            const cartItemHTML = `
+            <li class="cart-item d-flex">
+                <p class="cart-item__image">
+                    <a href="product.html">
+                        <img
+                            alt="Image"
+                            src="${item.productVariant.product.imageUrlPrimary}"
+                            class="lazyload lazy-effect"
+                        />
+                    </a>
+                </p>
+                <p class="cart-item__details">
+                    <a href="product.html" class="cart-item__title">${item.productVariant.product.name}</a>
+                    <span class="cart-item__variant">${item.productVariant.color.nameColor}, ${item.productVariant.size.sizeName}</span>
+                    <span class="cart-item__price">
+                        ${item.quantity} <i>x</i>${item.productVariant.product.discount != null
+                ? (item.productVariant.product.price - (item.productVariant.product.price * item.productVariant.product.discount) / 100).toFixed(2)
+                : item.productVariant.product.price.toFixed(2)}
+                    </span>
+                </p>
+                <p class="cart-item__delete">
+                    <a href="#"><i class="lnil lnil-close"></i></a>
+                </p>
+            </li>
+        `;
+            cartContainer.innerHTML += cartItemHTML;
+        });
+    }
+
+    function calculateSubtotal(cartItems) {
+        let totalPriceSub = 0;
+
+        cartItems.forEach(item => {
+            totalPriceSub += item.price;
+        });
+
+        const totalPriceElements = document.querySelectorAll(".totalPrice");
+        totalPriceElements.forEach(el => {
+            el.innerHTML = `$${totalPriceSub.toFixed(2)}`;
+        });
+    }
 </script>
 
 
