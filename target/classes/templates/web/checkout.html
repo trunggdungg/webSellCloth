@@ -201,12 +201,29 @@
                                     <div class="checkout-shipping__title" id="ship">Standard Shipping</div>
                                     <div class="checkout-shipping__price">$20.0</div>
                                 </div>
+
+                                <div class="checkout__payment-methods">
+                                    <div class="form-group">
+                                        <label>
+                                            <input type="radio" name="paymentMethod" value="cash" id="paymentShip"
+                                                   required>
+                                            Cash on Delivery
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            <input type="radio" name="paymentMethod" value="bank" id="paymentBank">
+                                            Bank Transfer
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                             <!-- Tổng cộng -->
                             <div class="checkout__total">
                                 <div class="checkout-total__title">Total</div>
-                                <div class="checkout-total__price" id="finalTotal">$21.00</div>
+                                <div class="checkout-total__price" id="finalTotal">$20.00</div>
                             </div>
+
                             <!-- Hành động -->
                             <div class="checkout__action">
                                 <a href="#" id="place-order-button" class="second-button">Place order</a>
@@ -860,13 +877,26 @@
 
         document.getElementById("place-order-button").addEventListener("click", async function (event) {
             event.preventDefault();  // Prevent default action of the link/button
-            const addressId = document.getElementById("addressSelect").value; // Use the correct element ID here
-
+            const addressId = parseInt(document.getElementById("addressSelect").value, 10);  // Use the correct element ID here
             // Get the total cart value
             const totalPrice = parseFloat(document.getElementById("finalTotal").textContent.replace('$', '').trim());
             console.log("Total Price: ", totalPrice);  // Log total cart value
             console.log("Selected Address ID:", addressId);  // Log the selected address ID
+
+            console.log("Type of Address ID:", typeof addressId); // Kiểm tra kiểu dữ liệu
             // Check if an address is selected
+
+            const selectedPaymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+            if (!selectedPaymentMethod) {
+                alert("Please select a payment method.");
+                return;
+            }
+            const paymentMethod = selectedPaymentMethod.value;
+            if (paymentMethod === "cash") {
+                console.log("Selected Payment Method: Cash on Delivery");
+            } else if (paymentMethod === "bank") {
+                console.log("Selected Payment Method: Bank Transfer");
+            }
             if (!addressId) {
                 toastr.error("Please select an address before placing the order.");
                 return;
@@ -875,17 +905,22 @@
             // Prepare the order data
             const orderData = {
                 totalPrice: totalPrice,
-                addressUser: {id: addressId}  // Send the address ID
-
+                addressId: addressId,  // Send the address ID
+                paymentMethod: paymentMethod
             };
             try {
                 const response = await axios.post(`/orders`, orderData);
 
                 if (response.status === 200) {
                     toastr.success("Order successful!");
-                    setTimeout(() => {
-                        window.location.href = "/";
-                    }, 1500); // Wait for 1 second (1000 milliseconds)
+                    if (paymentMethod === "bank") {
+                        window.location.href = "/home_VNpay";
+                    } else {
+                        setTimeout(() => {
+                            window.location.href = "/";
+                        }, 2000);
+                    }
+
                 }
             } catch (e) {
                 toastr.error("Order failed!");
@@ -975,14 +1010,55 @@
             console.log("Total Price Sub: ", totalPriceSub);
         });
 
+        // Lấy phí vận chuyển từ LocalStorage
+        const shippingCost = parseFloat(localStorage.getItem("shippingCost")) || 0;
+
         // Cập nhật tổng giá trị
         const subtotalTitleEl = document.getElementById("totalPrice");
         const finalTotalEl = document.getElementById("finalTotal");
 
-        subtotalTitleEl.textContent = `$${totalPriceSub.toFixed(2)}`;
-        finalTotalEl.textContent = `$${(totalPriceSub + 20.0).toFixed(2)}`// Thêm phí vận chuyển
+        if (subtotalTitleEl) subtotalTitleEl.textContent = `$${totalPriceSub.toFixed(2)}`;
+        if (finalTotalEl) finalTotalEl.textContent = `$${(totalPriceSub + shippingCost).toFixed(2)}`;
 
+        console.log("Shipping Cost: ", shippingCost);
+        console.log("Final Total: ", totalPriceSub + shippingCost);
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        // Lấy giá trị shippingCost từ LocalStorage
+        const shippingCost = parseFloat(localStorage.getItem("shippingCost")) || 0;
+
+        // Lấy các phần tử cần cập nhật
+        const shippingTitleEl = document.getElementById("ship");
+        const shippingPriceEl = document.querySelector(".checkout-shipping__price");
+
+        // Cập nhật nội dung dựa trên giá trị shippingCost
+        if (shippingCost === 40) {
+            if (shippingTitleEl) {
+                shippingTitleEl.textContent = "Fast Shipping";
+            }
+        } else if (shippingCost === 20) {
+            if (shippingTitleEl) {
+                shippingTitleEl.textContent = "Standard Shipping";
+            }
+        }
+
+        // Cập nhật giá trị phí vận chuyển
+        if (shippingPriceEl) {
+            shippingPriceEl.textContent = `$${shippingCost.toFixed(2)}`;
+        }
+
+        // Đồng thời tính toán lại tổng giá trị nếu cần
+        const subtotalTitleEl = document.getElementById("totalPrice");
+        const finalTotalEl = document.getElementById("finalTotal");
+
+        if (subtotalTitleEl && finalTotalEl) {
+            const subtotal = parseFloat(subtotalTitleEl.textContent.replace("$", "")) || 0;
+            finalTotalEl.textContent = `$${(subtotal + shippingCost).toFixed(2)}`;
+        }
+    });
+
+
 </script>
 
 
