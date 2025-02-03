@@ -106,7 +106,7 @@
                         ></a>
                     </li>
                     <li>
-                        <a href="https://instagram.com/" target="_blank"
+                        <a href="/wishlist" target="_blank"
                         ><i class="lnil lnil-Instagram"></i
                         ></a>
                     </li>
@@ -394,9 +394,11 @@
                 <!-- Carousel -->
                 <div class="home-products__carousel js-home-products-carousel">
                     <!-- Product -->
-                    <div class="product-grid-item">
+                    <div class="product-grid-item" th:each="topSoldProduct : ${topSoldProducts}">
                         <!-- Tag -->
-                        <div class="product-grid-item__tag">10% off</div>
+                        <div class="product-grid-item__tag" th:if="${topSoldProduct.discount != null}"
+                             th:text="${topSoldProduct.discount+'% off'}">10% off
+                        </div>
                         <!-- End tag -->
                         <!-- Wishlist -->
                         <div class="product-grid-item__wishlist">
@@ -405,23 +407,14 @@
                         <!-- End wishlist -->
                         <!-- Image -->
                         <div class="product-grid-item__image">
-                            <a href="product.html">
+                            <a th:href="|/product/${topSoldProduct.id}/${topSoldProduct.slug}|">
                                 <img
                                         alt="Image"
                                         data-sizes="auto"
-                                        data-srcset="assets/products/1/2_1-a.jpg 400w,
-                            assets/products/1/2_1-a.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                        th:src="${topSoldProduct.imageUrlPrimary}"
                                         class="lazyload lazy-effect"
                                 />
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="assets/products/1/2_1-b.jpg 400w,
-                            assets/products/1/2_1-b.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect hover"
-                                />
+
                             </a>
                             <!-- Action -->
                             <div class="product-grid-item__action d-flex">
@@ -441,17 +434,18 @@
                         <!-- End image -->
                         <!-- Title -->
                         <div class="product-grid-item__title">
-                            <a href="product.html">Zipped cotton cardigan</a>
+                            <a href="product.html" th:text="${topSoldProduct.name}">Zipped cotton cardigan</a>
                         </div>
                         <!-- End title -->
                         <!-- Price -->
                         <div class="product-grid-item__price">
-                            <span class="price-new">$49.5</span>
-                            <span class="price-old">$68.5</span>
+                            <span class="price-new"
+                                  th:text="${topSoldProduct.discount != null ? #numbers.formatDecimal(topSoldProduct.price - (topSoldProduct.price * topSoldProduct.discount/100), 2, 2) : #numbers.formatDecimal(topSoldProduct.price, 2, 2)}">$49.5</span>
+                            <span class="price-old" th:if="${topSoldProduct.discount != null}"
+                                  th:text="${#numbers.formatDecimal(topSoldProduct.price, 2, 2)}">$68.5</span>
                         </div>
                         <!-- End price -->
                         <!-- Tag -->
-                        <div class="product-grid-item__content-tag">2 colours</div>
                         <!-- End tag -->
                     </div>
                     <!-- End product -->
@@ -563,7 +557,12 @@
                         </div>
                         <!-- End title -->
                         <!-- Price -->
-                        <div class="product-grid-item__price" th:text="${product.price} + ' VNĐ'">$32.5</div>
+                        <div class="product-grid-item__price">
+                            <span class="price-new"
+                                  th:text="${product.discount != null ? #numbers.formatDecimal(product.price - (product.price * product.discount/100), 2, 2) : #numbers.formatDecimal(product.price, 2, 2)}">$49.5</span>
+                            <span class="price-old" th:if="${product.discount != null}"
+                                  th:text="${#numbers.formatDecimal(product.price, 2, 2)}">$68.5</span>
+                        </div>
                         <!-- End price -->
                     </div>
                     <!-- End product -->
@@ -951,14 +950,10 @@
                 <!-- Results -->
                 <div id="productList" class="search-popups__results-products d-flex product-grid">
                     <!-- Product -->
-                    <div class="product-grid-item">
-                        <!-- Tag -->
-                        <div
-                                class="product-grid-item__tag product-grid-item__tag--sold-out"
-                        >
-                            Sold out
+                    <div class="product-grid-item" th:each="productPag : ${productPage.getContent()}">
+                        <div class="product-grid-item__tag" th:if="${productPag.discount != null}"
+                             th:text="${productPag.discount+'% off'}">10% off
                         </div>
-                        <!-- End tag -->
                         <!-- Wishlist -->
                         <div class="product-grid-item__wishlist">
                             <a href="#"><i class="lnil lnil-heart"></i></a>
@@ -966,23 +961,15 @@
                         <!-- End wishlist -->
                         <!-- Image -->
                         <div class="product-grid-item__image">
-                            <a href="product.html">
+                            <a th:href="|/product/${productPag.id}/${productPag.slug}|">
                                 <img
                                         alt="Image"
                                         data-sizes="auto"
-                                        data-srcset="assets/products/1/6a.jpg 400w,
-                        assets/products/1/6a.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                        th:src="${productPag.imageUrlPrimary}"
                                         class="lazyload lazy-effect"
                                 />
-                                <img
-                                        alt="Image"
-                                        data-sizes="auto"
-                                        data-srcset="assets/products/1/6b.jpg 400w,
-                        assets/products/1/6b.jpg 800w"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        class="lazyload lazy-effect hover"
-                                />
+                                <!--                                th:href="|/product/${product.id}/${product.slug}|"-->
+
                             </a>
                             <!-- Action -->
                             <div class="product-grid-item__action d-flex">
@@ -1002,11 +989,17 @@
                         <!-- End image -->
                         <!-- Title -->
                         <div class="product-grid-item__title">
-                            <a href="product.html">Basic T-shitt with slogan</a>
+                            <a th:href="|/product/${productPag.id}/${productPag.slug}|" th:text="${productPag.name}">Basic
+                                T-shitt with slogan</a>
                         </div>
                         <!-- End title -->
                         <!-- Price -->
-                        <div class="product-grid-item__price">$32.5</div>
+                        <div class="product-grid-item__price">
+                            <span class="price-new"
+                                  th:text="${productPag.discount != null ? #numbers.formatDecimal(productPag.price - (productPag.price * productPag.discount/100), 2, 2) : #numbers.formatDecimal(productPag.price, 2, 2)}">$49.5</span>
+                            <span class="price-old" th:if="${productPag.discount != null}"
+                                  th:text="${#numbers.formatDecimal(productPag.price, 2, 2)}">$68.5</span>
+                        </div>
                         <!-- End price -->
                     </div>
                     <!-- End product -->
@@ -1025,7 +1018,15 @@
     <!-- End search popup -->
 </div>
 
+<script th:inline="javascript">
+    const topSoldProducts = [[${topSoldProducts}]]
+    console.log("haha ", topSoldProducts)
 
+    const productPage = [[${productPage}]]
+    console.log("productPage ", productPage)
+
+
+</script>
 </body>
 
 </html>

@@ -16,7 +16,6 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -45,6 +44,9 @@
                         <a href="/admin/product/create" class="btn btn-primary">
                             <i class="fas fa-plus"></i> Thêm order
                         </a>
+                        <a href="/admin/orders/export" class="btn btn-info">
+                            <i class="fas fa-red"></i> Export Excel
+                        </a>
                         <a href="/admin/product" class="btn btn-info">
                             <i class="fas fa-redo"></i> Refresh
                         </a>
@@ -69,33 +71,31 @@
                                     <tbody>
                                     <tr th:each="order : ${orders}">
                                         <td>
-                                            <a href="#"
-                                               th:text="${order.user.fullName}">Khai
-                                                giảng
-                                                khóa
-                                            </a>
+                                            <a th:href="@{/admin/orders/detail/{id}(id=${order.id})}"
+                                               th:text="${order.user.fullName}">Khai giảng khóa</a>
                                         </td>
-
-                                        <td th:text="${order.addressUser.district.districtName + ', '
-                                        + order.addressUser.province.provinceName + ', '
-                                        +order.addressUser.ward.wardName}">
-                                            Java, Golang, Springboot
-                                        </td>
-                                        <td th:text="${order.addressUser.street}">Công khai</td>
-                                        <td th:text="${order.totalPrice}">Công khai</td>
-                                        <td th:text="${order.orderStatus}">06-07-2022
-                                        </td>
-                                        <td th:text="${#temporals.format(order.createdAt, 'dd/MM/yyyy')}">06-07-2022
-                                        </td>
+                                        <td th:text="${order.addressUser.district.districtName + ', ' + order.addressUser.province.provinceName + ', ' + order.addressUser.ward.wardName}"></td>
+                                        <td th:text="${order.addressUser.street}"></td>
+                                        <td th:text="${order.totalPrice}"></td>
+                                        <td th:text="${order.orderStatus}" th:value="${order.orderStatus}"></td>
+                                        <td th:text="${#temporals.format(order.createdAt, 'dd/MM/yyyy')}"></td>
 
                                         <td>
-                                            <button type="button" class="btn btn-danger">Cancel</button>
-                                            <button type="button" class="btn btn-primary">OK</button>
+                                            <!-- Nút OK -->
+                                            <button type="button" class="btn btn-primary btn-ok"
+                                                    th:data-order-id="${order.id}"
+                                                    data-order-status="OK">OK
+                                            </button>
+
+                                            <button type="button" class="btn btn-danger btn-cancel"
+                                                    th:data-order-id="${order.id}"
+                                                    data-order-status="CANCEL"
+                                                    onclick="cancelOrder(this)">Cancel
+                                            </button>
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
                     </div>
@@ -104,6 +104,7 @@
         </section>
     </div>
 </div>
+
 <th:block id="js">
     <script src="/admin-assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="/admin-assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -111,10 +112,13 @@
     <script src="/admin-assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
     <script th:inline="javascript">
-        // const products = [[${products}]];
-        // console.log("products", products);
-        const orders = [[${orders}]];
+        /*<![CDATA[*/
+        // Dữ liệu đơn hàng từ Thymeleaf
+        const orders = /*[[${orders}]]*/ [];
+
         console.log("orders", orders);
+
+        // Khởi tạo bảng DataTables
         $('#table-product').DataTable({
             "paging": true,
             "lengthChange": true,
@@ -124,10 +128,56 @@
             "autoWidth": false,
             "responsive": true,
         });
-    </script>
 
+        // Xử lý sự kiện click cho nút OK và Cancel
+        document.querySelectorAll('.btn-ok').forEach(button => {
+            button.addEventListener('click', function () {
+                const orderId = this.getAttribute('data-order-id');
+                console.log("Order ID from OK button:", orderId);
+                const orderStatus = this.getAttribute('data-order-status');  // Chú ý là lấy giá trị từ "value" thay vì "data-order-id"
+                console.log("Order Status:", orderStatus);
+                updateOrderStatus(orderId, orderStatus);
+            });
+        });
+
+        // Lấy order ID từ nút Cancel
+        document.querySelectorAll('.btn-cancel').forEach(button => {
+            button.addEventListener('click', function () {
+                const orderId = this.getAttribute('data-order-id');
+                console.log("Order ID from Cancel button:", orderId);
+                const orderStatus = this.getAttribute('data-order-status');
+                updateOrderStatus(orderId, orderStatus);
+                // Tiến hành xử lý với orderId, ví dụ: gọi API để hủy đơn hàng
+            });
+        });
+
+        function updateOrderStatus(orderId, status) {
+            fetch('/admin/orders/update-status', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({orderId: orderId, status: status})
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Order status updated successfully!");
+                        location.reload(); // Refresh the page to show updated data
+                    } else {
+                        alert("Failed to update order status: " + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error updating order status:", error);
+                    alert("An error occurred while updating the order status.");
+                });
+        }
+
+
+        /*]]>*/
+    </script>
 </th:block>
 
 </body>
-
 </html>

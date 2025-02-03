@@ -29,7 +29,7 @@
                                 <a href="#">Dashboard</a>
                             </li>
                             <li class="breadcrumb-item active">
-                                Danh sách sản phẩm
+                                Product list
                             </li>
                         </ol>
                     </div>
@@ -43,7 +43,10 @@
                 <div class="row py-2">
                     <div class="col-12">
                         <a href="/admin/product/create" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Thêm sản phẩm
+                            <i class="fas fa-plus"></i> Add products
+                        </a>
+                        <a href="/admin/product/export" class="btn btn-info">
+                            <i class="fas fa-redo"></i> Export Excel
                         </a>
                         <a href="/admin/product" class="btn btn-info">
                             <i class="fas fa-redo"></i> Refresh
@@ -81,7 +84,7 @@
                                         <td th:text="${product.category.name}">
                                             Java, Golang, Springboot
                                         </td>
-                                        <td th:text="${product.status == true ? 'Công khai' :'Nháp'}">Công khai</td>
+                                        <td th:text="${product.status == true ? 'Publish' :'Draft'}">Công khai</td>
                                         <td th:text="${#temporals.format(product.createdAt, 'dd/MM/yyyy')}">06-07-2022
                                         </td>
                                     </tr>
