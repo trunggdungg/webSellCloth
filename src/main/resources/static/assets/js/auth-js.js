@@ -16,16 +16,16 @@ loginFormEL.addEventListener('submit', async (e) => {
     };
     try {
         const response = await axios.post('/api/auth/login', data);
-        toastr.success('Đăng nhập thành công');
+        toastr.success('Login success!');
         setTimeout(() => {
             window.location.href = '/';
         }, 1000);
 
     } catch (error) {
         if (error.response && error.response.data === 'User is not active') {
-            toastr.error('Tài khoản của bạn chưa được kích hoạt');
+            toastr.error('Account is not active!');
         } else {
-            toastr.error('Đăng nhập thất bại');
+            toastr.error('Login failed!');
         }
     }
 });
@@ -51,7 +51,7 @@ formSignUpEL.addEventListener('submit', async (e) => {
     const phone = phoneEl.value;
 
     if (password !== confirmPassword) {
-        toastr.error('Mật khẩu không khớp');
+        toastr.error('Password and Confirm Password are not the same');
         return;
     }
 
@@ -65,12 +65,12 @@ formSignUpEL.addEventListener('submit', async (e) => {
     };
     try {
         const response = await axios.post('/api/auth/sign-up', data);
-        toastr.success('Đăng ký thành công');
+        toastr.success('Sign up success!');
         setTimeout(() => {
             window.location.href = '/account';
         }, 1000);
 
     } catch (error) {
-        toastr.error('Đăng ký thất bại');
+        toastr.error('Sign up failed!');
     }
 });

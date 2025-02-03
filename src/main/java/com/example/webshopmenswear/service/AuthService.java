@@ -3,6 +3,7 @@ package com.example.webshopmenswear.service;
 import com.example.webshopmenswear.entity.User;
 import com.example.webshopmenswear.model.Enum.UserRole;
 import com.example.webshopmenswear.model.request.LoginRequest;
+import com.example.webshopmenswear.model.request.ProfileRequest;
 import com.example.webshopmenswear.model.request.SignUpRequest;
 import com.example.webshopmenswear.model.request.UpSertUserRequest;
 import com.example.webshopmenswear.repository.UserRepository;
@@ -117,5 +118,14 @@ public class AuthService {
             .build();
 
         return userRepository.save(user);
+    }
+
+    public void updateProfile(ProfileRequest profileRequest) {
+        User user = getCurrentUser();
+        user.setEmail(profileRequest.getEmail());
+        user.setFullName(profileRequest.getFullName());
+        user.setUsername(profileRequest.getUsername());
+        user.setPhoneNumber(profileRequest.getPhoneNumber());
+        userRepository.save(user);
     }
 }
