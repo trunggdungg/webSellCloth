@@ -24,6 +24,10 @@ public class ProductVariantService {
         return productVariantRepository.findDistinctColorsByProductId(productId);
     }
 
+    public List<ProductVariant> getAllProductVariant() {
+        return productVariantRepository.findAll();
+    }
+
     public List<Size> getProductSizes(Integer productId) {
         List<Size> sizes = productVariantRepository.findDistinctSizesByProductId(productId, Sort.unsorted());
         return sizes.stream()
@@ -49,10 +53,89 @@ public class ProductVariantService {
         Integer sizeId,
         Integer categoryId,
         Pageable pageable) {
-        return productVariantRepository.findByColorAndSizeAndCategory(colorId, sizeId, categoryId, pageable);
+
+        // Trường hợp categoryId là 0, chỉ lọc theo colorId và sizeId
+        if (categoryId == 0) {
+            // Sử dụng các hàm tìm kiếm liên quan đến màu sắc và kích thước
+            if (colorId != 0 && sizeId != 0) {
+                return findByColorAndSize(colorId, sizeId, pageable);
+            } else if (colorId != 0) {
+                return findByColor(colorId, pageable);
+            } else if (sizeId != 0) {
+                return findBySize(sizeId, pageable);
+            }
+            return productVariantRepository.findAll(pageable);  // Trả về tất cả sản phẩm nếu không có màu sắc hoặc kích thước
+        }
+
+        // Trường hợp có cả colorId, sizeId và categoryId
+        if (colorId != 0 && sizeId != 0 && categoryId != 0) {
+            return productVariantRepository.findByColorAndSizeAndCategory(colorId, sizeId, categoryId, pageable);
+        }
+
+        // Trường hợp chỉ có colorId và sizeId
+        if (colorId != 0 && sizeId != 0) {
+            return findByColorAndSize(colorId, sizeId, pageable);
+        }
+
+        // Trường hợp chỉ có colorId
+        if (colorId != 0) {
+            return findByColor(colorId, pageable);
+        }
+
+        // Trường hợp chỉ có sizeId
+        if (sizeId != 0) {
+            return findBySize(sizeId, pageable);
+        }
+
+        // Trường hợp chỉ có categoryId (và categoryId không phải là 0)
+        if (categoryId != 0 && categoryId != 0) {
+            return findByCategory(categoryId, pageable);
+        }
+
+        // Trường hợp có colorId và categoryId, nhưng không có sizeId
+        if (colorId != 0 && categoryId != 0) {
+            return findByColorAndCategory(colorId, categoryId, pageable);
+        }
+
+        // Trường hợp có sizeId và categoryId, nhưng không có colorId
+        if (sizeId != 0 && categoryId != 0) {
+            return findBySizeAndCategory(sizeId, categoryId, pageable);
+        }
+
+        // Nếu không có điều kiện lọc nào, trả về tất cả sản phẩm
+        return productVariantRepository.findAll(pageable);
     }
 
-    public List<ProductVariant> getAllProductVariant() {
-        return productVariantRepository.findAll();
+
+    // Phương thức tìm sản phẩm theo màu sắc và kích thước
+    public Page<ProductVariant> findByColorAndSize(Integer colorId, Integer sizeId, Pageable pageable) {
+        return productVariantRepository.findByColorAndSize(colorId, sizeId, pageable);
     }
+
+    // Tìm sản phẩm theo màu sắc
+    public Page<ProductVariant> findByColor(Integer colorId, Pageable pageable) {
+        return productVariantRepository.findByColor(colorId, pageable);
+    }
+
+    // Tìm sản phẩm theo kích thước
+    public Page<ProductVariant> findBySize(Integer sizeId, Pageable pageable) {
+        return productVariantRepository.findBySize(sizeId, pageable);
+    }
+
+    // Tìm sản phẩm theo loại sản phẩm
+    public Page<ProductVariant> findByCategory(Integer categoryId, Pageable pageable) {
+        return productVariantRepository.findByCategory(categoryId, pageable);
+    }
+
+    // Tìm sản phẩm theo màu sắc và loại sản phẩm
+    public Page<ProductVariant> findByColorAndCategory(Integer colorId, Integer categoryId, Pageable pageable) {
+        return productVariantRepository.findByColorAndCategory(colorId, categoryId, pageable);
+    }
+
+    // Tìm sản phẩm theo kích thước và loại sản phẩm
+    public Page<ProductVariant> findBySizeAndCategory(Integer sizeId, Integer categoryId, Pageable pageable) {
+        return productVariantRepository.findBySizeAndCategory(sizeId, categoryId, pageable);
+    }
+
+
 }
