@@ -887,6 +887,42 @@
         }
     }
 
+    document.addEventListener("DOMContentLoaded", () => {
+        const shippingSelect = document.querySelector(".order-summary__delivery-method select");
+
+        if (shippingSelect) {
+            shippingSelect.addEventListener("change", () => {
+                const subtotalPriceEl = document.getElementById("subtotalPrice");
+                let subtotal = 0;
+
+                if (subtotalPriceEl) {
+                    subtotal = parseFloat(subtotalPriceEl.textContent.replace("$", "")) || 0;
+                }
+
+                const selectedOption = shippingSelect.options[shippingSelect.selectedIndex].text;
+                let shippingCost = 0;
+
+                if (selectedOption.includes("Standard Shipping")) {
+                    shippingCost = 20; // Phí vận chuyển tiêu chuẩn
+                } else if (selectedOption.includes("Fast Shipping")) {
+                    shippingCost = 40; // Phí vận chuyển nhanh
+                }
+
+                // Lưu phí vận chuyển vào LocalStorage
+                localStorage.setItem("shippingCost", shippingCost);
+
+                // Cập nhật tổng giá trị ngay lập tức
+                const totalPriceEl = document.getElementById("totalPrice");
+                const totalPrice = subtotal + shippingCost;
+
+                if (totalPriceEl) {
+                    totalPriceEl.textContent = `$${totalPrice.toFixed(2)}`;
+                }
+            });
+        }
+    });
+
+
 </script>
 </body>
 
