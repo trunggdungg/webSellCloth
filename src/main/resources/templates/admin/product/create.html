@@ -49,10 +49,10 @@
                 <div class="row py-2">
                     <div class="col-6">
                         <button type="button" class="btn btn-default">
-                            <i class="fas fa-chevron-left"></i> Quay lại
+                            <i class="fas fa-chevron-left"></i> Back
                         </button>
                         <button type="button" class="btn btn-info px-4" id="btn-update">
-                            Thêm mới
+                            Add product
                         </button>
                         <!--                        <button type="button" class="btn btn-primary px-4">-->
                         <!--                            Preview-->
@@ -74,14 +74,14 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <label>Tên sản phẩm</label>
+                                                <label>Name product</label>
                                                 <input type="text" class="form-control" id="title" name="name"
                                                 />
                                             </div>
 
 
                                             <div class="form-group">
-                                                <label>Mô tả ngắn</label>
+                                                <label>Short description</label>
                                                 <textarea id="description" class="form-control" rows="3"
                                                           name="description"
                                                 ></textarea>
@@ -108,13 +108,13 @@
 
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Trạng thái</label>
+                                                <label>Status</label>
                                                 <select id="status" class="form-control">
                                                     <option value="false">
-                                                        Nháp
+                                                        Draft
                                                     </option>
                                                     <option value="true">
-                                                        Công khai
+                                                        Publish
                                                     </option>
                                                 </select>
                                             </div>
@@ -125,7 +125,7 @@
                                                 />
                                             </div>
                                             <div class="form-group">
-                                                <label>Danh mục</label>
+                                                <label>Category</label>
                                                 <div class="select2-purple">
                                                     <select class="select2 form-control" multiple="multiple"
                                                             name="category"
@@ -318,7 +318,7 @@
             }
         });
 
-        
+
     </script>
 </th:block>
 </body>

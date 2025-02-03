@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{admin/layout/layout :: main-layout(~{:: title},~{:: #css},~{:: .content-wrapper},~{:: #js})}">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Thêm Loại Sản Phẩm</title>
+
+    <th:block id="css">
+        <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css"/>
+        <link rel="stylesheet" href="/admin-assets/plugins/select2/css/select2.min.css"/>
+        <link rel="stylesheet" href="/admin-assets/dist/css/style.css">
+    </th:block>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/product">Sản Phẩm</a></li>
+                            <li class="breadcrumb-item active">Thêm Loại Sản Phẩm</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row py-2">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-default">
+                            <i class="fas fa-chevron-left"></i> Quay lại
+                        </button>
+                        <button type="button" class="btn btn-info px-4" id="btn-update">
+                            Thêm Loại Sản Phẩm
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- Form để thêm loại sản phẩm mới -->
+                                <form id="form-update-product" method="POST" action="/api/admin/categories">
+                                    <div class="form-group">
+                                        <label>Tên Loại Sản Phẩm</label>
+                                        <input type="text" class="form-control" id="title" name="name" required/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Slug</label>
+                                        <input type="text" id="slug" class="form-control" name="slug" required/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Lưu Loại Sản Phẩm</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<th:block id="js">
+    <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+    <script src="/admin-assets/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/admin-assets/plugins/jquery-validation/additional-methods.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
+    <script src="/admin-assets/plugins/select2/js/select2.full.min.js"></script>
+    <script>
+    </script>
+</th:block>
+
+<script>
+    document.getElementById('form-update-product').onsubmit = async function (event) {
+        event.preventDefault();  // Ngừng hành động submit mặc định
+
+        // Lấy giá trị của các trường trong form
+        const name = document.getElementById('title').value;
+        const slug = document.getElementById('slug').value;
+
+        // Tạo đối tượng dữ liệu
+        const data = {
+            name: name,
+            slug: slug
+        };
+        console.log(data);
+
+        try {
+            // Gửi yêu cầu POST với Content-Type là application/json
+            const response = await fetch('/api/admin/categories', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',  // Đảm bảo gửi dữ liệu dưới dạng JSON
+                },
+                body: JSON.stringify(data)  // Chuyển đối tượng dữ liệu thành chuỗi JSON
+            });
+
+            // Xử lý phản hồi từ server
+            const result = await response.json();
+
+            if (response.ok) {
+                alert('Thêm loại sản phẩm thành công!');
+                // Thêm logic xử lý sau khi thành công (chuyển trang, làm mới trang, v.v.)
+            } else {
+                alert('Có lỗi xảy ra: ' + result.message);
+            }
+        } catch (error) {
+            alert('Có lỗi xảy ra: ' + error.message);
+        }
+    };
+
+</script>
+
+</body>
+</html>
