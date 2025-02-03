@@ -4,6 +4,6 @@ public enum OrderStatus {
     DANG_XU_LY,
     DANG_VAN_CHUYEN,
     DA_VAN_CHUYEN,
-    PENDING,
+    DA_NHAN,
     DA_HUY
 }
