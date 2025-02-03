@@ -1,9 +1,11 @@
 package com.example.webshopmenswear.controller;
 
+
 import com.example.webshopmenswear.entity.ProductVariant;
 import com.example.webshopmenswear.service.ProductVariantService;
 import com.example.webshopmenswear.service.RevenueService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -20,7 +22,8 @@ import java.util.Map;
 @RequestMapping("/admin/revenue")
 public class RevenueController {
     private final RevenueService revenueService;
-    private final ProductVariantService productVariantService;
+    @Autowired
+    private ProductVariantService productVariantService;
 
     @GetMapping
     public String getProductPage(Model model) {
