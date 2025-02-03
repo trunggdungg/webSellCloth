@@ -1,14 +1,12 @@
 package com.example.webshopmenswear.rest;
 
 import com.example.webshopmenswear.model.request.LoginRequest;
+import com.example.webshopmenswear.model.request.ProfileRequest;
 import com.example.webshopmenswear.model.request.SignUpRequest;
 import com.example.webshopmenswear.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -35,4 +33,11 @@ public class AuthApi {
         authService.logout();
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping("/update-profile")
+    public ResponseEntity<?> updateProfile(@RequestBody ProfileRequest profileRequest) {
+        authService.updateProfile(profileRequest);
+        return ResponseEntity.ok().build();
+    }
+
 }
