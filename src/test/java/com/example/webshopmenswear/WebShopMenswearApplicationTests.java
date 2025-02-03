@@ -88,8 +88,8 @@ class WebShopMenswearApplicationTests {
 
     @Test
     void tesyyy() {
-        List<District> districts = districtRepository.findByProvinceId(1);
-        System.out.println(districts);
+        List<ProductVariant> productVariants = productVariantRepository.findAll();
+        System.out.println(productVariants);
     }
 
 

@@ -3,6 +3,7 @@ package com.example.webshopmenswear.controller;
 import com.example.webshopmenswear.entity.*;
 import com.example.webshopmenswear.service.*;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,8 @@ public class WebController {
     private final ProvinceService provinceService;
     private final DistrictService districtService;
     private final wardService wardService;
+    private final OrderService orderService;
+    private final OrderDetailService orderDetailService;
 
     @GetMapping("/shop")
     public String ProductsPage(@RequestParam(required = false, defaultValue = "1") int page,
@@ -41,7 +44,7 @@ public class WebController {
         } else {
             products = productService.getProductsByStatus(true, page, pageSize);
         }
-
+        Page<Product> productPage = productService.getProductsByStatus(true, page, 5);
         List<Color> colors = colorService.getAllColors();
         List<Size> sizes = sizeService.getAllSize();
         List<Category> categories = categoryService.getAllCategory();
@@ -49,6 +52,7 @@ public class WebController {
         model.addAttribute("products", products);
         model.addAttribute("currentPage", page);
         model.addAttribute("colors", colors);
+        model.addAttribute("productPage", productPage);
         model.addAttribute("sizes", sizes);
         model.addAttribute("categories", categories);
         return "/web/shop";
@@ -59,7 +63,10 @@ public class WebController {
                            @RequestParam(required = false, defaultValue = "10") int pageSize,
                            Model model) {
         Page<Product> products = productService.findTop10ByStatusOrderByCreatedAtDesc(true, page, pageSize);
-
+        Page<Product> productPage = productService.getProductsByStatus(true, page, 5);
+        List<Product> topSoldProducts = orderDetailService.getTop4MostSoldProducts();
+        model.addAttribute("topSoldProducts", topSoldProducts);
+        model.addAttribute("productPage", productPage);
         model.addAttribute("productsPage", products);
         model.addAttribute("currentPage", page);
 
@@ -107,6 +114,25 @@ public class WebController {
         return "/web/product";
     }
 
+    @GetMapping("/order")
+    public String order(HttpSession httpSession, Model model) {
+        // Lấy người dùng hiện tại từ session
+        User currentUser = (User) httpSession.getAttribute("CURRENT_USER");
+
+        if (currentUser == null) {
+            // Nếu không có user trong session, chuyển hướng đến trang đăng nhập
+            return "redirect:/";
+        }
+
+        // Lấy danh sách order theo userId
+        List<Order> orders = orderService.getOrdersByUserId(currentUser.getId());
+
+        // Thêm danh sách vào model để hiển thị trong view
+        model.addAttribute("orders", orders);
+
+        return "/web/order";
+    }
+
     @GetMapping("/blog")
     public String BlogPage() {
         return "/web/blog";
@@ -114,7 +140,12 @@ public class WebController {
 
 
     @GetMapping("/profile")
-    public String ProfilePage() {
+    public String ProfilePage(HttpSession session, Model model) {
+        User currentUser = (User) session.getAttribute("CURRENT_USER");
+        if (currentUser == null) {
+            return "redirect:/";
+        }
+        model.addAttribute("user", currentUser);
         return "/web/profile";
     }
 
@@ -188,6 +219,7 @@ public class WebController {
         }
     }
 
+
     @GetMapping("/404")
     public String Page404() {
         return "/web/404";
@@ -197,4 +229,6 @@ public class WebController {
     public String ContactPage() {
         return "/web/contact";
     }
+
+
 }

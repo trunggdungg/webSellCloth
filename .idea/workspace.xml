@@ -4,64 +4,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="format">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/RevenueController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/model/request/UpSertUserRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/rest/admin/ImageProductApiAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/rest/admin/UserApiAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/RevenueService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/revenue/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/revenue/revenueProduct.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/web/profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/RevenueController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/model/request/UpSertUserRequest$UpSertUserRequestBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/model/request/UpSertUserRequest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/rest/admin/ImageProductApiAdmin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/rest/admin/UserApiAdmin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/RevenueService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/admin/revenue/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/admin/revenue/revenueProduct.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/web/profile.html" afterDir="false" />
+    <list default="true" id="b4a2ff2f-ce69-40e2-9bcf-a09644d64d22" name="Changes" comment="Api Order admin">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/rest/admin/OrderApiAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/web/orderFail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/web/orderSuccess.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/rest/admin/OrderApiAdmin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/web/orderFail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/web/orderSuccess.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/OrderDetailController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/RevenueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/RevenueController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/WebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/controller/WebController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/ProductImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/entity/ProductImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/model/Enum/OrderStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/model/Enum/OrderStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/OrderDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/OrderDetailRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/OrderRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ProductImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ProductImageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/rest/admin/ProductApiAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/rest/admin/ProductApiAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ProductVariantRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/repository/ProductVariantRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/rest/OrderDetailApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/rest/OrderDetailApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/OrderDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/OrderDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/OrderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductVariantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/webshopmenswear/service/ProductVariantService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/product/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/product/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/user/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/user/create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/user/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/user/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/user/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/web/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/web/shop.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/webshopmenswear/WebShopMenswearApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/webshopmenswear/WebShopMenswearApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/OrderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/OrderDetailController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/ProductController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/RevenueController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/RevenueController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/WebController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/controller/WebController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/ProductImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/entity/ProductImage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/model/Enum/OrderStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/model/Enum/OrderStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/OrderDetailRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/OrderDetailRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/OrderRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/OrderRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductImageRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductImageRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/rest/admin/ProductApiAdmin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/rest/admin/ProductApiAdmin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/AuthService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductImageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductImageService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductVariantRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/repository/ProductVariantRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/rest/OrderDetailApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/rest/OrderDetailApi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/OrderDetailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/OrderDetailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/OrderService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductVariantService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/webshopmenswear/service/ProductVariantService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/product/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/product/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/user/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/user/create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/user/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/user/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/user/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/web/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/web/shop.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/webshopmenswear/WebShopMenswearApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/webshopmenswear/WebShopMenswearApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,8 +62,8 @@
         <option value="Interface" />
         <option value="Kotlin Class" />
         <option value="JavaScript File" />
-        <option value="CSS File" />
         <option value="HTML File" />
+        <option value="CSS File" />
         <option value="Class" />
       </list>
     </option>
@@ -112,54 +98,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveCategories.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveColors.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveImagesProduct.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveProducts.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveSizes.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WebShopMenswearApplicationTests.saveSubCategories.executor&quot;: &quot;Run&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-Lombok plugin&quot;: &quot;Lombok integration problem&quot;,
-    &quot;Notification.DoNotAsk-Lombok plugin&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.WebShopMenswearApplication.executor&quot;: &quot;Run&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;G:/DA_CNPM/src/main/resources/templates/admin/revenue&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;667eded1e4c7edad57570423454b52ab&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.WebShopMenswearApplicationTests.saveCategories.executor": "Run",
+    "JUnit.WebShopMenswearApplicationTests.saveColors.executor": "Run",
+    "JUnit.WebShopMenswearApplicationTests.saveImagesProduct.executor": "Run",
+    "JUnit.WebShopMenswearApplicationTests.saveProducts.executor": "Run",
+    "JUnit.WebShopMenswearApplicationTests.saveSizes.executor": "Run",
+    "JUnit.WebShopMenswearApplicationTests.saveSubCategories.executor": "Run",
+    "Notification.DisplayName-DoNotAsk-Lombok plugin": "Lombok integration problem",
+    "Notification.DoNotAsk-Lombok plugin": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.WebShopMenswearApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "G:/DA_CNPM",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "spring.configuration.checksum": "667eded1e4c7edad57570423454b52ab",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\DA_CNPM\src\main\resources\static\assets\images" />
       <recent name="G:\DA_CNPM\src\main\resources\templates\admin\revenue" />
       <recent name="G:\DA_CNPM\src\main\resources\templates\admin\imageProduct" />
       <recent name="G:\DA_CNPM\src\main\resources\templates\admin\Order" />
       <recent name="G:\DA_CNPM\src\main\resources\static\admin-assets\plugins" />
-      <recent name="G:\DA_CNPM\src\main\resources\templates\admin\product" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\DA_CNPM\src\main\resources\templates\admin" />
@@ -170,22 +156,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.WebShopMenswearApplication">
-    <configuration name="WebShopMenswearApplicationTests.enode_password" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="WebShopMenswear" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.webshopmenswear.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.webshopmenswear" />
-      <option name="MAIN_CLASS_NAME" value="com.example.webshopmenswear.WebShopMenswearApplicationTests" />
-      <option name="METHOD_NAME" value="enode_password" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="WebShopMenswearApplicationTests.saveCart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WebShopMenswear" />
       <extension name="coverage">
@@ -250,6 +220,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WebShopMenswearApplicationTests.tesyyy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WebShopMenswear" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.webshopmenswear.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.webshopmenswear" />
+      <option name="MAIN_CLASS_NAME" value="com.example.webshopmenswear.WebShopMenswearApplicationTests" />
+      <option name="METHOD_NAME" value="tesyyy" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="WebShopMenswearApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="WebShopMenswear" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.webshopmenswear.WebShopMenswearApplication" />
@@ -259,11 +245,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.WebShopMenswearApplicationTests.tesyyy" />
         <item itemvalue="JUnit.WebShopMenswearApplicationTests.testOrderSt" />
         <item itemvalue="JUnit.WebShopMenswearApplicationTests.testImg" />
         <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveCartDetail" />
         <item itemvalue="JUnit.WebShopMenswearApplicationTests.saveCart" />
-        <item itemvalue="JUnit.WebShopMenswearApplicationTests.enode_password" />
       </list>
     </recent_temporary>
   </component>
@@ -330,38 +316,11 @@
       <workItem from="1732625916705" duration="8917000" />
       <workItem from="1733233129044" duration="15382000" />
       <workItem from="1733289905525" duration="10667000" />
-    </task>
-    <task id="LOCAL-00001" summary="up">
-      <option name="closed" value="true" />
-      <created>1731058033524</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1731058033524</updated>
-    </task>
-    <task id="LOCAL-00002" summary="up date db, repository">
-      <option name="closed" value="true" />
-      <created>1731081781644</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1731081781644</updated>
-    </task>
-    <task id="LOCAL-00003" summary="up date db, repository">
-      <option name="closed" value="true" />
-      <created>1731081810661</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1731081810661</updated>
-    </task>
-    <task id="LOCAL-00004" summary="up date db">
-      <option name="closed" value="true" />
-      <created>1731088580624</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1731088580624</updated>
+      <workItem from="1733368344862" duration="1539000" />
+      <workItem from="1735124040026" duration="83000" />
+      <workItem from="1738548125327" duration="46000" />
+      <workItem from="1738548188560" duration="33000" />
+      <workItem from="1738548298731" duration="426000" />
     </task>
     <task id="LOCAL-00005" summary="Up_similar">
       <option name="closed" value="true" />
@@ -635,7 +594,127 @@
       <option name="project" value="LOCAL" />
       <updated>1732477156922</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="code Vnpay">
+      <option name="closed" value="true" />
+      <created>1738548370397</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1738548370397</updated>
+    </task>
+    <task id="LOCAL-00040" summary="page wishlist html">
+      <option name="closed" value="true" />
+      <created>1738548462611</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1738548462611</updated>
+    </task>
+    <task id="LOCAL-00041" summary="auth API">
+      <option name="closed" value="true" />
+      <created>1738548489117</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1738548489117</updated>
+    </task>
+    <task id="LOCAL-00042" summary="auth API service">
+      <option name="closed" value="true" />
+      <created>1738548502869</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1738548502869</updated>
+    </task>
+    <task id="LOCAL-00043" summary="page cart html">
+      <option name="closed" value="true" />
+      <created>1738548516367</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1738548516367</updated>
+    </task>
+    <task id="LOCAL-00044" summary="page home html">
+      <option name="closed" value="true" />
+      <created>1738548535690</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1738548535690</updated>
+    </task>
+    <task id="LOCAL-00045" summary="page detail product html">
+      <option name="closed" value="true" />
+      <created>1738548559861</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1738548559861</updated>
+    </task>
+    <task id="LOCAL-00046" summary="page header html">
+      <option name="closed" value="true" />
+      <created>1738548570409</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1738548570409</updated>
+    </task>
+    <task id="LOCAL-00047" summary="API category">
+      <option name="closed" value="true" />
+      <created>1738548596866</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1738548596866</updated>
+    </task>
+    <task id="LOCAL-00048" summary="page create of admin">
+      <option name="closed" value="true" />
+      <created>1738548635783</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1738548635783</updated>
+    </task>
+    <task id="LOCAL-00049" summary="page checkout">
+      <option name="closed" value="true" />
+      <created>1738548663288</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1738548663288</updated>
+    </task>
+    <task id="LOCAL-00050" summary="page createOrder">
+      <option name="closed" value="true" />
+      <created>1738548676922</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1738548676923</updated>
+    </task>
+    <task id="LOCAL-00051" summary="page create">
+      <option name="closed" value="true" />
+      <created>1738548687041</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1738548687041</updated>
+    </task>
+    <task id="LOCAL-00052" summary="page create">
+      <option name="closed" value="true" />
+      <created>1738548692379</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1738548692379</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Api Order">
+      <option name="closed" value="true" />
+      <created>1738548714393</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1738548714393</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -656,19 +735,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="up" />
-    <MESSAGE value="up date db, repository" />
-    <MESSAGE value="up date db" />
-    <MESSAGE value="Up_similar" />
-    <MESSAGE value="Search_product" />
-    <MESSAGE value="up html" />
-    <MESSAGE value="up size,clo" />
-    <MESSAGE value="oke" />
-    <MESSAGE value="update log" />
-    <MESSAGE value="update size,color,cate" />
-    <MESSAGE value="cart" />
-    <MESSAGE value="add to cart" />
-    <MESSAGE value="upsert product" />
     <MESSAGE value="update add to cart, sign up" />
     <MESSAGE value="upload img,cap nhat product" />
     <MESSAGE value="update addInterceptors" />
@@ -679,7 +745,22 @@
     <MESSAGE value="update order admin" />
     <MESSAGE value="update lọc" />
     <MESSAGE value="format" />
-    <option name="LAST_COMMIT_MESSAGE" value="format" />
+    <MESSAGE value="code Vnpay" />
+    <MESSAGE value="page wishlist html" />
+    <MESSAGE value="auth API" />
+    <MESSAGE value="auth API service" />
+    <MESSAGE value="page cart html" />
+    <MESSAGE value="page home html" />
+    <MESSAGE value="page detail product html" />
+    <MESSAGE value="page header html" />
+    <MESSAGE value="API category" />
+    <MESSAGE value="page create of admin" />
+    <MESSAGE value="page checkout" />
+    <MESSAGE value="page createOrder" />
+    <MESSAGE value="page create" />
+    <MESSAGE value="Api Order" />
+    <MESSAGE value="Api Order admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Api Order admin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
