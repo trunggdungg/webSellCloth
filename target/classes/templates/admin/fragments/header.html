@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{admin/layout/layout :: main-layout(~{:: title},~{:: #css},~{:: .content-wrapper},~{:: #js})}">
+
 <body>
 
 <!-- Navbar -->
@@ -28,7 +27,7 @@
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                <a href="#" class="dropdown-item">
+                <a href="/admin/revenue" class="dropdown-item">
                     <span class="text-muted">Trang chủ</span>
                 </a>
                 <a href="#" class="dropdown-item">
@@ -47,7 +46,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="./index.html" class="brand-link">
+    <a href="/admin/revenue" class="brand-link">
         <img src="/admin-assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
              class="brand-image img-circle elevation-3"
              style="opacity: 0.8"/>
@@ -65,7 +64,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                            Thống kê
+                            Statistical
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -89,7 +88,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                            Quản lý sản phẩm
+                            Product management
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -97,14 +96,14 @@
                         <li class="nav-item">
                             <a href="/admin/product" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Tất cả sản phẩm</p>
+                                <p>All products</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="/admin/product/create" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Thêm sản phẩm</p>
+                                <p>Add products</p>
                             </a>
                         </li>
                     </ul>
@@ -113,7 +112,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tree"></i>
                         <p>
-                            Quản lý user
+                            User management
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -121,13 +120,13 @@
                         <li class="nav-item">
                             <a href="/admin/user" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Danh sách user</p>
+                                <p>List of users</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/admin/user/create" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Thêm user</p>
+                                <p>Add user</p>
                             </a>
                         </li>
                     </ul>
@@ -136,7 +135,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tree"></i>
                         <p>
-                            Quản lý Order
+                            Order Management
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -144,11 +143,33 @@
                         <li class="nav-item">
                             <a href="/admin/orders" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Danh sách Order</p>
+                                <p>List of Orders</p>
                             </a>
                         </li>
 
                     </ul>
+
+
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tree"></i>
+                        <p>
+                            Category management
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/categories" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Category List</p>
+                            </a>
+                        </li>
+
+                    </ul>
+
+
                 </li>
 
 

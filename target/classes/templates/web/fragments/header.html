@@ -48,24 +48,28 @@
                         <ul class="header-cart__items">
                             <li class="cart-item d-flex" th:if="${session.CURRENT_USER == null}">
                                 <p class="cart-item__details">
-                                    <a href="/account" class="cart-item__title">Đăng nhập</a>
+                                    <a href="/account" class="cart-item__title">Log In</a>
                                 </p>
                             </li>
                             <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
                                 <p class="cart-item__details">
-                                    <a href="/profile" class="cart-item__title">Thông tin cá nhân</a>
+                                    <a href="/profile" class="cart-item__title">Personal Information</a>
                                 </p>
                             </li>
                             <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
                                 <p class="cart-item__details">
-                                    <a onclick="logout()" style="cursor: pointer" class="cart-item__title">Đăng
-                                        xuất</a>
+                                    <a href="/order" class="cart-item__title">Purchase History</a>
+                                </p>
+                            </li>
+                            <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
+                                <p class="cart-item__details">
+                                    <a onclick="logout()" style="cursor: pointer" class="cart-item__title">Log Out</a>
                                 </p>
                             </li>
                         </ul>
                         <!-- Subtotal -->
                         <div class="header-cart__subtotal d-flex" th:if="${session.CURRENT_USER != null}">
-                            <div class="subtotal__title">Xin chào</div>
+                            <div class="subtotal__title">Hello</div>
                             <div class="subtotal__value" th:text="${session.CURRENT_USER.fullName}">Trung Dũng</div>
                         </div>
 
@@ -73,7 +77,7 @@
                             th:if="${session.CURRENT_USER != null && session.CURRENT_USER.userRole.toString() == 'ADMIN'}">
                             <li class="cart-item d-flex">
                                 <p class="cart-item__details">
-                                    <a href="/admin/product" class="cart-item__title">Quản lý</a>
+                                    <a href="/admin/revenue" class="cart-item__title">Manage</a>
                                 </p>
                             </li>
                         </ul>
@@ -96,7 +100,7 @@
                             <li class="cart-item d-flex" th:if="${session.CURRENT_USER == null}">
                                 <p class="cart-item__details">
                                         <span class="cart-item__title"
-                                              style="font-size: 20px; pointer-events: none;cursor: default;">Giỏ hàng trống!</span>
+                                              style="font-size: 20px; pointer-events: none;cursor: default;">Cart Empty!</span>
                                 </p>
                             </li>
                             <!-- Item -->
@@ -237,20 +241,27 @@
     window.logout = () => {
         axios.post('/api/auth/logout').then(res => {
             if (res.status === 200) {
-                toastr.success("Đăng xuất thành công");
+                toastr.success("Logout successfully!");
                 setTimeout(() => {
                     window.location.href = '/';
                 }, 1500)
             }
         }).catch(err => {
             console.log(err);
-            toastr.error("Đăng xuất thất bại");
+            toastr.error("Logout failed!");
         })
     }
 </script>
+
+<!--mã ben file header.html-->
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        // Gọi API để lấy dữ liệu giỏ hàng
+        fetchCartItems();
+    });
+
+    // Di chuyển các hàm fetchCartItems, renderCartItems, calculateSubtotal
+    // ra ngoài để có thể sử dụng ở nhiều file
+    function fetchCartItems() {
         fetch("/api/cart/items")
             .then(response => {
                 if (!response.ok) {
@@ -259,81 +270,101 @@
                 return response.json();
             })
             .then(cartItems => {
-                // Hàm để render giỏ hàng ra giao diện
+                // Xóa các item cũ trước khi render
+                const cartContainer = document.querySelector(".cart-container");
+                cartContainer.innerHTML = '';
+
+                // Render lại các cart items
                 renderCartItems(cartItems);
 
-                // Hàm để tính toán tổng giỏ hàng
+                // Tính toán lại subtotal
                 calculateSubtotal(cartItems);
 
-                // Đếm số lượng loại sản phẩm
-                const itemCount = cartItems.length;
-                console.log("Number of unique products in cart:", itemCount);
-
-                // Đếm tổng số lượng sản phẩm
-                const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
-                console.log("Total quantity of all items in cart:", totalQuantity);
-
-                // Hiển thị số lượng trong giao diện
+                // Cập nhật số lượng item trong icon giỏ hàng
                 const cartCountEl = document.getElementById("cart-count");
                 if (cartCountEl) {
-                    cartCountEl.innerText = itemCount; // Hiển thị tổng số lượng sản phẩm
+                    cartCountEl.innerText = cartItems.length;
                 }
             })
             .catch(error => {
                 console.error("Error fetching cart items:", error);
             });
-    });
-
+    }
 
     function renderCartItems(cartItems) {
         const cartContainer = document.querySelector(".cart-container");
-        console.log("cartItems", cartItems);
-        cartItems.forEach(item => {
+        // Xóa nội dung cũ trước khi render
+        cartContainer.innerHTML = '';
 
+        cartItems.forEach(item => {
             const cartItemHTML = `
-                <li class="cart-item d-flex">
-                    <p class="cart-item__image">
-                        <a href="product.html">
-                            <img
-                                alt="Image"
-                                src="${item.productVariant.product.imageUrlPrimary}"
-                                class="lazyload lazy-effect"
-                            />
-                        </a>
-                    </p>
-                    <p class="cart-item__details">
-                        <a href="product.html" class="cart-item__title">${item.productVariant.product.name}</a>
-                        <span class="cart-item__variant">${item.productVariant.color.nameColor}, ${item.productVariant.size.sizeName}</span>
-                       <span class="cart-item__price">
-                ${item.quantity} <i>x</i>${item.productVariant.product.discount != null
+            <li class="cart-item d-flex" data-cart-detail-id="${item.id}">
+                <p class="cart-item__image">
+                    <a href="product.html">
+                        <img
+                            alt="Image"
+                            src="${item.productVariant.product.imageUrlPrimary}"
+                            class="lazyload lazy-effect"
+                        />
+                    </a>
+                </p>
+                <p class="cart-item__details">
+                    <a href="product.html" class="cart-item__title">${item.productVariant.product.name}</a>
+                    <span class="cart-item__variant">${item.productVariant.color.nameColor}, ${item.productVariant.size.sizeName}</span>
+                    <span class="cart-item__price">
+                        ${item.quantity} <i>x</i>${item.productVariant.product.discount != null
                 ? (item.productVariant.product.price - (item.productVariant.product.price * item.productVariant.product.discount) / 100).toFixed(2)
                 : item.productVariant.product.price.toFixed(2)}
-                        </span>
-
-                    </p>
-                    <p class="cart-item__delete">
-                        <a href="#"><i class="lnil lnil-close"></i></a>
-                    </p>
-                </li>
-            `;
-            // Thêm phần tử mới vào container
+                    </span>
+                </p>
+                <p class="cart-item__delete">
+                    <a href="#" class="delete-cart-item"><i class="lnil lnil-close"></i></a>
+                </p>
+            </li>
+        `;
             cartContainer.innerHTML += cartItemHTML;
+        });
+
+        // Thêm sự kiện click cho các nút xóa
+        const deleteButtons = document.querySelectorAll('.delete-cart-item');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                // Lấy cart detail ID từ phần tử cha
+                const cartItemElement = this.closest('.cart-item');
+                const cartDetailId = cartItemElement.getAttribute('data-cart-detail-id');
+
+                // Gọi API xóa sản phẩm khỏi giỏ hàng
+                axios.delete(`/api/cart/items/${cartDetailId}`)
+                    .then(response => {
+                        // Xóa phần tử khỏi giao diện
+                        cartItemElement.remove();
+
+                        // Cập nhật lại tổng giá và số lượng
+                        fetchCartItems();
+
+                        // Hiển thị thông báo thành công
+                        toastr.success("Delete product from cart successfully");
+                    })
+                    .catch(error => {
+                        console.error("Lỗi khi xóa sản phẩm khỏi giỏ hàng:", error);
+                        toastr.error("Error when delete product from cart");
+                    });
+            });
         });
     }
 
-    // Hàm tính toán tổng giỏ hàng (subtotal)
     function calculateSubtotal(cartItems) {
-        let totalPriceSub = 0; // Khởi tạo tổng giá trị của giỏ hàng
+        let totalPriceSub = 0;
 
         cartItems.forEach(item => {
-            totalPriceSub += item.price; // Cộng dồn giá trị của từng sản phẩm
+            totalPriceSub += item.price;
         });
-        // Hiển thị tổng giỏ hàng với 2 chữ số thập phân
-        // Cập nhật nội dung của từng phần tử
-        // Lấy tất cả các phần tử có lớp "totalPrice"
+
         const totalPriceElements = document.querySelectorAll(".totalPrice");
         totalPriceElements.forEach(el => {
-            el.innerHTML = `$${totalPriceSub.toFixed(2)}`; // Định dạng giá trị với 2 chữ số thập phân
+            el.innerHTML = `$${totalPriceSub.toFixed(2)}`;
         });
     }
 

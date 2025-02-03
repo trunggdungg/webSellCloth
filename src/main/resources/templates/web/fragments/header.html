@@ -48,24 +48,28 @@
                         <ul class="header-cart__items">
                             <li class="cart-item d-flex" th:if="${session.CURRENT_USER == null}">
                                 <p class="cart-item__details">
-                                    <a href="/account" class="cart-item__title">Đăng nhập</a>
+                                    <a href="/account" class="cart-item__title">Log In</a>
                                 </p>
                             </li>
                             <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
                                 <p class="cart-item__details">
-                                    <a href="/profile" class="cart-item__title">Thông tin cá nhân</a>
+                                    <a href="/profile" class="cart-item__title">Personal Information</a>
                                 </p>
                             </li>
                             <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
                                 <p class="cart-item__details">
-                                    <a onclick="logout()" style="cursor: pointer" class="cart-item__title">Đăng
-                                        xuất</a>
+                                    <a href="/order" class="cart-item__title">Purchase History</a>
+                                </p>
+                            </li>
+                            <li class="cart-item d-flex" th:if="${session.CURRENT_USER != null}">
+                                <p class="cart-item__details">
+                                    <a onclick="logout()" style="cursor: pointer" class="cart-item__title">Log Out</a>
                                 </p>
                             </li>
                         </ul>
                         <!-- Subtotal -->
                         <div class="header-cart__subtotal d-flex" th:if="${session.CURRENT_USER != null}">
-                            <div class="subtotal__title">Xin chào</div>
+                            <div class="subtotal__title">Hello</div>
                             <div class="subtotal__value" th:text="${session.CURRENT_USER.fullName}">Trung Dũng</div>
                         </div>
 
@@ -73,7 +77,7 @@
                             th:if="${session.CURRENT_USER != null && session.CURRENT_USER.userRole.toString() == 'ADMIN'}">
                             <li class="cart-item d-flex">
                                 <p class="cart-item__details">
-                                    <a href="/admin/product" class="cart-item__title">Quản lý</a>
+                                    <a href="/admin/revenue" class="cart-item__title">Manage</a>
                                 </p>
                             </li>
                         </ul>
@@ -96,7 +100,7 @@
                             <li class="cart-item d-flex" th:if="${session.CURRENT_USER == null}">
                                 <p class="cart-item__details">
                                         <span class="cart-item__title"
-                                              style="font-size: 20px; pointer-events: none;cursor: default;">Giỏ hàng trống!</span>
+                                              style="font-size: 20px; pointer-events: none;cursor: default;">Cart Empty!</span>
                                 </p>
                             </li>
                             <!-- Item -->
@@ -237,14 +241,14 @@
     window.logout = () => {
         axios.post('/api/auth/logout').then(res => {
             if (res.status === 200) {
-                toastr.success("Đăng xuất thành công");
+                toastr.success("Logout successfully!");
                 setTimeout(() => {
                     window.location.href = '/';
                 }, 1500)
             }
         }).catch(err => {
             console.log(err);
-            toastr.error("Đăng xuất thất bại");
+            toastr.error("Logout failed!");
         })
     }
 </script>
@@ -341,11 +345,11 @@
                         fetchCartItems();
 
                         // Hiển thị thông báo thành công
-                        toastr.success("Xóa sản phẩm khỏi giỏ hàng thành công");
+                        toastr.success("Delete product from cart successfully");
                     })
                     .catch(error => {
                         console.error("Lỗi khi xóa sản phẩm khỏi giỏ hàng:", error);
-                        toastr.error("Không thể xóa sản phẩm khỏi giỏ hàng");
+                        toastr.error("Error when delete product from cart");
                     });
             });
         });
