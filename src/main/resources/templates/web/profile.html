@@ -1,181 +1,744 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>User Profile</title>
+    <title>Utero - cart</title>
+    <!-- Toastr CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="/admin-assets/plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="/admin-assets/dist/css/adminlte.min.css">
 
     <link href="/assets/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="/assets/theme7b30.css?v=4" rel="stylesheet" type="text/css"/>
+    <!--    <link href="/assets/css/profile.css" rel="stylesheet" type="text/css"/>-->
+    <!-- For Js Library -->
+    <script src="/assets/vendor7b30.js?v=4"></script>
+    <script src="/assets/theme7b30.js?v=4"></script>
+
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="home inner-page about-page">
+<div id="main">
+    <!-- Header -->
+    <div th:insert="~{/web/fragments/header}"></div>
 
-<div class="wrapper">
-    <!-- Navbar -->
-
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <!--    <div th:insert="~{/web/fragments/header}"></div>-->
-    </nav>
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper" style="margin-left: 0px !important;">
-        <!-- Content Header (Page header) -->
-
-
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-3">
-
-                        <!-- Profile Image -->
-                        <div class="card card-primary card-outline">
-                            <div class="card-body box-profile">
-                                <div class="text-center">
-                                    <img class="profile-user-img img-fluid img-circle"
-                                         src="/assets/images/avata_img.jpg"
-                                         alt="User profile picture">
-                                </div>
-
-                                <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-                                <p class="text-muted text-center">Software Engineer</p>
-
-                                <ul class="list-group list-group-unbordered mb-3">
-                                    <li class="list-group-item">
-                                        <b>Followers</b> <a class="float-right">1,322</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Following</b> <a class="float-right">543</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Friends</b> <a class="float-right">13,287</a>
-                                    </li>
-                                </ul>
-
-                                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
-
-                        <!-- About Me Box -->
-
-                        <!-- /.card -->
+    <!-- End header -->
+    <!-- Sidebar contact -->
+    <div class="sidebar-contact js-sidebar-contact">
+        <!-- Background -->
+        <div class="sidebar-contact__background js-close-sidebar-contact"></div>
+        <!-- End background -->
+        <!-- Content -->
+        <div class="sidebar-contact__content">
+            <!-- Close -->
+            <div class="sidebar-contact__close"><a href="#" class="js-close-sidebar-contact"><i
+                    class="lnil lnil-close"></i></a></div>
+            <!-- End close -->
+            <!-- Section -->
+            <div class="sidebar-contact__section">
+                <!-- Title -->
+                <h6 class="sidebar-contact-section__title">Contact</h6>
+                <!-- End title -->
+                <!-- Item -->
+                <div class="sidebar-contact-section__item d-flex">
+                    <!-- Icon -->
+                    <div class="sidebar-contact-section-item__icon"><i class="lnil lnil-map-marker"></i></div>
+                    <!-- End icon -->
+                    <!-- Text -->
+                    <div class="sidebar-contact-section-item__text">
+                        No. Rosecrans Ave, Suite 200 El Segundo, CA 90245. USA
                     </div>
-                    <!-- /.col -->
-                    <div class="col-md-9">
-                        <div class="card">
-                            <div class="card-header p-2">
-                                <ul class="nav nav-pills">
-
-                                    <li class="nav-item"><a class="nav-link active" href="#settings"
-                                                            data-toggle="tab">Settings</a></li>
-                                </ul>
-                            </div><!-- /.card-header -->
-                            <div class="card-body">
-                                <div class="tab-content">
-
-                                    <!-- /.tab-pane -->
-
-                                    <!-- /.tab-pane -->
-
-                                    <div class="tab-pane " id="settings">
-                                        <form class="form-horizontal">
-                                            <div class="form-group row">
-                                                <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                                                <div class="col-sm-10">
-                                                    <input type="email" class="form-control" id="inputName"
-                                                           placeholder="Name">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                                                <div class="col-sm-10">
-                                                    <input type="email" class="form-control" id="inputEmail"
-                                                           placeholder="Email">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputName2"
-                                                           placeholder="Name">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputExperience"
-                                                       class="col-sm-2 col-form-label">Experience</label>
-                                                <div class="col-sm-10">
-                                                    <textarea class="form-control" id="inputExperience"
-                                                              placeholder="Experience"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputSkills"
-                                                           placeholder="Skills">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="offset-sm-2 col-sm-10">
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox"> I agree to the <a href="#">terms and
-                                                            conditions</a>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="offset-sm-2 col-sm-10">
-                                                    <button type="submit" class="btn btn-danger">Submit</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <!-- /.tab-pane -->
-                                </div>
-                                <!-- /.tab-content -->
-                            </div><!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
-                    </div>
-                    <!-- /.col -->
+                    <!-- End text -->
                 </div>
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
+                <!-- End item -->
+                <!-- Item -->
+                <div class="sidebar-contact-section__item d-flex">
+                    <!-- Icon -->
+                    <div class="sidebar-contact-section-item__icon"><i class="lnil lnil-phone-ring"></i></div>
+                    <!-- End icon -->
+                    <!-- Text -->
+                    <div class="sidebar-contact-section-item__text">
+                        Call: +1 (202) 861-5567
+                    </div>
+                    <!-- End text -->
+                </div>
+                <!-- End item -->
+                <!-- Item -->
+                <div class="sidebar-contact-section__item d-flex">
+                    <!-- Icon -->
+                    <div class="sidebar-contact-section-item__icon"><i class="lnil lnil-message-edit"></i></div>
+                    <!-- End icon -->
+                    <!-- Text -->
+                    <div class="sidebar-contact-section-item__text">
+                        Email: support@demo.com
+                    </div>
+                    <!-- End text -->
+                </div>
+                <!-- End item -->
+            </div>
+            <!-- End section -->
+            <!-- Section -->
+            <div class="sidebar-contact__section">
+                <!-- Title -->
+                <h6 class="sidebar-contact-section__title">Connect on Social</h6>
+                <!-- End title -->
+                <!-- Socials -->
+                <ul class="sidebar-contact-section__socials">
+                    <li><a href="https://twitter.com/" target="_blank"><i class="lnil lnil-twitter"></i></a></li>
+                    <li><a href="https://facebook.com/" target="_blank"><i class="lnil lnil-facebook"></i></a></li>
+                    <li><a href="https://instagram.com/" target="_blank"><i class="lnil lnil-Instagram"></i></a></li>
+                </ul>
+                <!-- End socials -->
+            </div>
+            <!-- End section -->
+        </div>
+        <!-- End content -->
     </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
+    <!-- End sidebar contact -->
+    <!-- Fixed header -->
+    <div class="fixed-header js-fixed-header"></div>
+    <!-- End fixed header -->
+    <!-- Shopping cart -->
+    <div class="shopping-cart mt-0 p-0">
+        <!-- Container -->
 
-    </footer>
+        <!-- Second container -->
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-4 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img
+                            class="rounded-circle mt-5" width="190px"
+                            th:src="${user.avatar}"><span
+                            class="font-weight-bold" th:text="${user.fullName}">Edogaru</span><span
+                            class="text-black-50" th:text="${user.email}">edogaru@mail.com.my</span><span> </span></div>
+                </div>
+                <div class="col-md-5 border-right">
+                    <form id="form-update-user">
+                        <div class="p-3 py-5">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-right">Profile Settings</h4>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-6 form-group"><label class="labels">UserName</label>
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="first name"
+                                            name="username"
+                                            th:value="${user.username}">
+                                </div>
+                                <div class="col-md-6 form-group"><label class="labels">Full Name</label><input
+                                        type="text"
+                                        class="form-control"
+                                        th:value="${user.fullName}"
+                                        name="fullName"
+                                        placeholder="Full Name">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12 form-group"><label class="labels">Email </label><input type="text"
+                                                                                                             class="form-control"
+                                                                                                             placeholder="enter email "
+                                                                                                             name="email"
+                                                                                                             th:value="${user.email}">
+                                </div>
+                                <div class="col-md-12 form-group"><label class="labels">Mobile Number</label><input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="enter phone number"
+                                        name="phoneNumber"
+                                        th:value="${user.phoneNumber}">
+                                </div>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+                                <div class="col-md-12"><label class="labels">PassWord</label><input type="password"
+                                                                                                    class="form-control"
+                                                                                                    placeholder="enter password"
+                                                                                                    name="password"
+                                                                                                    th:value="${user.password}">
+                                </div>
+
+                                <div class="col-md-12"><label class="labels">Role</label><input type="text"
+                                                                                                class="form-control"
+                                                                                                placeholder="Role"
+                                                                                                th:value="${user.userRole}"
+                                                                                                readonly></div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="labels">Create At</label>
+                                    <input type="text" class="form-control"
+                                           th:value="${#temporals.format(user.createdAt, 'dd/MMM/yyyy ')}">
+                                </div>
+
+                                <div class="col-md-6"><label class="labels">Update At</label><input type="text"
+                                                                                                    class="form-control"
+                                                                                                    th:value="${#temporals.format(user.updatedAt, 'dd/MMM/yyyy ')}">
+                                </div>
+                            </div>
+                            <div class="mt-5 text-center">
+                                <button class="btn btn-primary profile-button" type="button">Save Profile</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <!--                    <div class="col-md-4">-->
+                <!--                        <div class="p-3 py-5">-->
+                <!--                            <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>-->
+                <!--                            <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>-->
+                <!--                            <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+            </div>
+        </div>
+
+    </div>
+    <!-- End second container -->
 </div>
-<!-- ./wrapper -->
+<!-- End container -->
 
-<!-- jQuery -->
-<script src="/admin-assets/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="/admin-assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/admin-assets/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/admin-assets/dist/js/demo.js"></script>
+<!-- End shopping cart -->
+<!-- Footer -->
+<footer class="footer">
+    <!-- Container -->
+    <div class="container">
+        <!-- Row -->
+        <div class="row">
+            <!-- First column -->
+            <div class="col-md-6 col-lg-3 footer__first-column">
+                <!-- Footer logo -->
+                <h5 class="footer__logo">UTERO</h5>
+                <!-- End footer logo -->
+                <!-- Footer address -->
+                <ul class="footer__address">
+                    <li>268 Elizaberth Ave Str, Brooklyn,<br>CA, 90025</li>
+                    <li>+0082 561 43 34</li>
+                    <li><a href="mailto:support@utero.com">support@utero.com</a></li>
+                </ul>
+                <!-- End footer address -->
+                <!-- Footer socials -->
+                <ul class="footer__socials">
+                    <li><a href="https://twitter.com/" target="_blank"><i class="lnil lnil-twitter"></i></a></li>
+                    <li><a href="https://facebook.com/" target="_blank"><i class="lnil lnil-facebook"></i></a></li>
+                    <li><a href="https://instagram.com/" target="_blank"><i class="lnil lnil-Instagram"></i></a>
+                    </li>
+                </ul>
+                <!-- End footer socials -->
+            </div>
+            <!-- End first column -->
+            <!-- Second column -->
+            <div class="col-md-6 col-lg-3 footer__second-column">
+                <!-- Footer heading -->
+                <h6 class="footer__heading">FAQS</h6>
+                <!-- End footer heading -->
+                <!-- Footer menu -->
+                <ul class="footer__menu">
+                    <li><a href="#">Information</a></li>
+                    <li><a href="#">Payment</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Gift Card</a></li>
+                    <li><a href="#">Guest purchase</a></li>
+                    <li><a href="#">Electronic receipt</a></li>
+                    <li><a href="#">Terms &amp; Conditions</a></li>
+                </ul>
+                <!-- End footer menu -->
+            </div>
+            <!-- End second column -->
+            <!-- Third column -->
+            <div class="col-md-6 col-lg-3 footer__third-column">
+                <!-- Footer heading -->
+                <h6 class="footer__heading">Company</h6>
+                <!-- End footer heading -->
+                <!-- Footer menu -->
+                <ul class="footer__menu">
+                    <li><a href="#">About Utero</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Our Journals</a></li>
+                </ul>
+                <!-- End footer menu -->
+            </div>
+            <!-- End third column -->
+            <!-- Fourth column -->
+            <div class="col-md-6 col-lg-3 footer__fourth-column">
+                <!-- Footer heading -->
+                <h6 class="footer__heading">Newsletter</h6>
+                <!-- End footer heading -->
+                <!-- Footer newsletter -->
+                <form class="footer__newsletter">
+                    <!-- Footer newsletter description -->
+                    <div class="footer__newsletter-description">Be the first to get the latest news about trends,
+                        promotions and much more!
+                    </div>
+                    <!-- End footer newsletter description -->
+                    <!-- Footer newsletter input -->
+                    <input type="email" class="footer__newsleter-input" placeholder="Enter your mail address">
+                    <!-- End footer newsletter input -->
+                    <!-- Footer newsletter privacy policy -->
+                    <div class="footer__newsletter-privacy-policy">By subscribing, you accept the <a href="#">Privacy
+                        Policy</a></div>
+                    <!-- End footer newsletter privacy policy -->
+                    <!-- Footer newsletter button -->
+                    <button type="submit" class="second-button footer__newsletter-button">Subscribe</button>
+                    <!-- End footer newsletter button -->
+                </form>
+                <!-- End footer newsletter -->
+            </div>
+            <!-- End fourth column -->
+        </div>
+        <!-- End row -->
+        <!-- Copyright -->
+        <div class="copyright">
+            <!-- Row -->
+            <div class="row">
+                <!-- Copyright first column -->
+                <div class="col-lg-3 copyright__first-column">
+                    © 2024 <span>UTERO</span>. All rights reserved
+                </div>
+                <!-- End copyright first column -->
+                <!-- Copyright second column -->
+                <div class="col-lg-3 copyright__second-column">
+                    <!-- Language switcher -->
+                    <ul class="copyright__language-switcher">
+                        <li><a href="#" class="active">EN</a></li>
+                        <li><a href="#">FR</a></li>
+                    </ul>
+                    <!-- End language switcher -->
+                </div>
+                <!-- End copyright second column -->
+                <!-- Copyright payments -->
+                <div class="col-lg-6 copyright__payment">
+                    <span>Accept for</span> <img src="assets/images/default/payment.png" alt="Payment method"/>
+                </div>
+                <!-- End copyright payments -->
+            </div>
+            <!-- End row -->
+        </div>
+        <!-- End copyright -->
+    </div>
+    <!-- End Container -->
+</footer>
+<!-- End Footer -->
+<!-- Search popup -->
+<div class="search-popup js-search-popup">
+    <!-- Search close -->
+    <div class="search-popup__close">
+        <a href="#" class="js-close-search-popup"><i class="lnil lnil-close"></i></a>
+    </div>
+    <!-- End search close -->
+    <!-- Container -->
+    <div class="container">
+        <!-- Search categories -->
+        <ul class="search-popup__categories">
+            <li><a href="#" class="active">All</a></li>
+            <li><a href="#">Clothings</a></li>
+            <li><a href="#">Shoes</a></li>
+            <li><a href="#">Bags</a></li>
+            <li><a href="#">Accessories</a></li>
+        </ul>
+        <!-- End search categories -->
+        <!-- Search form -->
+        <form class="search-popup__form">
+            <!-- Search input -->
+            <input type="text" class="search-popup__input" placeholder="Search here..."/>
+            <!-- End search input -->
+        </form>
+        <!-- End search form -->
+        <!-- Search results -->
+        <div class="search-popups__results">
+            <!-- Results heading -->
+            <h6 class="search-popup__results-heading">Search results</h6>
+            <!-- End results heading -->
+            <!-- Results -->
+            <div class="search-popups__results-products d-flex">
+                <!-- Product -->
+                <div class="product-grid-item">
+                    <!-- Tag -->
+                    <div class="product-grid-item__tag product-grid-item__tag--sold-out">Sold out</div>
+                    <!-- End tag -->
+                    <!-- Wishlist -->
+                    <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
+                    <!-- End wishlist -->
+                    <!-- Image -->
+                    <div class="product-grid-item__image">
+                        <a href="product.html">
+                            <img
+                                    alt="Image"
+                                    data-sizes="auto"
+                                    data-srcset="assets/products/1/6a.jpg 400w,
+                    assets/products/1/6a.jpg 800w"
+                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                    class="lazyload lazy-effect"/>
+                            <img
+                                    alt="Image"
+                                    data-sizes="auto"
+                                    data-srcset="assets/products/1/6b.jpg 400w,
+                    assets/products/1/6b.jpg 800w"
+                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                    class="lazyload lazy-effect hover"/>
+                        </a>
+                        <!-- Action -->
+                        <div class="product-grid-item__action d-flex">
+                            <!-- Button -->
+                            <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
+                            <!-- End button -->
+                            <!-- Button -->
+                            <div class="product-grid-item__button"><a href="#">Quick shop</a></div>
+                            <!-- End button -->
+                        </div>
+                        <!-- End action -->
+                    </div>
+                    <!-- End image -->
+                    <!-- Title -->
+                    <div class="product-grid-item__title"><a href="product.html">Basic T-shitt with slogan</a></div>
+                    <!-- End title -->
+                    <!-- Price -->
+                    <div class="product-grid-item__price">
+                        $32.5
+                    </div>
+                    <!-- End price -->
+                </div>
+                <!-- End product -->
+                <!-- Product -->
+                <div class="product-grid-item">
+                    <!-- Wishlist -->
+                    <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
+                    <!-- End wishlist -->
+                    <!-- Image -->
+                    <div class="product-grid-item__image">
+                        <a href="product.html">
+                            <img
+                                    alt="Image"
+                                    data-sizes="auto"
+                                    data-srcset="assets/products/1/13a.jpg 400w,
+                    assets/products/1/13a.jpg 800w"
+                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                    class="lazyload lazy-effect"/>
+                            <img
+                                    alt="Image"
+                                    data-sizes="auto"
+                                    data-srcset="assets/products/1/13b.jpg 400w,
+                    assets/products/1/13b.jpg 800w"
+                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                    class="lazyload lazy-effect hover"/>
+                        </a>
+                        <!-- Action -->
+                        <div class="product-grid-item__action d-flex">
+                            <!-- Button -->
+                            <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
+                            <!-- End button -->
+                            <!-- Button -->
+                            <div class="product-grid-item__button"><a href="#">Quick shop</a></div>
+                            <!-- End button -->
+                        </div>
+                        <!-- End action -->
+                    </div>
+                    <!-- End image -->
+                    <!-- Title -->
+                    <div class="product-grid-item__title"><a href="product.html">Chrome acetate sunglasses</a></div>
+                    <!-- End title -->
+                    <!-- Rating -->
+                    <div class="product-grid-item__rating">
+                        <i class="lnir lnir-star-filled active"></i>
+                        <i class="lnir lnir-star-filled active"></i>
+                        <i class="lnir lnir-star-filled active"></i>
+                        <i class="lnir lnir-star-filled active"></i>
+                        <i class="lnir lnir-star-filled active"></i>
+                        <span>3 reviews</span>
+                    </div>
+                    <!-- End rating -->
+                    <!-- Price -->
+                    <div class="product-grid-item__price">
+                        $72.9
+                    </div>
+                    <!-- End price -->
+                </div>
+                <!-- End product -->
+                <!-- Product -->
+                <div class="product-grid-item">
+                    <!-- Tag -->
+                    <div class="product-grid-item__tag">10% off</div>
+                    <!-- End tag -->
+                    <!-- Wishlist -->
+                    <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
+                    <!-- End wishlist -->
+                    <!-- Image -->
+                    <div class="product-grid-item__image">
+                        <a href="product.html">
+                            <img
+                                    alt="Image"
+                                    data-sizes="auto"
+                                    data-srcset="assets/products/1/2_1-a.jpg 400w,
+                    assets/products/1/2_1-a.jpg 800w"
+                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                    class="lazyload lazy-effect"/>
+                            <img
+                                    alt="Image"
+                                    data-sizes="auto"
+                                    data-srcset="assets/products/1/2_1-b.jpg 400w,
+                    assets/products/1/2_1-b.jpg 800w"
+                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                    class="lazyload lazy-effect hover"/>
+                        </a>
+                        <!-- Action -->
+                        <div class="product-grid-item__action d-flex">
+                            <!-- Button -->
+                            <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
+                            <!-- End button -->
+                            <!-- Button -->
+                            <div class="product-grid-item__button"><a href="#">Quick shop</a></div>
+                            <!-- End button -->
+                        </div>
+                        <!-- End action -->
+                    </div>
+                    <!-- End image -->
+                    <!-- Title -->
+                    <div class="product-grid-item__title"><a href="product.html">Zipped cotton cardigan</a></div>
+                    <!-- End title -->
+                    <!-- Price -->
+                    <div class="product-grid-item__price">
+                        <span class="price-new">$49.5</span>
+                        <span class="price-old">$68.5</span>
+                    </div>
+                    <!-- End price -->
+                    <!-- Tag -->
+                    <div class="product-grid-item__content-tag">2 colours</div>
+                    <!-- End tag -->
+                </div>
+                <!-- End product -->
+                <!-- Product -->
+                <div class="product-grid-item">
+                    <!-- Wishlist -->
+                    <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
+                    <!-- End wishlist -->
+                    <!-- Image -->
+                    <div class="product-grid-item__image">
+                        <a href="product.html">
+                            <img
+                                    alt="Image"
+                                    data-sizes="auto"
+                                    data-srcset="assets/products/1/1b.jpg 400w,
+                    assets/products/1/1b.jpg 800w"
+                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                    class="lazyload lazy-effect"/>
+                            <img
+                                    alt="Image"
+                                    data-sizes="auto"
+                                    data-srcset="assets/products/1/1c.jpg 400w,
+                    assets/products/1/1c.jpg 800w"
+                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                    class="lazyload lazy-effect hover"/>
+                        </a>
+                        <!-- Action -->
+                        <div class="product-grid-item__action d-flex">
+                            <!-- Button -->
+                            <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
+                            <!-- End button -->
+                            <!-- Button -->
+                            <div class="product-grid-item__button"><a href="#">Quick shop</a></div>
+                            <!-- End button -->
+                        </div>
+                        <!-- End action -->
+                    </div>
+                    <!-- End image -->
+                    <!-- Title -->
+                    <div class="product-grid-item__title"><a href="product.html">Crew neck cotton sweatshirt</a>
+                    </div>
+                    <!-- End title -->
+                    <!-- Rating -->
+                    <div class="product-grid-item__rating">
+                        <i class="lnir lnir-star-filled active"></i>
+                        <i class="lnir lnir-star-filled active"></i>
+                        <i class="lnir lnir-star-filled active"></i>
+                        <i class="lnir lnir-star-filled active"></i>
+                        <i class="lnir lnir-star-filled active"></i>
+                        <span>3 reviews</span>
+                    </div>
+                    <!-- End rating -->
+                    <!-- Price -->
+                    <div class="product-grid-item__price">
+                        $79.9
+                    </div>
+                    <!-- End price -->
+                </div>
+                <!-- End product -->
+                <!-- Product -->
+                <div class="product-grid-item">
+                    <!-- Wishlist -->
+                    <div class="product-grid-item__wishlist"><a href="#"><i class="lnil lnil-heart"></i></a></div>
+                    <!-- End wishlist -->
+                    <!-- Image -->
+                    <div class="product-grid-item__image">
+                        <a href="product.html">
+                            <img
+                                    alt="Image"
+                                    data-sizes="auto"
+                                    data-srcset="assets/products/1/3a.jpg 400w,
+                    assets/products/1/3a.jpg 800w"
+                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                    class="lazyload lazy-effect"/>
+                            <img
+                                    alt="Image"
+                                    data-sizes="auto"
+                                    data-srcset="assets/products/1/3b.jpg 400w,
+                    assets/products/1/3b.jpg 800w"
+                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                    class="lazyload lazy-effect hover"/>
+                        </a>
+                        <!-- Action -->
+                        <div class="product-grid-item__action d-flex">
+                            <!-- Button -->
+                            <div class="product-grid-item__button"><a href="#">Add to cart</a></div>
+                            <!-- End button -->
+                            <!-- Button -->
+                            <div class="product-grid-item__button"><a href="#">Quick shop</a></div>
+                            <!-- End button -->
+                        </div>
+                        <!-- End action -->
+                    </div>
+                    <!-- End image -->
+
+                    <div class="product-grid-item__title"><a href="product.html">Brown nubuck leather high-top deck
+                        shoes</a></div>
+                    <!-- End title -->
+                    <!-- Rating -->
+                    <div class="product-grid-item__rating">
+                        <i class="lnir lnir-star-filled active"></i>
+                        <i class="lnir lnir-star-filled active"></i>
+                        <i class="lnir lnir-star-filled active"></i>
+                        <i class="lnir lnir-star-filled active"></i>
+                        <i class="lnir lnir-star-filled"></i>
+                        <span>1 review</span>
+                    </div>
+                    <!-- End rating -->
+
+                    <div class="product-grid-item__price">
+                        $149.5
+                    </div>
+                    <!-- End price -->
+                    <!-- Tag -->
+                    <div class="product-grid-item__content-tag">3 colours</div>
+                    <!-- End tag -->
+                </div>
+                <!-- End product -->
+            </div>
+            <!-- End results -->
+
+            <div class="search-popup__results-action">
+                <a href="#" class="button">All results (12)</a>
+            </div>
+            <!-- End results actions -->
+        </div>
+        <!-- End search results -->
+    </div>
+    <!-- End container -->
+</div>
+
+<!-- Toastr JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+<script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
+<script src="/admin-assets/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="/admin-assets/plugins/jquery-validation/additional-methods.min.js"></script>
+<script src="/admin-assets/plugins/select2/js/select2.full.min.js"></script>
+
+<script th:src="@{/assets/js/main.js}"></script>
+
+<script th:inline="javascript">
+    $('#form-update-user').validate({
+        rules: {
+            email: {
+                email: true,
+                required: true
+            },
+            username: {
+                required: true
+            },
+            fullName: {
+                required: true
+            },
+            phoneNumber: {
+                number: true,
+                required: true
+            }
+        },
+        messages: {
+            email: {
+                email: 'Vui lòng nhập đúng định dạng email',
+                required: 'Vui lòng nhập email'
+            },
+            username: {
+                required: 'Vui lòng nhập user name'
+            },
+            fullName: {
+                required: 'Vui lòng nhập full name'
+            },
+            phoneNumber: {
+                number: 'Vui lòng nhập số',
+                required: 'Vui lòng nhập phone'
+            }
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
+
+
+    const user = [[${user}]];
+    console.log(user);
+
+    const userNameElement = document.querySelector('input[name="username"]');
+    const fullNameElement = document.querySelector('input[name="fullName"]');
+    const emailElement = document.querySelector('input[name="email"]');
+    const phoneNumberElement = document.querySelector('input[name="phoneNumber"]');
+
+    const profileButton = document.querySelector('.profile-button');
+
+    profileButton.addEventListener('click', function () {
+        if ($('#form-update-user').valid()) { // Kiểm tra nếu form hợp lệ
+            const userName = userNameElement.value;
+            const fullName = fullNameElement.value;
+            const email = emailElement.value;
+            const phoneNumber = phoneNumberElement.value;
+
+            const data = {
+                username: userName,
+                fullName: fullName,
+                email: email,
+                phoneNumber: phoneNumber
+            };
+            console.log(data);
+            try {
+                const response = axios.put('/api/auth/update-profile', data);
+                if (response.status === 200) {
+                    toastr.success('Update user success!');
+                }
+            } catch (e) {
+                toastr.error('Update user fail!');
+                console.log(e);
+            }
+
+        } else {
+            console.log("Form không hợp lệ");
+        }
+    });
+
+
+</script>
+
 </body>
+
+
 </html>
