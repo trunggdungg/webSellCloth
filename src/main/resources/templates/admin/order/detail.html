@@ -37,7 +37,7 @@
                             <li class="breadcrumb-item">
                                 <a href="/admin/product">Product </a>
                             </li>
-                            <li class="breadcrumb-item active" th:text="${product.name}">
+                            <li class="breadcrumb-item active">
                                 Thực hành làm ứng dụng Meal Finder API
                                 với Javascript (Phần 2)
                             </li>
@@ -53,10 +53,10 @@
                 <div class="row py-2">
                     <div class="col-6">
                         <button type="button" class="btn btn-default">
-                            <i class="fas fa-chevron-left"></i> Quay lại
+                            <i class="fas fa-chevron-left"></i> Back
                         </button>
                         <button type="button" class="btn btn-info px-4" id="btn-update">
-                            Cập nhật
+                            Update
                         </button>
                         <!--                        <button type="button" class="btn btn-primary px-4">-->
                         <!--                            Preview-->
@@ -64,9 +64,9 @@
                     </div>
 
                     <div class="col-6 d-flex justify-content-end">
-                        <button type="button" class="btn btn-danger px-4">
-                            Xóa
-                        </button>
+                        <!--                        <button type="button" class="btn btn-danger px-4">-->
+                        <!--                            Xóa-->
+                        <!--                        </button>-->
                     </div>
                 </div>
 
@@ -74,96 +74,45 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form id="form-update-product">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label>Tên sản phẩm</label>
-                                                <input type="text" class="form-control" id="title" name="name"
-                                                       th:value="${product.name}"/>
-                                            </div>
+                                <table class="table table-bordered table-hover" id="table-product">
+                                    <thead>
+                                    <tr>
+                                        <th>Name Product</th>
+                                        <th>Image</th>
+                                        <th>Quality</th>
+                                        <th>Color</th>
+                                        <th>Size</th>
+                                        <th>Total Price</th>
+                                        <th>Update At</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="orderDetail : ${orderDetails}">
+                                        <td>
+                                            <a th:text="${orderDetail.variant.product.name}">Khai
+                                                giảng
+                                                khóa
+                                            </a>
+                                        </td>
+                                        <td th:text="${orderDetail.variant.product.imageUrlPrimary}"></td>
+
+                                        <td th:text="${orderDetail.quantity}">
+                                            Java, Golang, Springboot
+                                        </td>
+
+                                        <td th:text="${orderDetail.variant.color.nameColor}">Công khai</td>
+                                        <td th:text="${orderDetail.variant.size.sizeName}">Công khai</td>
+                                        <td th:text="${orderDetail.price}">
+                                            Java, Golang, Springboot
+                                        </td>
+                                        <td th:text="${#temporals.format(orderDetail.updatedAt, 'dd/MM/yyyy')}">
+                                            06-07-2022
+                                        </td>
 
 
-                                            <div class="form-group">
-                                                <label>Mô tả ngắn</label>
-                                                <textarea id="description" class="form-control" rows="3"
-                                                          name="description"
-                                                          th:text="${product.description}"></textarea>
-                                            </div>
-
-                                            <!--                                            <div class="form-group">-->
-                                            <!--                                                <label>Slug</label>-->
-                                            <!--                                                <input id="slug" class="form-control" rows="3" name="slug"-->
-                                            <!--                                                       th:value="${product.slug}"/>-->
-                                            <!--                                            </div>-->
-
-                                            <div class="form-group">
-                                                <label>Price</label>
-                                                <input id="price" class="form-control" rows="3" name="price"
-                                                       th:value="${product.price}"/>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Material</label>
-                                                <input id="material" class="form-control" rows="3" name="material"
-                                                       th:value="${product.material}"
-                                                />
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Trạng thái</label>
-                                                <select id="status" class="form-control">
-                                                    <option value="false" th:selected="${!product.status}">
-                                                        Nháp
-                                                    </option>
-                                                    <option value="true" th:selected="${product.status}">
-                                                        Công khai
-                                                    </option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Discount</label>
-                                                <input id="discount" class="form-control" rows="3" name="discount"
-                                                       th:value="${product.discount}"/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Danh mục</label>
-                                                <div class="select2-purple">
-                                                    <select class="select2 form-control" multiple="multiple"
-                                                            name="category"
-                                                            id="category">
-                                                        <option th:each="category : ${categories}"
-                                                                th:value="${category.id}"
-                                                                th:text="${category.name}"
-                                                                th:selected="${category.id == product.category.id}">
-                                                        </option>
-                                                        <!--                                                    <option>-->
-                                                        <!--                                                        Golang-->
-                                                        <!--                                                    </option>-->
-                                                        <!--                                                    <option>-->
-                                                        <!--                                                        React-->
-                                                        <!--                                                    </option>-->
-
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="thumbnail-preview-container mb-3">
-                                                    <img th:src="${product.imageUrlPrimary}" alt="" id="thumbnail"
-                                                         style="max-width: 200px; max-height: 200px"/>
-                                                </div>
-                                                <label for="input-poster" class="btn btn-primary">
-                                                    Chọn hình ảnh
-                                                </label>
-                                                <input type="file" id="input-poster" class="d-none">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                                    </tr>
+                                    </tbody>
+                                </table>
 
                             </div>
                         </div>
@@ -277,101 +226,22 @@
         });
     </script>
 
-    <script th:inline="javascript">
-        const product = [[${product}]];
-        console.log(product);
 
-        //truy cap phan tu
-        const title = document.getElementById('title');
-        const description = document.getElementById('description');
-        // const slug = document.getElementById('slug');
-        const price = document.getElementById('price');
-        const material = document.getElementById('material');
-        const status = document.getElementById('status');
-        const discount = document.getElementById('discount');
-        const category = $("#category");
-
-
-        const btnUpdate = document.getElementById('btn-update');
-        btnUpdate.addEventListener('click', async function () {
-            if (!$("#form-update-product").valid()) {
-                return;
-            }
-            const request = {
-                name: title.value,
-                description: description.value,
-                price: Number(price.value),
-                material: material.value,
-                status: status.value === 'true',
-                discount: Number(discount.value),
-                categoryId: Number(category.val())
-            }
-            const selectedCategories = $("#category").val(); // Lấy các danh mục đã chọn
-            if (selectedCategories.length > 1) {
-                toastr.error('Bạn chỉ có thể chọn tối đa 1 danh mục');
-                return; // Dừng lại, không gửi request
-            }
-            // console.log(request);
-            //gọi api cập nhat product
-            try {
-                const response = await axios.put(`/api/admin/products/${product.id}`, request);
-                if (response.status === 200) {
-                    toastr.success('Cập nhật thành công');
-                }
-            } catch (error) {
-                console.log(error);
-                toastr.error('Cập nhật thất bại');
-            }
-        });
-
-        //xu ly chon hinh anh
-        const inputPoster = document.getElementById('input-poster');
-        inputPoster.addEventListener('change', async function () {
-            const file = inputPoster.files[0];
-            const thumbnailEl = document.getElementById('thumbnail');
-
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    console.log("File loaded");
-                    thumbnailEl.src = e.target.result;
-                }
-                reader.readAsDataURL(file);
-            } else {
-                thumbnailEl.src = '/path/to/default-image.jpg';
-            }
-
-        });
-
-        //upload hinh anh
-        const inputPosterEl = document.getElementById('input-poster');
-        const posterEl = document.getElementById('thumbnail');
-
-        inputPosterEl.addEventListener('change', async function () {
-            try {
-                const file = inputPosterEl.files[0];
-                const formData = new FormData();
-                formData.append('file', file);
-
-                // Show toastr notification for uploading
-                toastr.info('Đang tải ảnh lên...');
-
-                const res = await axios.post(`/api/admin/products/${product.id}/images`, formData);
-
-                // Update toastr notification on success
-                toastr.clear();
-                toastr.success('Upload ảnh thành công');
-                posterEl.src = res.data.url;
-            } catch (error) {
-                console.log(error);
-                toastr.clear();
-                toastr.error('Upload ảnh thất bại');
-            }
-        
-        });
-    </script>
 </th:block>
+<script>
+    const orderDetail = [[${orderDetail}]];
 
+    // In ra đối tượng orderDetail trong console
+    console.log(orderDetail);
+
+    // In giá trị từng thuộc tính của orderDetail (nếu bạn muốn)
+    console.log("Product Name: ", orderDetail.variant.product.name);
+    console.log("Quantity: ", orderDetail.quantity);
+    console.log("Color: ", orderDetail.variant.color.nameColor);
+    console.log("Size: ", orderDetail.variant.size.sizeName);
+    console.log("Total Price: ", orderDetail.totalPrice);
+    console.log("Updated At: ", orderDetail.updatedAt);
+</script>
 
 </body>
 

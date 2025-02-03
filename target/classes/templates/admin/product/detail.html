@@ -64,11 +64,11 @@
             <div class="container-fluid">
                 <div class="row py-2">
                     <div class="col-6">
-                        <button type="button" class="btn btn-default">
-                            <i class="fas fa-chevron-left"></i> Quay lại
-                        </button>
+                        <a href="/admin/product" type="button" class="btn btn-default">
+                            <i class="fas fa-chevron-left"></i> Back
+                        </a>
                         <button type="button" class="btn btn-info px-4" id="btn-update">
-                            Cập nhật
+                            Update
                         </button>
                         <!--                        <button type="button" class="btn btn-primary px-4">-->
                         <!--                            Preview-->
@@ -76,9 +76,9 @@
                     </div>
 
                     <div class="col-6 d-flex justify-content-end">
-                        <button type="button" class="btn btn-danger px-4">
-                            Xóa
-                        </button>
+                        <!--                        <button type="button" class="btn btn-danger px-4">-->
+                        <!--                            Delete-->
+                        <!--                        </button>-->
                     </div>
                 </div>
 
@@ -90,7 +90,7 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <label>Tên sản phẩm</label>
+                                                <label>Name Product</label>
                                                 <input type="text" class="form-control" id="title" name="name"
                                                        th:value="${product.name}"/>
                                             </div>
@@ -124,7 +124,7 @@
 
                                             <div class="form-group">
                                                 <label for="input-posterSub" class="btn btn-primary">
-                                                    Chọn hình ảnh phụ
+                                                    Select secondary images
                                                 </label>
                                                 <div style="display: flex;flex-wrap: wrap">
                                                     <input type="file" id="input-posterSub" class="d-none"
@@ -144,13 +144,13 @@
 
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Trạng thái</label>
+                                                <label>Status</label>
                                                 <select id="status" class="form-control">
                                                     <option value="false" th:selected="${!product.status}">
-                                                        Nháp
+                                                        Draft
                                                     </option>
                                                     <option value="true" th:selected="${product.status}">
-                                                        Công khai
+                                                        Publish
                                                     </option>
                                                 </select>
                                             </div>
@@ -161,7 +161,7 @@
                                                        th:value="${product.discount}"/>
                                             </div>
                                             <div class="form-group">
-                                                <label>Danh mục</label>
+                                                <label>Category</label>
                                                 <div class="select2-purple">
                                                     <select class="select2 form-control" multiple="multiple"
                                                             name="category"
@@ -187,7 +187,7 @@
                                                          style="max-width: 200px; max-height: 200px"/>
                                                 </div>
                                                 <label for="input-poster" class="btn btn-primary">
-                                                    Chọn hình ảnh chính
+                                                    Select the main image
                                                 </label>
                                                 <input type="file" id="input-poster" class="d-none">
                                             </div>
